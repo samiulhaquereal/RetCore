@@ -1,7 +1,5 @@
 import 'package:retcore/src/config/imports.dart';
 
-import 'package:flutter/material.dart';
-
 TextInputType RetCoreKeyboardType({String? type}) {
   final Map<String, TextInputType> keyboardTypes = {
     'text': TextInputType.text,
