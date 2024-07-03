@@ -1,5 +1,5 @@
 name: retcore
-description: "RetCore is a collection of essential components designed to simplify coding for beginners. With user-friendly utilities and tools, RetCore helps new developers write cleaner, more efficient code with ease. Perfect for those just starting their coding journey, RetCore provides the building blocks needed to develop robust applications effortlessly."
+description: "RetCore is a Flutter package that provides essential components designed to simplify coding for beginners. With user-friendly utilities and tools, RetCore helps new developers write cleaner, more efficient code with ease. Perfect for those just starting their coding journey, RetCore provides the building blocks needed to develop robust applications effortlessly."
 version: 0.0.1
 homepage: https://github.com/samiulhaquereal/RetCore.git
 
