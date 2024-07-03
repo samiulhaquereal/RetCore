@@ -1,6 +1,6 @@
 import 'package:retcore/src/config/imports.dart';
 
-Color RetCoreparseColor({required String colorCode}) {
+Color RetCoreColor({required String colorCode}) {
   // Check if the color code starts with #
   if (colorCode.startsWith('#')) {
     // Remove # symbol from the color code
