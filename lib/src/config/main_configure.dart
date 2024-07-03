@@ -1,13 +1,13 @@
 import 'package:retcore/src/config/imports.dart';
 
-MaterialApp RetCoreApp({required Widget home}) {
+/*MaterialApp RetCoreApp({required Widget home}) {
   return MaterialApp(
     navigatorKey: navigatorKey,
     home: home,
   );
-}
+}*/
 
-/*class RetCoreApp extends InheritedWidget {
+class RetCoreApp extends InheritedWidget {
   final BuildContext context;
 
   RetCoreApp({
@@ -23,4 +23,4 @@ MaterialApp RetCoreApp({required Widget home}) {
   bool updateShouldNotify(RetCoreApp oldWidget) {
     return oldWidget.context != context;
   }
-}*/
+}
