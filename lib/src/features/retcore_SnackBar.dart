@@ -1,10 +1,14 @@
+import 'dart:developer';
 import 'package:retcore/src/config/imports.dart';
+import 'package:retcore/src/config/main_app_configure.dart';
 
 class RetCoreSnackBar {
   static show({required String content, required String title,required RetCoreSnackBarMode mode,double? contentFontSize}) {
-    final BuildContext? context = navigatorKey.currentContext;
+    //final BuildContext? context = navigatorKey.currentContext;
+    //MyDataProvider? provider = MyDataProvider.of(context);
+    BuildContext? context = _getContext();
     if (context != null) {
-      ScaffoldMessenger.of(context!).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           behavior: SnackBarBehavior.floating,
           backgroundColor: Colors.transparent,
@@ -18,6 +22,15 @@ class RetCoreSnackBar {
         ),
       );
     }
+  }
+  static BuildContext? _getContext() {
+    // Example: Access context from Navigator or other methods
+    // Replace with your own logic to obtain the current BuildContext
+    BuildContext? context = navigatorKey.currentContext;
+    if (context == null) {
+      log('Warning: BuildContext is null.');
+    }
+    return context;
   }
 }
 
