@@ -1,12 +1,12 @@
 import 'package:retcore/src/config/imports.dart';
 
-enum RetCoreButtonStyle{one,two}
+enum RetCoreButtonStyle{vertical,horizontal,text}
 
 class RetCoreButton extends StatelessWidget {
   RetCoreButton(
       {super.key,
-        required this.isBorder,
         required this.onTap,
+        this.isBorder = false,
         required this.buttonStyle,
         this.height = tButtonHeightSize,
         this.width = tButtonWidthSize,
@@ -41,7 +41,7 @@ class RetCoreButton extends StatelessWidget {
   final FontWeight? fontWeight;
   final bool? isPrefixIcon;
   final bool? isSuffixIcon;
-  final bool isBorder;
+  final bool? isBorder;
   final IconData? icon;
   final double? padding;
   final double? borderWidth;
@@ -55,7 +55,7 @@ class RetCoreButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Container(
+      child: buttonStyle == RetCoreButtonStyle.text ? Text(title ?? 'Click', style: TextStyle(color: fontColor, fontSize: fontSize, fontWeight: fontWeight)) : Container(
         padding: EdgeInsets.all(padding!),
         height: height,
         width: width,
@@ -67,7 +67,7 @@ class RetCoreButton extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            buttonStyle == RetCoreButtonStyle.one ? Row(
+            buttonStyle == RetCoreButtonStyle.vertical ? Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -78,9 +78,9 @@ class RetCoreButton extends StatelessWidget {
                 isSuffixIcon == true ? iconWidget ?? Icon(icon, size: iconSize, color: iconColor) : const SizedBox(),
               ],
             ) : const SizedBox(),
-            buttonStyle == RetCoreButtonStyle.two ? icon == null ? const SizedBox() : iconWidget ?? Icon(icon, size: iconSize, color: iconColor): const SizedBox(),
-            SizedBox(height: buttonStyle == RetCoreButtonStyle.two && title != null && icon != null ? iconSpace : 0),
-            buttonStyle == RetCoreButtonStyle.two ? title == null ? const SizedBox() : Text(title!,style: TextStyle(color: fontColor, fontSize: fontSize, fontWeight: fontWeight)) : const SizedBox(),
+            buttonStyle == RetCoreButtonStyle.horizontal ? icon == null ? const SizedBox() : iconWidget ?? Icon(icon, size: iconSize, color: iconColor): const SizedBox(),
+            SizedBox(height: buttonStyle == RetCoreButtonStyle.horizontal && title != null && icon != null ? iconSpace : 0),
+            buttonStyle == RetCoreButtonStyle.horizontal ? title == null ? const SizedBox() : Text(title!,style: TextStyle(color: fontColor, fontSize: fontSize, fontWeight: fontWeight)) : const SizedBox(),
           ],
         ),
       ),
