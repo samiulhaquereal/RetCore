@@ -1,7 +1,7 @@
 import 'package:retcore/src/config/imports.dart';
 
 class RetCoreButton extends StatelessWidget {
-  RetCoreButton(
+  const RetCoreButton(
       {super.key,
         required this.onTap,
         required this.buttonStyle,

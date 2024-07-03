@@ -24,7 +24,7 @@ class RetCoreSnackBar {
 
 class _RetCoreSnackBarContent extends StatelessWidget {
 
-  _RetCoreSnackBarContent(
+  const _RetCoreSnackBarContent(
       { super.key,
         required this.content,
         required this.title,

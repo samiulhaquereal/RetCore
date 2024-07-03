@@ -127,7 +127,7 @@ class RetCoreTextField extends StatelessWidget {
               if (datetime != null){
                 controller.text = "${datetime.toLocal()}".split(' ')[0].toString();
               }
-            }, icon: Icon(Icons.calendar_month)) : null,
+            }, icon: const Icon(Icons.calendar_month)) : null,
             prefixIcon: isPrefixIcon == true ? iconWidget ?? Icon(icon, size: iconSize, color: iconColor) : null,
             enabledBorder: isBorder == true ? OutlineInputBorder(
                 borderRadius: BorderRadius.circular(borderRadius!),
@@ -141,12 +141,12 @@ class RetCoreTextField extends StatelessWidget {
                 borderSide: BorderSide(color: focusedColor!)),
             errorBorder: isBorder == true ? OutlineInputBorder(
                 borderRadius: BorderRadius.circular(borderRadius!),
-                borderSide: BorderSide(color: tRed))
-                : UnderlineInputBorder(borderSide: BorderSide(color: tRed)),
+                borderSide: const BorderSide(color: tRed))
+                : const UnderlineInputBorder(borderSide: BorderSide(color: tRed)),
             focusedErrorBorder: isBorder == true ? OutlineInputBorder(
                 borderRadius: BorderRadius.circular(borderRadius!),
-                borderSide: BorderSide(color: tRed))
-                : UnderlineInputBorder(borderSide: BorderSide(color: tRed)),
+                borderSide: const BorderSide(color: tRed))
+                : const UnderlineInputBorder(borderSide: BorderSide(color: tRed)),
             hintText: hint,
             hintStyle: TextStyle(fontSize: hintFontSize,color: hintFontColor),
             label: label == null ? null : RichText(
