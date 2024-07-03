@@ -11,3 +11,5 @@ const double tButtonFontSize = 12;
 const double tButtonIconSpaceSize = 5;
 const double tButtonBorderWidthSize = 1;
 const double tIconSpaceSize = 0;
+const double tSnackBarPaddingSize = 16;
+const double tSnackBarHightSize = 90;
