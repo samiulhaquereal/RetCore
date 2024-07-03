@@ -1,9 +1,5 @@
 import 'package:retcore/src/config/imports.dart';
 
-enum RetCoreAnimationStyle{
-  left,right,top,bottom,custom
-}
-
 class RetCoreAnimation extends StatefulWidget {
   const RetCoreAnimation({
     Key? key,

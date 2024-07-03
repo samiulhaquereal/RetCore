@@ -1,7 +1,5 @@
 import 'package:retcore/src/config/imports.dart';
 
-enum RetCoreButtonStyle{vertical,horizontal,text}
-
 class RetCoreButton extends StatelessWidget {
   RetCoreButton(
       {super.key,
