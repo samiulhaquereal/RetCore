@@ -1,6 +1,6 @@
-import 'package:flutter/services.dart';
+import 'package:retcore/src/config/imports.dart';
 
-TextInputFormatter RetCoreInputType({String? formatterString}) {
+TextInputFormatter RetCoreInputType({String? type}) {
   final Map<String, TextInputFormatter> formatters = {
     'text': FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]')),
     'double': FilteringTextInputFormatter.allow(RegExp(r'[0-9\.]')),
@@ -12,5 +12,5 @@ TextInputFormatter RetCoreInputType({String? formatterString}) {
       RegExp(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>]).+$'),
     ),
   };
-  return formatters[formatterString] ?? FilteringTextInputFormatter.deny(RegExp(r'.'));
+  return formatters[type] ?? FilteringTextInputFormatter.deny(RegExp(r'.'));
 }
