@@ -9,4 +9,3 @@ export 'src/parse/color_parse.dart';
 export 'src/parse/input_format_parse.dart';
 export 'src/parse/keyboard_type_parse.dart';
 export 'src/parse/numeric_value_parse.dart';
-export 'src/config/main_configure.dart';

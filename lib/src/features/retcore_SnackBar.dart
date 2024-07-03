@@ -2,8 +2,7 @@ import 'package:retcore/src/config/imports.dart';
 
 class RetCoreSnackBar {
   static show({required String content, required String title,required RetCoreSnackBarMode mode,double? contentFontSize}) {
-    //final BuildContext? context = navigatorKey.currentContext;
-    final context = RetCoreApp.of(navigatorKey.currentContext!)?.context;
+    final BuildContext? context = navigatorKey.currentContext;
     if (context != null) {
       ScaffoldMessenger.of(context!).showSnackBar(
         SnackBar(
