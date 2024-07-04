@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:retcore/src/config/imports.dart';
 
 class RetCoreSnackBar {
@@ -159,7 +157,7 @@ class _RetCoreSnackBarContent extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(snackBarRadius!)),
             child: SvgPicture.asset(
-              iconData[0],
+              'assets/snackbar_image/bubbles.svg',
               height: bubbleIconHeight,
               width: bubbleIconWeight,
               color: mode == RetCoreSnackBarMode.success ? tSnackBarSuccessColor : mode == RetCoreSnackBarMode.error ? tSnackBarErrorColor : mode == RetCoreSnackBarMode.alert ? tSnackBarAlertColor : mode == RetCoreSnackBarMode.info ? tSnackBarInfoColor : null,
@@ -184,7 +182,7 @@ class _RetCoreSnackBarContent extends StatelessWidget {
                   height: iconSize,
                   color: tWhite,
                 ),
-              ),
+              )
             ],
           ),
         ),
