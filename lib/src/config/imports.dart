@@ -11,3 +11,4 @@ export 'package:retcore/src/utils/global_key.dart';
 export 'dart:async';
 export 'package:lottie/lottie.dart';
 export 'package:retcore/src/features/controller/retcore_activityChecker_controller.dart';
+export 'package:retcore/src/config/context.dart';

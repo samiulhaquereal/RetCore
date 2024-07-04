@@ -25,17 +25,30 @@ class RetCoreDialogBox{
   ];
 
   Future<void> show({
-    required BuildContext context ,
-    required String title,
-    required String buttonText,
-    required Color buttonColor,
-    required Color buttonTextColor,
-    required VoidCallback onTap,
+    required String content,
     required RetCoreSnackBarMode mode,
+    String buttonText = dialogBox_backButton,
+    Color buttonColor = tFocusedColor,
+    Color buttonTextColor = tWhite,
+    VoidCallback? onTap,
+    double? dialogBoxContainerHeight = tDialogBoxContainerHeightSize,
+    double? dialogBoxContainerRadius = tDialogBoxRadiusSize,
+    double? dialogBoxIconWidthSize = tDialogBoxIconWidthSize,
+    double? dialogBoxIconHeightSize = tDialogBoxIconHeightSize,
+    double? dialogBoxTopHeightSize = tDialogBoxTopHeightSpace,
+    double? dialogBoxTitleHeightSize = tDialogBoxTitleHeightSpace,
+    double? titleFontSize = tDialogBoxTitleFontSize,
+    double? dialogBoxContentPadding = tDialogBoxContentPadding,
+    double? contentFontSize = tDialogBoxContentFontSize,
+    double? buttonFontSize = tDialogBoxButtonFontSize,
+    Color? titleFontColor = tBlack,
+    Color? contentFontColor = tBlack,
+    FontWeight? titleFontWeight = FontWeight.w500,
     bool? barrierDismissible,
   }) async{
+    BuildContext? context = FindContext.getContext();
     showGeneralDialog(
-        context: context,
+        context: context!,
         barrierLabel: '',
         barrierDismissible: barrierDismissible ?? true,
         transitionDuration: const Duration(milliseconds: 200),
@@ -49,46 +62,52 @@ class RetCoreDialogBox{
               opacity:Tween<double>(begin: 0.5,end: 1.0).animate(a1),
               child: Dialog(
                 child: Container(
-                  height: title.length > 35 ? 350 : 300,
+                  height: content.length > tDialogBoxTitleLengthSize ? dialogBoxContainerHeight! + 50 : dialogBoxContainerHeight,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20)
+                      borderRadius: BorderRadius.circular(dialogBoxContainerRadius!)
                   ),
                   child: Column(
                     children: [
                       Expanded(
                           child: Container(
                             decoration: BoxDecoration(
-                                color: mode == RetCoreSnackBarMode.success ? const Color(0xFF12C069) : mode == RetCoreSnackBarMode.error ? const Color(0xFF91011E) : mode == RetCoreSnackBarMode.alert ? const Color(0xFF29363F) : mode == RetCoreSnackBarMode.info ? const Color(0xFFC99207) : null,
-                                borderRadius: const BorderRadius.only(topRight: Radius.circular(20),topLeft: Radius.circular(20))
+                                color: mode == RetCoreSnackBarMode.success ? tDialogSuccessContainerColor : mode == RetCoreSnackBarMode.error ? tDialogErrorContainerColor : mode == RetCoreSnackBarMode.alert ? tDialogAlertContainerColor : mode == RetCoreSnackBarMode.info ? tDialogInfoContainerColor : null,
+                                borderRadius: BorderRadius.only(topRight: Radius.circular(dialogBoxContainerRadius),topLeft: Radius.circular(dialogBoxContainerRadius))
                             ),
 
                             child: Center(
                               child: Lottie.asset(
                                   mode == RetCoreSnackBarMode.success ?_iconData[0] : mode == RetCoreSnackBarMode.error ?_iconData[1] : mode == RetCoreSnackBarMode.alert ?_iconData[2] : mode == RetCoreSnackBarMode.info ?_iconData[3] : '',
                                   repeat: false,
-                                  width: 100,
-                                  height: 100
+                                  width: dialogBoxIconWidthSize,
+                                  height: dialogBoxIconHeightSize,
                               ),
                             ),
                           )
                       ),
                       Expanded(child: Column(
                         children: [
-                          const SizedBox(height:15),
+                          SizedBox(height: dialogBoxTopHeightSize),
                           Text(
                             mode == RetCoreSnackBarMode.success ? _dialogTitle[0] : mode == RetCoreSnackBarMode.error ? _dialogTitle[1] : mode == RetCoreSnackBarMode.alert ? _dialogTitle[2] : mode == RetCoreSnackBarMode.info ? _dialogTitle[3] : ''
-                            ,style: const TextStyle(fontSize:16,color: tBlack,fontWeight: FontWeight.w500),),
-                          const SizedBox(height:7),
+                            ,style: TextStyle(fontSize:titleFontSize , color: titleFontColor,fontWeight: titleFontWeight),),
+                          SizedBox(height:dialogBoxTitleHeightSize),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Text(title),
+                            padding: EdgeInsets.symmetric(horizontal: dialogBoxContentPadding!),
+                            child: Text(content,style: TextStyle(fontSize:contentFontSize , color: contentFontColor)),
                           ),
-                          const SizedBox(height:15),
+                          SizedBox(height:dialogBoxTopHeightSize),
                           ElevatedButton(
-                            onPressed: onTap,
+                            onPressed: (){
+                              if(onTap != null){
+                                onTap!();
+                              }else{
+                                Navigator.of(context).pop();
+                              }
+                            },
                             style: ElevatedButton.styleFrom(
                             backgroundColor: buttonColor, // Set the primary color to blue
-                          ), child: Text(buttonText,style: TextStyle(color: buttonTextColor)))
+                          ), child: Text(buttonText,style: TextStyle(fontSize: buttonFontSize ,color: buttonTextColor)))
                         ],
                       ))
                     ],
@@ -102,13 +121,13 @@ class RetCoreDialogBox{
   }
 
   Future<bool> confirm({
-    required BuildContext context ,
     required String title,
     required String subtitle,
   }) async {
+    BuildContext? context = FindContext.getContext();
     Completer<bool> completer = Completer<bool>();
     showGeneralDialog(
-        context: context,
+        context: context!,
         barrierLabel: '',
         transitionDuration: const Duration(milliseconds: 200),
         pageBuilder: (context,animation1,animation2){
@@ -167,7 +186,7 @@ class RetCoreDialogBox{
                                       },
                                       child: const Text('No',style: TextStyle(color: tWhite)),
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.redAccent, // Set the primary color to blue
+                                        backgroundColor: tRedAccent, // Set the primary color to blue
                                       )),
                                   const SizedBox(width: 20),
                                   ElevatedButton(
@@ -177,7 +196,7 @@ class RetCoreDialogBox{
                                       },
                                       child: const Text('Yes',style: TextStyle(color: tWhite)),
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor: const Color(0xFF4CB050), // Set the primary color to blue
+                                        backgroundColor: tDialogConfirmButtonColor, // Set the primary color to blue
                                       )),
                                 ],
                               )
