@@ -1,11 +1,26 @@
 import 'dart:developer';
 import 'package:retcore/src/config/imports.dart';
-import 'package:retcore/src/config/main_app_configure.dart';
 
 class RetCoreSnackBar {
-  static show({required String content, required String title,required RetCoreSnackBarMode mode,double? contentFontSize}) {
-    //final BuildContext? context = navigatorKey.currentContext;
-    //MyDataProvider? provider = MyDataProvider.of(context);
+  static show({
+    required String content,
+    required String title,
+    required RetCoreSnackBarMode mode,
+    double? contentFontSize,
+    double? snackBarPadding,
+    double? snackBarHight,
+    double? snackBarRadius,
+    double? leftSpacing,
+    double? titleFontSize,
+    double? spaceing,
+    double? bubbleIconHeight,
+    double? bubbleIconWeight,
+    double? crossIconSize,
+    double? iconSize,
+    Color? titleColor,
+    Color? contentColor,
+    int? contentMaxLine,
+  }) {
     BuildContext? context = _getContext();
     if (context != null) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -18,6 +33,19 @@ class RetCoreSnackBar {
             title: title,
             mode: mode,
             contentFontSize: contentFontSize,
+            snackBarPadding:snackBarPadding,
+              snackBarHight:snackBarHight,
+              snackBarRadius:snackBarRadius,
+              leftSpacing:leftSpacing,
+              titleFontSize:titleFontSize,
+              spaceing:spaceing,
+              bubbleIconHeight:bubbleIconHeight,
+              bubbleIconWeight:bubbleIconWeight,
+              crossIconSize:crossIconSize,
+              iconSize:iconSize,
+              titleColor:titleColor,
+              contentColor:contentColor,
+              contentMaxLine:contentMaxLine
           ),
         ),
       );
@@ -26,7 +54,7 @@ class RetCoreSnackBar {
   static BuildContext? _getContext() {
     // Example: Access context from Navigator or other methods
     // Replace with your own logic to obtain the current BuildContext
-    BuildContext? context = navigatorKey.currentContext;
+    BuildContext? context = RetCoreNavigatorKey.currentContext;
     if (context == null) {
       log('Warning: BuildContext is null.');
     }
