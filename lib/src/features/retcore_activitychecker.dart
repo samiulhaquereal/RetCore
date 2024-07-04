@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:retcore/src/config/imports.dart';
 
 class RetCoreActivityDetector extends StatelessWidget {

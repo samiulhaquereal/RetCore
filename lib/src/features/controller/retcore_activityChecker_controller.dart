@@ -25,7 +25,7 @@ class RetCoreActivityDetectorController {
   }
 
   void startAutoSession({Duration? time = const Duration(minutes: 4),void Function()? process}) {
-    print('Time Started Auto Session');
+    log('Time Started Auto Session');
     _timer2 = Timer(time!, () => _newSession(time,process));
   }
 
@@ -62,7 +62,7 @@ class RetCoreActivityDetectorController {
   }
 
   void _sessionOut(void Function()? afterTimeout) {
-    print('Time End Activity Detection');
+    log('Time End Activity Detection');
     try {
       if (_timer2 != null) {
         _timer2?.cancel();
