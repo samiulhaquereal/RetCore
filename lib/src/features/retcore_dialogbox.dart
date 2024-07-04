@@ -72,25 +72,25 @@ class RetCoreDialogBox{
                       Expanded(
                           child: Container(
                             decoration: BoxDecoration(
-                                color: mode == RetCoreSnackBarMode.success ? tDialogSuccessContainerColor : mode == RetCoreSnackBarMode.error ? tDialogErrorContainerColor : mode == RetCoreSnackBarMode.alert ? tDialogAlertContainerColor : mode == RetCoreSnackBarMode.info ? tDialogInfoContainerColor : null,
+                                color: mode == RetCoreDialogBoxMode.success ? tDialogSuccessContainerColor : mode == RetCoreDialogBoxMode.error ? tDialogErrorContainerColor : mode == RetCoreDialogBoxMode.alert ? tDialogAlertContainerColor : mode == RetCoreDialogBoxMode.info ? tDialogInfoContainerColor : null,
                                 borderRadius: BorderRadius.only(topRight: Radius.circular(dialogBoxContainerRadius),topLeft: Radius.circular(dialogBoxContainerRadius))
                             ),
 
-                            child: /*Center(
+                            child: Center(
                               child: Lottie.asset(
-                                  mode == RetCoreSnackBarMode.success ? _iconData[0] : mode == RetCoreSnackBarMode.error ? _iconData[1] : mode == RetCoreSnackBarMode.alert ?_iconData[2] : mode == RetCoreSnackBarMode.info ?_iconData[3] : '',
+                                  mode == RetCoreDialogBoxMode.success ? _iconData[0] : mode == RetCoreDialogBoxMode.error ? _iconData[1] : mode == RetCoreDialogBoxMode.alert ?_iconData[2] : mode == RetCoreDialogBoxMode.info ?_iconData[3] : '',
                                   repeat: false,
                                   width: dialogBoxIconWidthSize,
                                   height: dialogBoxIconHeightSize,
                               ),
-                            )*/SizedBox(),
+                            )
                           )
                       ),
                       Expanded(child: Column(
                         children: [
                           SizedBox(height: dialogBoxContantTopHeightSize),
                           Text(
-                            mode == RetCoreSnackBarMode.success ? _dialogTitle[0] : mode == RetCoreSnackBarMode.error ? _dialogTitle[1] : mode == RetCoreSnackBarMode.alert ? _dialogTitle[2] : mode == RetCoreSnackBarMode.info ? _dialogTitle[3] : ''
+                            mode == RetCoreDialogBoxMode.success ? _dialogTitle[0] : mode == RetCoreDialogBoxMode.error ? _dialogTitle[1] : mode == RetCoreDialogBoxMode.alert ? _dialogTitle[2] : mode == RetCoreDialogBoxMode.info ? _dialogTitle[3] : ''
                             ,style: TextStyle(fontSize:titleFontSize , color: titleFontColor,fontWeight: titleFontWeight),),
                           SizedBox(height:dialogBoxTitleHeightSize),
                           Padding(
