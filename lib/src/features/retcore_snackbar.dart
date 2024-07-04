@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:retcore/src/config/imports.dart';
 
 class RetCoreSnackBar {
@@ -112,6 +114,7 @@ class _RetCoreSnackBarContent extends StatelessWidget {
       snackbar_icon5,
       snackbar_icon6,
     ];
+    log('Real : '+snackbar_icon1);
     return Stack(
       clipBehavior: Clip.none,
       children: [
