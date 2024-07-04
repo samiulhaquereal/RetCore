@@ -34,3 +34,4 @@ const double tDialogBoxTitleFontSize = 16;
 const double tDialogBoxContentFontSize = 12;
 const double tDialogBoxContentPadding = 15;
 const double tDialogBoxButtonFontSize = 14;
+const double tDialogBoxButtonSpace = 20;

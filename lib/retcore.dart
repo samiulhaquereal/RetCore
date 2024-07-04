@@ -1,11 +1,11 @@
 library retcore;
 
-export 'src/features/retcore_textField.dart';
+export 'src/features/retcore_textfield.dart';
 export 'src/features/retcore_button.dart';
 export 'src/features/retcore_animation.dart';
-export 'src/features/retcore_snackBar.dart';
-export 'src/features/retcore_dialogBox.dart';
-export 'src/features/retcore_activityChecker.dart';
+export 'src/features/retcore_snackbar.dart';
+export 'src/features/retcore_dialogbox.dart';
+export 'src/features/retcore_activitychecker.dart';
 
 export 'src/features/controller/retcore_activityChecker_controller.dart';
 
