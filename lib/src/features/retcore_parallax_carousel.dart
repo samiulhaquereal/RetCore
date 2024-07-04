@@ -18,7 +18,7 @@ class RetCoreParallaxCarousel extends StatefulWidget {
     this.imageHeight = tParallaxImageHeight,
     this.imageWidth = tParallaxImageWidth,
     this.radius = tParallaxImageRadius,
-    this.scrollDirection = Axis.vertical,
+    this.scrollDirection = Axis.horizontal,
   });
 
   @override
