@@ -26,7 +26,7 @@ class RetCoreDialogBox{
 
   Future<void> show({
     required String content,
-    required RetCoreSnackBarMode mode,
+    required RetCoreDialogBoxMode mode,
     String buttonText = tdialogBox_backButton,
     Color buttonColor = tFocusedColor,
     Color buttonTextColor = tWhite,
