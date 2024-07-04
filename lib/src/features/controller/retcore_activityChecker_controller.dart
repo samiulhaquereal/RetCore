@@ -10,8 +10,8 @@ class RetCoreActivityDetectorController {
     return _instance!;
   }
 
-  late Timer _timer;
-  late Timer _timer2;
+  Timer? _timer;
+  Timer? _timer2;
   Duration? _storedTime;
   void Function()? _storedAfterTimeout;
 
@@ -31,22 +31,22 @@ class RetCoreActivityDetectorController {
 
 
   void resetTimer() {
-    _timer.cancel();
+    _timer?.cancel();
     //log('Time Reset');
     startTouchDetection(time: _storedTime, afterTimeout: _storedAfterTimeout);
   }
 
   void stopActivityDetection(){
     if (_timer != null) {
-      _timer.cancel();
+      _timer?.cancel();
     }else if(_timer2 != null){
-      _timer2.cancel();
+      _timer2?.cancel();
     }
   }
 
   void onClose() {
-    _timer.cancel();
-    _timer2.cancel();
+    _timer?.cancel();
+    _timer2?.cancel();
   }
 
   void _newSession(Duration? time,void Function()? process){
@@ -65,7 +65,7 @@ class RetCoreActivityDetectorController {
     //print('Time End');
     try {
       if (_timer2 != null) {
-        _timer2.cancel();
+        _timer2?.cancel();
       }
       if (afterTimeout != null) {
         afterTimeout!(); // Call the callback if it's set
