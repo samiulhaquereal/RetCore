@@ -76,14 +76,14 @@ class RetCoreDialogBox{
                                 borderRadius: BorderRadius.only(topRight: Radius.circular(dialogBoxContainerRadius),topLeft: Radius.circular(dialogBoxContainerRadius))
                             ),
 
-                            child: Center(
+                            child: /*Center(
                               child: Lottie.asset(
-                                  mode == RetCoreSnackBarMode.success ? 'packages/retcore/assets/dialog_animation_icon/check.json' : mode == RetCoreSnackBarMode.error ? _iconData[1] : mode == RetCoreSnackBarMode.alert ?_iconData[2] : mode == RetCoreSnackBarMode.info ?_iconData[3] : '',
+                                  mode == RetCoreSnackBarMode.success ? _iconData[0] : mode == RetCoreSnackBarMode.error ? _iconData[1] : mode == RetCoreSnackBarMode.alert ?_iconData[2] : mode == RetCoreSnackBarMode.info ?_iconData[3] : '',
                                   repeat: false,
                                   width: dialogBoxIconWidthSize,
                                   height: dialogBoxIconHeightSize,
                               ),
-                            ),
+                            )*/SizedBox(),
                           )
                       ),
                       Expanded(child: Column(
