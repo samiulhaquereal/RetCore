@@ -25,6 +25,7 @@ dev_dependencies:
 flutter:
 
   # To add assets to your package, add an assets section, like this:
+  uses-material-design: true
   assets:
     - assets/snackbar_image/
     - assets/dialog_animation_icon/
