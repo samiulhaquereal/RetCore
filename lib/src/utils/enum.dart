@@ -10,3 +10,9 @@ enum RetCoreSnackBarMode {
   alert,
   info,
 }
+enum RetCoreDialogBoxMode {
+  success,
+  error,
+  alert,
+  info,
+}

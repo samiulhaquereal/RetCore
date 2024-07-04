@@ -8,3 +8,5 @@ export 'package:retcore/src/constand/image_string.dart';
 export 'package:retcore/src/parse/color_parse.dart';
 export 'package:retcore/src/utils/enum.dart';
 export 'package:retcore/src/utils/global_key.dart';
+export 'dart:async';
+export 'package:lottie/lottie.dart';

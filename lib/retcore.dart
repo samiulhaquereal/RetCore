@@ -1,9 +1,10 @@
 library retcore;
 
-export 'src/features/retcore_TextField.dart';
-export 'src/features/retcore_Button.dart';
-export 'src/features/retcore_Animation.dart';
-export 'src/features/retcore_SnackBar.dart';
+export 'src/features/retcore_textField.dart';
+export 'src/features/retcore_button.dart';
+export 'src/features/retcore_animation.dart';
+export 'src/features/retcore_snackBar.dart';
+export 'src/features/retcore_dialogBox.dart';
 export 'src/utils/enum.dart';
 export 'src/parse/color_parse.dart';
 export 'src/parse/input_format_parse.dart';
