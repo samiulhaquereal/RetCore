@@ -157,7 +157,7 @@ class _RetCoreSnackBarContent extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(snackBarRadius!)),
             child: SvgPicture.asset(
-              'packages/retcore/assets/snackbar_image/bubbles.svg',
+              iconData[0],
               height: bubbleIconHeight,
               width: bubbleIconWeight,
               color: mode == RetCoreSnackBarMode.success ? tSnackBarSuccessColor : mode == RetCoreSnackBarMode.error ? tSnackBarErrorColor : mode == RetCoreSnackBarMode.alert ? tSnackBarAlertColor : mode == RetCoreSnackBarMode.info ? tSnackBarInfoColor : null,
