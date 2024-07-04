@@ -29,6 +29,7 @@ const double tDialogBoxRadiusSize = 20;
 const double tDialogBoxIconWidthSize = 100;
 const double tDialogBoxIconHeightSize = 100;
 const double tDialogBoxTopHeightSpace = 15;
+const double tDialogBoxBottomHeightSpace = 15;
 const double tDialogBoxTitleHeightSpace = 7;
 const double tDialogBoxTitleFontSize = 16;
 const double tDialogBoxContentFontSize = 12;

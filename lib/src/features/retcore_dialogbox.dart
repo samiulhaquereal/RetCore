@@ -9,7 +9,7 @@ class RetCoreDialogBox{
     return _instance!;
   }
 
-  final List<String> _iconData = [
+   List<String> _iconData = [
     dialogBox_icon1,
     dialogBox_icon2,
     dialogBox_icon3,
@@ -17,7 +17,7 @@ class RetCoreDialogBox{
     dialogBox_icon5,
   ];
 
-  final List<String> _dialogTitle = [
+   List<String> _dialogTitle = [
     tdialogBox_title1,
     tdialogBox_title2,
     tdialogBox_title3,
@@ -35,7 +35,8 @@ class RetCoreDialogBox{
     double? dialogBoxContainerRadius = tDialogBoxRadiusSize,
     double? dialogBoxIconWidthSize = tDialogBoxIconWidthSize,
     double? dialogBoxIconHeightSize = tDialogBoxIconHeightSize,
-    double? dialogBoxTopHeightSize = tDialogBoxTopHeightSpace,
+    double? dialogBoxContantTopHeightSize = tDialogBoxTopHeightSpace,
+    double? dialogBoxContantBottomHeightSize = tDialogBoxBottomHeightSpace,
     double? dialogBoxTitleHeightSize = tDialogBoxTitleHeightSpace,
     double? titleFontSize = tDialogBoxTitleFontSize,
     double? dialogBoxContentPadding = tDialogBoxContentPadding,
@@ -87,7 +88,7 @@ class RetCoreDialogBox{
                       ),
                       Expanded(child: Column(
                         children: [
-                          SizedBox(height: dialogBoxTopHeightSize),
+                          SizedBox(height: dialogBoxContantTopHeightSize),
                           Text(
                             mode == RetCoreSnackBarMode.success ? _dialogTitle[0] : mode == RetCoreSnackBarMode.error ? _dialogTitle[1] : mode == RetCoreSnackBarMode.alert ? _dialogTitle[2] : mode == RetCoreSnackBarMode.info ? _dialogTitle[3] : ''
                             ,style: TextStyle(fontSize:titleFontSize , color: titleFontColor,fontWeight: titleFontWeight),),
@@ -96,7 +97,7 @@ class RetCoreDialogBox{
                             padding: EdgeInsets.symmetric(horizontal: dialogBoxContentPadding!),
                             child: Text(content,style: TextStyle(fontSize:contentFontSize , color: contentFontColor)),
                           ),
-                          SizedBox(height:dialogBoxTopHeightSize),
+                          SizedBox(height:dialogBoxContantBottomHeightSize),
                           ElevatedButton(
                             onPressed: (){
                               if(onTap != null){
@@ -133,7 +134,8 @@ class RetCoreDialogBox{
     Color? cancelButtonColor = tRedAccent,
     Color? confirmButtonColor = tGreen,
     Color? buttonTextColor = tWhite,
-    double? dialogBoxTopHeightSize = tDialogBoxTopHeightSpace,
+    double? dialogBoxContantTopHeightSize = tDialogBoxTopHeightSpace,
+    double? dialogBoxContantBottomHeightSize = tDialogBoxBottomHeightSpace,
     double? dialogBoxTitleHeightSize = tDialogBoxTitleHeightSpace,
     double? titleFontSize = tDialogBoxTitleFontSize,
     double? dialogBoxContentPadding = tDialogBoxContentPadding,
@@ -187,14 +189,14 @@ class RetCoreDialogBox{
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(height: dialogBoxTopHeightSize),
+                              SizedBox(height: dialogBoxContantTopHeightSize),
                               Text(title,style: TextStyle(fontSize:titleFontSize , color: titleFontColor,fontWeight: titleFontWeight)),
                               SizedBox(height:dialogBoxTitleHeightSize),
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: dialogBoxContentPadding!),
                                 child: Text(content,style: TextStyle(fontSize:contentFontSize , color: contentFontColor)),
                               ),
-                              SizedBox(height: dialogBoxTopHeightSize),
+                              SizedBox(height: dialogBoxContantBottomHeightSize),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,

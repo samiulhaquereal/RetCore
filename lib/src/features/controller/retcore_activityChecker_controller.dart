@@ -37,8 +37,9 @@ class RetCoreActivityDetectorController {
   }
 
   void stopActivityDetection(){
-    if (_timer != null && _timer2 != null) {
+    if (_timer != null) {
       _timer.cancel();
+    }else if(_timer2 != null){
       _timer2.cancel();
     }
   }
@@ -63,7 +64,9 @@ class RetCoreActivityDetectorController {
   void _sessionOut(void Function()? afterTimeout) {
     //print('Time End');
     try {
-      _timer2.cancel();
+      if (_timer2 != null) {
+        _timer2.cancel();
+      }
       if (afterTimeout != null) {
         afterTimeout!(); // Call the callback if it's set
       }
