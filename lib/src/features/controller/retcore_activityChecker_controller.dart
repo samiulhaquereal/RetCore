@@ -20,7 +20,7 @@ class RetCoreActivityDetectorController {
     // Store the parameters
     _storedTime = time!;
     _storedAfterTimeout = afterTimeout;
-    _timer = Timer(time!, () => _sessionOut(afterTimeout));
+    _timer = Timer(time, () => _sessionOut(afterTimeout));
     //_timer = Timer(Duration(hours: 2), _sessionOut);
   }
 
