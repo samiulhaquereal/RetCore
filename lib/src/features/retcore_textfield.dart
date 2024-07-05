@@ -103,7 +103,7 @@ class RetCoreTextField extends StatelessWidget {
           enabled: isEnabled,
           readOnly: isReadOnly!,
           maxLength: maxLength,
-          maxLines: maxLine ?? 1,
+          maxLines: maxLine ?? tMaxLine,
           decoration: InputDecoration(
             isDense: isCompact,
             errorText: isLiveErrorTrack == true ? isError == true ? liveErrorMessage : null : null,
