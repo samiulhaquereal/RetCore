@@ -2,30 +2,37 @@ import 'package:retcore/src/config/imports.dart';
 
 class BottomDialogClass {
   static Future<bool?> showBottomDialog({
-    double? radius = 15,
-    Color? backgroundColor = Colors.blueGrey,
-    double padding = 10,
-    double? titleSize = 15,
-    Color? titleColor = Colors.white,
-    Color? messageColor = Colors.white,
-    Color? buttonColor = Colors.white,
-    double? buttonSize = 14,
-    double? messageSize = 14,
-    FontWeight? titleFontWeight = FontWeight.bold,
-    String? cancelButton = "No",
-    String? confirmButton = "Yes",
     required String title,
-    required String message,
-    required BuildContext context,
+    required String content,
+    double? boxRadius = tBottomDialogRadius,
+    Color? backgroundColor = tBlueGrey,
+    double padding = tBottomDialogPadding,
+    double? titleSize = tBottomDialogTitleSize,
+    double? bottomSpace = tBottomDialogBottomSpace,
+    Color? titleColor = tWhite,
+    Color? contentFontColor = tWhite,
+    Color? buttonColor = tWhite,
+    double? buttonFontSize = tBottomDialogButtonFontSize,
+    double? contentFontSize = tBottomDialogContentFontSize,
+    FontWeight? titleFontWeight = FontWeight.bold,
+    FontWeight? contentFontWeight = FontWeight.normal,
+    String? dialogBoxConfirmButton = tdialogBox_ConfirmButton,
+    String? dialogBoxCancelButton = tdialogBox_CancelButton,
+    double? topBarSpace = tBottomDialogTopBarSpace,
+    double? barHeight = tBottomDialogBarHeight,
+    double? barWidth = tBottomDialogBarWidth,
+    double? barRadius = tBottomDialogBarRadius,
+    Color? barColor = tWhite,
   }) async {
+    BuildContext? context = FindContext.getContext();
     return showModalBottomSheet<bool>(
-      context: context,
+      context: context!,
       builder: (BuildContext context) {
         return Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(radius!),
-              topRight: Radius.circular(radius!),
+              topLeft: Radius.circular(boxRadius!),
+              topRight: Radius.circular(boxRadius!),
             ),
             color: backgroundColor,
           ),
@@ -38,19 +45,29 @@ class BottomDialogClass {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              const SizedBox(height: 10),
-              Text(
+              SizedBox(height: topBarSpace),
+              Container(
+                height: barHeight,
+                width: barWidth,
+                decoration: BoxDecoration(
+                    color: barColor,
+                    borderRadius: BorderRadius.all(Radius.circular(barRadius!))
+                ),
+              ),
+              const SizedBox(height: 20),
+              title != null ? const SizedBox(height: 5) : SizedBox(),
+              title != null ? Text(
                 title,
                 style: TextStyle(
                   fontSize: titleSize,
                   fontWeight: titleFontWeight,
                   color: titleColor,
                 ),
-              ),
-              const SizedBox(height: 10),
+              ) : SizedBox(),
+              title != null ? const SizedBox(height: 10) : SizedBox(),
               Text(
-                message,
-                style: TextStyle(fontSize: messageSize, color: messageColor),
+                content,
+                style: TextStyle(fontSize: contentFontSize, color: contentFontColor,fontWeight: contentFontWeight),
               ),
               const SizedBox(height: 10),
               Row(
@@ -61,9 +78,9 @@ class BottomDialogClass {
                       Navigator.of(context).pop(false);
                     },
                     child: Text(
-                      cancelButton!,
+                      dialogBoxCancelButton!,
                       style: TextStyle(
-                        fontSize: buttonSize,
+                        fontSize: buttonFontSize,
                         color: buttonColor,
                       ),
                     ),
@@ -73,16 +90,16 @@ class BottomDialogClass {
                       Navigator.of(context).pop(true);
                     },
                     child: Text(
-                      confirmButton!,
+                      dialogBoxConfirmButton!,
                       style: TextStyle(
-                        fontSize: buttonSize,
+                        fontSize: buttonFontSize,
                         color: buttonColor,
                       ),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: bottomSpace),
             ],
           ),
         );
