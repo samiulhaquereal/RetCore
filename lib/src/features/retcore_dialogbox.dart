@@ -9,22 +9,7 @@ class RetCoreDialogBox{
     return _instance!;
   }
 
-   final List<String> _iconData = [
-    dialogBox_icon1,
-    dialogBox_icon2,
-    dialogBox_icon3,
-    dialogBox_icon4,
-    dialogBox_icon5,
-  ];
-
-   final List<String> _dialogTitle = [
-    tdialogBox_title1,
-    tdialogBox_title2,
-    tdialogBox_title3,
-    tdialogBox_title4,
-  ];
-
-  Future<void> show({
+  static Future<void> show({
     required String content,
     required RetCoreDialogBoxMode mode,
     String buttonText = tdialogBox_backButton,
@@ -47,6 +32,18 @@ class RetCoreDialogBox{
     FontWeight? titleFontWeight = FontWeight.w500,
     bool? barrierDismissible,
   }) async{
+    final List<String> _iconData = [
+      dialogBox_icon1,
+      dialogBox_icon2,
+      dialogBox_icon3,
+      dialogBox_icon4
+    ];
+    final List<String> _dialogTitle = [
+      tdialogBox_title1,
+      tdialogBox_title2,
+      tdialogBox_title3,
+      tdialogBox_title4,
+    ];
     BuildContext? context = FindContext.getContext();
     showGeneralDialog(
         context: context!,
@@ -121,7 +118,7 @@ class RetCoreDialogBox{
     );
   }
 
-  Future<bool> confirm({
+  static Future<bool> confirm({
     required String title,
     required String content,
     double? dialogBoxContainerHeight = tDialogBoxContainerHeightSize,
@@ -146,6 +143,7 @@ class RetCoreDialogBox{
     FontWeight? titleFontWeight = FontWeight.w500,
 
   }) async {
+    final String _iconData = dialogBox_icon5;
     BuildContext? context = FindContext.getContext();
     Completer<bool> completer = Completer<bool>();
     showGeneralDialog(
@@ -176,7 +174,8 @@ class RetCoreDialogBox{
                             ),
 
                             child: Center(
-                              child: Lottie.asset(_iconData[4],
+                              child: Lottie.asset(
+                                  _iconData,
                                   repeat: false,
                                   width: dialogBoxIconWidthSize,
                                   height: dialogBoxIconHeightSize,
