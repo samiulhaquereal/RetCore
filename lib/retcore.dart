@@ -12,6 +12,7 @@ export 'src/features/retcore_carousel.dart';
 export 'src/features/retcore_responsive.dart';
 export 'src/features/retcore_bottom_dialogbox.dart';
 export 'src/features/retcore_errorhandling.dart';
+export 'src/features/retcore_os.dart';
 
 export 'src/features/controller/retcore_activityChecker_controller.dart';
 
