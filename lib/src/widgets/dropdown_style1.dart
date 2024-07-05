@@ -32,14 +32,14 @@ class DropdownStyle1 extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        prefixItemIconWidget ?? Icon(prefixItemIcon, color: dropIconColor,size: iconSize),
-        SizedBox(width: itemLeadingSpace),
+        prefixItemIconWidget != null ? suffixItemIconWidget ?? const SizedBox() : prefixItemIcon != null ? Icon(prefixItemIcon, color: dropIconColor,size: iconSize) : const SizedBox(),
+        prefixItemIcon != null ? SizedBox(width: itemLeadingSpace) : const SizedBox(),
         Text(item!,style: TextStyle(fontSize: itemFontSize,color: itemFontColor)),
         Flexible(
           fit: FlexFit.loose,
           child: Container(),
         ),
-        suffixItemIconWidget ?? Icon(suffixItemIcon, color: dropIconColor,size: iconSize)
+        suffixItemIconWidget != null ? suffixItemIconWidget ?? const SizedBox() : suffixItemIcon != null ? Icon(suffixItemIcon, color: dropIconColor,size: iconSize) : const SizedBox(),
       ],
     );
   }
