@@ -5,7 +5,7 @@ class RetCoreDropdownField extends StatelessWidget {
     super.key,
     required this.itemList,
     required this.retCoreDropdownFieldStyle,
-    required this.selectedValueNotifier,
+    required this.selectedItem,
     this.isBorder = true,
     this.dropIcon = Icons.arrow_drop_down_circle,
     this.backgroundColor = tWhite,
@@ -72,12 +72,12 @@ class RetCoreDropdownField extends StatelessWidget {
   final List<String> itemList;
   final Alignment itemAlignment;
   final RetCoreDropdownFieldStyle retCoreDropdownFieldStyle;
-  final ValueNotifier<String?> selectedValueNotifier;
+  final ValueNotifier<String?> selectedItem;
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: selectedValueNotifier,
+      valueListenable: selectedItem,
       builder: (context, selectedValue, child){
         return DropdownButtonFormField(
           isExpanded: true,
@@ -140,7 +140,7 @@ class RetCoreDropdownField extends StatelessWidget {
           ),
           validator: isRequired == true ? validator : null,
           onChanged: (value) {
-            selectedValueNotifier.value = value;
+            selectedItem.value = value;
             if (onChanged != null) {
               onChanged!(value);
             }
