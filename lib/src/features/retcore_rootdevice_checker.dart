@@ -13,7 +13,7 @@ class RetCoreRootDeviceChecker {
   Future<bool> getDetails() async {
     bool isRooted = false;
     String device = RetCoreOS.getOS();
-    device == tPlatform2 ? isRooted = await _checkAndroidRoot() : isRooted = await _isJailbroken();
+    device == tPlatform2 ? isRooted = await _checkAndroidRoot() : device == tPlatform3 ? isRooted = await _isJailbroken() : null;
     return isRooted;
   }
 
