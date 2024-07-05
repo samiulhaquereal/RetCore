@@ -14,7 +14,8 @@ class RetCoreBottomDialogBox {
     double? bottomSpace = tBottomDialogBottomSpace,
     Color? titleColor = tWhite,
     Color? contentFontColor = tWhite,
-    Color? buttonFontColor = tWhite,
+    Color? confirmButtonFontColor = tBlack,
+    Color? cancelButtonFontColor = tWhite,
     double? buttonFontSize = tBottomDialogButtonFontSize,
     double? contentFontSize = tBottomDialogContentFontSize,
     FontWeight? titleFontWeight = FontWeight.bold,
@@ -91,7 +92,7 @@ class RetCoreBottomDialogBox {
                       backgroundColor: buttonColor,
                       title: dialogBoxCancelButton,
                       fontSize: buttonFontSize,
-                      fontColor: buttonFontColor,
+                      fontColor: cancelButtonFontColor,
                       fontWeight: cancelButtonFontWeight,
                   ),
                   RetCoreButton(
@@ -103,7 +104,7 @@ class RetCoreBottomDialogBox {
                       backgroundColor: buttonColor,
                       title: dialogBoxConfirmButton,
                       fontSize: buttonFontSize,
-                      fontColor: buttonFontColor,
+                      fontColor: confirmButtonFontColor,
                       fontWeight: confirmButtonFontWeight,
                   )
                 ],
