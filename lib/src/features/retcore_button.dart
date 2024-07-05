@@ -8,7 +8,7 @@ class RetCoreButton extends StatelessWidget {
         this.isBorder = false,
         this.height = tButtonHeightSize,
         this.width = tButtonWidthSize,
-        this.buttonColor = tBlack,
+        this.backgroundColor = tBlack,
         this.title,
         this.icon,
         this.iconWidget,
@@ -31,7 +31,7 @@ class RetCoreButton extends StatelessWidget {
   final double? radius;
   final double? iconSize;
   final double? fontSize;
-  final Color? buttonColor;
+  final Color? backgroundColor;
   final Color? iconColor;
   final Color? fontColor;
   final Color? borderColor;
@@ -59,7 +59,7 @@ class RetCoreButton extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           border: isBorder == true ? Border.all(color: borderColor!,width: borderWidth!) : null,
-          color: buttonColor,
+          color: backgroundColor,
           borderRadius: BorderRadius.circular(radius!),
         ),
         child: Column(

@@ -20,3 +20,6 @@ enum RetCoreDropdownFieldStyle{
   normal,
   advanced
 }
+enum RetCoreBottomDialogBoxButtonStyle{
+  text,withBackground
+}
