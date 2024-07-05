@@ -90,7 +90,7 @@ class ImageItem extends StatelessWidget {
   final double radius;
 
   const ImageItem({
-    Key? key,
+    super.key,
     required this.index,
     required this.imagePath,
     required this.imageHeight,
@@ -99,7 +99,7 @@ class ImageItem extends StatelessWidget {
     required this.imageOffset,
     required this.indexFactor,
     required this.radius,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

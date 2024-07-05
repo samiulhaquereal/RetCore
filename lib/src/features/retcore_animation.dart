@@ -2,14 +2,14 @@ import 'package:retcore/src/config/imports.dart';
 
 class RetCoreAnimation extends StatefulWidget {
   const RetCoreAnimation({
-    Key? key,
+    super.key,
     required this.child,
     required this.customAnimationTransition,
     this.startOffset,
     this.curves = Curves.easeInOut,
     this.endOffset = const Offset(0, 0),
     this.duration = const Duration(milliseconds: 1000),
-  }) : super(key: key);
+  });
 
   final Widget child;
   final Offset? startOffset;
@@ -42,10 +42,10 @@ class CustomAnimationState extends State<RetCoreAnimation> with SingleTickerProv
 
     _animation = Tween<Offset>(
       begin: {
-        RetCoreAnimationStyle.right: Offset(1, 0),
-        RetCoreAnimationStyle.bottom: Offset(0, 1),
-        RetCoreAnimationStyle.left: Offset(-1, 0),
-        RetCoreAnimationStyle.top: Offset(0, -1),
+        RetCoreAnimationStyle.right: const Offset(1, 0),
+        RetCoreAnimationStyle.bottom: const Offset(0, 1),
+        RetCoreAnimationStyle.left: const Offset(-1, 0),
+        RetCoreAnimationStyle.top: const Offset(0, -1),
       }[widget.customAnimationTransition] ?? widget.startOffset,
       end: widget.endOffset!,
     ).animate(CurvedAnimation(

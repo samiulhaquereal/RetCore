@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:retcore/src/config/imports.dart';
 
 class RetCoreActivityDetector extends StatelessWidget {
-  RetCoreActivityDetector({super.key,required this.child});
+  const RetCoreActivityDetector({super.key,required this.child});
 
   final Widget child;
 

@@ -9,7 +9,7 @@ class RetCoreDialogBox{
     return _instance!;
   }
 
-   List<String> _iconData = [
+   final List<String> _iconData = [
     dialogBox_icon1,
     dialogBox_icon2,
     dialogBox_icon3,
@@ -17,7 +17,7 @@ class RetCoreDialogBox{
     dialogBox_icon5,
   ];
 
-   List<String> _dialogTitle = [
+   final List<String> _dialogTitle = [
     tdialogBox_title1,
     tdialogBox_title2,
     tdialogBox_title3,
