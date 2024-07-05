@@ -7,6 +7,7 @@ export 'src/features/retcore_snackbar.dart';
 export 'src/features/retcore_dialogbox.dart';
 export 'src/features/retcore_activitychecker.dart';
 export 'src/features/retcore_parallax_carousel.dart';
+export 'src/features/retcore_dropdown.dart';
 
 export 'src/features/controller/retcore_activityChecker_controller.dart';
 

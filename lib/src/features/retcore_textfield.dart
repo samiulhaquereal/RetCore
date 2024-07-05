@@ -4,7 +4,7 @@ class RetCoreTextField extends StatelessWidget {
   RetCoreTextField({
     super.key,
     required this.controller,
-    required this.isBorder,
+    this.isBorder = false ,
     this.hint = tHint,
     this.icon,
     this.isPrefixIcon,
@@ -66,7 +66,7 @@ class RetCoreTextField extends StatelessWidget {
   final Color? focusedColor;
   final Color? inputFontColor;
   final Color? hintFontColor;
-  final bool isBorder;
+  final bool? isBorder;
   final bool? isPrefixIcon;
   final bool? isSuffixIcon;
   final bool? isPasswordField;

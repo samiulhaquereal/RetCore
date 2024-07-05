@@ -41,3 +41,5 @@ const double tParallaxImageWidth = 300;
 const double tParallaxImageRadius = 16;
 const double tParallaxImagePadding = 24;
 const double tParallaxImageSpacing = 24;
+const double tDropdownItemFontSize = 12;
+const double tDropdownItemLeadingSpace = 10;
