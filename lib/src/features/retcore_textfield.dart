@@ -6,9 +6,6 @@ class RetCoreTextField extends StatelessWidget {
     required this.controller,
     this.isBorder = false ,
     this.hint = tHint,
-    this.icon,
-    this.isPrefixIcon,
-    this.isSuffixIcon,
     this.inputFontSize = tInputFontSize,
     this.isPasswordField = false,
     this.isDatePicker = false,
@@ -27,8 +24,6 @@ class RetCoreTextField extends StatelessWidget {
     this.onChanged,
     this.maxLength,
     this.maxLine,
-    this.isMaxLines,
-    this.isMaxLength,
     this.isCompact = true,
     this.label,
     this.hintFontColor = tGrey,
@@ -39,9 +34,12 @@ class RetCoreTextField extends StatelessWidget {
     this.inititalDate ,
     this.startingDate ,
     this.endingDate ,
-    this.iconWidget ,
     this.inputFormatters ,
     this.liveErrorMessage = tWrong,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.suffixIconWidget,
+    this.prefixIconWidget,
   }){
     controller.addListener(() {
       if (onChanged != null) {
@@ -67,20 +65,18 @@ class RetCoreTextField extends StatelessWidget {
   final Color? inputFontColor;
   final Color? hintFontColor;
   final bool? isBorder;
-  final bool? isPrefixIcon;
-  final bool? isSuffixIcon;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
   final bool? isPasswordField;
   final bool? isRequired;
   final bool? isEnabled;
   final bool? isCompact;
   final bool? isError;
   final bool? isLiveErrorTrack;
-  final bool? isMaxLength;
-  final bool? isMaxLines;
   final bool? isDatePicker;
   final bool? isReadOnly;
-  final IconData? icon;
-  final Widget? iconWidget;
+  final Widget? suffixIconWidget;
+  final Widget? prefixIconWidget;
   final TextInputType? keyboardType;
   final TextEditingController controller;
   final ValueNotifier<bool> _obscureText = ValueNotifier<bool>(true);
@@ -106,12 +102,13 @@ class RetCoreTextField extends StatelessWidget {
           keyboardType: keyboardType,
           enabled: isEnabled,
           readOnly: isReadOnly!,
-          maxLength: isMaxLength == true ? maxLength : null,
-          maxLines: isMaxLines == true ? maxLine : 1,
+          maxLength: maxLength,
+          maxLines: maxLine ?? 1,
           decoration: InputDecoration(
             isDense: isCompact,
             errorText: isLiveErrorTrack == true ? isError == true ? liveErrorMessage : null : null,
-            suffixIcon: isSuffixIcon == true ? iconWidget ?? Icon(icon, size: iconSize, color: iconColor) : isPasswordField == true ? IconButton(
+            suffixIcon: suffixIconWidget ?? (suffixIcon != null ? Icon(suffixIcon, size: iconSize, color: iconColor) :
+            isPasswordField == true ? IconButton(
               color: iconColor,
               onPressed: () {
                 _obscureText.value == true ? _obscureText.value = false : _obscureText.value = true ;
@@ -127,8 +124,8 @@ class RetCoreTextField extends StatelessWidget {
               if (datetime != null){
                 controller.text = "${datetime.toLocal()}".split(' ')[0].toString();
               }
-            }, icon: const Icon(Icons.calendar_month)) : null,
-            prefixIcon: isPrefixIcon == true ? iconWidget ?? Icon(icon, size: iconSize, color: iconColor) : null,
+            }, icon: const Icon(Icons.calendar_month)) : null),
+            prefixIcon: prefixIconWidget ?? (prefixIcon != null ? Icon(prefixIcon, color: iconColor,size: iconSize) : null),
             enabledBorder: isBorder == true ? OutlineInputBorder(
                 borderRadius: BorderRadius.circular(borderRadius!),
                 borderSide: BorderSide(color: borderColor!))
