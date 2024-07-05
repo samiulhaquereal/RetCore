@@ -11,5 +11,3 @@ const String tdialogBox_title4 = 'Info';
 const String tdialogBox_backButton = 'Back';
 const String tdialogBox_CancelButton = 'No';
 const String tdialogBox_ConfirmButton = 'Yes';
-
-const int tMaxLine = 1;

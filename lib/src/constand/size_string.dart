@@ -43,3 +43,7 @@ const double tParallaxImagePadding = 24;
 const double tParallaxImageSpacing = 24;
 const double tDropdownItemFontSize = 12;
 const double tDropdownItemLeadingSpace = 10;
+const int tMaxLine = 1;
+const int tCarouselDuration = 3;
+const double tCarouselPadding = 0;
+const double tCarouselRadius = 0;

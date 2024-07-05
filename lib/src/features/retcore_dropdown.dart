@@ -87,7 +87,7 @@ class RetCoreDropdownField extends StatelessWidget {
             value: item,
             alignment: itemAlignment,
             child: retCoreDropdownFieldStyle == RetCoreDropdownFieldStyle.normal ? Text(item,style: TextStyle(fontSize: itemFontSize,color: itemFontColor)) :
-            retCoreDropdownFieldStyle == RetCoreDropdownFieldStyle.style1 ?
+            retCoreDropdownFieldStyle == RetCoreDropdownFieldStyle.advanced ?
             DropdownStyle1(
                 prefixItemIconWidget: prefixItemIconWidget,
                 prefixItemIcon: prefixItemIcon,

@@ -18,7 +18,5 @@ enum RetCoreDialogBoxMode {
 }
 enum RetCoreDropdownFieldStyle{
   normal,
-  style1,
-  style2,
-  style3
+  advanced
 }

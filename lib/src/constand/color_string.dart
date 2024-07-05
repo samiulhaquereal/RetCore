@@ -7,6 +7,7 @@ const tFocusedColor = Colors.blueAccent;
 const tRed = Colors.red;
 const tGreen = Colors.green;
 const tRedAccent = Colors.redAccent;
+const tOrange = Colors.deepOrangeAccent;
 Color tSnackBarSuccessColor = RetCoreColor(colorCode: '1E4634');
 Color tSnackBarErrorColor = RetCoreColor(colorCode: '801336');
 Color tSnackBarAlertColor = RetCoreColor(colorCode: 'FB8C20');
