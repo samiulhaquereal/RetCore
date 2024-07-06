@@ -1,39 +1,85 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+# 
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# RetCore
+<p>RetCore is a Flutter package that provides essential components designed to simplify coding for beginners. With user-friendly utilities and tools, RetCore helps new developers write cleaner, more efficient code with ease. Perfect for those just starting their coding journey, RetCore provides the building blocks needed to develop robust applications.</p>
 
-## Features
+### Installing:
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+```
+dependencies:
+   retcore:
+        git:
+          url: https://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@github.com/samiulhaquereal/RetCore.git
+  
 
-## Getting started
+```
+<p>Import get in files that it will be used:</p>
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```
+import 'package:retcore/retcore.dart';
 
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
 ```
 
-## Additional information
+### RetCoreTextfield
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+#### Key Features
+
+
+* Easily design any kind of TextField
+* Easily choose DatePicker from one text field by changing one parameter.
+* By changing one parameter TextField can be convert into password field with obscureText.
+* Easily check validation.
+
+#### How to use
+<p>All kind of design use in one textField.</p>
+
+```
+RetCoreTextField(
+  controller: TextEditingController(),
+  isBorder: true,
+  label: 'Name Field',
+  labelColor: Colors.grey,
+  labelSize: 18,
+  inputFontSize: 22,
+  isPrefixIcon: true,
+  icon: CupertinoIcons.person,
+  focusedColor: Colors.red,
+)
+
+```
+<p>DatePicker field</p>
+
+```
+RetCoreTextField(
+  controller: TextEditingController(),
+  isBorder: true,
+  isDatePicker: true,
+)
+
+```
+<p>Password field</p>
+
+```
+RetCoreTextField(
+  controller: TextEditingController(),
+  isBorder: true,
+  label: 'Password',
+  isPasswordField: true,
+)
+
+```
+<p>Validate the TextField</p>
+
+```
+RetCoreTextField(
+  controller: TextEditingController(),
+  isBorder: true,
+  label: 'Password',
+  isPasswordField: true,
+  isRequired: true,
+  validator: (){},
+)
+
+```
