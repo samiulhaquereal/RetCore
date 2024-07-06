@@ -15,6 +15,7 @@ export 'src/features/retcore_errorhandling.dart';
 export 'src/features/retcore_os.dart';
 export 'src/features/retcore_rootdevice_checker.dart';
 export 'src/features/retcore_flip_animation.dart';
+export 'src/features/retcore_routing.dart';
 
 export 'src/features/controller/retcore_activityChecker_controller.dart';
 
