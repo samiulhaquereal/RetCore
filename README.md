@@ -15,7 +15,7 @@ dependencies:
   
 
 ```
-<p>Import get in files that it will be used:</p>
+<p>Import</p>
 
 ```
 import 'package:retcore/retcore.dart';
