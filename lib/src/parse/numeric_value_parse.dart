@@ -7,27 +7,27 @@ class RetCoreParse {
     return _instance!;
   }
 
-  int parseInt({required dynamic number, required int defaultValue}) {
+  static int parseInt({required dynamic number, required int defaultValue}) {
     if (number is String) return int.tryParse(number) ?? defaultValue;
     if (number is int) return number;
     if (number is double) return number.toInt();
     return defaultValue;
   }
 
-  double parseDouble({required dynamic number, required double defaultValue}) {
+  static double parseDouble({required dynamic number, required double defaultValue}) {
     if (number is String) return double.tryParse(number) ?? defaultValue;
     if (number is int) return number.toDouble();
     if (number is double) return number;
     return defaultValue;
   }
 
-  String parseString({required dynamic value, required String defaultValue}) {
+  static String parseString({required dynamic value, required String defaultValue}) {
     if (value is String) return value;
     if (value != null) return value.toString();
     return defaultValue;
   }
 
-  bool parseBool({required dynamic value, required bool defaultValue}) {
+  static bool parseBool({required dynamic value, required bool defaultValue}) {
     if (value is bool) return value;
     if (value is String) {
       if (value.toLowerCase() == 'true') return true;
@@ -40,13 +40,13 @@ class RetCoreParse {
     return defaultValue;
   }
 
-  DateTime parseDateTime({required dynamic value, required DateTime defaultValue}) {
+  static DateTime parseDateTime({required dynamic value, required DateTime defaultValue}) {
     if (value is DateTime) return value;
     if (value is String) return DateTime.tryParse(value) ?? defaultValue;
     return defaultValue;
   }
 
-  List<T> parseList<T>({required dynamic value, required List<T> defaultValue}) {
+  static List<T> parseList<T>({required dynamic value, required List<T> defaultValue}) {
     if (value is List<T>) return value;
     if (value is String) {
       try {
