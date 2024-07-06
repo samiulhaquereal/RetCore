@@ -81,7 +81,6 @@ class RetCoreDropdownField extends StatelessWidget {
       builder: (context, selectedValue, child){
         return DropdownButtonFormField(
           isExpanded: true,
-          isDense: isCompact!,
           value: selectedValue,
           items: itemList.map((item) => DropdownMenuItem(
             value: item,
