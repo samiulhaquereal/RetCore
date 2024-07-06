@@ -12,7 +12,7 @@ class RetCoreActivityDetectorController {
 
   Timer? _timer;
   Timer? _timer2;
-  Duration? _storedTime;
+  Duration? _storedTime = const Duration(minutes: 5);
   void Function()? _storedAfterTimeout;
 
   void startTouchDetection({Duration? time = const Duration(minutes: 5),void Function()? afterTimeout}) {
