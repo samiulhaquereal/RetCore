@@ -1,7 +1,7 @@
 import 'package:retcore/src/config/imports.dart';
 
-class RetCoreAnimation extends StatefulWidget {
-  const RetCoreAnimation({
+class RetCoreFadeAnimation extends StatefulWidget {
+  const RetCoreFadeAnimation({
     super.key,
     required this.child,
     required this.customAnimationTransition,
@@ -22,7 +22,7 @@ class RetCoreAnimation extends StatefulWidget {
   CustomAnimationState createState() => CustomAnimationState();
 }
 
-class CustomAnimationState extends State<RetCoreAnimation> with SingleTickerProviderStateMixin {
+class CustomAnimationState extends State<RetCoreFadeAnimation> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _animation;
   late Animation<double> _opacity;

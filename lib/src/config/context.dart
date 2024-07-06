@@ -1,4 +1,4 @@
-import 'dart:developer';
+import 'dart:developer' as dev;
 import 'package:retcore/src/config/imports.dart';
 
 class FindContext{
@@ -15,7 +15,7 @@ class FindContext{
     // Replace with your own logic to obtain the current BuildContext
     BuildContext? context = RetCoreNavigatorKey.currentContext;
     if (context == null) {
-      log('Warning: BuildContext is null.');
+      dev.log('Warning: BuildContext is null.');
     }
     return context;
   }

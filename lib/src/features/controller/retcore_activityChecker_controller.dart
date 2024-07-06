@@ -1,4 +1,4 @@
-import 'dart:developer';
+import 'dart:developer' as dev;
 import 'package:retcore/src/config/imports.dart';
 
 class RetCoreActivityDetectorController {
@@ -16,7 +16,7 @@ class RetCoreActivityDetectorController {
   void Function()? _storedAfterTimeout;
 
   void startTouchDetection({Duration? time = const Duration(minutes: 5),void Function()? afterTimeout}) {
-    log('Time Started');
+    dev.log('Time Started');
     // Store the parameters
     _storedTime = time!;
     _storedAfterTimeout = afterTimeout;
@@ -25,14 +25,14 @@ class RetCoreActivityDetectorController {
   }
 
   void startAutoSession({Duration? time = const Duration(minutes: 4),void Function()? process}) {
-    log('Time Started Auto Session');
+    dev.log('Time Started Auto Session');
     _timer2 = Timer(time!, () => _newSession(time,process));
   }
 
 
   void resetTimer() {
     _timer?.cancel();
-    log('Time Reset');
+    dev.log('Time Reset');
     startTouchDetection(time: _storedTime, afterTimeout: _storedAfterTimeout);
   }
 
@@ -50,19 +50,19 @@ class RetCoreActivityDetectorController {
   }
 
   void _newSession(Duration? time,void Function()? process){
-    log('Time End Auto Session');
+    dev.log('Time End Auto Session');
     try {
       startAutoSession(time: time,process: process);
       if (process != null) {
         process!(); // Call the callback if it's set
       }
     } catch (e) {
-      log(e.toString());
+      dev.log(e.toString());
     }
   }
 
   void _sessionOut(void Function()? afterTimeout) {
-    log('Time End Activity Detection');
+    dev.log('Time End Activity Detection');
     try {
       if (_timer2 != null) {
         _timer2?.cancel();
@@ -71,7 +71,7 @@ class RetCoreActivityDetectorController {
         afterTimeout!(); // Call the callback if it's set
       }
     } catch (e) {
-      log(e.toString());
+      dev.log(e.toString());
     }
 
   }

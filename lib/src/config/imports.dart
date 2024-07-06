@@ -17,3 +17,4 @@ export 'package:retcore/src/features/retcore_button.dart';
 export 'package:flutter/foundation.dart';
 export 'dart:io';
 export 'package:retcore/src/features/retcore_os.dart';
+export 'dart:math';

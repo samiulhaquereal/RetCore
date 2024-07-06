@@ -1,4 +1,4 @@
-import 'dart:developer';
+import 'dart:developer' as dev;
 import 'package:retcore/src/config/imports.dart';
 
 class RetCoreRootDeviceChecker {
@@ -45,7 +45,7 @@ class RetCoreRootDeviceChecker {
         }
       }
     } catch (e) {
-      log('Error checking root status: $e');
+      dev.log('Error checking root status: $e');
     }
     return isRooted;
   }
