@@ -16,7 +16,7 @@ class RetCoreActivityDetectorController {
   void Function()? _storedAfterTimeout;
 
   void startTouchDetection({Duration? time = const Duration(minutes: 5),void Function()? afterTimeout}) {
-    dev.log('Time Started');
+    dev.log('TouchDetection Started');
     // Store the parameters
     _storedTime = time!;
     _storedAfterTimeout = afterTimeout;
@@ -25,14 +25,14 @@ class RetCoreActivityDetectorController {
   }
 
   void startAutoSession({Duration? time = const Duration(minutes: 4),void Function()? process}) {
-    dev.log('Time Started Auto Session');
+    dev.log('Started Auto Session');
     _timer2 = Timer(time!, () => _newSession(time,process));
   }
 
 
   void resetTimer() {
     _timer?.cancel();
-    dev.log('Time Reset');
+    //dev.log('Time Reset');
     startTouchDetection(time: _storedTime, afterTimeout: _storedAfterTimeout);
   }
 
@@ -50,7 +50,7 @@ class RetCoreActivityDetectorController {
   }
 
   void _newSession(Duration? time,void Function()? process){
-    dev.log('Time End Auto Session');
+    //dev.log('Time End Auto Session');
     try {
       startAutoSession(time: time,process: process);
       if (process != null) {
@@ -62,7 +62,7 @@ class RetCoreActivityDetectorController {
   }
 
   void _sessionOut(void Function()? afterTimeout) {
-    dev.log('Time End Activity Detection');
+    //dev.log('Time End Activity Detection');
     try {
       if (_timer2 != null) {
         _timer2?.cancel();
