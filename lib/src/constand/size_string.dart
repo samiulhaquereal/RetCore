@@ -65,3 +65,5 @@ const double tGlassmorphismRadius = 20;
 const double tGlassmorphismBlur = 20;
 const double tGlassmorphismOpacity = 0.2;
 const double tGlassmorphismBorderWidth = 1.5;
+const double tNeumorphismRadius = 50;
+const double tNeumorphismBlurRadius = 15;

@@ -23,3 +23,6 @@ Color tDialogAlertContainerColor = RetCore.parseColor(colorCode: '29363F');
 Color tDialogInfoContainerColor = RetCore.parseColor(colorCode: 'C99207');
 Color tDialogConfirmButtonColor = RetCore.parseColor(colorCode: '4CB050');
 Color tDialogConfirmContainerColor = RetCore.parseColor(colorCode: '1CAFA2');
+//Color tNeumorphismBackgroundColor = RetCore.parseColor(colorCode: 'D6D6D6');
+const Color tNeumorphismBackgroundColor = Color(0xFFD6D6D6);
+const Color tNeumorphismBottomRightShadowColor = Color(0xFF9E9E9E);
