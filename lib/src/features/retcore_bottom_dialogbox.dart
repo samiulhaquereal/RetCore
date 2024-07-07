@@ -2,6 +2,13 @@ import 'package:retcore/src/config/imports.dart';
 
 class RetCoreBottomDialogBox {
 
+  static RetCoreBottomDialogBox? _instance;
+  RetCoreBottomDialogBox._internal();
+  factory RetCoreBottomDialogBox(){
+    _instance ??= RetCoreBottomDialogBox._internal();
+    return _instance!;
+  }
+
   static Future<bool?> confirm({
     required String content,
     RetCoreBottomDialogBoxButtonStyle? confirmButtonStyle,

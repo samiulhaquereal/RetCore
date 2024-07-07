@@ -1,4 +1,6 @@
 import 'package:retcore/src/config/imports.dart';
+import 'package:retcore/src/features/retcore_bottomsheet.dart';
+import 'package:retcore/src/features/retcore_shared_service.dart';
 
 class RetCore{
 
@@ -255,5 +257,40 @@ class RetCore{
     return response ?? false;
   }
 
+  static void bottomsheet({
+    required Widget child,
+    double? boxRadius = tBottomDialogRadius,
+    Color? backgroundColor = tGrey,
+    double? padding = tBottomDialogPadding,
+}){
+    RetCoreBottomSheet.bottomSheet(
+      child: child,
+        boxRadius:boxRadius,
+      padding: padding,
+      backgroundColor: backgroundColor
+    );
+  }
+
+  static void setData({
+    required RetCoreLocalStorageType type,
+    required String key,
+    required dynamic value
+  })async{
+    await SharedServices.setData(type: type, key: key, value: value);
+  }
+
+  static dynamic getData({
+    required RetCoreLocalStorageType type,
+    required String key,
+  })async{
+    dynamic response = await SharedServices.getData(type: type, key: key);
+    return response;
+  }
+
+  static void removeData({
+    required String key
+  })async{
+    await SharedServices.removeData(key: key);
+  }
 
 }
