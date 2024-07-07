@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 const double tInputFontSize = 12;
 const double tLabelSize = 12;
 const double tHintFontSize = 12;
@@ -67,3 +69,9 @@ const double tGlassmorphismOpacity = 0.2;
 const double tGlassmorphismBorderWidth = 1.5;
 const double tNeumorphismRadius = 50;
 const double tNeumorphismBlurRadius = 15;
+const double tNeumorphismHeight = 200;
+const double tNeumorphismWidth = 200;
+const double tNeumorphismtopLeftspreadRadius = 1;
+const double tNeumorphismbottomRightspreadRadius = 1;
+const Offset tNeumorphismBottomRightOffset = Offset(4,4);
+const Offset tNeumorphismTopLeftOffset = Offset(-4,-4);

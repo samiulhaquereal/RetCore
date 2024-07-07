@@ -4,23 +4,31 @@ class RetCoreNeumorphism extends StatelessWidget {
   const RetCoreNeumorphism({
     super.key,
     required this.child,
-    this.height,
-    this.width,
+    this.height = tNeumorphismHeight,
+    this.width = tNeumorphismWidth,
     this.color = tNeumorphismBackgroundColor,
     this.radius = tNeumorphismRadius,
     this.blurRadius = tNeumorphismBlurRadius,
-    this.TopLeftshadowcolor = tWhite,
-    this.BottomRightshadowcolor = tNeumorphismBottomRightShadowColor,
+    this.topLeftshadowcolor = tWhite,
+    this.bottomRightshadowcolor = tNeumorphismBottomRightShadowColor,
+    this.bottomRightoffset = tNeumorphismBottomRightOffset,
+    this.bottomRightspreadRadius = tNeumorphismbottomRightspreadRadius,
+    this.topLeftoffset = tNeumorphismTopLeftOffset,
+    this.topLeftspreadRadius = tNeumorphismtopLeftspreadRadius,
   });
 
   final double? height;
   final double? width;
   final double? radius;
+  final double? bottomRightspreadRadius;
+  final double? topLeftspreadRadius;
   final double? blurRadius;
   final Color? color;
-  final Color? TopLeftshadowcolor;
-  final Color? BottomRightshadowcolor;
+  final Color? topLeftshadowcolor;
+  final Color? bottomRightshadowcolor;
   final Widget child;
+  final Offset bottomRightoffset;
+  final Offset topLeftoffset;
 
   @override
   Widget build(BuildContext context) {
@@ -32,16 +40,16 @@ class RetCoreNeumorphism extends StatelessWidget {
           borderRadius: BorderRadius.circular(radius!),
           boxShadow: [
             BoxShadow(
-              color: BottomRightshadowcolor!,
-              offset: const Offset(4,4),
+              color: bottomRightshadowcolor!,
+              offset: bottomRightoffset,
               blurRadius: blurRadius!,
-              spreadRadius: 1,
+              spreadRadius: bottomRightspreadRadius!,
             ),
             BoxShadow(
-              color: TopLeftshadowcolor!,
-              offset: const Offset(-4,-4),
+              color: topLeftshadowcolor!,
+              offset: topLeftoffset,
               blurRadius: blurRadius!,
-              spreadRadius: 1,
+              spreadRadius: topLeftspreadRadius!,
             )
           ]
       ),
