@@ -1,5 +1,4 @@
 import 'package:retcore/src/config/imports.dart';
-import 'package:retcore/src/features/retcore_rootdevice_checker.dart';
 
 class RetCore{
 

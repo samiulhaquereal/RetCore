@@ -27,3 +27,4 @@ export 'package:retcore/src/parse/keyboard_type_parse.dart';
 export 'package:flutter/animation.dart';
 export 'package:retcore/src/features/retcore_snackbar.dart';
 export 'package:retcore/src/features/retcore_bottom_dialogbox.dart';
+export 'package:retcore/src/features/retcore_rootdevice_checker.dart';
