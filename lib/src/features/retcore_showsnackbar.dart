@@ -17,38 +17,43 @@ class RetCoreShowSnackBar {
     double? snackBarHight,
     double? snackBarRadius,
     double? titleFontSize,
-    double? spaceing,
+    double? spacing,
     Color? titleColor,
     Color? contentColor,
+    Color? backgroundColor,
     int? contentMaxLine,
+    Duration duration = const Duration(seconds: 3),
 
   }) {
     BuildContext? context = FindContext.getContext();
-    if (context != null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            behavior: SnackBarBehavior.floating,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            content: Align(
-              alignment: Alignment.topCenter,
-              child: _RetCoreNormalSnackBarContent(
-                  content: content,
-                  title: title,
-                  contentFontSize: contentFontSize,
-                  snackBarPadding:snackBarPadding,
-                  snackBarHight:snackBarHight,
-                  snackBarRadius:snackBarRadius,
-                  titleFontSize:titleFontSize,
-                  spaceing:spaceing,
-                  titleColor:titleColor,
-                  contentColor:contentColor,
-                  contentMaxLine:contentMaxLine
-              ),
-            )
+    final overlay = Overlay.of(context!);
+    final overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: MediaQuery.of(context).padding.top + 10, // Adjust the padding as needed
+        left: 10,
+        right: 10,
+        child: _RetCoreNormalSnackBarContent(
+          content: content,
+          title: title,
+          contentFontSize: contentFontSize,
+          snackBarPadding: snackBarPadding,
+          snackBarHight: snackBarHight,
+          snackBarRadius: snackBarRadius,
+          titleFontSize: titleFontSize,
+          spacing: spacing,
+          titleColor: titleColor,
+          contentColor: contentColor,
+          contentMaxLine: contentMaxLine,
+          backgroundColor: backgroundColor,
         ),
-      );
-    }
+      ),
+    );
+
+    overlay?.insert(overlayEntry);
+
+    Future.delayed(duration, () {
+      overlayEntry.remove();
+    });
   }
 }
 
@@ -65,7 +70,7 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
         this.snackBarRadius,
         this.titleFontSize,
         this.titleColor,
-        this.spaceing,
+        this.spacing,
         this.contentColor,
         this.contentMaxLine,
         this.backgroundColor,
@@ -78,7 +83,7 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
   final double? snackBarHight;
   final double? snackBarRadius;
   final double? titleFontSize;
-  final double? spaceing;
+  final double? spacing;
   final Color? titleColor;
   final Color? contentColor;
   final Color? backgroundColor;
@@ -116,7 +121,7 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
                     color: titleColor,
                   ),
                 ),
-                RetCore.space(spaceing!),
+                RetCore.space(spacing!),
                 Text(
                   content,
                   style: TextStyle(

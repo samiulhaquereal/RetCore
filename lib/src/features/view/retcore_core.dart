@@ -118,8 +118,8 @@ class RetCore{
     double? snackBarRadius = tSnackBarRadiusSize,
     double? titleFontSize = tSnackBarTitleSize,
     double? spaceing = tSnackBarSpaceSize2,
-    Color? titleColor = tWhite,
-    Color? contentColor = tWhite,
+    Color? titleColor = tBlack,
+    Color? contentColor = tBlack,
     int? contentMaxLine = tSnackBarMaxLine,
   }){
     RetCoreShowSnackBar.show(
