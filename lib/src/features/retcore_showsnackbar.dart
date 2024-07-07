@@ -26,7 +26,7 @@ class RetCoreShowSnackBar {
 
   }) {
     BuildContext? context = FindContext.getContext();
-    final overlay = Overlay.of(context!);
+    final overlay = Overlay.of(context!, rootOverlay: true);
     final overlayEntry = OverlayEntry(
       builder: (context) => Positioned(
         top: MediaQuery.of(context).padding.top + 10, // Adjust the padding as needed
