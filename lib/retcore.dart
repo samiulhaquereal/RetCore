@@ -15,15 +15,10 @@ export 'src/features/retcore_errorhandling.dart';
 export 'src/features/retcore_os.dart';
 export 'src/features/retcore_rootdevice_checker.dart';
 export 'src/features/retcore_flip_animation.dart';
-export 'src/features/retcore_routing.dart';
+export '/src/features/view/retcore_core.dart';
 
 export 'src/features/controller/retcore_activityChecker_controller.dart';
 
 export 'src/utils/enum.dart';
 export 'src/utils/global_key.dart';
-
-export 'src/parse/color_parse.dart';
-export 'src/parse/input_format_parse.dart';
-export 'src/parse/keyboard_type_parse.dart';
-export 'src/parse/numeric_value_parse.dart';
 

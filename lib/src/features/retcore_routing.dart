@@ -17,5 +17,23 @@ class RetCorePageRoute{
     BuildContext? context = FindContext.getContext();
     Navigator.of(context!).pop(result);
   }
+  static double width(){
+    BuildContext? context = FindContext.getContext();
+    double size = 0.0;
+    size = MediaQuery.of(context!).size.width;
+    return size;
+  }
+  static double height(){
+    BuildContext? context = FindContext.getContext();
+    double size = 0.0;
+    size = MediaQuery.of(context!).size.height;
+    return size;
+  }
+  static double infinity(){
+    BuildContext? context = FindContext.getContext();
+    double size = 0.0;
+    size = double.infinity;
+    return size;
+  }
 
 }

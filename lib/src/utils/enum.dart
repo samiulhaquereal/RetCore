@@ -23,3 +23,9 @@ enum RetCoreDropdownFieldStyle{
 enum RetCoreBottomDialogBoxButtonStyle{
   text,withBackground
 }
+enum RetCoreInputType{
+  text,double,int,email,password
+}
+enum RetCoreKeyboardType{
+  text,number,phone,datetime,multiline,email,url,visible_password,name,street_address,none,phoneNumber,signedNumber,decimalNumber,decimal,textUri,numberUri
+}
