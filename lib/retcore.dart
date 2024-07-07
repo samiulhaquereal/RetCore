@@ -3,7 +3,7 @@ library retcore;
 export 'src/features/retcore_textfield.dart';
 export 'src/features/retcore_button.dart';
 export 'src/features/retcore_animation.dart';
-export 'src/features/retcore_dialogbox.dart';
+/*export 'src/features/retcore_dialogbox.dart';*/
 export 'src/features/retcore_activitychecker.dart';
 export 'src/features/retcore_parallax_carousel.dart';
 export 'src/features/retcore_dropdown.dart';

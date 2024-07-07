@@ -1,4 +1,5 @@
 import 'package:retcore/src/config/imports.dart';
+import 'package:retcore/src/features/retcore_dialogbox.dart';
 import 'package:retcore/src/parse/day_name_parse.dart';
 
 class RetCore{
@@ -194,6 +195,66 @@ class RetCore{
   static String getMonthName({required DateTime date}){
     String day = RetCoreDayMonthName.getMonthName(date: date);
     return day;
+  }
+  static Future<bool> dialogBox({
+    required String title,
+    required String content,
+    required RetCoreDialogBoxMode mode,
+    required RetCoreDialogBoxStyle style,
+    String buttonText = tdialogBox_backButton,
+    Color buttonColor = tFocusedColor,
+    VoidCallback? onTap,
+    double? dialogBoxContainerHeight = tDialogBoxContainerHeightSize,
+    double? dialogBoxContainerRadius = tDialogBoxRadiusSize,
+    double? dialogBoxIconWidthSize = tDialogBoxIconWidthSize,
+    double? dialogBoxIconHeightSize = tDialogBoxIconHeightSize,
+    String? dialogBoxConfirmButton = tdialogBox_ConfirmButton,
+    String? dialogBoxCancelButton = tdialogBox_CancelButton,
+    double? buttonFontSize = tDialogBoxButtonFontSize,
+    Color? cancelButtonColor = tRedAccent,
+    Color? confirmButtonColor = tGreen,
+    Color? buttonTextColor = tWhite,
+    double? dialogBoxContantTopHeightSize = tDialogBoxTopHeightSpace,
+    double? dialogBoxContantBottomHeightSize = tDialogBoxBottomHeightSpace,
+    double? dialogBoxTitleHeightSize = tDialogBoxTitleHeightSpace,
+    double? titleFontSize = tDialogBoxTitleFontSize,
+    double? dialogBoxContentPadding = tDialogBoxContentPadding,
+    double? contentFontSize = tDialogBoxContentFontSize,
+    double? tButtonSpace = tDialogBoxButtonSpace,
+    Color? titleFontColor = tBlack,
+    Color? contentFontColor = tBlack,
+    FontWeight? titleFontWeight = FontWeight.w500,
+})async{
+    bool? response = await RetCoreDialogBox.dialogBox(
+        title: title,
+        content: content,
+        mode: mode,
+        style: style,
+        buttonText: buttonText,
+        buttonColor: buttonColor,
+        onTap: onTap,
+        dialogBoxContainerHeight: dialogBoxContainerHeight,
+        dialogBoxContainerRadius: dialogBoxContainerRadius,
+        dialogBoxIconWidthSize: dialogBoxIconWidthSize,
+        dialogBoxIconHeightSize: dialogBoxIconHeightSize,
+        dialogBoxConfirmButton: dialogBoxConfirmButton,
+        dialogBoxCancelButton: dialogBoxCancelButton,
+        buttonFontSize: buttonFontSize,
+        cancelButtonColor: cancelButtonColor,
+        confirmButtonColor: confirmButtonColor,
+        buttonTextColor: buttonTextColor,
+        dialogBoxContantTopHeightSize: dialogBoxContantTopHeightSize,
+        dialogBoxContantBottomHeightSize: dialogBoxContantBottomHeightSize,
+        dialogBoxTitleHeightSize: dialogBoxTitleHeightSize,
+        titleFontSize: titleFontSize,
+        dialogBoxContentPadding: dialogBoxContentPadding,
+        contentFontSize: contentFontSize,
+        tButtonSpace: tButtonSpace,
+        titleFontColor: titleFontColor,
+        contentFontColor: contentFontColor,
+        titleFontWeight: titleFontWeight
+    );
+    return response!;
   }
 
 

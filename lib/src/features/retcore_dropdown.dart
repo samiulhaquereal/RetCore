@@ -12,10 +12,11 @@ class RetCoreDropdownField extends StatelessWidget {
     this.itemFontColor = tBlack,
     this.dropIconColor = tGrey,
     this.hint = tHintDropDown,
-    this.icon,
-    this.isPrefixIcon,
-    this.isSuffixIcon,
     this.iconSize,
+    this.suffixIcon,
+    this.suffixIconWidget,
+    this.prefixIcon,
+    this.prefixIconWidget,
     this.iconColor,
     this.isRequired = false,
     this.labelColor = tBlack,
@@ -56,11 +57,10 @@ class RetCoreDropdownField extends StatelessWidget {
   final Color? backgroundColor;
   final Color? itemFontColor;
   final bool? isBorder;
-  final bool? isPrefixIcon;
-  final bool? isSuffixIcon;
   final bool? isRequired;
   final bool? isCompact;
-  final IconData? icon;
+  final Widget? suffixIconWidget;
+  final Widget? prefixIconWidget;
   final IconData? dropIcon;
   final IconData? prefixItemIcon;
   final IconData? suffixItemIcon;
@@ -73,6 +73,8 @@ class RetCoreDropdownField extends StatelessWidget {
   final Alignment itemAlignment;
   final RetCoreDropdownFieldStyle retCoreDropdownFieldStyle;
   final ValueNotifier<String?> selectedItem;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -102,8 +104,8 @@ class RetCoreDropdownField extends StatelessWidget {
           dropdownColor: backgroundColor,
           decoration: InputDecoration(
             isDense: isCompact,
-            suffixIcon: isSuffixIcon == true ? iconWidget ?? Icon(icon, size: iconSize, color: iconColor) :  null,
-            prefixIcon: isPrefixIcon == true ? iconWidget ?? Icon(icon, size: iconSize, color: iconColor) : null,
+            suffixIcon: suffixIconWidget ?? (suffixIcon != null ? Icon(suffixIcon, color: iconColor,size: iconSize) : null),
+            prefixIcon: prefixIconWidget ?? (prefixIcon != null ? Icon(prefixIcon, color: iconColor,size: iconSize) : null),
             enabledBorder: isBorder == true ? OutlineInputBorder(
                 borderRadius: BorderRadius.circular(borderRadius!),
                 borderSide: BorderSide(color: borderColor!))

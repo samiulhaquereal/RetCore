@@ -15,6 +15,12 @@ enum RetCoreDialogBoxMode {
   error,
   alert,
   info,
+  confirm
+}
+enum RetCoreDialogBoxStyle {
+  normal,
+  confirm,
+  custom
 }
 enum RetCoreDropdownFieldStyle{
   normal,
