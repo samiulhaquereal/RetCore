@@ -1,4 +1,5 @@
 import 'package:retcore/src/config/imports.dart';
+import 'package:retcore/src/parse/day_name_parse.dart';
 
 class RetCore{
 
@@ -183,5 +184,17 @@ class RetCore{
     bool value = await RetCoreRootDeviceChecker().getDetails();
     return value;
   }
+  static void debounce({required VoidCallback process,int? milliseconds = 500}) async{
+    RetCoreDebouncer.run(action: process,milliseconds: milliseconds);
+  }
+  static String getDayName({required DateTime date}){
+    String day = RetCoreDayMonthName.getDayName(date: date);
+    return day;
+  }
+  static String getMonthName({required DateTime date}){
+    String day = RetCoreDayMonthName.getMonthName(date: date);
+    return day;
+  }
+
 
 }

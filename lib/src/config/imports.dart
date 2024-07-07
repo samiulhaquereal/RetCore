@@ -28,3 +28,4 @@ export 'package:flutter/animation.dart';
 export 'package:retcore/src/features/retcore_snackbar.dart';
 export 'package:retcore/src/features/retcore_bottom_dialogbox.dart';
 export 'package:retcore/src/features/retcore_rootdevice_checker.dart';
+export 'package:retcore/src/features/retcore_debouncer.dart';
