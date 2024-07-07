@@ -25,11 +25,11 @@ class RetCoreShowSnackBar {
     Duration duration = const Duration(seconds: 3),
 
   }) {
-    BuildContext? context = FindContext.getContext();
-    final overlay = Overlay.of(context!, rootOverlay: true);
+    BuildContext? contexst = FindContext.getContext();
+    final overlay = Overlay.of(contexst!, rootOverlay: true);
     final overlayEntry = OverlayEntry(
-      builder: (context) => Positioned(
-        top: MediaQuery.of(context).padding.top + 10, // Adjust the padding as needed
+      builder: (contexst) => Positioned(
+        top: MediaQuery.of(contexst).padding.top + 10, // Adjust the padding as needed
         left: 10,
         right: 10,
         child: _RetCoreNormalSnackBarContent(
@@ -99,39 +99,42 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
         parent: ModalRoute.of(context)!.animation!,
         curve: Curves.fastOutSlowIn,
       )),
-      child:*/ RetCoreFadeAnimation(
-        customAnimationTransition: RetCoreAnimationStyle.top,
-        curves: Curves.fastOutSlowIn,
-        child: RetCoreGlassmorphism(
-          child: Container(
-            padding: EdgeInsets.all(snackBarPadding!),
-            height: snackBarHight,
-            width: RetCore.width(),
-            decoration: BoxDecoration(
-              color: backgroundColor,
-              borderRadius: BorderRadius.all(Radius.circular(snackBarRadius!)),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: titleFontSize,
-                    color: titleColor,
+      child:*/ Material(
+      color: Colors.transparent,
+        child: RetCoreFadeAnimation(
+          customAnimationTransition: RetCoreAnimationStyle.top,
+          curves: Curves.fastOutSlowIn,
+          child: RetCoreGlassmorphism(
+            child: Container(
+              padding: EdgeInsets.all(snackBarPadding!),
+              height: snackBarHight,
+              width: RetCore.width(),
+              decoration: BoxDecoration(
+                color: backgroundColor,
+                borderRadius: BorderRadius.all(Radius.circular(snackBarRadius!)),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: titleFontSize,
+                      color: titleColor,
+                    ),
                   ),
-                ),
-                RetCore.space(spacing!),
-                Text(
-                  content,
-                  style: TextStyle(
-                    fontSize: contentFontSize,
-                    color: contentColor,
+                  RetCore.space(spacing!),
+                  Text(
+                    content,
+                    style: TextStyle(
+                      fontSize: contentFontSize,
+                      color: contentColor,
+                    ),
+                    maxLines: contentMaxLine,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  maxLines: contentMaxLine,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
