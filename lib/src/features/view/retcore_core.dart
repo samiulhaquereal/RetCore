@@ -172,7 +172,7 @@ class RetCore{
       barColor : barColor,
       buttonColor : buttonColor,
     );
-    return response!;
+    return response ?? false;
   }
 
   static String getOS() {
