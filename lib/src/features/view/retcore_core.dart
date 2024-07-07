@@ -14,7 +14,7 @@ class RetCore{
   static void to(Widget page){
     RetCorePageRoute.to(page);
   }
-  static void back(dynamic result){
+  static void back(dynamic? result){
     RetCorePageRoute.back(result);
   }
   static double width(){
