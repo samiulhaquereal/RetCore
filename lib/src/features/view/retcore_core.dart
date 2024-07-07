@@ -252,7 +252,7 @@ class RetCore{
         contentFontColor: contentFontColor,
         titleFontWeight: titleFontWeight
     );
-    return response!;
+    return response ?? false;
   }
 
 
