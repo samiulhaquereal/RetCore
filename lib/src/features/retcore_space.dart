@@ -10,17 +10,17 @@ class RetcoreSpace{
     return _instance!;
   }
 
-  static Widget retcoreSpace(double size) {
+  static Widget retcoreSpace(double? size) {
     BuildContext? context = FindContext.getContext();
     final direction = _getParentDirection(context!);
 
     if (direction == Axis.vertical) {
-      return SizedBox(height: size);
+      return SizedBox(height: size ?? 0);
     } else if (direction == Axis.horizontal) {
-      return SizedBox(width: size);
+      return SizedBox(width: size ?? 0);
     } else {
       // Default to vertical if the direction couldn't be determined
-      return SizedBox(height: size);
+      return SizedBox(height: size ?? 0);
     }
   }
 

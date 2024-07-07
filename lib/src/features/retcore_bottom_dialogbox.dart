@@ -7,33 +7,33 @@ class RetCoreBottomDialogBox {
     RetCoreBottomDialogBoxButtonStyle? confirmButtonStyle,
     RetCoreBottomDialogBoxButtonStyle? cancelButtonStyle,
     String? title,
-    double? boxRadius = tBottomDialogRadius,
-    Color? backgroundColor = tBlueGrey,
-    double padding = tBottomDialogPadding,
-    double? titleSize = tBottomDialogTitleSize,
-    double? bottomSpace = tBottomDialogBottomSpace,
-    Color? titleColor = tWhite,
-    Color? contentFontColor = tWhite,
-    Color? confirmButtonFontColor = tBlack,
-    Color? cancelButtonFontColor = tWhite,
-    double? buttonFontSize = tBottomDialogButtonFontSize,
-    double? contentFontSize = tBottomDialogContentFontSize,
-    FontWeight? titleFontWeight = FontWeight.bold,
-    FontWeight? contentFontWeight = FontWeight.normal,
-    FontWeight? confirmButtonFontWeight = FontWeight.normal,
-    FontWeight? cancelButtonFontWeight = FontWeight.normal,
-    String? dialogBoxConfirmButton = tdialogBox_ConfirmButton,
-    String? dialogBoxCancelButton = tdialogBox_CancelButton,
-    double? topBarSpace = tBottomDialogTopBarSpace,
-    double? bottomBarSpace = tBottomDialogBottomBarSpace,
-    double? bottomTitleSpace = tBottomDialogBottomTitleSpace,
-    double? bottomContentSpace = tBottomDialogBottomContentSpace,
-    double? barHeight = tBottomDialogBarHeight,
-    double? barWidth = tBottomDialogBarWidth,
-    double? barRadius = tBottomDialogBarRadius,
-    double? buttonRadius = tBottomDialogButtonRadius,
-    Color? barColor = tWhite,
-    Color? buttonColor = tWhite,
+    double? boxRadius,
+    Color? backgroundColor,
+    double? padding,
+    double? titleSize,
+    double? bottomSpace,
+    Color? titleColor ,
+    Color? contentFontColor,
+    Color? confirmButtonFontColor,
+    Color? cancelButtonFontColor,
+    double? buttonFontSize ,
+    double? contentFontSize,
+    FontWeight? titleFontWeight,
+    FontWeight? contentFontWeight,
+    FontWeight? confirmButtonFontWeight,
+    FontWeight? cancelButtonFontWeight ,
+    String? dialogBoxConfirmButton,
+    String? dialogBoxCancelButton,
+    double? topBarSpace,
+    double? bottomBarSpace ,
+    double? bottomTitleSpace,
+    double? bottomContentSpace ,
+    double? barHeight ,
+    double? barWidth ,
+    double? barRadius ,
+    double? buttonRadius ,
+    Color? barColor,
+    Color? buttonColor,
   }) async {
     BuildContext? context = FindContext.getContext();
     return showModalBottomSheet<bool>(
@@ -48,15 +48,15 @@ class RetCoreBottomDialogBox {
             color: backgroundColor,
           ),
           padding: EdgeInsets.symmetric(
-            vertical: padding,
-            horizontal: padding,
+            vertical: padding ?? tBottomDialogPadding,
+            horizontal: padding ?? tBottomDialogPadding,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(height: topBarSpace),
+              RetCore.space(topBarSpace!),
               Container(
                 height: barHeight,
                 width: barWidth,
@@ -65,7 +65,7 @@ class RetCoreBottomDialogBox {
                     borderRadius: BorderRadius.all(Radius.circular(barRadius!))
                 ),
               ),
-              SizedBox(height: bottomBarSpace),
+              RetCore.space(bottomBarSpace!),
               title != null ? Text(
                 title,
                 style: TextStyle(
@@ -74,18 +74,18 @@ class RetCoreBottomDialogBox {
                   color: titleColor,
                 ),
               ) : const SizedBox(),
-              title != null ? SizedBox(height: bottomTitleSpace) : const SizedBox(),
+              title != null ? RetCore.space(bottomTitleSpace!) : const SizedBox(),
               Text(
                 content,
                 style: TextStyle(fontSize: contentFontSize, color: contentFontColor,fontWeight: contentFontWeight),
               ),
-              SizedBox(height: bottomContentSpace),
+              RetCore.space(bottomContentSpace!),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   RetCoreButton(
                       onTap: (){
-                        Navigator.of(context).pop(false);
+                        RetCore.back(result: false);
                       },
                       buttonStyle: cancelButtonStyle == RetCoreBottomDialogBoxButtonStyle.withBackground ? RetCoreButtonStyle.vertical : RetCoreButtonStyle.text,
                       radius: buttonRadius,
@@ -97,7 +97,7 @@ class RetCoreBottomDialogBox {
                   ),
                   RetCoreButton(
                       onTap: (){
-                        Navigator.of(context).pop(true);
+                        RetCore.back(result: true);
                       },
                       buttonStyle: confirmButtonStyle == RetCoreBottomDialogBoxButtonStyle.text ? RetCoreButtonStyle.text : RetCoreButtonStyle.vertical,
                       radius: buttonRadius,
@@ -109,7 +109,7 @@ class RetCoreBottomDialogBox {
                   )
                 ],
               ),
-              SizedBox(height: bottomSpace),
+              RetCore.space(bottomSpace!),
             ],
           ),
         );

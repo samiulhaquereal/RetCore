@@ -1,6 +1,4 @@
 import 'package:retcore/src/config/imports.dart';
-import 'package:retcore/src/features/retcore_dialogbox.dart';
-import 'package:retcore/src/parse/day_name_parse.dart';
 
 class RetCore{
 
@@ -14,7 +12,7 @@ class RetCore{
   static void to(Widget page){
     RetCorePageRoute.to(page);
   }
-  static void back(dynamic? result){
+  static void back({dynamic result}){
     RetCorePageRoute.back(result);
   }
   static double width(){
@@ -73,19 +71,19 @@ class RetCore{
       required String title,
       required RetCoreSnackBarMode mode,
       double? contentFontSize,
-      double? snackBarPadding,
-      double? snackBarHight,
-      double? snackBarRadius,
-      double? leftSpacing,
-      double? titleFontSize,
-      double? spaceing,
-      double? bubbleIconHeight,
-      double? bubbleIconWeight,
-      double? crossIconSize,
-      double? iconSize ,
-      Color? titleColor ,
-      Color? contentColor,
-      int? contentMaxLine
+      double? snackBarPadding = tSnackBarPaddingSize,
+      double? snackBarHight = tSnackBarHightSize,
+      double? snackBarRadius = tSnackBarRadiusSize,
+      double? leftSpacing = tSnackBarSpaceSize1,
+      double? titleFontSize = tSnackBarTitleSize,
+      double? spaceing = tSnackBarSpaceSize2,
+      double? bubbleIconHeight = tSnackBarBubbleIconHightSize,
+      double? bubbleIconWeight = tSnackBarBubbleIconWidthSize,
+      double? crossIconSize = tSnackBarFailIconHightSize,
+      double? iconSize = tSnackBarLeftIconHightSize,
+      Color? titleColor = tWhite,
+      Color? contentColor = tWhite,
+      int? contentMaxLine = tSnackBarMaxLine,
         }){
           RetCoreSnackBar.show(
               content : content,
@@ -113,33 +111,33 @@ class RetCore{
     RetCoreBottomDialogBoxButtonStyle? confirmButtonStyle,
     RetCoreBottomDialogBoxButtonStyle? cancelButtonStyle,
     String? title,
-    double? boxRadius,
-    Color? backgroundColor,
-    double? padding,
-    double? titleSize,
-    double? bottomSpace,
-    Color? titleColor,
-    Color? contentFontColor,
-    Color? confirmButtonFontColor,
-    Color? cancelButtonFontColor,
-    double? buttonFontSize ,
-    double? contentFontSize ,
-    FontWeight? titleFontWeight ,
-    FontWeight? contentFontWeight ,
-    FontWeight? confirmButtonFontWeight ,
-    FontWeight? cancelButtonFontWeight ,
-    String? dialogBoxConfirmButton,
-    String? dialogBoxCancelButton,
-    double? topBarSpace,
-    double? bottomBarSpace,
-    double? bottomTitleSpace,
-    double? bottomContentSpace,
-    double? barHeight,
-    double? barWidth,
-    double? barRadius,
-    double? buttonRadius,
-    Color? barColor,
-    Color? buttonColor,
+    double? boxRadius = tBottomDialogRadius,
+    Color? backgroundColor = tBlueGrey,
+    double padding = tBottomDialogPadding,
+    double? titleSize = tBottomDialogTitleSize,
+    double? bottomSpace = tBottomDialogBottomSpace,
+    Color? titleColor = tWhite,
+    Color? contentFontColor = tWhite,
+    Color? confirmButtonFontColor = tBlack,
+    Color? cancelButtonFontColor = tWhite,
+    double? buttonFontSize = tBottomDialogButtonFontSize,
+    double? contentFontSize = tBottomDialogContentFontSize,
+    FontWeight? titleFontWeight = FontWeight.bold,
+    FontWeight? contentFontWeight = FontWeight.normal,
+    FontWeight? confirmButtonFontWeight = FontWeight.normal,
+    FontWeight? cancelButtonFontWeight = FontWeight.normal,
+    String? dialogBoxConfirmButton = tdialogBox_ConfirmButton,
+    String? dialogBoxCancelButton = tdialogBox_CancelButton,
+    double? topBarSpace = tBottomDialogTopBarSpace,
+    double? bottomBarSpace = tBottomDialogBottomBarSpace,
+    double? bottomTitleSpace = tBottomDialogBottomTitleSpace,
+    double? bottomContentSpace = tBottomDialogBottomContentSpace,
+    double? barHeight = tBottomDialogBarHeight,
+    double? barWidth = tBottomDialogBarWidth,
+    double? barRadius = tBottomDialogBarRadius,
+    double? buttonRadius = tBottomDialogButtonRadius,
+    Color? barColor = tWhite,
+    Color? buttonColor = tWhite,
   }) async{
     bool? response = await RetCoreBottomDialogBox.confirm(
       content : content,
