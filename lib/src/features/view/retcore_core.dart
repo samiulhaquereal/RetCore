@@ -130,7 +130,7 @@ class RetCore{
       snackBarHight : snackBarHight,
       snackBarRadius : snackBarRadius,
       titleFontSize : titleFontSize,
-      spaceing : spaceing,
+      spacing : spaceing,
       titleColor : titleColor,
       contentColor : contentColor,
       contentMaxLine : contentMaxLine,
