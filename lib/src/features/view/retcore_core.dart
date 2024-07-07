@@ -72,6 +72,7 @@ class RetCore{
       required String content,
       required String title,
       required RetCoreSnackBarMode mode,
+      required RetCoreSnackBarStyle style,
       double? contentFontSize,
       double? snackBarPadding = tSnackBarPaddingSize,
       double? snackBarHight = tSnackBarHightSize,
@@ -104,7 +105,8 @@ class RetCore{
               iconSize : iconSize,
               titleColor : titleColor,
               contentColor : contentColor,
-              contentMaxLine : contentMaxLine
+              contentMaxLine : contentMaxLine,
+              style: style
           );
   }
 

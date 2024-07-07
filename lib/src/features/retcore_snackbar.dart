@@ -1,4 +1,6 @@
+import 'package:retcore/retcore.dart';
 import 'package:retcore/src/config/imports.dart';
+import 'package:retcore/src/utils/enum.dart';
 
 class RetCoreSnackBar {
 
@@ -13,6 +15,7 @@ class RetCoreSnackBar {
     required String content,
     required String title,
     required RetCoreSnackBarMode mode,
+    required RetCoreSnackBarStyle style,
     double? contentFontSize,
     double? snackBarPadding,
     double? snackBarHight,
@@ -36,7 +39,7 @@ class RetCoreSnackBar {
           behavior: SnackBarBehavior.floating,
           backgroundColor: Colors.transparent,
           elevation: 0,
-          content: _RetCoreSnackBarContent(
+          content: style == RetCoreSnackBarStyle.customized ? _RetCoreStylishSnackBarContent(
             content: content,
             title: title,
             mode: mode,
@@ -54,16 +57,34 @@ class RetCoreSnackBar {
               titleColor:titleColor,
               contentColor:contentColor,
               contentMaxLine:contentMaxLine
-          ),
+          ) : style == RetCoreSnackBarStyle.normal ? _RetCoreNormalSnackBarContent(
+              content: content,
+              title: title,
+              mode: mode,
+              contentFontSize: contentFontSize,
+              snackBarPadding:snackBarPadding,
+              snackBarHight:snackBarHight,
+              snackBarRadius:snackBarRadius,
+              leftSpacing:leftSpacing,
+              titleFontSize:titleFontSize,
+              spaceing:spaceing,
+              bubbleIconHeight:bubbleIconHeight,
+              bubbleIconWeight:bubbleIconWeight,
+              crossIconSize:crossIconSize,
+              iconSize:iconSize,
+              titleColor:titleColor,
+              contentColor:contentColor,
+              contentMaxLine:contentMaxLine
+          ) : SizedBox(),
         ),
       );
     }
   }
 }
 
-class _RetCoreSnackBarContent extends StatelessWidget {
+class _RetCoreStylishSnackBarContent extends StatelessWidget {
 
-  const _RetCoreSnackBarContent(
+  const _RetCoreStylishSnackBarContent(
       { super.key,
         required this.content,
         required this.title,
@@ -190,3 +211,89 @@ class _RetCoreSnackBarContent extends StatelessWidget {
     );
   }
 }
+
+class _RetCoreNormalSnackBarContent extends StatelessWidget {
+
+  const _RetCoreNormalSnackBarContent(
+      { super.key,
+        required this.content,
+        required this.title,
+        required this.mode,
+        this.contentFontSize,
+        this.snackBarPadding ,
+        this.snackBarHight ,
+        this.snackBarRadius,
+        this.leftSpacing ,
+        this.titleFontSize,
+        this.titleColor,
+        this.spaceing,
+        this.contentColor,
+        this.contentMaxLine,
+        this.bubbleIconHeight,
+        this.bubbleIconWeight,
+        this.crossIconSize,
+        this.iconSize,
+        this.backgroundColor,
+      });
+
+  final String content;
+  final String title;
+  final RetCoreSnackBarMode mode;
+  final double? contentFontSize;
+  final double? snackBarPadding;
+  final double? snackBarHight;
+  final double? snackBarRadius;
+  final double? leftSpacing;
+  final double? titleFontSize;
+  final double? spaceing;
+  final double? bubbleIconHeight;
+  final double? bubbleIconWeight;
+  final double? crossIconSize;
+  final double? iconSize;
+  final Color? titleColor;
+  final Color? contentColor;
+  final Color? backgroundColor;
+  final int? contentMaxLine;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        RetCoreGlassmorphism(
+          child: Container(
+            padding: EdgeInsets.all(snackBarPadding!),
+            height: snackBarHight,
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: BorderRadius.all(Radius.circular(snackBarRadius!)),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: titleFontSize,
+                    color: titleColor,
+                  ),
+                ),
+                RetCore.space(spaceing!),
+                Text(
+                  content,
+                  style: TextStyle(
+                    fontSize: contentFontSize,
+                    color: contentColor,
+                  ),
+                  maxLines: contentMaxLine,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
