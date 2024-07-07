@@ -1,4 +1,3 @@
-import 'package:flutter/animation.dart';
 import 'package:retcore/src/config/imports.dart';
 
 class RetCoreCarousel extends StatefulWidget {

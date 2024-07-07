@@ -1,4 +1,5 @@
 import 'package:retcore/src/config/imports.dart';
+import 'package:retcore/src/features/retcore_rootdevice_checker.dart';
 
 class RetCore{
 
@@ -27,8 +28,8 @@ class RetCore{
     double size = RetCorePageRoute.infinity();
     return size;
   }
-  static void space(double size){
-    RetcoreSpace(size:size);
+  static Widget space(double size){
+    return RetcoreSpace.retcoreSpace(size);
   }
   static int parseInt({required dynamic number, required int defaultValue}){
     int value = RetCoreParse.parseInt(number: number, defaultValue: defaultValue);
@@ -64,6 +65,123 @@ class RetCore{
   }
   static TextInputType parseKeyboardType({required RetCoreKeyboardType? type}){
     TextInputType value = RetCoreKeyboardTypeParse.InputType(type: type);
+    return value;
+  }
+  static void snackbar({
+      required String content,
+      required String title,
+      required RetCoreSnackBarMode mode,
+      double? contentFontSize,
+      double? snackBarPadding,
+      double? snackBarHight,
+      double? snackBarRadius,
+      double? leftSpacing,
+      double? titleFontSize,
+      double? spaceing,
+      double? bubbleIconHeight,
+      double? bubbleIconWeight,
+      double? crossIconSize,
+      double? iconSize ,
+      Color? titleColor ,
+      Color? contentColor,
+      int? contentMaxLine
+        }){
+          RetCoreSnackBar.show(
+              content : content,
+              title : title,
+              mode : mode,
+              contentFontSize : contentFontSize,
+              snackBarPadding : snackBarPadding,
+              snackBarHight : snackBarHight,
+              snackBarRadius : snackBarRadius,
+              leftSpacing : leftSpacing,
+              titleFontSize : titleFontSize,
+              spaceing : spaceing,
+              bubbleIconHeight : bubbleIconHeight,
+              bubbleIconWeight : bubbleIconWeight,
+              crossIconSize : crossIconSize,
+              iconSize : iconSize,
+              titleColor : titleColor,
+              contentColor : contentColor,
+              contentMaxLine : contentMaxLine
+          );
+  }
+
+  static Future<bool> bottomDialogBox({
+    required String content,
+    RetCoreBottomDialogBoxButtonStyle? confirmButtonStyle,
+    RetCoreBottomDialogBoxButtonStyle? cancelButtonStyle,
+    String? title,
+    double? boxRadius,
+    Color? backgroundColor,
+    double? padding,
+    double? titleSize,
+    double? bottomSpace,
+    Color? titleColor,
+    Color? contentFontColor,
+    Color? confirmButtonFontColor,
+    Color? cancelButtonFontColor,
+    double? buttonFontSize ,
+    double? contentFontSize ,
+    FontWeight? titleFontWeight ,
+    FontWeight? contentFontWeight ,
+    FontWeight? confirmButtonFontWeight ,
+    FontWeight? cancelButtonFontWeight ,
+    String? dialogBoxConfirmButton,
+    String? dialogBoxCancelButton,
+    double? topBarSpace,
+    double? bottomBarSpace,
+    double? bottomTitleSpace,
+    double? bottomContentSpace,
+    double? barHeight,
+    double? barWidth,
+    double? barRadius,
+    double? buttonRadius,
+    Color? barColor,
+    Color? buttonColor,
+  }) async{
+    bool? response = await RetCoreBottomDialogBox.confirm(
+      content : content,
+      confirmButtonStyle : confirmButtonStyle,
+      cancelButtonStyle: cancelButtonStyle,
+      title: title,
+      boxRadius : boxRadius,
+      backgroundColor : backgroundColor,
+      padding : padding ?? tBottomDialogPadding,
+      titleSize : titleSize,
+      bottomSpace : bottomSpace,
+      titleColor : titleColor,
+      contentFontColor : contentFontColor,
+      confirmButtonFontColor : confirmButtonFontColor,
+      cancelButtonFontColor : cancelButtonFontColor,
+      buttonFontSize : buttonFontSize,
+      contentFontSize : contentFontSize,
+      titleFontWeight : titleFontWeight,
+      contentFontWeight : contentFontWeight,
+      confirmButtonFontWeight : confirmButtonFontWeight,
+      cancelButtonFontWeight : cancelButtonFontWeight,
+      dialogBoxConfirmButton : dialogBoxConfirmButton,
+      dialogBoxCancelButton : dialogBoxCancelButton,
+      topBarSpace : topBarSpace,
+      bottomBarSpace : bottomBarSpace,
+      bottomTitleSpace : bottomTitleSpace,
+      bottomContentSpace : bottomContentSpace,
+      barHeight : barHeight,
+      barWidth : barHeight,
+      barRadius : barRadius,
+      buttonRadius : buttonRadius,
+      barColor : barColor,
+      buttonColor : buttonColor,
+    );
+    return response!;
+  }
+
+  static String getOS() {
+    String value = RetCoreOS.getOS();
+    return value;
+  }
+  static Future<bool> getRootDeviceStatus() async{
+    bool value = await RetCoreRootDeviceChecker().getDetails();
     return value;
   }
 

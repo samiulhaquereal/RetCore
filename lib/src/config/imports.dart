@@ -24,3 +24,6 @@ export 'package:retcore/retcore.dart';
 export 'package:retcore/src/parse/numeric_value_parse.dart';
 export 'package:retcore/src/parse/input_format_parse.dart';
 export 'package:retcore/src/parse/keyboard_type_parse.dart';
+export 'package:flutter/animation.dart';
+export 'package:retcore/src/features/retcore_snackbar.dart';
+export 'package:retcore/src/features/retcore_bottom_dialogbox.dart';

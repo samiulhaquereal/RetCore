@@ -1,16 +1,18 @@
+import 'package:flutter/material.dart';
 import 'package:retcore/src/config/imports.dart';
 
-class RetcoreSpace extends StatelessWidget {
-  final double size;
+class RetcoreSpace{
 
-  const RetcoreSpace({
-    super.key,
-    required this.size
-  });
+  static RetcoreSpace? _instance;
+  RetcoreSpace._internal();
+  factory RetcoreSpace(){
+    _instance ??= RetcoreSpace._internal();
+    return _instance!;
+  }
 
-  @override
-  Widget build(BuildContext context) {
-    final direction = _getParentDirection(context);
+  static Widget retcoreSpace(double size) {
+    BuildContext? context = FindContext.getContext();
+    final direction = _getParentDirection(context!);
 
     if (direction == Axis.vertical) {
       return SizedBox(height: size);
@@ -22,7 +24,7 @@ class RetcoreSpace extends StatelessWidget {
     }
   }
 
-  Axis _getParentDirection(BuildContext context) {
+  static Axis _getParentDirection(BuildContext context) {
     final parent = context.findAncestorWidgetOfExactType<Flex>();
     if (parent != null) {
       return parent.direction;
@@ -35,3 +37,5 @@ class RetcoreSpace extends StatelessWidget {
     return Axis.vertical;
   }
 }
+
+
