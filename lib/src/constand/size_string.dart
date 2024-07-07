@@ -61,3 +61,7 @@ const double tBottomDialogBarHeight = 5;
 const double tBottomDialogBarWidth = 30;
 const double tBottomDialogBarRadius = 10;
 const double tBottomDialogButtonRadius = 30;
+const double tGlassmorphismRadius = 20;
+const double tGlassmorphismBlur = 20;
+const double tGlassmorphismOpacity = 0.2;
+const double tGlassmorphismBorderWidth = 1.5;

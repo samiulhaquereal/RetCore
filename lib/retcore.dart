@@ -12,6 +12,7 @@ export 'src/features/retcore_responsive.dart';
 export 'src/features/retcore_errorhandling.dart';
 export 'src/features/retcore_flip_animation.dart';
 export '/src/features/view/retcore_core.dart';
+export '/src/features/retcore_glassmorphism.dart';
 
 export 'src/features/controller/retcore_activityChecker_controller.dart';
 
