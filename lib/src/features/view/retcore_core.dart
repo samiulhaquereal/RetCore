@@ -1,6 +1,7 @@
 import 'package:retcore/src/config/imports.dart';
 import 'package:retcore/src/features/retcore_bottomsheet.dart';
 import 'package:retcore/src/features/retcore_shared_service.dart';
+import 'package:retcore/src/features/retcore_showsnackbar.dart';
 
 class RetCore{
 
@@ -72,7 +73,6 @@ class RetCore{
       required String content,
       required String title,
       required RetCoreSnackBarMode mode,
-      required RetCoreSnackBarStyle style,
       double? contentFontSize,
       double? snackBarPadding = tSnackBarPaddingSize,
       double? snackBarHight = tSnackBarHightSize,
@@ -106,8 +106,35 @@ class RetCore{
               titleColor : titleColor,
               contentColor : contentColor,
               contentMaxLine : contentMaxLine,
-              style: style
           );
+  }
+
+  static void showSnackbar({
+    required String content,
+    required String title,
+    double? contentFontSize,
+    double? snackBarPadding = tSnackBarPaddingSize,
+    double? snackBarHight = tSnackBarHightSize,
+    double? snackBarRadius = tSnackBarRadiusSize,
+    double? titleFontSize = tSnackBarTitleSize,
+    double? spaceing = tSnackBarSpaceSize2,
+    Color? titleColor = tWhite,
+    Color? contentColor = tWhite,
+    int? contentMaxLine = tSnackBarMaxLine,
+  }){
+    RetCoreShowSnackBar.show(
+      content : content,
+      title : title,
+      contentFontSize : contentFontSize,
+      snackBarPadding : snackBarPadding,
+      snackBarHight : snackBarHight,
+      snackBarRadius : snackBarRadius,
+      titleFontSize : titleFontSize,
+      spaceing : spaceing,
+      titleColor : titleColor,
+      contentColor : contentColor,
+      contentMaxLine : contentMaxLine,
+    );
   }
 
   static Future<bool> bottomDialogBox({

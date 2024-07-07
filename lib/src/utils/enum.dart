@@ -36,4 +36,3 @@ enum RetCoreKeyboardType{
   text,number,phone,datetime,multiline,email,url,visible_password,name,street_address,none,phoneNumber,signedNumber,decimalNumber,decimal,textUri,numberUri
 }
 enum RetCoreLocalStorageType { string, bool, int, double, stringList }
-enum RetCoreSnackBarStyle { normal, customized }
