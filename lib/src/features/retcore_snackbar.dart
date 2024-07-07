@@ -264,6 +264,7 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(snackBarPadding!),
             height: snackBarHight,
+            width: RetCore.width(),
             decoration: BoxDecoration(
               color: backgroundColor,
               borderRadius: BorderRadius.all(Radius.circular(snackBarRadius!)),
