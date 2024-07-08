@@ -46,6 +46,9 @@ class RetCoreShowSnackBar {
         contentColor: contentColor,
         contentMaxLine: contentMaxLine,
         backgroundColor: backgroundColor,
+        onDismiss: (){
+          overlayEntry.remove();
+        },
       ),
     );
 
@@ -72,6 +75,7 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
         this.spacing,
         this.contentColor,
         this.contentMaxLine,
+        this.onDismiss,
         this.backgroundColor,
       });
 
@@ -87,6 +91,7 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
   final Color? contentColor;
   final Color? backgroundColor;
   final int? contentMaxLine;
+  final VoidCallback? onDismiss;
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +100,8 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
         left: 10,
         right: 10,
         child: RetCoreFadeAnimation(
+          autoReverse: true,
+          onDismiss: onDismiss,
           customAnimationTransition: RetCoreAnimationStyle.top,
           curves: Curves.fastOutSlowIn,
           child: Material(

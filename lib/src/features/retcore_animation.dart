@@ -1,4 +1,5 @@
 import 'package:retcore/src/config/imports.dart';
+import 'dart:developer' as dev;
 
 class RetCoreFadeAnimation extends StatefulWidget {
   const RetCoreFadeAnimation({
@@ -7,19 +8,29 @@ class RetCoreFadeAnimation extends StatefulWidget {
     required this.customAnimationTransition,
     this.startOffset,
     this.curves = Curves.easeInOut,
+    this.autoReverse = false,
     this.endOffset = const Offset(0, 0),
     this.duration = const Duration(milliseconds: 1000),
-  });
+    this.autoReverseDuration = const Duration(seconds: 3),
+    VoidCallback? onDismiss,
+  })  : this.onDismiss = onDismiss ?? _defaultOnDismiss;
 
   final Widget child;
   final Offset? startOffset;
   final Offset? endOffset;
   final Duration? duration;
+  final Duration? autoReverseDuration;
   final RetCoreAnimationStyle customAnimationTransition;
   final Curve? curves;
+  final bool? autoReverse;
+  final VoidCallback? onDismiss ;
 
   @override
   CustomAnimationState createState() => CustomAnimationState();
+
+  static void _defaultOnDismiss() {
+    dev.log('Auto reverse animation is activate');
+  }
 }
 
 class CustomAnimationState extends State<RetCoreFadeAnimation> with SingleTickerProviderStateMixin {
@@ -55,6 +66,13 @@ class CustomAnimationState extends State<RetCoreFadeAnimation> with SingleTicker
 
     // Start the animation
     _controller.forward();
+
+    if(widget.autoReverse == true){
+      Future.delayed( widget.autoReverseDuration!, () {
+        _controller.reverse().then((value) => widget.onDismiss!());
+      });
+    }
+
   }
 
   @override
