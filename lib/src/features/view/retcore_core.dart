@@ -122,7 +122,7 @@ class RetCore{
     Color? contentColor = tBlack,
     int? contentMaxLine = tSnackBarMaxLine,
   }){
-    RetCoreShowSnackBar.showCustomSnackbar(
+    RetCoreShowSnackBar.show(
       content : content,
       title : title,
       contentFontSize : contentFontSize,

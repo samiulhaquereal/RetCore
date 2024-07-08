@@ -3,13 +3,15 @@ import 'package:retcore/src/config/imports.dart';
 class RetCoreShowSnackBar {
 
   static RetCoreShowSnackBar? _instance;
+
   RetCoreShowSnackBar._internal();
+
   factory RetCoreShowSnackBar(){
     _instance ??= RetCoreShowSnackBar._internal();
     return _instance!;
   }
 
-  /*static show({
+static show({
     required String content,
     required String title,
     double? contentFontSize,
@@ -25,16 +27,12 @@ class RetCoreShowSnackBar {
     Duration duration = const Duration(seconds: 3),
 
   }) {
-    BuildContext? contexst = FindContext.getContext();
+  final BuildContext? context = RetCoreNavigatorKey.currentState?.overlay?.context;
 
-
-
-
-
-    final overlay = Overlay.of(contexst!, rootOverlay: true);
+    final overlay = Overlay.of(context!, rootOverlay: true);
     final overlayEntry = OverlayEntry(
-      builder: (contexst) => Positioned(
-        top: MediaQuery.of(contexst).padding.top + 10, // Adjust the padding as needed
+      builder: (context) => Positioned(
+        top: MediaQuery.of(context).padding.top + 10, // Adjust the padding as needed
         left: 10,
         right: 10,
         child: _RetCoreNormalSnackBarContent(
@@ -59,50 +57,8 @@ class RetCoreShowSnackBar {
     Future.delayed(duration, () {
       overlayEntry.remove();
     });
-  }*/
-  static void showCustomSnackbar({
-    required String content,
-    required String title,
-    double? contentFontSize,
-    double? snackBarPadding,
-    double? snackBarHight,
-    double? snackBarRadius,
-    double? titleFontSize,
-    double? spacing,
-    Color? titleColor,
-    Color? contentColor,
-    Color? backgroundColor,
-    int? contentMaxLine,
-    Duration duration = const Duration(seconds: 3),
-  }) {
-    BuildContext? context = FindContext.getContext();
-    OverlayState overlayState = Overlay.of(context!)!;
-    late OverlayEntry overlayEntry; // Use 'late' keyword
-
-    overlayEntry = OverlayEntry(
-      builder: (context) => _RetCoreNormalSnackBarContent(
-        content: content,
-        title: title,
-        contentFontSize: contentFontSize,
-        snackBarPadding: snackBarPadding,
-        snackBarHight: snackBarHight,
-        snackBarRadius: snackBarRadius,
-        titleFontSize: titleFontSize,
-        spacing: spacing,
-        titleColor: titleColor,
-        contentColor: contentColor,
-        contentMaxLine: contentMaxLine,
-        backgroundColor: backgroundColor,
-      ),
-    );
-
-    overlayState.insert(overlayEntry);
-    Future.delayed(duration, () {
-      overlayEntry.remove();
-    });
   }
 }
-
 
 class _RetCoreNormalSnackBarContent extends StatelessWidget {
 
@@ -137,15 +93,7 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return /*SlideTransition(
-      position: Tween<Offset>(
-        begin: Offset(0, -1),
-        end: Offset(0, 0),
-      ).animate(CurvedAnimation(
-        parent: ModalRoute.of(context)!.animation!,
-        curve: Curves.fastOutSlowIn,
-      )),
-      child:*/ Positioned(
+    return Positioned(
         top: 0,
         left: 0,
         right: 0,
