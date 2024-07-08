@@ -10,11 +10,14 @@ class RetcoreSpace{
   }
 
   static Widget retcoreSpace(double? size) {
-    BuildContext? context = FindContext.getContext();
+
+    BuildContext? context = RetCoreNavigatorKey.currentContext;
+
     Flex? parent = context?.findAncestorWidgetOfExactType<Flex>();
     Row? parent2 = context?.findAncestorWidgetOfExactType<Row>();
     Column? parent3 = context?.findAncestorWidgetOfExactType<Column>();
     Wrap? parent4 = context?.findAncestorWidgetOfExactType<Wrap>();
+
     if (parent != null) {
       Axis direction = parent.direction;
       if (direction == Axis.horizontal) {
