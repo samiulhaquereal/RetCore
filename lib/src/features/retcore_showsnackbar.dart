@@ -154,12 +154,12 @@ class RetCoreShowSnackBar {
 
   static void showCustomSnackbar({
     required String message,
+    required BuildContext context,
     Duration duration = const Duration(seconds: 3),
     Color backgroundColor = Colors.red,
     TextStyle textStyle = const TextStyle(color: Colors.white, fontSize: 16.0),
   }) {
-    BuildContext? context = FindContext.getContext();
-    OverlayState overlayState = Overlay.of(context!);
+    OverlayState overlayState = Overlay.of(context);
     late OverlayEntry overlayEntry;
 
     overlayEntry = OverlayEntry(
