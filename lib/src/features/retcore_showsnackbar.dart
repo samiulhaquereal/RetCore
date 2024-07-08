@@ -117,7 +117,7 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
                   )
 
                 ),
-                child: Column(
+                child: /*Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
@@ -139,7 +139,28 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ],
-                ),
+                ),*/
+                ListTile(
+                  title: Text(
+                    title,
+                    style: TextStyle(
+                        fontSize: titleFontSize,
+                        color: titleColor,
+                        fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  subtitle: Text(
+                    content,
+                    style: TextStyle(
+                      fontSize: contentFontSize,
+                      color: contentColor,
+                    ),
+                    maxLines: contentMaxLine,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  leading: Icon(Icons.energy_savings_leaf),
+                  trailing: Icon(Icons.ac_unit),
+                )
               ),
             ),
           ),
