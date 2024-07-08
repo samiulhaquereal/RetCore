@@ -9,7 +9,7 @@ class RetCoreShowSnackBar {
     return _instance!;
   }
 
-  static show({
+  /*static show({
     required String content,
     required String title,
     double? contentFontSize,
@@ -26,6 +26,11 @@ class RetCoreShowSnackBar {
 
   }) {
     BuildContext? contexst = FindContext.getContext();
+
+
+
+
+
     final overlay = Overlay.of(contexst!, rootOverlay: true);
     final overlayEntry = OverlayEntry(
       builder: (contexst) => Positioned(
@@ -51,6 +56,47 @@ class RetCoreShowSnackBar {
 
     overlay?.insert(overlayEntry);
 
+    Future.delayed(duration, () {
+      overlayEntry.remove();
+    });
+  }*/
+  static void showCustomSnackbar({
+    required String content,
+    required String title,
+    double? contentFontSize,
+    double? snackBarPadding,
+    double? snackBarHight,
+    double? snackBarRadius,
+    double? titleFontSize,
+    double? spacing,
+    Color? titleColor,
+    Color? contentColor,
+    Color? backgroundColor,
+    int? contentMaxLine,
+    Duration duration = const Duration(seconds: 3),
+  }) {
+    BuildContext? context = FindContext.getContext();
+    OverlayState overlayState = Overlay.of(context!)!;
+    late OverlayEntry overlayEntry; // Use 'late' keyword
+
+    overlayEntry = OverlayEntry(
+      builder: (context) => _RetCoreNormalSnackBarContent(
+        content: content,
+        title: title,
+        contentFontSize: contentFontSize,
+        snackBarPadding: snackBarPadding,
+        snackBarHight: snackBarHight,
+        snackBarRadius: snackBarRadius,
+        titleFontSize: titleFontSize,
+        spacing: spacing,
+        titleColor: titleColor,
+        contentColor: contentColor,
+        contentMaxLine: contentMaxLine,
+        backgroundColor: backgroundColor,
+      ),
+    );
+
+    overlayState.insert(overlayEntry);
     Future.delayed(duration, () {
       overlayEntry.remove();
     });
@@ -141,3 +187,5 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
       );
   }
 }
+
+
