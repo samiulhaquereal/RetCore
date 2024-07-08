@@ -9,62 +9,33 @@ class RetcoreSpace{
     return _instance!;
   }
 
- /* static Widget retcoreSpace(double? size) {
-    BuildContext? context = FindContext.getContext();
-    final direction = _getParentDirection(context!);
-
-    if (direction == Axis.vertical) {
-      return SizedBox(height: size ?? 0);
-    } else if (direction == Axis.horizontal) {
-      return SizedBox(width: size ?? 0);
-    } else {
-      // Default to vertical if the direction couldn't be determined
-      return SizedBox(height: size ?? 0);
-    }
-  }
-
-  static Axis _getParentDirection(BuildContext context) {
-    final parent = context.findAncestorWidgetOfExactType<Flex>();
-    if (parent != null) {
-      return parent.direction;
-    }
-    final wrap = context.findAncestorWidgetOfExactType<Wrap>();
-    if (wrap != null) {
-      return wrap.direction;
-    }
-    // Default to vertical if no parent direction is found
-    return Axis.vertical;
-  }*/
-
   static Widget retcoreSpace(double? size) {
-    BuildContext? context = RetCoreNavigatorKey.currentContext;
-    if (context == null) {
-      return SizedBox(height: size ?? 0);
-    }
-
-    final direction = _getParentDirection(context);
-
-    if (direction == Axis.vertical) {
-      return SizedBox(height: size ?? 0);
-    } else if (direction == Axis.horizontal) {
-      return SizedBox(width: size ?? 0);
-    } else {
-      // Default to vertical if the direction couldn't be determined
-      return SizedBox(height: size ?? 0);
-    }
-  }
-
-  static Axis _getParentDirection(BuildContext context) {
-    final parent = context.findAncestorWidgetOfExactType<Flex>();
+    BuildContext? context = FindContext.getContext();
+    Flex? parent = context?.findAncestorWidgetOfExactType<Flex>();
+    Row? parent2 = context?.findAncestorWidgetOfExactType<Row>();
+    Column? parent3 = context?.findAncestorWidgetOfExactType<Column>();
+    Wrap? parent4 = context?.findAncestorWidgetOfExactType<Wrap>();
     if (parent != null) {
-      return parent.direction;
+      Axis direction = parent.direction;
+      if (direction == Axis.horizontal) {
+        return SizedBox(width: size);
+      } else if (direction == Axis.vertical) {
+        return SizedBox(height: size);
+      }
+    }else if(parent2?.direction == Axis.horizontal){
+      return SizedBox(width: size);
+    }else if(parent3?.direction == Axis.vertical){
+      return SizedBox(height: size);
+    }else if (parent4 is Wrap) {
+      if (parent4.direction == Axis.horizontal) {
+        return SizedBox(width: size);
+      } else if (parent4.direction == Axis.vertical) {
+        return SizedBox(height: size);
+      }
     }
-    final wrap = context.findAncestorWidgetOfExactType<Wrap>();
-    if (wrap != null) {
-      return wrap.direction;
-    }
-    // Default to vertical if no parent direction is found
-    return Axis.vertical;
+    // If the AutoSpace widget is used outside of Flex (Row or Column),
+    // you might want to handle this case or provide a default behavior.
+    return SizedBox();
   }
 }
 
