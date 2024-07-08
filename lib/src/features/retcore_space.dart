@@ -21,23 +21,25 @@ class RetcoreSpace{
     Column? parent3 = context?.findAncestorWidgetOfExactType<Column>();
     Wrap? parent4 = context?.findAncestorWidgetOfExactType<Wrap>();
 
-    if (parent != null) {
+    if (parent != null && parent is Flex) {
       Axis direction = parent.direction;
       if (direction == Axis.horizontal) {
         return SizedBox(width: size);
       } else if (direction == Axis.vertical) {
         return SizedBox(height: size);
       }
-    }else if(parent2 is Row){
+    }else if(parent2 != null && parent2 is Row){
       return SizedBox(width: size);
-    }else if(parent3 is Column){
+    }else if(parent3 != null && parent3 is Column){
       return SizedBox(height: size);
-    }else if (parent4 is Wrap) {
+    }else if (parent4 != null && parent4 is Wrap) {
       if (parent4.direction == Axis.horizontal) {
         return SizedBox(width: size);
       } else if (parent4.direction == Axis.vertical) {
         return SizedBox(height: size);
       }
+    }else{
+      print('Wrong');
     }
     // If the AutoSpace widget is used outside of Flex (Row or Column),
     // you might want to handle this case or provide a default behavior.
