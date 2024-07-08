@@ -142,7 +142,6 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
               blur: 7,
               child: Container(
                 padding: EdgeInsets.all(snackBarPadding!),
-                height: snackBarHeight,
                 width: RetCore.width(),
                 decoration: BoxDecoration(
                   color: backgroundColor,
