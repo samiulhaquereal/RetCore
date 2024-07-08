@@ -127,10 +127,11 @@ class RetCore{
     IconData? suffixIcon,
     Widget? suffixIconWidget,
     Widget? prefixIconWidget,
-    Color? iconColor,
+    Color? iconColor = tBlack,
     double? iconSize,
-    double? leftIconSpace,
-    double? rightIconSpace,
+    double? leftIconSpace = tSnackbarleftIconSpace,
+    double? rightIconSpace = tSnackbarrightIconSpace,
+    RetCoreSnackBarPosition? snackBarPosition = RetCoreSnackBarPosition.top,
   }){
     RetCoreShowSnackBar.show(
       content : content,
@@ -154,6 +155,7 @@ class RetCore{
       iconSize: iconSize,
       rightIconSpace: rightIconSpace,
       leftIconSpace: leftIconSpace,
+      snackBarPosition: snackBarPosition,
     );
   }
 

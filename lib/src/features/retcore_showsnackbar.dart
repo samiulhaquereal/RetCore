@@ -32,6 +32,7 @@ class RetCoreShowSnackBar {
     double? iconSize,
     double? leftIconSpace,
     double? rightIconSpace,
+    RetCoreSnackBarPosition? snackBarPosition,
   }) {
     OverlayState? overlayState = RetCoreNavigatorKey.currentState?.overlay;
     if (overlayState == null) {
@@ -62,6 +63,7 @@ class RetCoreShowSnackBar {
         iconSize: iconSize,
         rightIconSpace: rightIconSpace,
         leftIconSpace: leftIconSpace,
+        snackBarPosition: snackBarPosition,
         onDismiss: (){
           overlayEntry.remove();
         },
@@ -96,6 +98,7 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
         this.iconSize,
         this.leftIconSpace,
         this.rightIconSpace,
+        this.snackBarPosition,
       });
 
   final String content;
@@ -119,17 +122,19 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
   final Widget? prefixIconWidget;
   final Color? iconColor;
   final double? iconSize;
+  final RetCoreSnackBarPosition? snackBarPosition;
 
   @override
   Widget build(BuildContext context) {
     return Positioned(
-        top: MediaQuery.of(context).padding.top + 10,
+        top: snackBarPosition == RetCoreSnackBarPosition.top ? MediaQuery.of(context).padding.top + 10 : null,
         left: 10,
         right: 10,
+        bottom: snackBarPosition == RetCoreSnackBarPosition.bottom ? MediaQuery.of(context).padding.bottom + 10 : null,
         child: RetCoreFadeAnimation(
           autoReverse: true,
           onDismiss: onDismiss,
-          customAnimationTransition: RetCoreAnimationStyle.top,
+          customAnimationTransition: snackBarPosition == RetCoreSnackBarPosition.top ? RetCoreAnimationStyle.top : RetCoreAnimationStyle.bottom ,
           curves: Curves.fastOutSlowIn,
           child: Material(
             color: tTransparent,

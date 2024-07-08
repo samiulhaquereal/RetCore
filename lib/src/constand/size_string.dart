@@ -75,3 +75,5 @@ const double tNeumorphismtopLeftspreadRadius = 1;
 const double tNeumorphismbottomRightspreadRadius = 1;
 const Offset tNeumorphismBottomRightOffset = Offset(4,4);
 const Offset tNeumorphismTopLeftOffset = Offset(-4,-4);
+const double tSnackbarleftIconSpace = 10;
+const double tSnackbarrightIconSpace = 10;
