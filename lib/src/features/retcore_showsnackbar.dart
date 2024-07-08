@@ -1,12 +1,10 @@
 import 'package:retcore/src/config/imports.dart';
-
-/*
+import 'dart:developer' as dev;
 class RetCoreShowSnackBar {
 
   static RetCoreShowSnackBar? _instance;
 
   RetCoreShowSnackBar._internal();
-
   factory RetCoreShowSnackBar(){
     _instance ??= RetCoreShowSnackBar._internal();
     return _instance!;
@@ -15,30 +13,26 @@ class RetCoreShowSnackBar {
   static void show({
     required String content,
     required String title,
-    double contentFontSize = 14.0,
-    double snackBarPadding = 16.0,
-    double snackBarHeight = 60.0,
-    double snackBarRadius = 8.0,
-    double titleFontSize = 16.0,
-    double spacing = 4.0,
-    Color titleColor = Colors.white,
-    Color contentColor = Colors.white70,
-    Color backgroundColor = Colors.black,
-    int contentMaxLine = 2,
+    double? contentFontSize,
+    double? snackBarPadding,
+    double? snackBarHeight,
+    double? snackBarRadius,
+    double? titleFontSize,
+    double? spacing,
+    Color? titleColor,
+    Color? contentColor,
+    Color? backgroundColor,
+    int? contentMaxLine,
     Duration duration = const Duration(seconds: 3),
   }) {
-    final BuildContext? context = RetCoreNavigatorKey.currentState?.overlay?.context;
-
-    if (context == null) {
+    OverlayState? overlayState = RetCoreNavigatorKey.currentState?.overlay;
+    if (overlayState == null) {
+      dev.log('No overlay found. Make sure the MaterialApp uses CustomSnackbarManager.navigatorKey.');
       return;
     }
+    late OverlayEntry overlayEntry;
 
-    final overlay = Overlay.of(context);
-    if (overlay == null) {
-      return;
-    }
-
-    final overlayEntry = OverlayEntry(
+    overlayEntry = OverlayEntry(
       builder: (context) => Positioned(
         top: MediaQuery.of(context).padding.top + 10,
         left: 10,
@@ -48,7 +42,7 @@ class RetCoreShowSnackBar {
           title: title,
           contentFontSize: contentFontSize,
           snackBarPadding: snackBarPadding,
-          snackBarHight: snackBarHeight,
+          snackBarHeight: snackBarHeight,
           snackBarRadius: snackBarRadius,
           titleFontSize: titleFontSize,
           spacing: spacing,
@@ -60,7 +54,7 @@ class RetCoreShowSnackBar {
       ),
     );
 
-    overlay.insert(overlayEntry);
+    overlayState.insert(overlayEntry);
 
     Future.delayed(duration, () {
       overlayEntry.remove();
@@ -76,7 +70,7 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
         required this.title,
         this.contentFontSize,
         this.snackBarPadding ,
-        this.snackBarHight ,
+        this.snackBarHeight ,
         this.snackBarRadius,
         this.titleFontSize,
         this.titleColor,
@@ -90,7 +84,7 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
   final String title;
   final double? contentFontSize;
   final double? snackBarPadding;
-  final double? snackBarHight;
+  final double? snackBarHeight;
   final double? snackBarRadius;
   final double? titleFontSize;
   final double? spacing;
@@ -102,9 +96,9 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-        top: 0,
-        left: 0,
-        right: 0,
+       top: MediaQuery.of(context).padding.top + 10, // Adjust the padding as needed
+       left: 10,
+       right: 10,
         child: RetCoreFadeAnimation(
           customAnimationTransition: RetCoreAnimationStyle.top,
           curves: Curves.fastOutSlowIn,
@@ -113,7 +107,7 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
             child: RetCoreGlassmorphism(
               child: Container(
                 padding: EdgeInsets.all(snackBarPadding!),
-                height: snackBarHight,
+                height: snackBarHeight,
                 width: RetCore.width(),
                 decoration: BoxDecoration(
                   color: backgroundColor,
@@ -148,8 +142,8 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
       );
   }
 }
-*/
 
+/*
 class RetCoreShowSnackBar {
 
   static void showCustomSnackbar({
@@ -160,7 +154,7 @@ class RetCoreShowSnackBar {
   }) {
     OverlayState? overlayState = RetCoreNavigatorKey.currentState?.overlay;
     if (overlayState == null) {
-      print('No overlay found. Make sure the MaterialApp uses CustomSnackbarManager.navigatorKey.');
+      dev.log('No overlay found. Make sure the MaterialApp uses CustomSnackbarManager.navigatorKey.');
       return;
     }
     late OverlayEntry overlayEntry;
@@ -260,4 +254,5 @@ class _CustomSnackbarState extends State<CustomSnackbar>
   }
 }
 
+*/
 

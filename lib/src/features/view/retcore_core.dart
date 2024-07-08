@@ -112,10 +112,9 @@ class RetCore{
   static void showSnackbar({
     required String content,
     required String title,
-    required BuildContext context,
     double? contentFontSize,
     double? snackBarPadding = tSnackBarPaddingSize,
-    double? snackBarHight = tSnackBarHightSize,
+    double? snackBarHeight = tSnackBarHightSize,
     double? snackBarRadius = tSnackBarRadiusSize,
     double? titleFontSize = tSnackBarTitleSize,
     double? spaceing = tSnackBarSpaceSize2,
@@ -123,20 +122,19 @@ class RetCore{
     Color? contentColor = tBlack,
     int? contentMaxLine = tSnackBarMaxLine,
   }){
-    /*RetCoreShowSnackBar.show(
+    RetCoreShowSnackBar.show(
       content : content,
       title : title,
       contentFontSize : contentFontSize,
       snackBarPadding : snackBarPadding,
-      snackBarHight : snackBarHight,
+      snackBarHeight : snackBarHeight,
       snackBarRadius : snackBarRadius,
       titleFontSize : titleFontSize,
       spacing : spaceing,
       titleColor : titleColor,
       contentColor : contentColor,
       contentMaxLine : contentMaxLine,
-    );*/
-    RetCoreShowSnackBar.showCustomSnackbar(message: 'Demo');
+    );
   }
 
   static Future<bool> bottomDialogBox({
