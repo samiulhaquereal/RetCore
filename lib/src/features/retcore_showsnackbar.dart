@@ -202,7 +202,6 @@ import 'dart:developer' as dev;
 import 'dart:collection';
 
 class RetCoreShowSnackBar {
-
   static RetCoreShowSnackBar? _instance;
   final Queue<Map<String, dynamic>> _snackBarQueue = Queue();
   bool _isShowing = false;
@@ -240,26 +239,26 @@ class RetCoreShowSnackBar {
     _instance!._snackBarQueue.add({
       'content': content,
       'title': title,
-      'contentFontSize': contentFontSize,
-      'snackBarPadding': snackBarPadding,
-      'snackBarHeight': snackBarHeight,
-      'snackBarRadius': snackBarRadius,
-      'titleFontSize': titleFontSize,
-      'spacing': spacing,
-      'titleColor': titleColor,
-      'contentColor': contentColor,
-      'backgroundColor': backgroundColor,
-      'contentMaxLine': contentMaxLine,
-      'duration': duration,
+      'contentFontSize': contentFontSize ?? 14.0,
+      'snackBarPadding': snackBarPadding ?? 16.0,
+      'snackBarHeight': snackBarHeight ?? 50.0,
+      'snackBarRadius': snackBarRadius ?? 10.0,
+      'titleFontSize': titleFontSize ?? 16.0,
+      'spacing': spacing ?? 8.0,
+      'titleColor': titleColor ?? const Color(0xFF000000),
+      'contentColor': contentColor ?? const Color(0xFF000000),
+      'backgroundColor': backgroundColor ?? const Color(0xFFFFFFFF),
+      'contentMaxLine': contentMaxLine ?? 2,
+      'duration': duration ?? const Duration(seconds: 3),
       'prefixIcon': prefixIcon,
       'suffixIcon': suffixIcon,
       'suffixIconWidget': suffixIconWidget,
       'prefixIconWidget': prefixIconWidget,
-      'iconColor': iconColor,
-      'iconSize': iconSize,
-      'leftIconSpace': leftIconSpace,
-      'rightIconSpace': rightIconSpace,
-      'snackBarPosition': snackBarPosition,
+      'iconColor': iconColor ?? const Color(0xFF000000),
+      'iconSize': iconSize ?? 24.0,
+      'leftIconSpace': leftIconSpace ?? 8.0,
+      'rightIconSpace': rightIconSpace ?? 8.0,
+      'snackBarPosition': snackBarPosition ?? RetCoreSnackBarPosition.bottom,
     });
     _instance!._showNextSnackBar();
   }
@@ -315,55 +314,54 @@ class RetCoreShowSnackBar {
 }
 
 class _RetCoreNormalSnackBarContent extends StatelessWidget {
-
   const _RetCoreNormalSnackBarContent({
     super.key,
     required this.content,
     required this.title,
-    this.contentFontSize,
-    this.snackBarPadding,
-    this.snackBarHeight,
-    this.snackBarRadius,
-    this.titleFontSize,
-    this.titleColor,
-    this.spacing,
-    this.contentColor,
-    this.contentMaxLine,
+    this.contentFontSize = 14.0,
+    this.snackBarPadding = 16.0,
+    this.snackBarHeight = 50.0,
+    this.snackBarRadius = 10.0,
+    this.titleFontSize = 16.0,
+    this.titleColor = const Color(0xFF000000),
+    this.spacing = 8.0,
+    this.contentColor = const Color(0xFF000000),
+    this.contentMaxLine = 2,
     this.onDismiss,
-    this.backgroundColor,
+    this.backgroundColor = const Color(0xFFFFFFFF),
     this.prefixIcon,
     this.suffixIcon,
     this.suffixIconWidget,
     this.prefixIconWidget,
-    this.iconColor,
-    this.iconSize,
-    this.leftIconSpace,
-    this.rightIconSpace,
-    this.snackBarPosition,
+    this.iconColor = const Color(0xFF000000),
+    this.iconSize = 24.0,
+    this.leftIconSpace = 8.0,
+    this.rightIconSpace = 8.0,
+    this.snackBarPosition = RetCoreSnackBarPosition.bottom,
   });
 
   final String content;
   final String title;
-  final double? contentFontSize;
-  final double? snackBarPadding;
-  final double? snackBarHeight;
-  final double? snackBarRadius;
-  final double? titleFontSize;
-  final double? leftIconSpace;
-  final double? rightIconSpace;
-  final double? spacing;
-  final Color? titleColor;
-  final Color? contentColor;
-  final Color? backgroundColor;
-  final int? contentMaxLine;
+  final double contentFontSize;
+  final double snackBarPadding;
+  final double snackBarHeight;
+  final double snackBarRadius;
+  final double titleFontSize;
+  final double leftIconSpace;
+  final double rightIconSpace;
+  final double spacing;
+  final Color titleColor;
+  final Color contentColor;
+  final Color backgroundColor;
+  final int contentMaxLine;
   final VoidCallback? onDismiss;
   final IconData? prefixIcon;
   final IconData? suffixIcon;
   final Widget? suffixIconWidget;
   final Widget? prefixIconWidget;
-  final Color? iconColor;
-  final double? iconSize;
-  final RetCoreSnackBarPosition? snackBarPosition;
+  final Color iconColor;
+  final double iconSize;
+  final RetCoreSnackBarPosition snackBarPosition;
 
   @override
   Widget build(BuildContext context) {
@@ -382,12 +380,12 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
           child: RetCoreGlassmorphism(
             blur: 7,
             child: Container(
-              padding: EdgeInsets.all(snackBarPadding!),
+              padding: EdgeInsets.all(snackBarPadding),
               width: RetCore.width(),
               decoration: BoxDecoration(
                 color: backgroundColor,
                 borderRadius: BorderRadius.all(
-                  Radius.circular(snackBarRadius!),
+                  Radius.circular(snackBarRadius),
                 ),
                 border: Border.all(
                   color: backgroundColor == tTransparent ? tGrey.withOpacity(0.3) : tTransparent,
@@ -410,7 +408,7 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        RetCore.space(spacing!),
+                        RetCore.space(spacing),
                         Text(
                           content,
                           style: TextStyle(
