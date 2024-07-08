@@ -122,7 +122,7 @@ class RetCore{
     Color? contentColor = tBlack,
     int? contentMaxLine = tSnackBarMaxLine,
   }){
-    RetCoreShowSnackBar.show(
+    /*RetCoreShowSnackBar.show(
       content : content,
       title : title,
       contentFontSize : contentFontSize,
@@ -134,7 +134,8 @@ class RetCore{
       titleColor : titleColor,
       contentColor : contentColor,
       contentMaxLine : contentMaxLine,
-    );
+    );*/
+    MyHomePage().showCustomSnackbar();
   }
 
   static Future<bool> bottomDialogBox({

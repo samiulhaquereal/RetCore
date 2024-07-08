@@ -1,5 +1,6 @@
 import 'package:retcore/src/config/imports.dart';
 
+/*
 class RetCoreShowSnackBar {
 
   static RetCoreShowSnackBar? _instance;
@@ -147,5 +148,96 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
       );
   }
 }
+*/
 
+class MyHomePage {
+  void showCustomSnackbar() {
+    BuildContext? context = FindContext.getContext();
+    OverlayState overlayState = Overlay.of(context!);
+    late OverlayEntry overlayEntry; // Use 'late' keyword
+
+    overlayEntry = OverlayEntry(
+      builder: (context) => CustomSnackbar(
+        message: "This is a custom snackbar",
+        onDismiss: () {
+          overlayEntry.remove();
+        },
+      ),
+    );
+
+    overlayState.insert(overlayEntry);
+  }
+}
+
+class CustomSnackbar extends StatefulWidget {
+  final String message;
+  final VoidCallback onDismiss;
+
+  const CustomSnackbar({
+    Key? key,
+    required this.message,
+    required this.onDismiss,
+  }) : super(key: key);
+
+  @override
+  _CustomSnackbarState createState() => _CustomSnackbarState();
+}
+
+class _CustomSnackbarState extends State<CustomSnackbar>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Offset> _offsetAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+
+    _offsetAnimation = Tween<Offset>(
+      begin: Offset(0.0, -1.0),
+      end: Offset(0.0, 0.0),
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    ));
+
+    _controller.forward();
+
+    Future.delayed(Duration(seconds: 3), () {
+      _controller.reverse().then((value) => widget.onDismiss());
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: 0,
+      left: 0,
+      right: 0,
+      child: SlideTransition(
+        position: _offsetAnimation,
+        child: Material(
+          color: Colors.red,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              widget.message,
+              style: TextStyle(color: Colors.white, fontSize: 16.0),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
 
