@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:retcore/src/config/imports.dart';
 import 'dart:developer' as dev;
 class RetCoreShowSnackBar {
@@ -142,6 +143,7 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
               blur: 7,
               child: Container(
                 padding: EdgeInsets.all(snackBarPadding!),
+                //height: snackBarHeight,
                 width: RetCore.width(),
                 decoration: BoxDecoration(
                   color: backgroundColor,
@@ -171,14 +173,16 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
                             ),
                           ),
                           RetCore.space(spacing!),
-                          Text(
-                            content,
-                            style: TextStyle(
-                              fontSize: contentFontSize,
-                              color: contentColor,
+                          Expanded(
+                            child: Text(
+                              content,
+                              style: TextStyle(
+                                fontSize: contentFontSize,
+                                color: contentColor,
+                              ),
+                              maxLines: contentMaxLine,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            maxLines: contentMaxLine,
-                            overflow: TextOverflow.ellipsis,
                           ),
                         ],
                       ),
