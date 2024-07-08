@@ -69,7 +69,7 @@ class RetCore{
     TextInputType value = RetCoreKeyboardTypeParse.InputType(type: type);
     return value;
   }
-  static void snackbar({
+  static void showSnackbar({
       required String content,
       required String title,
       required RetCoreSnackBarMode mode,
@@ -109,7 +109,7 @@ class RetCore{
           );
   }
 
-  static void showSnackbar({
+  static void snackbar({
     required String content,
     required String title,
     double? contentFontSize,
