@@ -123,6 +123,14 @@ class RetCore{
     Color? backgroundColor = tTransparent,
     int? contentMaxLine = tSnackBarMaxLine,
     Duration? duration = const Duration(seconds: 3),
+    IconData? prefixIcon,
+    IconData? suffixIcon,
+    Widget? suffixIconWidget,
+    Widget? prefixIconWidget,
+    Color? iconColor,
+    double? iconSize,
+    double? leftIconSpace,
+    double? rightIconSpace,
   }){
     RetCoreShowSnackBar.show(
       content : content,
@@ -138,6 +146,14 @@ class RetCore{
       contentMaxLine : contentMaxLine,
       backgroundColor: backgroundColor,
       duration: duration,
+      prefixIcon: prefixIcon,
+      suffixIcon: suffixIcon,
+      suffixIconWidget: suffixIconWidget,
+      prefixIconWidget: prefixIconWidget,
+      iconColor: iconColor,
+      iconSize: iconSize,
+      rightIconSpace: rightIconSpace,
+      leftIconSpace: leftIconSpace,
     );
   }
 

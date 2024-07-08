@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:retcore/src/config/imports.dart';
 import 'dart:developer' as dev;
 class RetCoreShowSnackBar {
@@ -25,10 +24,18 @@ class RetCoreShowSnackBar {
     Color? backgroundColor,
     int? contentMaxLine,
     Duration? duration,
+    IconData? prefixIcon,
+    IconData? suffixIcon,
+    Widget? suffixIconWidget,
+    Widget? prefixIconWidget,
+    Color? iconColor,
+    double? iconSize,
+    double? leftIconSpace,
+    double? rightIconSpace,
   }) {
     OverlayState? overlayState = RetCoreNavigatorKey.currentState?.overlay;
     if (overlayState == null) {
-      dev.log('No overlay found. Make sure the MaterialApp uses CustomSnackbarManager.navigatorKey.');
+      dev.log(tSnackBarContextNotFoundHint);
       return;
     }
     late OverlayEntry overlayEntry;
@@ -47,6 +54,14 @@ class RetCoreShowSnackBar {
         contentColor: contentColor,
         contentMaxLine: contentMaxLine,
         backgroundColor: backgroundColor,
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
+        suffixIconWidget: suffixIconWidget,
+        prefixIconWidget: prefixIconWidget,
+        iconColor: iconColor,
+        iconSize: iconSize,
+        rightIconSpace: rightIconSpace,
+        leftIconSpace: leftIconSpace,
         onDismiss: (){
           overlayEntry.remove();
         },
@@ -73,6 +88,14 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
         this.contentMaxLine,
         this.onDismiss,
         this.backgroundColor,
+        this.prefixIcon,
+        this.suffixIcon,
+        this.suffixIconWidget,
+        this.prefixIconWidget,
+        this.iconColor,
+        this.iconSize,
+        this.leftIconSpace,
+        this.rightIconSpace,
       });
 
   final String content;
@@ -82,12 +105,20 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
   final double? snackBarHeight;
   final double? snackBarRadius;
   final double? titleFontSize;
+  final double? leftIconSpace;
+  final double? rightIconSpace;
   final double? spacing;
   final Color? titleColor;
   final Color? contentColor;
   final Color? backgroundColor;
   final int? contentMaxLine;
   final VoidCallback? onDismiss;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
+  final Widget? suffixIconWidget;
+  final Widget? prefixIconWidget;
+  final Color? iconColor;
+  final double? iconSize;
 
   @override
   Widget build(BuildContext context) {
@@ -120,8 +151,9 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.leaderboard_outlined),
-                    RetCore.space(10),
+                    prefixIconWidget ?? (prefixIcon != null ? Icon(prefixIcon, color: iconColor,size: iconSize) : SizedBox()),
+                    prefixIconWidget != null ? SizedBox(width: leftIconSpace) : SizedBox(),
+                    prefixIcon != null ? SizedBox(width: leftIconSpace) : SizedBox(),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -147,8 +179,9 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
                         ],
                       ),
                     ),
-                    RetCore.space(10),
-                    Icon(Icons.leaderboard_outlined),
+                    suffixIconWidget != null ? SizedBox(width: rightIconSpace) : SizedBox(),
+                    suffixIcon != null ? SizedBox(width: rightIconSpace) : SizedBox(),
+                    suffixIconWidget ?? (suffixIcon != null ? Icon(suffixIcon, color: iconColor,size: iconSize) : SizedBox()),
                   ],
                 ),
               ),
