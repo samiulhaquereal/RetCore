@@ -152,8 +152,11 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
 
 class MyHomePage {
   void showCustomSnackbar() {
-    BuildContext? context = FindContext.getContext();
-    OverlayState overlayState = Overlay.of(context!);
+    BuildContext? context = RetCoreNavigatorKey.currentState?.overlay?.context;
+    if (context == null) {
+      return;
+    }
+    OverlayState overlayState = Overlay.of(context);
     late OverlayEntry overlayEntry; // Use 'late' keyword
 
     overlayEntry = OverlayEntry(
