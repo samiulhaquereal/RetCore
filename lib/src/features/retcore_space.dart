@@ -12,6 +12,9 @@ class RetcoreSpace{
   static Widget retcoreSpace(double? size) {
 
     BuildContext? context = RetCoreNavigatorKey.currentContext;
+    if(context == null){
+      print('DOOM');
+    }
 
     Flex? parent = context?.findAncestorWidgetOfExactType<Flex>();
     Row? parent2 = context?.findAncestorWidgetOfExactType<Row>();
