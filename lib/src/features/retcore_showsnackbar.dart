@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:retcore/src/config/imports.dart';
 import 'dart:developer' as dev;
 class RetCoreShowSnackBar {
@@ -117,50 +118,39 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
                   )
 
                 ),
-                child: /*Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Row(
                   children: [
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: titleFontSize,
-                        color: titleColor,
-                        fontWeight: FontWeight.bold
+                    Icon(Icons.leaderboard_outlined),
+                    RetCore.space(10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            title,
+                            style: TextStyle(
+                              fontSize: titleFontSize,
+                              color: titleColor,
+                              fontWeight: FontWeight.bold
+                            ),
+                          ),
+                          RetCore.space(spacing!),
+                          Text(
+                            content,
+                            style: TextStyle(
+                              fontSize: contentFontSize,
+                              color: contentColor,
+                            ),
+                            maxLines: contentMaxLine,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
                       ),
                     ),
-                    RetCore.space(spacing!),
-                    Text(
-                      content,
-                      style: TextStyle(
-                        fontSize: contentFontSize,
-                        color: contentColor,
-                      ),
-                      maxLines: contentMaxLine,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                    RetCore.space(10),
+                    Icon(Icons.leaderboard_outlined),
                   ],
-                ),*/
-                ListTile(
-                  title: Text(
-                    title,
-                    style: TextStyle(
-                        fontSize: titleFontSize,
-                        color: titleColor,
-                        fontWeight: FontWeight.bold
-                    ),
-                  ),
-                  subtitle: Text(
-                    content,
-                    style: TextStyle(
-                      fontSize: contentFontSize,
-                      color: contentColor,
-                    ),
-                    maxLines: contentMaxLine,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  leading: Icon(Icons.energy_savings_leaf),
-                  trailing: Icon(Icons.ac_unit),
-                )
+                ),
               ),
             ),
           ),
