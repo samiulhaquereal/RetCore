@@ -31,7 +31,7 @@ class RetCore{
     return size;
   }
   static Widget space(double size){
-    return RetcoreSpace.retcoreSpace(size);
+    return RetcoreSpace(space: size);
   }
   static int parseInt({required dynamic number, required int defaultValue}){
     int value = RetCoreParse.parseInt(number: number, defaultValue: defaultValue);
