@@ -112,6 +112,7 @@ class RetCore{
   static void showSnackbar({
     required String content,
     required String title,
+    required BuildContext context,
     double? contentFontSize,
     double? snackBarPadding = tSnackBarPaddingSize,
     double? snackBarHight = tSnackBarHightSize,
@@ -135,8 +136,7 @@ class RetCore{
       contentColor : contentColor,
       contentMaxLine : contentMaxLine,
     );*/
-    BuildContext? context = FindContext.getContext();
-    RetCoreShowSnackBar.showCustomSnackbar(message: 'Demo', context: context!);
+    RetCoreShowSnackBar.showCustomSnackbar(message: 'Demo', context: context);
   }
 
   static Future<bool> bottomDialogBox({
