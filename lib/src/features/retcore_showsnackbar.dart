@@ -33,24 +33,19 @@ class RetCoreShowSnackBar {
     late OverlayEntry overlayEntry;
 
     overlayEntry = OverlayEntry(
-      builder: (context) => Positioned(
-        top: MediaQuery.of(context).padding.top + 10,
-        left: 10,
-        right: 10,
-        child: _RetCoreNormalSnackBarContent(
-          content: content,
-          title: title,
-          contentFontSize: contentFontSize,
-          snackBarPadding: snackBarPadding,
-          snackBarHeight: snackBarHeight,
-          snackBarRadius: snackBarRadius,
-          titleFontSize: titleFontSize,
-          spacing: spacing,
-          titleColor: titleColor,
-          contentColor: contentColor,
-          contentMaxLine: contentMaxLine,
-          backgroundColor: backgroundColor,
-        ),
+      builder: (context) => _RetCoreNormalSnackBarContent(
+        content: content,
+        title: title,
+        contentFontSize: contentFontSize,
+        snackBarPadding: snackBarPadding,
+        snackBarHeight: snackBarHeight,
+        snackBarRadius: snackBarRadius,
+        titleFontSize: titleFontSize,
+        spacing: spacing,
+        titleColor: titleColor,
+        contentColor: contentColor,
+        contentMaxLine: contentMaxLine,
+        backgroundColor: backgroundColor,
       ),
     );
 
@@ -96,9 +91,9 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-       top: MediaQuery.of(context).padding.top + 10, // Adjust the padding as needed
-       left: 10,
-       right: 10,
+        top: MediaQuery.of(context).padding.top + 10,
+        left: 10,
+        right: 10,
         child: RetCoreFadeAnimation(
           customAnimationTransition: RetCoreAnimationStyle.top,
           curves: Curves.fastOutSlowIn,
