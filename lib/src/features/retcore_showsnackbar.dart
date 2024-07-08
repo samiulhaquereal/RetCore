@@ -102,15 +102,20 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
           child: Material(
             color: tTransparent,
             child: RetCoreGlassmorphism(
-              blur: 8,
-              borderColor: backgroundColor == tTransparent ? Colors.grey.withOpacity(0.2) : tTransparent,
+              blur: 7,
               child: Container(
                 padding: EdgeInsets.all(snackBarPadding!),
                 height: snackBarHeight,
                 width: RetCore.width(),
                 decoration: BoxDecoration(
                   color: backgroundColor,
-                  borderRadius: BorderRadius.all(Radius.circular(snackBarRadius!)),
+                  borderRadius: BorderRadius.all(
+                      Radius.circular(snackBarRadius!),
+                  ),
+                  border: Border.all(
+                    color: backgroundColor == tTransparent ? tGrey.withOpacity(0.3) : tTransparent
+                  )
+
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,6 +125,7 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
                       style: TextStyle(
                         fontSize: titleFontSize,
                         color: titleColor,
+                        fontWeight: FontWeight.bold
                       ),
                     ),
                     RetCore.space(spacing!),
