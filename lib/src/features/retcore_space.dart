@@ -28,9 +28,9 @@ class RetcoreSpace{
       } else if (direction == Axis.vertical) {
         return SizedBox(height: size);
       }
-    }else if(parent2?.direction == Axis.horizontal){
+    }else if(parent2 is Row){
       return SizedBox(width: size);
-    }else if(parent3?.direction == Axis.vertical){
+    }else if(parent3 is Column){
       return SizedBox(height: size);
     }else if (parent4 is Wrap) {
       if (parent4.direction == Axis.horizontal) {
