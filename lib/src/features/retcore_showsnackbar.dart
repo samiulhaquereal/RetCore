@@ -150,36 +150,49 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
 }
 */
 
-class MyHomePage {
-  void showCustomSnackbar() {
-    BuildContext? context = RetCoreNavigatorKey.currentState?.overlay?.context;
-    if (context == null) {
-      return;
-    }
-    OverlayState overlayState = Overlay.of(context);
-    late OverlayEntry overlayEntry; // Use 'late' keyword
+class RetCoreShowSnackBar {
+
+  static void showCustomSnackbar({
+    required String message,
+    Duration duration = const Duration(seconds: 3),
+    Color backgroundColor = Colors.red,
+    TextStyle textStyle = const TextStyle(color: Colors.white, fontSize: 16.0),
+  }) {
+    BuildContext? context = FindContext.getContext();
+    OverlayState overlayState = Overlay.of(context!);
+    late OverlayEntry overlayEntry;
 
     overlayEntry = OverlayEntry(
       builder: (context) => CustomSnackbar(
-        message: "This is a custom snackbar",
+        message: message,
         onDismiss: () {
           overlayEntry.remove();
         },
+        backgroundColor: backgroundColor,
+        textStyle: textStyle,
       ),
     );
 
     overlayState.insert(overlayEntry);
+
+    Future.delayed(duration, () {
+      overlayEntry.remove();
+    });
   }
 }
 
 class CustomSnackbar extends StatefulWidget {
   final String message;
   final VoidCallback onDismiss;
+  final Color backgroundColor;
+  final TextStyle textStyle;
 
   const CustomSnackbar({
     Key? key,
     required this.message,
     required this.onDismiss,
+    required this.backgroundColor,
+    required this.textStyle,
   }) : super(key: key);
 
   @override
@@ -230,12 +243,12 @@ class _CustomSnackbarState extends State<CustomSnackbar>
       child: SlideTransition(
         position: _offsetAnimation,
         child: Material(
-          color: Colors.red,
+          color: widget.backgroundColor,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text(
               widget.message,
-              style: TextStyle(color: Colors.white, fontSize: 16.0),
+              style: widget.textStyle,
             ),
           ),
         ),
@@ -243,4 +256,5 @@ class _CustomSnackbarState extends State<CustomSnackbar>
     );
   }
 }
+
 
