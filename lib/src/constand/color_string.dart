@@ -9,6 +9,7 @@ const tGreen = Colors.green;
 const tRedAccent = Colors.redAccent;
 const tOrange = Colors.deepOrangeAccent;
 const tBlueGrey = Colors.blueGrey;
+const tTransparent = Colors.transparent;
 Color tSnackBarSuccessColor = RetCore.parseColor(colorCode: '1E4634');
 Color tSnackBarErrorColor = RetCore.parseColor(colorCode: '801336');
 Color tSnackBarAlertColor = RetCore.parseColor(colorCode: 'FB8C20');

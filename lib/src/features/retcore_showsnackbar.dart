@@ -23,7 +23,7 @@ class RetCoreShowSnackBar {
     Color? contentColor,
     Color? backgroundColor,
     int? contentMaxLine,
-    Duration duration = const Duration(seconds: 3),
+    Duration? duration,
   }) {
     OverlayState? overlayState = RetCoreNavigatorKey.currentState?.overlay;
     if (overlayState == null) {
@@ -51,10 +51,7 @@ class RetCoreShowSnackBar {
         },
       ),
     );
-
     overlayState.insert(overlayEntry);
-
-
   }
 }
 
@@ -105,6 +102,8 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
           child: Material(
             color: Colors.transparent,
             child: RetCoreGlassmorphism(
+              blur: 10,
+              borderColor: tGrey.withOpacity(0.5),
               child: Container(
                 padding: EdgeInsets.all(snackBarPadding!),
                 height: snackBarHeight,

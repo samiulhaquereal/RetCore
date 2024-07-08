@@ -120,7 +120,9 @@ class RetCore{
     double? spaceing = tSnackBarSpaceSize2,
     Color? titleColor = tBlack,
     Color? contentColor = tBlack,
+    Color? backgroundColor = tTransparent,
     int? contentMaxLine = tSnackBarMaxLine,
+    Duration? duration = const Duration(seconds: 3),
   }){
     RetCoreShowSnackBar.show(
       content : content,
@@ -134,6 +136,8 @@ class RetCore{
       titleColor : titleColor,
       contentColor : contentColor,
       contentMaxLine : contentMaxLine,
+      backgroundColor: backgroundColor,
+      duration: duration,
     );
   }
 
