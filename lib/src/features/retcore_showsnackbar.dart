@@ -11,28 +11,35 @@ class RetCoreShowSnackBar {
     return _instance!;
   }
 
-static show({
+  static void show({
     required String content,
     required String title,
-    double? contentFontSize,
-    double? snackBarPadding,
-    double? snackBarHight,
-    double? snackBarRadius,
-    double? titleFontSize,
-    double? spacing,
-    Color? titleColor,
-    Color? contentColor,
-    Color? backgroundColor,
-    int? contentMaxLine,
+    double contentFontSize = 14.0,
+    double snackBarPadding = 16.0,
+    double snackBarHeight = 60.0,
+    double snackBarRadius = 8.0,
+    double titleFontSize = 16.0,
+    double spacing = 4.0,
+    Color titleColor = Colors.white,
+    Color contentColor = Colors.white70,
+    Color backgroundColor = Colors.black,
+    int contentMaxLine = 2,
     Duration duration = const Duration(seconds: 3),
-
   }) {
-  final BuildContext? context = RetCoreNavigatorKey.currentState?.overlay?.context;
+    final BuildContext? context = RetCoreNavigatorKey.currentState?.overlay?.context;
 
-    final overlay = Overlay.of(context!, rootOverlay: true);
+    if (context == null) {
+      return;
+    }
+
+    final overlay = Overlay.of(context);
+    if (overlay == null) {
+      return;
+    }
+
     final overlayEntry = OverlayEntry(
       builder: (context) => Positioned(
-        top: MediaQuery.of(context).padding.top + 10, // Adjust the padding as needed
+        top: MediaQuery.of(context).padding.top + 10,
         left: 10,
         right: 10,
         child: _RetCoreNormalSnackBarContent(
@@ -40,7 +47,7 @@ static show({
           title: title,
           contentFontSize: contentFontSize,
           snackBarPadding: snackBarPadding,
-          snackBarHight: snackBarHight,
+          snackBarHight: snackBarHeight,
           snackBarRadius: snackBarRadius,
           titleFontSize: titleFontSize,
           spacing: spacing,
@@ -52,7 +59,7 @@ static show({
       ),
     );
 
-    overlay?.insert(overlayEntry);
+    overlay.insert(overlayEntry);
 
     Future.delayed(duration, () {
       overlayEntry.remove();
