@@ -145,41 +145,46 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
         parent: ModalRoute.of(context)!.animation!,
         curve: Curves.fastOutSlowIn,
       )),
-      child:*/ Material(
-      color: Colors.transparent,
+      child:*/ Positioned(
+        top: 0,
+        left: 0,
+        right: 0,
         child: RetCoreFadeAnimation(
           customAnimationTransition: RetCoreAnimationStyle.top,
           curves: Curves.fastOutSlowIn,
-          child: RetCoreGlassmorphism(
-            child: Container(
-              padding: EdgeInsets.all(snackBarPadding!),
-              height: snackBarHight,
-              width: RetCore.width(),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadius.all(Radius.circular(snackBarRadius!)),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: titleFontSize,
-                      color: titleColor,
+          child: Material(
+            color: Colors.transparent,
+            child: RetCoreGlassmorphism(
+              child: Container(
+                padding: EdgeInsets.all(snackBarPadding!),
+                height: snackBarHight,
+                width: RetCore.width(),
+                decoration: BoxDecoration(
+                  color: backgroundColor,
+                  borderRadius: BorderRadius.all(Radius.circular(snackBarRadius!)),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: titleFontSize,
+                        color: titleColor,
+                      ),
                     ),
-                  ),
-                  RetCore.space(spacing!),
-                  Text(
-                    content,
-                    style: TextStyle(
-                      fontSize: contentFontSize,
-                      color: contentColor,
+                    RetCore.space(spacing!),
+                    Text(
+                      content,
+                      style: TextStyle(
+                        fontSize: contentFontSize,
+                        color: contentColor,
+                      ),
+                      maxLines: contentMaxLine,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    maxLines: contentMaxLine,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
