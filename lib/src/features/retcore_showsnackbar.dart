@@ -102,8 +102,7 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
           child: Material(
             color: Colors.transparent,
             child: RetCoreGlassmorphism(
-              blur: 10,
-              borderColor: tGrey.withOpacity(0.5),
+              blur: 8,
               child: Container(
                 padding: EdgeInsets.all(snackBarPadding!),
                 height: snackBarHeight,

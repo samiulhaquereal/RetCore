@@ -18,8 +18,8 @@ class RetCoreGlassmorphism extends StatelessWidget {
     this.opacity = tGlassmorphismOpacity,
     this.borderRadius = tGlassmorphismRadius,
     this.borderWidth = tGlassmorphismBorderWidth,
-    this.background = tTransparent,
-    this.borderColor = tGrey,
+    this.background = tWhite,
+    this.borderColor = tWhite,
   });
 
   @override
