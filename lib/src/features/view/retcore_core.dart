@@ -136,7 +136,7 @@ class RetCore{
       contentColor : contentColor,
       contentMaxLine : contentMaxLine,
     );*/
-    RetCoreShowSnackBar.showCustomSnackbar(message: 'Demo', context: context);
+    RetCoreShowSnackBar.showCustomSnackbar(message: 'Demo');
   }
 
   static Future<bool> bottomDialogBox({

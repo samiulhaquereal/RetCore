@@ -154,12 +154,15 @@ class RetCoreShowSnackBar {
 
   static void showCustomSnackbar({
     required String message,
-    required BuildContext context,
     Duration duration = const Duration(seconds: 3),
     Color backgroundColor = Colors.red,
     TextStyle textStyle = const TextStyle(color: Colors.white, fontSize: 16.0),
   }) {
-    OverlayState overlayState = Overlay.of(context);
+    OverlayState? overlayState = RetCoreNavigatorKey.currentState?.overlay;
+    if (overlayState == null) {
+      print('No overlay found. Make sure the MaterialApp uses CustomSnackbarManager.navigatorKey.');
+      return;
+    }
     late OverlayEntry overlayEntry;
 
     overlayEntry = OverlayEntry(
