@@ -1,7 +1,5 @@
 import 'package:retcore/src/config/imports.dart';
-import 'package:retcore/src/features/retcore_bottomsheet.dart';
-import 'package:retcore/src/features/retcore_shared_service.dart';
-import 'package:retcore/src/features/retcore_showsnackbar.dart';
+import 'package:retcore/src/features/retcore_responsive.dart';
 
 class RetCore{
 
@@ -342,6 +340,37 @@ class RetCore{
     required String key
   })async{
     await SharedServices.removeData(key: key);
+  }
+
+  static void startTouchDetection({
+    Duration? time = const Duration(minutes: 5), void Function()? afterTimeout
+  }){
+    RetCoreActivityDetectorController().startTouchDetection(time: time,afterTimeout: afterTimeout);
+  }
+
+  static void startAutoSession({
+    Duration? time = const Duration(minutes: 4),void Function()? process
+  }){
+    RetCoreActivityDetectorController().startAutoSession(time: time,process: process);
+  }
+
+  static void stopTouchDetectionAndAutoSession()async{
+    RetCoreActivityDetectorController().stopEverything();
+  }
+
+  static bool isMobile(){
+    bool response = RetCoreResponsive.isMobile();
+    return response;
+  }
+
+  static bool isTablet(){
+    bool response = RetCoreResponsive.isTablet();
+    return response;
+  }
+
+  static bool isDesktop(){
+    bool response = RetCoreResponsive.isDesktop();
+    return response;
   }
 
 }

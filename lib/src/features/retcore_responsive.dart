@@ -11,22 +11,22 @@ class RetCoreResponsive{
 
   static bool isMobile() {
     BuildContext? context = FindContext.getContext();
-    return MediaQuery.of(context!).size.width <= 500;
-  }
-
-  static bool isMobileLarge() {
-    BuildContext? context = FindContext.getContext();
-    return MediaQuery.of(context!).size.width <= 700;
+    var width = MediaQuery.of(context!).size.width;
+    var orientation = MediaQuery.of(context!).orientation;
+    return orientation == Orientation.portrait && width <= 700;
   }
 
   static bool isTablet() {
     BuildContext? context = FindContext.getContext();
-    return  MediaQuery.of(context!).size.width < 1024;
+    var width = MediaQuery.of(context!).size.width;
+    var orientation = MediaQuery.of(context!).orientation;
+    return orientation == Orientation.portrait && width > 700 && width < 1024;
   }
 
   static bool isDesktop() {
     BuildContext? context = FindContext.getContext();
-    return  MediaQuery.of(context!).size.width >= 1024;
+    var width = MediaQuery.of(context!).size.width;
+    return width >= 1024;
   }
 
 }

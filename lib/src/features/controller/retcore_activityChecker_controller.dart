@@ -15,7 +15,7 @@ class RetCoreActivityDetectorController {
   Duration? _storedTime = const Duration(minutes: 5);
   void Function()? _storedAfterTimeout;
 
-  void startTouchDetection({Duration? time = const Duration(minutes: 5),void Function()? afterTimeout}) {
+  void startTouchDetection({Duration? time,void Function()? afterTimeout}) {
     dev.log('TouchDetection Started');
     // Store the parameters
     _storedTime = time!;
@@ -36,13 +36,14 @@ class RetCoreActivityDetectorController {
     startTouchDetection(time: _storedTime, afterTimeout: _storedAfterTimeout);
   }
 
-  void stopActivityDetection(){
+  void stopEverything(){
     if (_timer != null) {
       _timer?.cancel();
     }else if(_timer2 != null){
       _timer2?.cancel();
     }
   }
+
 
   void onClose() {
     _timer?.cancel();
