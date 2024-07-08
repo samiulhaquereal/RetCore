@@ -24,6 +24,10 @@ class RetCoreButton extends StatelessWidget {
         this.iconSpace = tButtonIconSpaceSize,
         this.borderWidth = tButtonBorderWidthSize,
         this.fontColor = tWhite,
+        this.prefixIcon,
+        this.suffixIcon,
+        this.suffixIconWidget,
+        this.prefixIconWidget,
       });
 
   final double? height;
@@ -47,6 +51,10 @@ class RetCoreButton extends StatelessWidget {
   final RetCoreButtonStyle buttonStyle;
   final VoidCallback onTap;
   final Widget? iconWidget;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
+  final Widget? suffixIconWidget;
+  final Widget? prefixIconWidget;
 
 
   @override
@@ -69,11 +77,13 @@ class RetCoreButton extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                isPrefixIcon == true ? iconWidget ?? Icon(icon, size: iconSize, color: iconColor) : const SizedBox(),
-                SizedBox(width: isPrefixIcon == true && icon != null ? iconSpace : tIconSpaceSize),
+                prefixIconWidget ?? (prefixIcon != null ? Icon(prefixIcon, color: iconColor,size: iconSize) : const SizedBox()),
+                prefixIconWidget != null ? SizedBox(width: iconSpace) : const SizedBox(),
+                prefixIcon != null ? SizedBox(width: iconSpace) : const SizedBox(),
                 title == null ? icon == null ? const SizedBox() : iconWidget ?? Icon(icon, size: iconSize, color: iconColor) : Text(title!, style: TextStyle(color: fontColor, fontSize: fontSize, fontWeight: fontWeight)),
-                SizedBox(width: isSuffixIcon == true && icon != null ? iconSpace : tIconSpaceSize),
-                isSuffixIcon == true ? iconWidget ?? Icon(icon, size: iconSize, color: iconColor) : const SizedBox(),
+                suffixIconWidget != null ? SizedBox(width: iconSpace) : const SizedBox(),
+                suffixIcon != null ? SizedBox(width: iconSpace) : const SizedBox(),
+                suffixIconWidget ?? (suffixIcon != null ? Icon(suffixIcon, color: iconColor, size: iconSize) : const SizedBox()),
               ],
             ) : const SizedBox(),
             buttonStyle == RetCoreButtonStyle.horizontal ? icon == null ? const SizedBox() : iconWidget ?? Icon(icon, size: iconSize, color: iconColor): const SizedBox(),
