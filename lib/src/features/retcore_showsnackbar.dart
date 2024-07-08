@@ -100,9 +100,10 @@ class _RetCoreNormalSnackBarContent extends StatelessWidget {
           customAnimationTransition: RetCoreAnimationStyle.top,
           curves: Curves.fastOutSlowIn,
           child: Material(
-            color: Colors.transparent,
+            color: tTransparent,
             child: RetCoreGlassmorphism(
               blur: 8,
+              borderColor: backgroundColor == tTransparent ? Colors.grey.withOpacity(0.2) : tTransparent,
               child: Container(
                 padding: EdgeInsets.all(snackBarPadding!),
                 height: snackBarHeight,
