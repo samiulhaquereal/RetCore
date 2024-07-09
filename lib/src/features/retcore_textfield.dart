@@ -15,7 +15,7 @@ class RetCoreTextField extends StatelessWidget {
     this.isEnabled  = true,
     this.labelColor = tBlack,
     this.labelSize = tLabelSize,
-    this.keyboardType = TextInputType.text,
+    this.keyboardType = RetCoreKeyboardType.text,
     this.borderColor = tGrey,
     this.inputFontColor = tBlack,
     this.focusedColor = tFocusedColor,
@@ -78,7 +78,7 @@ class RetCoreTextField extends StatelessWidget {
   final bool? isReadOnly;
   final Widget? suffixIconWidget;
   final Widget? prefixIconWidget;
-  final TextInputType? keyboardType;
+  final RetCoreKeyboardType? keyboardType;
   final TextEditingController controller;
   final ValueNotifier<bool> _obscureText = ValueNotifier<bool>(true);
   final String? Function(String?)? validator;
@@ -101,7 +101,7 @@ class RetCoreTextField extends StatelessWidget {
           style: TextStyle(fontSize: inputFontSize,color: inputFontColor),
           controller: controller,
           obscureText: isPasswordField == true ? _obscureText.value : false,
-          keyboardType: keyboardType,
+          keyboardType: RetCore.parseKeyboardType(type: keyboardType),
           enabled: isEnabled,
           readOnly: isReadOnly!,
           maxLength: maxLength,
