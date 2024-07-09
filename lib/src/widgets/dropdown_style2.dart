@@ -1,22 +1,68 @@
-import 'package:flutter/material.dart';
-import 'package:retcore/retcore.dart';
+import 'package:retcore/src/config/imports.dart';
 
-class SearchBoxWidget extends StatelessWidget {
-  SearchBoxWidget(
+class DropdownStyle2 extends StatelessWidget {
+  DropdownStyle2(
       {
-        super.key,
-        this.isPrefixIcon,
+        required this.fieldFocusNode,
+        required this.selectedItem,
+        required this.itemList,
         this.iconColor,
         this.iconSize,
-        this.icon,
-        required this.itemList
+        this.hint,
+        this.label,
+        this.dropIconColor,
+        this.backgroundColor,
+        this.isBorder = true,
+        this.isRequired = false,
+        this.isEnabled,
+        this.suffixIconWidget,
+        this.prefixIconWidget,
+        this.validator,
+        this.onChanged,
+        this.prefixIcon,
+        this.suffixIcon,
+        this.labelColor,
+        this.labelSize,
+        this.borderColor,
+        this.inputFontSize,
+        this.inputFontColor,
+        this.keyboardType,
+        this.focusedColor,
+        this.borderRadius,
+        this.isCompact,
+        this.hintFontColor,
+        this.hintFontSize,
       });
 
-  final List<String> itemList;
-  final bool? isPrefixIcon;
-  final Color? iconColor;
+  final ValueNotifier<String?> selectedItem;
+  final FocusNode fieldFocusNode;
+  final String? hint;
+  final String? label;
   final double? iconSize;
-  final IconData? icon;
+  final double? labelSize;
+  final double? hintFontSize;
+  final double? borderRadius;
+  final Color? iconColor;
+  final Color? borderColor;
+  final Color? labelColor ;
+  final Color? focusedColor;
+  final Color? hintFontColor;
+  final Color? dropIconColor;
+  final Color? backgroundColor;
+  final bool? isBorder;
+  final bool? isRequired;
+  final bool? isEnabled;
+  final bool? isCompact;
+  final Widget? suffixIconWidget;
+  final Widget? prefixIconWidget;
+  final String? Function(String?)? validator;
+  final void Function(String?)? onChanged;
+  final List<String> itemList;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
+  final double? inputFontSize;
+  final Color? inputFontColor;
+  final RetCoreKeyboardType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -26,44 +72,41 @@ class SearchBoxWidget extends StatelessWidget {
         return itemList
             .where((String country) => country
             .toLowerCase().contains(textEditingValue.text.toLowerCase())).toList();
+
       },
       displayStringForOption: (String country) => country,
-      fieldViewBuilder: (context,
-          TextEditingController fieldTextEditingController,
-          FocusNode fieldFocusNode,
-          VoidCallback onFieldSubmitted) {
-        return /*TextField(
-          onTapOutside: (event) => FocusScope.of(context).unfocus(),
-          decoration: InputDecoration(
-            prefixIcon: isPrefixIcon == true
-                ? Icon(icon, size: iconSize, color: iconColor)
-                : null,
-            //border: OutlineInputBorder(),
-            hintText: 'Select Country',
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
-                borderSide: const BorderSide(color: Colors.green)),
-            focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
-                borderSide: const BorderSide(color: Colors.yellow)),
-            errorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
-                borderSide: const BorderSide(color: Colors.red)),
-            focusedErrorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
-                borderSide: const BorderSide(color: Colors.red)),
-          ),
+      fieldViewBuilder: (context, TextEditingController fieldTextEditingController, fieldFocusNode, onFieldSubmitted) {
+        return RetCoreTextField(
           controller: fieldTextEditingController,
-          focusNode: fieldFocusNode,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        )*/RetCoreTextField(
-          controller: fieldTextEditingController,
-          isBorder: true,
-
+          fieldFocusNode: fieldFocusNode,
+          hint: hint,
+          inputFontSize: inputFontSize,
+          inputFontColor: inputFontColor,
+          label: label,
+          iconSize: iconSize,
+          labelSize: labelSize,
+          hintFontSize : hintFontSize,
+          borderRadius: borderRadius,
+          iconColor: iconColor,
+          borderColor: borderColor,
+          labelColor :labelColor,
+          focusedColor:focusedColor,
+          hintFontColor:hintFontColor,
+          isBorder:isBorder,
+          isRequired:isRequired,
+          isCompact:isCompact,
+          suffixIconWidget:suffixIconWidget,
+          prefixIconWidget:prefixIconWidget,
+          validator:validator,
+          onChanged:onChanged,
+          prefixIcon:prefixIcon,
+          suffixIcon:suffixIcon,
+          isEnabled: isEnabled,
+          keyboardType: keyboardType,
         );
       },
       onSelected: (String selection) {
-        print('Selected: $selection');
+        selectedItem.value = selection;
       },
     );
   }

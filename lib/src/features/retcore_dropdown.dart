@@ -6,6 +6,7 @@ class RetCoreDropdownField extends StatelessWidget {
     required this.itemList,
     required this.retCoreDropdownFieldStyle,
     required this.selectedItem,
+    required this.fieldFocusNode,
     this.isBorder = true,
     this.dropIcon = Icons.arrow_drop_down_circle,
     this.backgroundColor = tWhite,
@@ -38,6 +39,10 @@ class RetCoreDropdownField extends StatelessWidget {
     this.suffixItemIconWidget,
     this.prefixItemIconWidget,
     this.itemLeadingSpace = tDropdownItemLeadingSpace,
+    this.isEnabled = true,
+    this.inputFontSize = tInputFontSize,
+    this.inputFontColor = tBlack,
+    this.keyboardType = RetCoreKeyboardType.text,
   });
 
   final String? hint;
@@ -48,6 +53,8 @@ class RetCoreDropdownField extends StatelessWidget {
   final double? borderRadius;
   final double? itemFontSize;
   final double? itemLeadingSpace;
+  final double? inputFontSize;
+  final Color? inputFontColor;
   final Color? iconColor;
   final Color? borderColor;
   final Color? labelColor ;
@@ -59,6 +66,7 @@ class RetCoreDropdownField extends StatelessWidget {
   final bool? isBorder;
   final bool? isRequired;
   final bool? isCompact;
+  final bool? isEnabled;
   final Widget? suffixIconWidget;
   final Widget? prefixIconWidget;
   final IconData? dropIcon;
@@ -75,14 +83,47 @@ class RetCoreDropdownField extends StatelessWidget {
   final ValueNotifier<String?> selectedItem;
   final IconData? prefixIcon;
   final IconData? suffixIcon;
+  final FocusNode fieldFocusNode;
+  final RetCoreKeyboardType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
+    return retCoreDropdownFieldStyle == RetCoreDropdownFieldStyle.searchable ? DropdownStyle2(
+    selectedItem: selectedItem,
+    fieldFocusNode: fieldFocusNode,
+    hint: hint,
+    label: label,
+    iconSize: iconSize,
+    labelSize: labelSize,
+    hintFontSize: hintFontSize,
+    borderRadius: borderRadius,
+    iconColor: iconColor,
+    borderColor: borderColor,
+    labelColor : labelColor,
+    focusedColor: focusedColor,
+    hintFontColor: hintFontColor,
+    dropIconColor:dropIconColor,
+    backgroundColor:backgroundColor,
+    isBorder:isBorder,
+    isRequired: isRequired,
+    isEnabled: isEnabled,
+    isCompact: isCompact,
+    suffixIconWidget: suffixIconWidget,
+    prefixIconWidget: prefixIconWidget,
+    validator: validator,
+    onChanged: onChanged,
+    itemList: itemList,
+    prefixIcon: prefixIcon,
+    suffixIcon: suffixIcon,
+    inputFontSize: inputFontSize,
+    inputFontColor: inputFontColor,
+    keyboardType:keyboardType,
+    ) : ValueListenableBuilder(
       valueListenable: selectedItem,
       builder: (context, selectedValue, child){
         return DropdownButtonFormField(
           isExpanded: true,
+          focusNode: fieldFocusNode,
           isDense: isCompact!,
           value: selectedValue,
           items: itemList.map((item) => DropdownMenuItem(

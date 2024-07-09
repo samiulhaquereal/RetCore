@@ -36,3 +36,4 @@ export 'dart:collection';
 export 'package:retcore/src/features/retcore_bottomsheet.dart';
 export 'package:retcore/src/features/retcore_shared_service.dart';
 export 'package:retcore/src/features/retcore_showsnackbar.dart';
+export 'package:retcore/src/widgets/dropdown_style2.dart';
