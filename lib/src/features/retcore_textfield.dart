@@ -40,6 +40,7 @@ class RetCoreTextField extends StatelessWidget {
     this.suffixIcon,
     this.suffixIconWidget,
     this.prefixIconWidget,
+    this.fieldFocusNode,
   }){
     controller.addListener(() {
       if (onChanged != null) {
@@ -85,6 +86,7 @@ class RetCoreTextField extends StatelessWidget {
   final DateTime? inititalDate;
   final DateTime? startingDate;
   final DateTime? endingDate;
+  final FocusNode? fieldFocusNode;
   final List<TextInputFormatter>? inputFormatters;
 
 
@@ -162,6 +164,7 @@ class RetCoreTextField extends StatelessWidget {
           validator: isRequired == true ? validator : null,
           onChanged: onChanged,
           onTapOutside: (event) => FocusScope.of(context).unfocus(),
+          focusNode: fieldFocusNode,
         ) ;
       },
     );
