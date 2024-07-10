@@ -77,6 +77,7 @@ class _ChipInputFieldState extends State<RetCoreChipInputField> {
 
   @override
   Widget build(BuildContext context) {
+
     return InputDecorator(
       decoration: InputDecoration(
         enabled: widget.isEnabled!,
@@ -148,29 +149,32 @@ class _ChipInputFieldState extends State<RetCoreChipInputField> {
               }).toList(),
             ),
             RetCore.space(7),
-            TextFormField(
-              keyboardType: RetCore.parseKeyboardType(type: widget.keyboardType),
-              inputFormatters: widget.inputFormatters,
-              controller: inputChipText,
-              style: TextStyle(fontSize: widget.inputChipFontSize,color: widget.inputChipFontColor),
-              enabled: widget.isEnabled,
-              decoration: const InputDecoration(
-                contentPadding: EdgeInsets.zero,
-                border: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                disabledBorder: InputBorder.none,
+            SizedBox(
+              width: RetCore.width(),
+              child: TextFormField(
+                keyboardType: RetCore.parseKeyboardType(type: widget.keyboardType),
+                inputFormatters: widget.inputFormatters,
+                controller: inputChipText,
+                style: TextStyle(fontSize: widget.inputChipFontSize,color: widget.inputChipFontColor),
+                enabled: widget.isEnabled,
+                decoration: const InputDecoration(
+                  contentPadding: EdgeInsets.zero,
+                  border: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  errorBorder: InputBorder.none,
+                  disabledBorder: InputBorder.none,
+                ),
+                validator: widget.isRequired == true ? widget.validator : null,
+                onChanged: widget.onChanged,
+                onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                onFieldSubmitted: (value) {
+                  _addChip(value);
+                  if (widget.onFieldSubmitted != null) {
+                    widget.onFieldSubmitted!(value);
+                  }
+                },
               ),
-              validator: widget.isRequired == true ? widget.validator : null,
-              onChanged: widget.onChanged,
-              onTapOutside: (event) => FocusScope.of(context).unfocus(),
-              onFieldSubmitted: (value) {
-                _addChip(value);
-                if (widget.onFieldSubmitted != null) {
-                  widget.onFieldSubmitted!(value);
-                }
-              },
             ),
           ],
         ),
