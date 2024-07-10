@@ -11,6 +11,7 @@ export 'src/features/retcore_errorhandling.dart';
 export 'src/features/retcore_flip_animation.dart';
 export '/src/features/retcore_glassmorphism.dart';
 export '/src/features/retcore_neumorphism.dart';
+export '/src/features/retcore_chip_inputfield.dart';
 
 export '/src/features/view/retcore_core.dart';
 
