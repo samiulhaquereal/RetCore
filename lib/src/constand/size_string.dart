@@ -79,3 +79,4 @@ const double tSnackbarleftIconSpace = 10;
 const double tSnackbarrightIconSpace = 10;
 const double tChipBorderRadius = 5;
 const double tChipTitleFontSize = 7;
+const double tChipSize = 30;

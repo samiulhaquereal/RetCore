@@ -34,6 +34,7 @@ class RetCoreChipInputField extends StatefulWidget {
     this.chipBorderRadius = tChipBorderRadius,
     this.chipTitleFontSize = tChipTitleFontSize,
     this.inputChipFontSize = tInputFontSize,
+    this.chipSize = tChipSize,
   });
 
   final String? title;
@@ -67,6 +68,7 @@ class RetCoreChipInputField extends StatefulWidget {
   final double? chipBorderRadius;
   final double? chipTitleFontSize;
   final double? inputChipFontSize;
+  final double? chipSize;
 
   @override
   _ChipInputFieldState createState() => _ChipInputFieldState();
@@ -128,23 +130,26 @@ class _ChipInputFieldState extends State<RetCoreChipInputField> {
               spacing: 8.0,
               runSpacing: 4.0,
               children: widget.chipsList.map((chip) {
-                return Chip(
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(color: widget.chipBorderColor!), // Set border color to red
-                    borderRadius: BorderRadius.circular(widget.chipBorderRadius!),
+                return SizedBox(
+                  height: widget.chipSize!,
+                  child: Chip(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: widget.chipBorderColor!), // Set border color to red
+                      borderRadius: BorderRadius.circular(widget.chipBorderRadius!),
+                    ),
+                    deleteIconColor: widget.chipDeleteIconColor!,
+                    padding: EdgeInsets.zero,
+                    label: Text(chip),
+                    labelStyle: TextStyle(fontSize: widget.chipTitleFontSize,color: widget.chipTitleFontColor),
+                    onDeleted: () {
+                      setState(() {
+                        widget.chipsList.remove(chip);
+                        if (widget.onDeleted != null) {
+                          widget.onDeleted!(chip);
+                        }
+                      });
+                    },
                   ),
-                  deleteIconColor: widget.chipDeleteIconColor!,
-                  padding: EdgeInsets.zero,
-                  label: Text(chip),
-                  labelStyle: TextStyle(fontSize: widget.chipTitleFontSize,color: widget.chipTitleFontColor),
-                  onDeleted: () {
-                    setState(() {
-                      widget.chipsList.remove(chip);
-                      if (widget.onDeleted != null) {
-                        widget.onDeleted!(chip);
-                      }
-                    });
-                  },
                 );
               }).toList(),
             ),
