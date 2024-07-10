@@ -77,7 +77,6 @@ class _ChipInputFieldState extends State<RetCoreChipInputField> {
 
   @override
   Widget build(BuildContext context) {
-
     return InputDecorator(
       decoration: InputDecoration(
         enabled: widget.isEnabled!,
