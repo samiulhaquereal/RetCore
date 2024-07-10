@@ -4,6 +4,7 @@ class RetCoreChipInputField extends StatefulWidget {
   RetCoreChipInputField({
     super.key,
     required this.chipsList,
+    required this.fieldStyle,
     this.title,
     this.hint = tHint,
     this.keyboardType = RetCoreKeyboardType.text,
@@ -69,6 +70,7 @@ class RetCoreChipInputField extends StatefulWidget {
   final double? chipTitleFontSize;
   final double? inputChipFontSize;
   final double? chipSize;
+  final RetCoreChipInputFieldStyle fieldStyle;
 
   @override
   _ChipInputFieldState createState() => _ChipInputFieldState();
@@ -121,69 +123,128 @@ class _ChipInputFieldState extends State<RetCoreChipInputField> {
             : const UnderlineInputBorder(borderSide: BorderSide(color: tRed)),
       ),
       child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Center(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Wrap(
-                spacing: 8.0,
-                runSpacing: 4.0,
-                children: widget.chipsList.map((chip) {
-                  return SizedBox(
-                    height: widget.chipSize!,
-                    child: Chip(
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(color: widget.chipBorderColor!), // Set border color to red
-                        borderRadius: BorderRadius.circular(widget.chipBorderRadius!),
-                      ),
-                      deleteIconColor: widget.chipDeleteIconColor!,
-                      padding: EdgeInsets.zero,
-                      label: Text(chip),
-                      labelStyle: TextStyle(fontSize: widget.chipTitleFontSize,color: widget.chipTitleFontColor),
-                      onDeleted: () {
-                        setState(() {
-                          widget.chipsList.remove(chip);
-                          if (widget.onDeleted != null) {
-                            widget.onDeleted!(chip);
-                          }
-                        });
-                      },
+        physics: widget.fieldStyle == RetCoreChipInputFieldStyle.vertical ? NeverScrollableScrollPhysics() : null,
+        scrollDirection: widget.fieldStyle == RetCoreChipInputFieldStyle.horizontal ? Axis.horizontal : Axis.vertical,
+        child: widget.fieldStyle == RetCoreChipInputFieldStyle.vertical ? Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Wrap(
+              spacing: 8.0,
+              runSpacing: 4.0,
+              children: widget.chipsList.map((chip) {
+                return SizedBox(
+                  height: widget.chipSize!,
+                  child: Chip(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: widget.chipBorderColor!), // Set border color to red
+                      borderRadius: BorderRadius.circular(widget.chipBorderRadius!),
                     ),
-                  );
-                }).toList(),
-              ),
-              RetCore.space(7),
-              SizedBox(
-                width: RetCore.width(),
-                child: TextFormField(
-                  keyboardType: RetCore.parseKeyboardType(type: widget.keyboardType),
-                  inputFormatters: widget.inputFormatters,
-                  controller: inputChipText,
-                  style: TextStyle(fontSize: widget.inputChipFontSize,color: widget.inputChipFontColor),
-                  enabled: widget.isEnabled,
-                  decoration: const InputDecoration(
-                    contentPadding: EdgeInsets.zero,
-                    border: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    errorBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
+                    deleteIconColor: widget.chipDeleteIconColor!,
+                    padding: EdgeInsets.zero,
+                    label: Text(chip),
+                    labelStyle: TextStyle(fontSize: widget.chipTitleFontSize,color: widget.chipTitleFontColor),
+                    onDeleted: () {
+                      setState(() {
+                        widget.chipsList.remove(chip);
+                        if (widget.onDeleted != null) {
+                          widget.onDeleted!(chip);
+                        }
+                      });
+                    },
                   ),
-                  validator: widget.isRequired == true ? widget.validator : null,
-                  onChanged: widget.onChanged,
-                  onTapOutside: (event) => FocusScope.of(context).unfocus(),
-                  onFieldSubmitted: (value) {
-                    _addChip(value);
-                    if (widget.onFieldSubmitted != null) {
-                      widget.onFieldSubmitted!(value);
-                    }
-                  },
+                );
+              }).toList(),
+            ),
+            RetCore.space(7),
+            SizedBox(
+              width: RetCore.width(),
+              child: TextFormField(
+                keyboardType: RetCore.parseKeyboardType(type: widget.keyboardType),
+                inputFormatters: widget.inputFormatters,
+                controller: inputChipText,
+                style: TextStyle(fontSize: widget.inputChipFontSize,color: widget.inputChipFontColor),
+                enabled: widget.isEnabled,
+                decoration: const InputDecoration(
+                  contentPadding: EdgeInsets.zero,
+                  border: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  errorBorder: InputBorder.none,
+                  disabledBorder: InputBorder.none,
                 ),
+                validator: widget.isRequired == true ? widget.validator : null,
+                onChanged: widget.onChanged,
+                onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                onFieldSubmitted: (value) {
+                  _addChip(value);
+                  if (widget.onFieldSubmitted != null) {
+                    widget.onFieldSubmitted!(value);
+                  }
+                },
               ),
-            ],
-          ),
+            ),
+          ],
+        ) : Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Wrap(
+              spacing: 8.0,
+              runSpacing: 4.0,
+              children: widget.chipsList.map((chip) {
+                return SizedBox(
+                  height: widget.chipSize!,
+                  child: Chip(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: widget.chipBorderColor!), // Set border color to red
+                      borderRadius: BorderRadius.circular(widget.chipBorderRadius!),
+                    ),
+                    deleteIconColor: widget.chipDeleteIconColor!,
+                    padding: EdgeInsets.zero,
+                    label: Text(chip),
+                    labelStyle: TextStyle(fontSize: widget.chipTitleFontSize,color: widget.chipTitleFontColor),
+                    onDeleted: () {
+                      setState(() {
+                        widget.chipsList.remove(chip);
+                        if (widget.onDeleted != null) {
+                          widget.onDeleted!(chip);
+                        }
+                      });
+                    },
+                  ),
+                );
+              }).toList(),
+            ),
+            RetCore.space(7),
+            SizedBox(
+              width: RetCore.width(),
+              child: TextFormField(
+                keyboardType: RetCore.parseKeyboardType(type: widget.keyboardType),
+                inputFormatters: widget.inputFormatters,
+                controller: inputChipText,
+                style: TextStyle(fontSize: widget.inputChipFontSize,color: widget.inputChipFontColor),
+                enabled: widget.isEnabled,
+                decoration: const InputDecoration(
+                  contentPadding: EdgeInsets.zero,
+                  border: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  errorBorder: InputBorder.none,
+                  disabledBorder: InputBorder.none,
+                ),
+                validator: widget.isRequired == true ? widget.validator : null,
+                onChanged: widget.onChanged,
+                onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                onFieldSubmitted: (value) {
+                  _addChip(value);
+                  if (widget.onFieldSubmitted != null) {
+                    widget.onFieldSubmitted!(value);
+                  }
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -197,4 +258,6 @@ class _ChipInputFieldState extends State<RetCoreChipInputField> {
       });
     }
   }
+
+
 }
