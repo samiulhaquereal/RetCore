@@ -216,7 +216,7 @@ class _ChipInputFieldState extends State<RetCoreChipInputField> {
                 );
               }).toList(),
             ),
-            RetCore.space(7),
+            RetCore.space(widget.fieldStyle == RetCoreChipInputFieldStyle.vertical ? 0 : 7),
             SizedBox(
               width: RetCore.width(),
               child: TextFormField(
