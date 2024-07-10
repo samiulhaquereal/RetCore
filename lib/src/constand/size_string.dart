@@ -77,3 +77,5 @@ const Offset tNeumorphismBottomRightOffset = Offset(4,4);
 const Offset tNeumorphismTopLeftOffset = Offset(-4,-4);
 const double tSnackbarleftIconSpace = 10;
 const double tSnackbarrightIconSpace = 10;
+const double tChipBorderRadius = 5;
+const double tChipTitleFontSize = 7;
