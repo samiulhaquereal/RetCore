@@ -9,6 +9,8 @@ class RetCoreButton extends StatelessWidget {
         this.height = tButtonHeightSize,
         this.width = tButtonWidthSize,
         this.backgroundColor = tBlack,
+        this.backgroundGradientColor1 = tTransparent,
+        this.backgroundGradientColor2 = tTransparent,
         this.title,
         this.icon,
         this.iconWidget,
@@ -36,6 +38,8 @@ class RetCoreButton extends StatelessWidget {
   final double? iconSize;
   final double? fontSize;
   final Color? backgroundColor;
+  final Color? backgroundGradientColor1;
+  final Color? backgroundGradientColor2;
   final Color? iconColor;
   final Color? fontColor;
   final Color? borderColor;
@@ -67,7 +71,10 @@ class RetCoreButton extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           border: isBorder == true ? Border.all(color: borderColor!,width: borderWidth!) : null,
-          color: backgroundColor,
+          color: (backgroundGradientColor1 == null || backgroundGradientColor2 == null) ? backgroundColor : null,
+          gradient: (backgroundGradientColor1 != null && backgroundGradientColor2 != null)
+              ? LinearGradient(colors: [backgroundGradientColor1!, backgroundGradientColor2!])
+              : null,
           borderRadius: BorderRadius.circular(radius!),
         ),
         child: Column(
