@@ -4,7 +4,7 @@ class RetCoreTextField extends StatelessWidget {
   RetCoreTextField({
     super.key,
     required this.controller,
-    this.isBorder = false ,
+    this.isBorder = false,
     this.hint = tHint,
     this.inputFontSize = tInputFontSize,
     this.isPasswordField = false,
@@ -12,7 +12,7 @@ class RetCoreTextField extends StatelessWidget {
     this.iconSize,
     this.iconColor,
     this.isRequired = false,
-    this.isEnabled  = true,
+    this.isEnabled = true,
     this.labelColor = tBlack,
     this.labelSize = tLabelSize,
     this.keyboardType = RetCoreKeyboardType.text,
@@ -31,17 +31,17 @@ class RetCoreTextField extends StatelessWidget {
     this.isLiveErrorTrack = false,
     this.isError = false,
     this.isReadOnly = false,
-    this.inititalDate ,
-    this.startingDate ,
-    this.endingDate ,
-    this.inputFormatters ,
+    this.inititalDate,
+    this.startingDate,
+    this.endingDate,
+    this.inputFormatters,
     this.liveErrorMessage = tWrong,
     this.prefixIcon,
     this.suffixIcon,
     this.suffixIconWidget,
     this.prefixIconWidget,
     this.fieldFocusNode,
-  }){
+  }) {
     controller.addListener(() {
       if (onChanged != null) {
         onChanged!(controller.text);
@@ -61,7 +61,8 @@ class RetCoreTextField extends StatelessWidget {
   final double? borderRadius;
   final Color? iconColor;
   final Color? borderColor;
-  final Color? labelColor ;
+  final Color? labelColor;
+
   final Color? focusedColor;
   final Color? inputFontColor;
   final Color? hintFontColor;
@@ -89,7 +90,6 @@ class RetCoreTextField extends StatelessWidget {
   final FocusNode? fieldFocusNode;
   final List<TextInputFormatter>? inputFormatters;
 
-
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
@@ -98,7 +98,7 @@ class RetCoreTextField extends StatelessWidget {
         return TextFormField(
           textInputAction: TextInputAction.next,
           inputFormatters: inputFormatters,
-          style: TextStyle(fontSize: inputFontSize,color: inputFontColor),
+          style: TextStyle(fontSize: inputFontSize, color: inputFontColor),
           controller: controller,
           obscureText: isPasswordField == true ? _obscureText.value : false,
           keyboardType: RetCore.parseKeyboardType(type: keyboardType),
@@ -108,65 +108,98 @@ class RetCoreTextField extends StatelessWidget {
           maxLines: maxLine ?? tMaxLine,
           decoration: InputDecoration(
             isDense: isCompact,
-            errorText: isLiveErrorTrack == true ? isError == true ? liveErrorMessage : null : null,
-            suffixIcon: /*isDatePicker == true || isPasswordField == true ? null :*/ suffixIconWidget ?? (suffixIcon != null ? Icon(suffixIcon, size: iconSize, color: iconColor) :
-            isPasswordField == true ? IconButton(
-              color: iconColor,
-              onPressed: () {
-                _obscureText.value == true ? _obscureText.value = false : _obscureText.value = true ;
-              },
-              icon: suffixIcon != null ? Icon(suffixIcon, size: iconSize, color: iconColor) : Icon(_obscureText.value == true ? Icons.visibility_off : Icons.visibility , size: iconSize, color: iconColor),
-            ) : isDatePicker == true ? IconButton(
-                onPressed: ()async{
-              final DateTime? datetime = await showDatePicker(
-                  context: context,
-                  initialDate: inititalDate ?? DateTime.now(),
-                  firstDate: startingDate ?? DateTime(1500),
-                  lastDate: endingDate ?? DateTime(3000)
-              );
-              if (datetime != null){
-                controller.text = "${datetime.toLocal()}".split(' ')[0].toString();
-              }
-            }, icon: suffixIconWidget ?? (suffixIcon != null ? Icon(suffixIcon, size: iconSize, color: iconColor) : Icon(Icons.calendar_month, size: iconSize, color: iconColor))) : null),
-            prefixIcon: prefixIconWidget ?? (prefixIcon != null ? Icon(prefixIcon, color: iconColor,size: iconSize) : null),
-            enabledBorder: isBorder == true ? OutlineInputBorder(
-                borderRadius: BorderRadius.circular(borderRadius!),
-                borderSide: BorderSide(color: borderColor!))
+            errorText: isLiveErrorTrack == true
+                ? isError == true
+                    ? liveErrorMessage
+                    : null
+                : null,
+            suffixIcon: isDatePicker == true
+                ? IconButton(
+                    onPressed: () async {
+                      final DateTime? datetime = await showDatePicker(
+                        context: context,
+                        initialDate: inititalDate ?? DateTime.now(),
+                        firstDate: startingDate ?? DateTime(1500),
+                        lastDate: endingDate ?? DateTime(3000),
+                      );
+                      if (datetime != null) {
+                        controller.text = "${datetime.toLocal()}".split(' ')[0];
+                      }
+                    },
+                    icon: suffixIconWidget ??
+                        (suffixIcon != null
+                            ? Icon(suffixIcon, size: iconSize, color: iconColor)
+                            : Icon(Icons.calendar_month,
+                                size: iconSize, color: iconColor)),
+                  )
+                : isPasswordField == true
+                    ? IconButton(
+                        color: iconColor,
+                        onPressed: () {
+                          _obscureText.value = !_obscureText.value;
+                        },
+                        icon: Icon(
+                          _obscureText.value
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          size: iconSize,
+                          color: iconColor,
+                        ),
+                      )
+                    : (suffixIconWidget ??
+                        (suffixIcon != null
+                            ? Icon(suffixIcon, size: iconSize, color: iconColor) : null)),
+            prefixIcon: prefixIconWidget ??
+                (prefixIcon != null
+                    ? Icon(prefixIcon, color: iconColor, size: iconSize)
+                    : null),
+            enabledBorder: isBorder == true
+                ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(borderRadius!),
+                    borderSide: BorderSide(color: borderColor!))
                 : UnderlineInputBorder(
-                borderSide: BorderSide(color: borderColor!)),
-            focusedBorder: isBorder == true ? OutlineInputBorder(
-                borderRadius: BorderRadius.circular(borderRadius!),
-                borderSide: BorderSide(color: focusedColor!))
+                    borderSide: BorderSide(color: borderColor!)),
+            focusedBorder: isBorder == true
+                ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(borderRadius!),
+                    borderSide: BorderSide(color: focusedColor!))
                 : UnderlineInputBorder(
-                borderSide: BorderSide(color: focusedColor!)),
-            errorBorder: isBorder == true ? OutlineInputBorder(
-                borderRadius: BorderRadius.circular(borderRadius!),
-                borderSide: const BorderSide(color: tRed))
-                : const UnderlineInputBorder(borderSide: BorderSide(color: tRed)),
-            focusedErrorBorder: isBorder == true ? OutlineInputBorder(
-                borderRadius: BorderRadius.circular(borderRadius!),
-                borderSide: const BorderSide(color: tRed))
-                : const UnderlineInputBorder(borderSide: BorderSide(color: tRed)),
+                    borderSide: BorderSide(color: focusedColor!)),
+            errorBorder: isBorder == true
+                ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(borderRadius!),
+                    borderSide: const BorderSide(color: tRed))
+                : const UnderlineInputBorder(
+                    borderSide: BorderSide(color: tRed)),
+            focusedErrorBorder: isBorder == true
+                ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(borderRadius!),
+                    borderSide: const BorderSide(color: tRed))
+                : const UnderlineInputBorder(
+                    borderSide: BorderSide(color: tRed)),
             hintText: hint,
-            hintStyle: TextStyle(fontSize: hintFontSize,color: hintFontColor),
-            label: label == null ? null : RichText(
-              text: TextSpan(
-                text: '$label ',
-                style: TextStyle(fontSize: labelSize, color: labelColor),
-                children: [
-                  TextSpan(
-                    text: isRequired == true ? '*' : '',
-                    style: TextStyle(fontSize: labelSize!+3,color: tRed),
+            hintStyle: TextStyle(fontSize: hintFontSize, color: hintFontColor),
+            label: label == null
+                ? null
+                : RichText(
+                    text: TextSpan(
+                      text: '$label ',
+                      style: TextStyle(fontSize: labelSize, color: labelColor),
+                      children: [
+                        TextSpan(
+                          text: isRequired == true ? '*' : '',
+                          style:
+                              TextStyle(fontSize: labelSize! + 3, color: tRed),
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
-            ),
           ),
           validator: isRequired == true ? validator : null,
           onChanged: onChanged,
           onTapOutside: (event) => FocusScope.of(context).unfocus(),
           focusNode: fieldFocusNode,
-        ) ;
+        );
       },
     );
   }
