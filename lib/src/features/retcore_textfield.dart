@@ -109,7 +109,7 @@ class RetCoreTextField extends StatelessWidget {
           decoration: InputDecoration(
             isDense: isCompact,
             errorText: isLiveErrorTrack == true ? isError == true ? liveErrorMessage : null : null,
-            suffixIcon: isDatePicker == true || isPasswordField == true ? null : suffixIconWidget ?? (suffixIcon != null ? Icon(suffixIcon, size: iconSize, color: iconColor) :
+            suffixIcon: /*isDatePicker == true || isPasswordField == true ? null :*/ suffixIconWidget ?? (suffixIcon != null ? Icon(suffixIcon, size: iconSize, color: iconColor) :
             isPasswordField == true ? IconButton(
               color: iconColor,
               onPressed: () {
