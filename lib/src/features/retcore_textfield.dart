@@ -109,14 +109,15 @@ class RetCoreTextField extends StatelessWidget {
           decoration: InputDecoration(
             isDense: isCompact,
             errorText: isLiveErrorTrack == true ? isError == true ? liveErrorMessage : null : null,
-            suffixIcon: suffixIconWidget ?? (suffixIcon != null ? Icon(suffixIcon, size: iconSize, color: iconColor) :
+            suffixIcon: isDatePicker == true || isPasswordField == true ? null : suffixIconWidget ?? (suffixIcon != null ? Icon(suffixIcon, size: iconSize, color: iconColor) :
             isPasswordField == true ? IconButton(
               color: iconColor,
               onPressed: () {
                 _obscureText.value == true ? _obscureText.value = false : _obscureText.value = true ;
               },
-              icon: Icon(_obscureText.value == true ? Icons.visibility_off : Icons.visibility),
-            ) : isDatePicker == true ? IconButton(onPressed: ()async{
+              icon: suffixIcon != null ? Icon(suffixIcon, size: iconSize, color: iconColor) : Icon(_obscureText.value == true ? Icons.visibility_off : Icons.visibility , size: iconSize, color: iconColor),
+            ) : isDatePicker == true ? IconButton(
+                onPressed: ()async{
               final DateTime? datetime = await showDatePicker(
                   context: context,
                   initialDate: inititalDate ?? DateTime.now(),
@@ -126,7 +127,7 @@ class RetCoreTextField extends StatelessWidget {
               if (datetime != null){
                 controller.text = "${datetime.toLocal()}".split(' ')[0].toString();
               }
-            }, icon: const Icon(Icons.calendar_month)) : null),
+            }, icon: suffixIconWidget ?? (suffixIcon != null ? Icon(suffixIcon, size: iconSize, color: iconColor) : Icon(Icons.calendar_month, size: iconSize, color: iconColor))) : null),
             prefixIcon: prefixIconWidget ?? (prefixIcon != null ? Icon(prefixIcon, color: iconColor,size: iconSize) : null),
             enabledBorder: isBorder == true ? OutlineInputBorder(
                 borderRadius: BorderRadius.circular(borderRadius!),
