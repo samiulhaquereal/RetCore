@@ -245,28 +245,36 @@ class RetCore{
     String month = RetCoreDayMonthName.getMonthName(date: date);
     return month;
   }
-  static String getDayNameBangla({required DateTime date}){
-    String day = RetCoreDayMonthName().getBanglaDayName(date);
+  static String getDayNameBangla({required String isoDateString}){
+    String day = RetCoreDayMonthName().getBanglaDayName(isoDateString);
     return day;
   }
-  static String getMonthNameBangla({required DateTime date}){
-    String month = RetCoreDayMonthName().getBanglaFullMonthName(date);
+  static String getMonthNameBangla({required String isoDateString}){
+    String month = RetCoreDayMonthName().getBanglaFullMonthName(isoDateString);
     return month;
   }
-  static String getDateBangla({required DateTime date}){
-    String banglaDate = RetCoreDayMonthName().getBanglaDate(date);
+  static String getMonthNumberBangla({required String isoDateString}){
+    String banglaDate = RetCoreDayMonthName().getBanglaMonthNumber(isoDateString);
     return banglaDate;
   }
-  static String getDateEnglish({required DateTime date}){
-    String englishDate = RetCoreDayMonthName().getBanglaDate(date);
+  static String getMonthNumberEnglish({required String isoDateString}){
+    String englishDate = RetCoreDayMonthName().getEnglishMonthNumber(isoDateString);
     return englishDate;
+  }
+  static String getYearEnglish({required String isoDateString}){
+    String englishYear = RetCoreDayMonthName().getEnglishYear(isoDateString);
+    return englishYear;
+  }
+  static String getYearBangla({required String isoDateString}){
+    String BanglaYear = RetCoreDayMonthName().getBanglaYear(isoDateString);
+    return BanglaYear;
   }
   static String convertIntoBanglaDigit({required dynamic value}){
     String response = RetCoreDayMonthName().getBanglaDigit(value);
     return response;
   }
-  static Map<String , dynamic> getTimeBangla({required DateTime time}){
-    Map<String , dynamic> response = RetCoreDayMonthName().getBanglaTime(time: time);
+  static Map<String , dynamic> getTimeBangla({required String time}){
+    Map<String , dynamic> response = RetCoreDayMonthName().getBanglaTime(isoDateString: time);
     return response;
   }
 

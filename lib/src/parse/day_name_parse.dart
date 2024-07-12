@@ -89,7 +89,8 @@ class RetCoreDayMonthName{
   };
 
 
-  String getBanglaDayName(DateTime date) {
+  String getBanglaDayName(String isoDateString) {
+    DateTime date = DateTime.parse(isoDateString);
     String dayInEnglish = getDayName(date: date);
     return banglaDays[dayInEnglish] ?? dayInEnglish;
   }
@@ -99,21 +100,35 @@ class RetCoreDayMonthName{
     return banglaDigit.split('').map((digit) => banglaDigits[digit] ?? digit).join('');
   }
 
-  String getBanglaDate(DateTime date) {
-    String dayNumber = date.month.toString();
-    return dayNumber.split('').map((digit) => banglaDigits[digit] ?? digit).join('');
+  String getBanglaMonthNumber(String isoDateString) {
+    DateTime date = DateTime.parse(isoDateString);
+    String monthNumber = date.month.toString();
+    return monthNumber.split('').map((digit) => banglaDigits[digit] ?? digit).join('');
   }
-  String getEnglishDate(DateTime date) {
-    String dayNumber = date.month.toString();
-    return dayNumber;
+  String getEnglishMonthNumber(String isoDateString) {
+    DateTime date = DateTime.parse(isoDateString);
+    String monthNumber = date.month.toString();
+    return monthNumber;
+  }
+  String getBanglaYear(String isoDateString) {
+    DateTime date = DateTime.parse(isoDateString);
+    String year = date.year.toString();
+    return year.split('').map((digit) => banglaDigits[digit] ?? digit).join('');
+  }
+  String getEnglishYear(String isoDateString) {
+    DateTime date = DateTime.parse(isoDateString);
+    String year = date.year.toString();
+    return year;
   }
 
-  String getBanglaFullMonthName(DateTime date) {
-    String monthInEnglish = getMonthName(date: date);
+  String getBanglaFullMonthName(String isoDateString) {
+    DateTime time = DateTime.parse(isoDateString);
+    String monthInEnglish = getMonthName(date: time);
     return banglaMonths[monthInEnglish] ?? monthInEnglish;
   }
 
-  Map<String , dynamic> getBanglaTime({required DateTime time}) {
+  Map<String , dynamic> getBanglaTime({required String isoDateString}) {
+    DateTime time = DateTime.parse(isoDateString);
     int hour = time.hour;
     String hourFormatted = (hour % 12 == 0) ? '12' : (hour % 12).toString().padLeft(2, '0');
     String inBanglaLanHour = hourFormatted.split('').map((digit) => banglaDigits[digit] ?? digit).join('');

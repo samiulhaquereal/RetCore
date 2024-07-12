@@ -39,3 +39,6 @@ enum RetCoreKeyboardType{
 enum RetCoreLocalStorageType { string, bool, int, double, stringList }
 enum RetCoreSnackBarPosition {top,bottom}
 enum RetCoreChipInputFieldStyle {vertical,horizontal}
+enum RetCoreCircularProgressBarStyle{
+  left,right,top,bottom
+}

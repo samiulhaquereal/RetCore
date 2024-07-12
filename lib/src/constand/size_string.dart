@@ -80,3 +80,5 @@ const double tSnackbarrightIconSpace = 10;
 const double tChipBorderRadius = 5;
 const double tChipTitleFontSize = 7;
 const double tChipSize = 30;
+const double tCircularProgressBarTitleFontSize = 14;
+const double tCircularProgressBarStrokeSize = 10;
