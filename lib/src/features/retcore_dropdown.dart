@@ -142,7 +142,6 @@ class RetCoreDropdownField extends StatelessWidget {
                 suffixItemIconWidget: suffixItemIconWidget,
                 suffixItemIcon: suffixItemIcon, item: item) : const SizedBox(),
           )).toList(),
-          icon: suffixIcon == null && suffixIconWidget == null ? Icon(dropIcon, color: dropIconColor,size: iconSize) : Icon(Icons.track_changes, color: dropIconColor,size: iconSize),
           dropdownColor: backgroundColor,
           decoration: InputDecoration(
             isDense: isCompact,
