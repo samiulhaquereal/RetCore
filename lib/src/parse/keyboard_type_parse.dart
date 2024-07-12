@@ -30,7 +30,7 @@ class RetCoreKeyboardTypeParse{
       'numberUri': TextInputType.number,
     };
 
-    return keyboardTypes['$type'] ?? TextInputType.text;
+    return keyboardTypes[type?.toString().split('.').last] ?? TextInputType.text;
   }
 }
 

@@ -1,3 +1,5 @@
+import 'package:retcore/src/config/imports.dart';
+
 class RetCoreDayMonthName{
 
   static RetCoreDayMonthName? _instance;
@@ -48,6 +50,92 @@ class RetCoreDayMonthName{
     return monthNames[month] ?? 'Invalid month';
   }
 
+  final Map<String, String> banglaDays = {
+    'Monday': 'সোম',
+    'Tuesday': 'মঙ্গল',
+    'Wednesday': 'বুধ',
+    'Thursday': 'বৃহ',
+    'Friday': 'শুক্র',
+    'Saturday': 'শনি',
+    'Sunday': 'রবি',
+  };
 
+  final Map<String, String> banglaDigits = {
+    '0': '০',
+    '1': '১',
+    '2': '২',
+    '3': '৩',
+    '4': '৪',
+    '5': '৫',
+    '6': '৬',
+    '7': '৭',
+    '8': '৮',
+    '9': '৯',
+  };
+
+  final Map<String, String> banglaMonths = {
+    'January': 'জানুয়ারী',
+    'February': 'ফেব্রুয়ারী',
+    'March': 'মার্চ',
+    'April': 'এপ্রিল',
+    'May': 'মে',
+    'June': 'জুন',
+    'July': 'জুলাই',
+    'August': 'আগস্ট',
+    'September': 'সেপ্টেম্বর',
+    'October': 'অক্টোবর',
+    'November': 'নভেম্বর',
+    'December': 'ডিসেম্বর',
+  };
+
+
+  String getBanglaDayName(DateTime date) {
+    String dayInEnglish = getDayName(date: date);
+    return banglaDays[dayInEnglish] ?? dayInEnglish;
+  }
+
+  String getBanglaDigit(dynamic digit) {
+    String banglaDigit = RetCore.parseString(value: digit, defaultValue: '0');
+    return banglaDigit.split('').map((digit) => banglaDigits[digit] ?? digit).join('');
+  }
+
+  String getBanglaDate(DateTime date) {
+    String dayNumber = date.month.toString();
+    return dayNumber.split('').map((digit) => banglaDigits[digit] ?? digit).join('');
+  }
+  String getEnglishDate(DateTime date) {
+    String dayNumber = date.month.toString();
+    return dayNumber;
+  }
+
+  String getBanglaFullMonthName(DateTime date) {
+    String monthInEnglish = getMonthName(date: date);
+    return banglaMonths[monthInEnglish] ?? monthInEnglish;
+  }
+
+  Map<String , dynamic> getBanglaTime({required DateTime time}) {
+    int hour = time.hour;
+    String hourFormatted = (hour % 12 == 0) ? '12' : (hour % 12).toString().padLeft(2, '0');
+    String inBanglaLanHour = hourFormatted.split('').map((digit) => banglaDigits[digit] ?? digit).join('');
+    String minutes = time.minute.toString().padLeft(2, '0');
+    String inBanglaLanMin = minutes.split('').map((digit) => banglaDigits[digit] ?? digit).join('');
+    String period = getPeriod(time);
+    return {'period': period , 'time': '$inBanglaLanHour:$inBanglaLanMin মি.'};
+  }
+
+  String getPeriod(DateTime dateTime) {
+    String period;
+    int hour = dateTime.hour;
+    if (hour >= 4 && hour < 12) {
+      period = 'সকাল';
+    } else if (hour >= 12 && hour < 16) {
+      period = 'দুপুর';
+    } else if (hour >= 16 && hour < 20) {
+      period = 'বিকেল';
+    } else {
+      period = 'রাত';
+    }
+    return period;
+  }
 
 }

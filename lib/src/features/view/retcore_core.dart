@@ -237,14 +237,39 @@ class RetCore{
   static void debounce({required VoidCallback process,int? milliseconds = 500}) async{
     RetCoreDebouncer.run(action: process,milliseconds: milliseconds);
   }
-  static String getDayName({required DateTime date}){
+  static String getDayNameEnglish({required DateTime date}){
     String day = RetCoreDayMonthName.getDayName(date: date);
     return day;
   }
-  static String getMonthName({required DateTime date}){
-    String day = RetCoreDayMonthName.getMonthName(date: date);
+  static String getMonthNameEnglish({required DateTime date}){
+    String month = RetCoreDayMonthName.getMonthName(date: date);
+    return month;
+  }
+  static String getDayNameBangla({required DateTime date}){
+    String day = RetCoreDayMonthName().getBanglaDayName(date);
     return day;
   }
+  static String getMonthNameBangla({required DateTime date}){
+    String month = RetCoreDayMonthName().getBanglaFullMonthName(date);
+    return month;
+  }
+  static String getDateBangla({required DateTime date}){
+    String banglaDate = RetCoreDayMonthName().getBanglaDate(date);
+    return banglaDate;
+  }
+  static String getDateEnglish({required DateTime date}){
+    String englishDate = RetCoreDayMonthName().getBanglaDate(date);
+    return englishDate;
+  }
+  static String convertIntoBanglaDigit({required dynamic value}){
+    String response = RetCoreDayMonthName().getBanglaDigit(value);
+    return response;
+  }
+  static Map<String , dynamic> getTimeBangla({required DateTime time}){
+    Map<String , dynamic> response = RetCoreDayMonthName().getBanglaTime(time: time);
+    return response;
+  }
+
   static Future<bool> dialogBox({
     required String title,
     required String content,
