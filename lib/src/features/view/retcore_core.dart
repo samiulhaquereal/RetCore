@@ -47,9 +47,9 @@ class RetCore{
     bool response = RetCoreParse.parseBool(value: value, defaultValue: defaultValue);
     return response;
   }
-  static DateTime parseDateTime({required dynamic value, required DateTime defaultValue}){
-    DateTime response = RetCoreDateTimeParse().parseDateTime(input: value);
-    return response;
+  static String parseDateTime({required dynamic value, required DateTime defaultValue}){
+    String? response = RetCoreDateTimeParse().parseDateTime(input: value);
+    return response ?? '';
   }
   static List<T> parseList<T>({required dynamic value, required List<T> defaultValue}){
     List<T> response = RetCoreParse.parseList(value: value, defaultValue: defaultValue);

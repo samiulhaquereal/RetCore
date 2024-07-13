@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:intl/intl.dart';
 
 class RetCoreDateTimeParse {
@@ -9,7 +10,7 @@ class RetCoreDateTimeParse {
     return _instance!;
   }
 
-  DateTime parseDateTime({required String input}) {
+  String? parseDateTime({required String input}) {
     final formatters = {
       'YYMMDD': RegExp(r'^(\d{2})(\d{2})(\d{2})$'),
       'MMDDYY': RegExp(r'^(\d{2})(\d{2})(\d{2})$'),
@@ -67,17 +68,17 @@ class RetCoreDateTimeParse {
       if (match != null) {
         switch (format) {
           case 'YYMMDD':
-            return DateTime.parse('20${match[1]}-${match[2]}-${match[3]}');
+            return DateTime.parse('20${match[1]}-${match[2]}-${match[3]}T00:00:00.000Z').toString();
           case 'MMDDYY':
-            return DateTime.parse('20${match[3]}-${match[1]}-${match[2]}');
+            return DateTime.parse('20${match[3]}-${match[1]}-${match[2]}T00:00:00.000Z').toString();
           case 'YYYYMMDD':
-            return DateTime.parse('${match[1]}-${match[2]}-${match[3]}');
+            return DateTime.parse('${match[1]}-${match[2]}-${match[3]}T00:00:00.000Z').toString();
           case 'DDMMYYYY':
-            return DateTime.parse('${match[3]}-${match[2]}-${match[1]}');
+            return DateTime.parse('${match[3]}-${match[2]}-${match[1]}T00:00:00.000Z').toString();
           case 'MMDDYYYY':
-            return DateTime.parse('${match[3]}-${match[1]}-${match[2]}');
+            return DateTime.parse('${match[3]}-${match[1]}-${match[2]}T00:00:00.000Z').toString();
           case 'DDMMYY':
-            return DateTime.parse('20${match[3]}-${match[2]}-${match[1]}');
+            return DateTime.parse('20${match[3]}-${match[2]}-${match[1]}T00:00:00.000Z').toString();
           /*case 'YYMMMDD':
             return DateTime.parse('20${match[1]}-${_monthToNumber(match[2]!)}-${match[3]}');*/
           /*case 'DDMMMYY':
@@ -91,25 +92,40 @@ class RetCoreDateTimeParse {
           /*case 'MMMDDYYYY':
             return DateTime.parse('${match[3]}-${_monthToNumber(match[1]!)}-${match[2]}');*/
           case 'YYDDD':
-            return DateTime(int.parse('20${match[1]}')).add(Duration(days: int.parse(match[2]!) - 1));
+            //return DateTime(int.parse('20${match[1]}')).add(Duration(days: int.parse(match[2]!) - 1));
+          // Assuming match[1] contains the last two digits of the year and match[2] contains the day of the year
+          // Extract year and day of year
+            int year = int.parse('20${match[1]}');
+            int dayOfYear = int.parse(match[2]!);
+            // Calculate date and format as required
+            DateTime dateTime = DateTime(year).add(Duration(days: dayOfYear - 1));
+            String formattedDate = '${dateTime.year.toString().padLeft(4, '0')}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')}T00:00:00.000Z';
+            return formattedDate;
           case 'DDDYY':
-            return DateTime(int.parse('20${match[2]}')).add(Duration(days: int.parse(match[1]!) - 1));
+            //return DateTime(int.parse('20${match[2]}')).add(Duration(days: int.parse(match[1]!) - 1));
+          // Extract year and day of year
+            int year = int.parse('20${match[2]}');
+            int dayOfYear = int.parse(match[1]!);
+            // Calculate date and format as required
+            DateTime dateTime = DateTime(year).add(Duration(days: dayOfYear - 1));
+            String formattedDate = '${dateTime.year.toString().padLeft(4, '0')}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')}T00:00:00.000Z';
+            return formattedDate;
           /*case 'YYYYDDD':
             return DateTime(int.parse(match[1]!)).add(Duration(days: int.parse(match[2]!) - 1));*/
           /*case 'DDDYYYY':
             return DateTime(int.parse(match[2]!)).add(Duration(days: int.parse(match[1]!) - 1));*/
           case 'YY/MM/DD':
-            return DateTime.parse('20${match[1]}-${match[2]}-${match[3]}');
+            return DateTime.parse('20${match[1]}-${match[2]}-${match[3]}T00:00:00.000Z').toString();
           case 'DD/MM/YY':
-            return DateTime.parse('20${match[3]}-${match[2]}-${match[1]}');
+            return DateTime.parse('20${match[3]}-${match[2]}-${match[1]}T00:00:00.000Z').toString();
           case 'MM/DD/YY':
-            return DateTime.parse('20${match[3]}-${match[1]}-${match[2]}');
+            return DateTime.parse('20${match[3]}-${match[1]}-${match[2]}T00:00:00.000Z').toString();
           case 'YYYY/MM/DD':
-            return DateTime.parse('${match[1]}-${match[2]}-${match[3]}');
+            return DateTime.parse('${match[1]}-${match[2]}-${match[3]}T00:00:00.000Z').toString();
           case 'DD/MM/YYYY':
-            return DateTime.parse('${match[3]}-${match[2]}-${match[1]}');
+            return DateTime.parse('${match[3]}-${match[2]}-${match[1]}T00:00:00.000Z').toString();
           case 'MM/DD/YYYY':
-            return DateTime.parse('${match[3]}-${match[1]}-${match[2]}');
+            return DateTime.parse('${match[3]}-${match[1]}-${match[2]}T00:00:00.000Z').toString();
           /*case 'YY/MMM/DD':
             return DateTime.parse('20${match[1]}-${_monthToNumber(match[2]!)}-${match[3]}');*/
           /*case 'DD/MMM/YY':
@@ -123,27 +139,46 @@ class RetCoreDateTimeParse {
           /*case 'MMM/DD/YYYY':
             return DateTime.parse('${match[3]}-${_monthToNumber(match[1]!)}-${match[2]}');*/
           case 'YY/DDD':
-            return DateTime(int.parse('20${match[1]}')).add(Duration(days: int.parse(match[2]!) - 1));
+            int yearYYDDD = int.parse('20${match[1]}');
+            int dayOfYearYYDDD = int.parse(match[2]!);
+            DateTime dateTimeYYDDD = DateTime(yearYYDDD).add(Duration(days: dayOfYearYYDDD - 1));
+            return '${dateTimeYYDDD.year.toString().padLeft(4, '0')}-${dateTimeYYDDD.month.toString().padLeft(2, '0')}-${dateTimeYYDDD.day.toString().padLeft(2, '0')}T00:00:00.000Z';
+
           case 'DDD/YY':
-            return DateTime(int.parse('20${match[2]}')).add(Duration(days: int.parse(match[1]!) - 1));
+            int yearDDDYY = int.parse('20${match[2]}');
+            int dayOfYearDDDYY = int.parse(match[1]!);
+            DateTime dateTimeDDDYY = DateTime(yearDDDYY).add(Duration(days: dayOfYearDDDYY - 1));
+            return '${dateTimeDDDYY.year.toString().padLeft(4, '0')}-${dateTimeDDDYY.month.toString().padLeft(2, '0')}-${dateTimeDDDYY.day.toString().padLeft(2, '0')}T00:00:00.000Z';
+
           case 'YYYY/DDD':
-            return DateTime(int.parse(match[1]!)).add(Duration(days: int.parse(match[2]!) - 1));
+            int yearYYYYDDD = int.parse(match[1]!);
+            int dayOfYearYYYYDDD = int.parse(match[2]!);
+            DateTime dateTimeYYYYDDD = DateTime(yearYYYYDDD).add(Duration(days: dayOfYearYYYYDDD - 1));
+            return '${dateTimeYYYYDDD.year.toString().padLeft(4, '0')}-${dateTimeYYYYDDD.month.toString().padLeft(2, '0')}-${dateTimeYYYYDDD.day.toString().padLeft(2, '0')}T00:00:00.000Z';
+
           case 'DDD/YYYY':
-            return DateTime(int.parse(match[2]!)).add(Duration(days: int.parse(match[1]!) - 1));
+            int yearDDDYYYY = int.parse(match[2]!);
+            int dayOfYearDDDYYYY = int.parse(match[1]!);
+            DateTime dateTimeDDDYYYY = DateTime(yearDDDYYYY).add(Duration(days: dayOfYearDDDYYYY - 1));
+            return '${dateTimeDDDYYYY.year.toString().padLeft(4, '0')}-${dateTimeDDDYYYY.month.toString().padLeft(2, '0')}-${dateTimeDDDYYYY.day.toString().padLeft(2, '0')}T00:00:00.000Z';
           /*case 'HHMM':
             return DateFormat('HHmm').parse(input);*/
           case 'HHMMSS':
-            return DateFormat('HHmmss').parse(input);
+            DateTime dateTimeHHMMSS = DateFormat('HHmmss').parse(input);
+            return DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTimeHHMMSS.toUtc()).toString();
           case 'HH:MM':
-            return DateFormat('HH:mm').parse(input);
+            DateTime dateTimeHHMM = DateFormat('HH:mm').parse(input);
+            return DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTimeHHMM.toUtc()).toString();
           case 'HH:MM:SS':
-            return DateFormat('HH:mm:ss').parse(input);
+            DateTime dateTimeHHMMSS = DateFormat('HH:mm:ss').parse(input);
+            return DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTimeHHMMSS.toUtc()).toString();
           /*case 'YYYYMMDDTHHMMSSmmmZ':
             return DateFormat("yyyyMMdd'T'HHmmss.SSS'Z'").parse(input);*/
           /*case 'YYYYMMDDZ':
             return DateFormat('yyyyMMddZ').parse(input);*/
           case 'MM/DD/YY HH:MM:SS':
-            return DateFormat('MM/dd/yy HH:mm:ss').parse(input);
+            DateTime dateTimeMMDDYY_HHMMSS = DateFormat('MM/dd/yy HH:mm:ss').parse(input);
+            return DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTimeMMDDYY_HHMMSS.toUtc()).toString();
           /*case 'YYMMDD HHMMSS':
             return DateFormat('yyMMdd HHmmss').parse(input);*/
           /*case 'YYYY-MMDDTHH:MM:SS':
@@ -153,24 +188,30 @@ class RetCoreDateTimeParse {
             var year = match[1]!;
             var month = match[2]!.padLeft(2, '0');
             var day = match[3]!.padLeft(2, '0');
-            return DateTime.parse('$year-$month-$day');
+            DateTime dateTimeYYYYMMDD = DateTime.parse('$year-$month-$day');
+            return DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTimeYYYYMMDD.toUtc()).toString();
           case 'YYYY-MM':
-            return DateFormat('yyyy-MM').parse(input);
+            DateTime dateTimeYYYYMM = DateFormat('yyyy-MM').parse(input);
+            return DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTimeYYYYMM.toUtc()).toString();
           /*case 'YYYY':
             return DateFormat('yyyy').parse(input);*/
           case '--MM-DD':
-            return DateFormat('--MM-dd').parse(input);
+            DateTime dateTimeMMDD = DateFormat('--MM-dd').parse(input);
+            return DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTimeMMDD.toUtc()).toString();
           case '---DD':
-            return DateFormat('---dd').parse(input);
+            DateTime dateTimeDD = DateFormat('---dd').parse(input);
+            return DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTimeDD.toUtc()).toString();
           default:
-            throw FormatException('Date format not recognized.');
+            log('Unsupported format: $input', name: 'parseDateTime');
+            return null;
         }
       }
     }
-    throw FormatException('Date format not recognized.');
+    log('Unsupported format: $input', name: 'parseDateTime');
+    return null;
   }
 
-  int _monthToNumber(String month) {
+  /*int _monthToNumber(String month) {
     switch (month.toLowerCase()) {
       case 'jan':
         return 1;
@@ -199,5 +240,5 @@ class RetCoreDateTimeParse {
       default:
         throw FormatException('Invalid month abbreviation.');
     }
-  }
+  }*/
 }
