@@ -112,30 +112,3 @@ class RetCoreDateTimeParse {
     }
   }
 }
-
-void main() {
-  var dates = [
-    '20240713', // YYYYMMDD
-    '13072024', // DDMMYYYY
-    '07242024', // MMDDYYYY
-    '2024/07/13', // YYYY/MM/DD
-    '13/07/2024', // DD/MM/YYYY
-    '07/13/2024', // MM/DD/YYYY
-    '2024JUL13', // YYYYMMMDD
-    '13JUL2024', // DDMMMYYYY
-    'JUL132024', // MMMDDYYYY
-    '241', // YYDDD
-    '2024241', // YYYYDDD
-    '07/13/24 12:34:56', // MM/DD/YY HH:MM:SS
-    '240312 123456', // YYMMDD HHMMSS
-    '2024-0713T12:34:56', // YYYY-MMDDTHH:MM:SS
-    '2024-07-13', // YYYY-MM-DD
-    '2024-07', // YYYY-MM
-  ];
-
-  var parser = RetCoreDateTimeParse();
-  for (var date in dates) {
-    var parsedDate = parser.parseDateTime(value: date);
-    print('$date -> ${parsedDate.toIso8601String()}');
-  }
-}
