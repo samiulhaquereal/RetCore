@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:retcore/src/config/imports.dart';
 
 
@@ -27,6 +28,11 @@ class RetCore{
   static double infinity(){
     double size = RetCorePageRoute.infinity();
     return size;
+  }
+  static String now(){
+    DateTime now = DateTime.now();
+    String formattedDateTime = DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(now);
+    return formattedDateTime;
   }
   static Widget space(double size){
     return RetcoreSpace(space: size);
