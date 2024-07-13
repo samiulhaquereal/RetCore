@@ -82,3 +82,7 @@ const double tChipTitleFontSize = 7;
 const double tChipSize = 30;
 const double tCircularProgressBarTitleFontSize = 14;
 const double tCircularProgressBarStrokeSize = 10;
+const double tCircularProgressBarStartingPointTop = 0;
+const double tCircularProgressBarStartingPointLeft = 80;
+const double tCircularProgressBarStartingPointRight = 190;
+const double tCircularProgressBarStartingPointBottom = 267;

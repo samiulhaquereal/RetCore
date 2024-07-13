@@ -37,7 +37,7 @@ class RetCoreCircularProgressBar extends StatelessWidget {
               fit: StackFit.expand,
               children: [
                 Transform.rotate(
-                  angle: startingPoint == RetCoreCircularProgressBarStyle.bottom ? 267 : 0,
+                  angle: startingPoint == RetCoreCircularProgressBarStyle.bottom ? tCircularProgressBarStartingPointBottom : startingPoint == RetCoreCircularProgressBarStyle.right ? tCircularProgressBarStartingPointRight : startingPoint == RetCoreCircularProgressBarStyle.left ? tCircularProgressBarStartingPointLeft : tCircularProgressBarStartingPointTop,
                   child: CircularProgressIndicator(
                     strokeWidth: stroke!,
                     value: value,
