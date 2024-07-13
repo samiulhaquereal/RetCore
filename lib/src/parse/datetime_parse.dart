@@ -41,43 +41,44 @@ class RetCoreDateTimeParse {
           case 'DDMMYYYY':
             return '${match.group(3)}-${match.group(2)}-${match.group(1)}T00:00:00.000Z';
           case 'MMDDYYYY':
+            return '${match.group(3)}-${match.group(1)}-${match.group(2)}T00:00:00.000Z';
           case 'YYYY/MM/DD':
+            return '${match.group(1)}-${match.group(2)}-${match.group(3)}T00:00:00.000Z';
           case 'DD/MM/YYYY':
+            return '${match.group(3)}-${match.group(2)}-${match.group(1)}T00:00:00.000Z';
           case 'MM/DD/YYYY':
             return '${match.group(3)}-${match.group(1)}-${match.group(2)}T00:00:00.000Z';
           case 'YYYYMMMDD':
-            var year = match.group(1);
             var month = _convertMonth(match.group(2)!);
-            var day = match.group(3);
-            return '$year-$month-${day}T00:00:00.000Z';
+            return '${match.group(1)}-$month-${match.group(3)}T00:00:00.000Z';
           case 'DDMMMYYYY':
-            return '${match.group(3)}-${_convertMonth(match.group(2)!)}-${match.group(1)}T00:00:00.000Z';
+            var month = _convertMonth(match.group(2)!);
+            return '${match.group(3)}-$month-${match.group(1)}T00:00:00.000Z';
           case 'MMMDDYYYY':
-            var year = match.group(3);
             var month = _convertMonth(match.group(1)!);
-            var day = match.group(2);
-            return '$year-$month-{$day}T00:00:00.000Z';
+            return '${match.group(3)}-$month-${match.group(2)}T00:00:00.000Z';
           case 'YYDDD':
-            return '20${match.group(1)}-${_convertDayOfYear(match.group(2)!)}T00:00:00.000Z';
+            var year = '20${match.group(1)}';
+            var date = DateTime(int.parse(year), 1, 1).add(Duration(days: int.parse(match.group(2)!) - 1));
+            return '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}T00:00:00.000Z';
           case 'YYYYDDD':
-            return '${match.group(1)}-${_convertDayOfYear(match.group(2)!)}T00:00:00.000Z';
+            var date = DateTime(int.parse(match.group(1)!), 1, 1).add(Duration(days: int.parse(match.group(2)!) - 1));
+            return '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}T00:00:00.000Z';
           case 'MM/DD/YY HH:MM:SS':
-            return '20${match.group(1)}-${match.group(2)}-${match.group(3)}T${match.group(4)}:${match.group(5)}:${match.group(6)}.000Z';
+            return '20${match.group(3)}-${match.group(1)}-${match.group(2)}T${match.group(4)}:${match.group(5)}:${match.group(6)}.000Z';
           case 'YYMMDD HHMMSS':
             return '20${match.group(1)}-${match.group(2)}-${match.group(3)}T${match.group(4)}:${match.group(5)}:${match.group(6)}.000Z';
           case 'YYYY-MMDDTHH:MM:SS':
-            return '${match.group(1)}-${match.group(2)}-${match.group(3)}T${match.group(4)}:${match.group(5)}:${match.group(6)}Z';
+            return '${match.group(1)}-${match.group(2)}-${match.group(3)}T${match.group(4)}:${match.group(5)}:${match.group(6)}.000Z';
           case 'YYYY-MM-DD':
             return '${match.group(1)}-${match.group(2)}-${match.group(3)}T00:00:00.000Z';
           case 'YYYY-MM':
             return '${match.group(1)}-${match.group(2)}-01T00:00:00.000Z';
-          default:
-            return '0000-00-00T00:00:00.000Z';
         }
       }
     }
 
-    return '0000-00-00T00:00:00.000Z';
+    return '1970-01-01T00:00:00.000Z';
   }
 
   String _convertMonth(String month) {
@@ -110,10 +111,31 @@ class RetCoreDateTimeParse {
         return '01';
     }
   }
+}
 
-  String _convertDayOfYear(String dayOfYear) {
-    var day = int.parse(dayOfYear);
-    var date = DateTime(DateTime.now().year, 1, 1).add(Duration(days: day - 1));
-    return '${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+void main() {
+  var dates = [
+    '20240713', // YYYYMMDD
+    '13072024', // DDMMYYYY
+    '07242024', // MMDDYYYY
+    '2024/07/13', // YYYY/MM/DD
+    '13/07/2024', // DD/MM/YYYY
+    '07/13/2024', // MM/DD/YYYY
+    '2024JUL13', // YYYYMMMDD
+    '13JUL2024', // DDMMMYYYY
+    'JUL132024', // MMMDDYYYY
+    '241', // YYDDD
+    '2024241', // YYYYDDD
+    '07/13/24 12:34:56', // MM/DD/YY HH:MM:SS
+    '240312 123456', // YYMMDD HHMMSS
+    '2024-0713T12:34:56', // YYYY-MMDDTHH:MM:SS
+    '2024-07-13', // YYYY-MM-DD
+    '2024-07', // YYYY-MM
+  ];
+
+  var parser = RetCoreDateTimeParse();
+  for (var date in dates) {
+    var parsedDate = parser.parseDateTime(value: date);
+    print('$date -> ${parsedDate.toIso8601String()}');
   }
 }
