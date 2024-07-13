@@ -1,10 +1,8 @@
-import 'package:intl/intl.dart';
 
 class RetCoreDateTimeParse {
-
   static RetCoreDateTimeParse? _instance;
   RetCoreDateTimeParse._internal();
-  factory RetCoreDateTimeParse(){
+  factory RetCoreDateTimeParse() {
     _instance ??= RetCoreDateTimeParse._internal();
     return _instance!;
   }
@@ -19,14 +17,20 @@ class RetCoreDateTimeParse {
   }
 
   String convertToISOFormat(String value) {
-    // Define regular expressions for different date formats
     final Map<String, RegExp> dateFormats = {
+      // Various date formats
       'YYMMDD': RegExp(r'^(\d{2})(\d{2})(\d{2})$'),
       'MMDDYY': RegExp(r'^(\d{2})(\d{2})(\d{2})$'),
       'YYYYMMDD': RegExp(r'^(\d{4})(\d{2})(\d{2})$'),
       'DDMMYYYY': RegExp(r'^(\d{2})(\d{2})(\d{4})$'),
       'MMDDYYYY': RegExp(r'^(\d{2})(\d{2})(\d{4})$'),
       'DDMMYY': RegExp(r'^(\d{2})(\d{2})(\d{2})$'),
+      'YY/MM/DD': RegExp(r'^(\d{2})/(\d{2})/(\d{2})$'),
+      'DD/MM/YY': RegExp(r'^(\d{2})/(\d{2})/(\d{2})$'),
+      'MM/DD/YY': RegExp(r'^(\d{2})/(\d{2})/(\d{2})$'),
+      'YYYY/MM/DD': RegExp(r'^(\d{4})/(\d{2})/(\d{2})$'),
+      'DD/MM/YYYY': RegExp(r'^(\d{2})/(\d{2})/(\d{4})$'),
+      'MM/DD/YYYY': RegExp(r'^(\d{2})/(\d{2})/(\d{4})$'),
       'YYMMMDD': RegExp(r'^(\d{2})(\w{3})(\d{2})$'),
       'DDMMMYY': RegExp(r'^(\d{2})(\w{3})(\d{2})$'),
       'MMMDDYY': RegExp(r'^(\w{3})(\d{2})(\d{2})$'),
@@ -37,29 +41,13 @@ class RetCoreDateTimeParse {
       'DDDYY': RegExp(r'^(\d{3})(\d{2})$'),
       'YYYYDDD': RegExp(r'^(\d{4})(\d{3})$'),
       'DDDYYYY': RegExp(r'^(\d{3})(\d{4})$'),
-      'YY/MM/DD': RegExp(r'^(\d{2})/(\d{2})/(\d{2})$'),
-      'DD/MM/YY': RegExp(r'^(\d{2})/(\d{2})/(\d{2})$'),
-      'MM/DD/YY': RegExp(r'^(\d{2})/(\d{2})/(\d{2})$'),
-      'YYYY/MM/DD': RegExp(r'^(\d{4})/(\d{2})/(\d{2})$'),
-      'DD/MM/YYYY': RegExp(r'^(\d{2})/(\d{2})/(\d{4})$'),
-      'MM/DD/YYYY': RegExp(r'^(\d{2})/(\d{2})/(\d{4})$'),
-      'YY/MMM/DD': RegExp(r'^(\d{2})/(\w{3})/(\d{2})$'),
-      'DD/MMM/YY': RegExp(r'^(\d{2})/(\w{3})/(\d{2})$'),
-      'MMM/DD/YY': RegExp(r'^(\w{3})/(\d{2})/(\d{2})$'),
-      'YYYY/MMM/DD': RegExp(r'^(\d{4})/(\w{3})/(\d{2})$'),
-      'DD/MMM/YYYY': RegExp(r'^(\d{2})/(\w{3})/(\d{4})$'),
-      'MMM/DD/YYYY': RegExp(r'^(\w{3})/(\d{2})/(\d{4})$'),
-      'YY/DDD': RegExp(r'^(\d{2})/(\d{3})$'),
-      'DDD/YY': RegExp(r'^(\d{3})/(\d{2})$'),
-      'YYYY/DDD': RegExp(r'^(\d{4})/(\d{3})$'),
-      'DDD/YYYY': RegExp(r'^(\d{3})/(\d{4})$'),
       'MONTH': RegExp(r'^\w+$'),
       'DAY': RegExp(r'^\w+$'),
       'HHMM': RegExp(r'^(\d{2})(\d{2})$'),
       'HHMMSS': RegExp(r'^(\d{2})(\d{2})(\d{2})$'),
       'HH:MM': RegExp(r'^(\d{2}):(\d{2})$'),
       'HH:MM:SS': RegExp(r'^(\d{2}):(\d{2}):(\d{2})$'),
-      'YYYYMMDDTHHMMSSmmmZ': RegExp(r'^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2}).(\d{3})Z$'),
+      'YYYYMMDDTHHMMSSmmmZ': RegExp(r'^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})\.(\d{3})Z$'),
       'YYYYMMDDZ': RegExp(r'^(\d{4})(\d{2})(\d{2})Z$'),
       'MM/DD/YY HH:MM:SS': RegExp(r'^(\d{2})/(\d{2})/(\d{2}) (\d{2}):(\d{2}):(\d{2})$'),
       'YYMMDD HHMMSS': RegExp(r'^(\d{2})(\d{2})(\d{2}) (\d{2})(\d{2})(\d{2})$'),
@@ -68,31 +56,33 @@ class RetCoreDateTimeParse {
       'YYYY-MM': RegExp(r'^(\d{4})-(\d{2})$'),
       'YYYY': RegExp(r'^(\d{4})$'),
       '--MM-DD': RegExp(r'^--(\d{2})-(\d{2})$'),
-      '---DD': RegExp(r'^---(\d{2})$')
+      '---DD': RegExp(r'^---(\d{2})$'),
     };
 
-    // Match input value with regular expressions and convert to ISO format
     for (var format in dateFormats.keys) {
       var match = dateFormats[format]!.firstMatch(value);
       if (match != null) {
         switch (format) {
           case 'YYMMDD':
+            return '20${match.group(1)}-${match.group(2)}-${match.group(3)}';
           case 'MMDDYY':
-          case 'DDMMYY':
-          case 'YY/MM/DD':
-          case 'DD/MM/YY':
-          case 'MM/DD/YY':
-            var year = format == 'YYMMDD' || format == 'YY/MM/DD' ? '20${match.group(1)}' : '20${match.group(3)}';
-            var month = format.contains('MM') ? match.group(2) : format == 'MMDDYY' || format == 'MM/DD/YY' ? match.group(1) : match.group(2);
-            var day = format.contains('DD') ? match.group(2) : format == 'DDMMYY' || format == 'DD/MM/YY' ? match.group(1) : match.group(2);
-            return '$year-$month-$day';
+            return '20${match.group(3)}-${match.group(1)}-${match.group(2)}';
           case 'YYYYMMDD':
             return '${match.group(1)}-${match.group(2)}-${match.group(3)}';
           case 'DDMMYYYY':
             return '${match.group(3)}-${match.group(2)}-${match.group(1)}';
           case 'MMDDYYYY':
-          case 'YYYY/MM/DD':
             return '${match.group(3)}-${match.group(1)}-${match.group(2)}';
+          case 'DDMMYY':
+            return '20${match.group(3)}-${match.group(2)}-${match.group(1)}';
+          case 'YY/MM/DD':
+            return '20${match.group(1)}-${match.group(2)}-${match.group(3)}';
+          case 'DD/MM/YY':
+            return '20${match.group(3)}-${match.group(2)}-${match.group(1)}';
+          case 'MM/DD/YY':
+            return '20${match.group(3)}-${match.group(1)}-${match.group(2)}';
+          case 'YYYY/MM/DD':
+            return '${match.group(1)}-${match.group(2)}-${match.group(3)}';
           case 'DD/MM/YYYY':
             return '${match.group(3)}-${match.group(2)}-${match.group(1)}';
           case 'MM/DD/YYYY':
@@ -116,13 +106,13 @@ class RetCoreDateTimeParse {
           case 'DDDYYYY':
             return '${match.group(2)}-${_convertDayOfYear(match.group(1))}';
           case 'HHMM':
-            return '1970-01-01 ${match.group(1)}:${match.group(2)}:00';
+            return '1970-01-01T${match.group(1)}:${match.group(2)}:00Z';
           case 'HHMMSS':
-            return '1970-01-01 ${match.group(1)}:${match.group(2)}:${match.group(3)}';
+            return '1970-01-01T${match.group(1)}:${match.group(2)}:${match.group(3)}Z';
           case 'HH:MM':
-            return '1970-01-01 ${match.group(1)}:${match.group(2)}:00';
+            return '1970-01-01T${match.group(1)}:${match.group(2)}:00Z';
           case 'HH:MM:SS':
-            return '1970-01-01 ${match.group(1)}:${match.group(2)}:${match.group(3)}';
+            return '1970-01-01T${match.group(1)}:${match.group(2)}:${match.group(3)}Z';
           case 'YYYYMMDDTHHMMSSmmmZ':
           case 'YYYYMMDDZ':
           case 'YYYY-MMDDTHH:MM:SS':
@@ -142,9 +132,7 @@ class RetCoreDateTimeParse {
   }
 
   String _convertMonth(String? month) {
-    if (month == null) {
-      return '01'; // Default to January if month is null
-    }
+    if (month == null) return '01'; // Default to January if month is null
     switch (month.toUpperCase()) {
       case 'JAN':
         return '01';
@@ -176,9 +164,7 @@ class RetCoreDateTimeParse {
   }
 
   String _convertDayOfYear(String? dayOfYear) {
-    if (dayOfYear == null) {
-      return '01-01'; // Default to January 1st if dayOfYear is null
-    }
+    if (dayOfYear == null) return '01-01'; // Default to January 1st if dayOfYear is null
 
     var day = int.tryParse(dayOfYear) ?? 1;
     var month = 1;
@@ -196,5 +182,4 @@ class RetCoreDateTimeParse {
 
     return '${month.toString().padLeft(2, '0')}-${day.toString().padLeft(2, '0')}';
   }
-
 }
