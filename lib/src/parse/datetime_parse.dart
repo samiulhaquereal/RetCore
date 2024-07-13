@@ -77,7 +77,7 @@ class RetCoreDateTimeParse {
             var year = format == 'YYMMDD' || format == 'YY/MM/DD' ? '20${match.group(1)}' : '20${match.group(3)}';
             var month = format.contains('MM') ? match.group(2) : format == 'MMDDYY' || format == 'MM/DD/YY' ? match.group(1) : match.group(2);
             var day = format.contains('DD') ? match.group(2) : format == 'DDMMYY' || format == 'DD/MM/YY' ? match.group(1) : match.group(2);
-            return '$year-$month-$dayT00:00:00.000Z';
+            return '$year-$month-{$day}T00:00:00.000Z';
           case 'YYYYMMDD':
             return '${match.group(1)}-${match.group(2)}-${match.group(3)}T00:00:00.000Z';
           case 'DDMMYYYY':
