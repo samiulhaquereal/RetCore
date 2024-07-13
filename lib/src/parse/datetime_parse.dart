@@ -1,4 +1,3 @@
-
 class RetCoreDateTimeParse {
   static RetCoreDateTimeParse? _instance;
   RetCoreDateTimeParse._internal();
@@ -18,7 +17,6 @@ class RetCoreDateTimeParse {
 
   String convertToISOFormat(String value) {
     final Map<String, RegExp> dateFormats = {
-      // Various date formats
       'YYMMDD': RegExp(r'^(\d{2})(\d{2})(\d{2})$'),
       'MMDDYY': RegExp(r'^(\d{2})(\d{2})(\d{2})$'),
       'YYYYMMDD': RegExp(r'^(\d{4})(\d{2})(\d{2})$'),
@@ -41,13 +39,11 @@ class RetCoreDateTimeParse {
       'DDDYY': RegExp(r'^(\d{3})(\d{2})$'),
       'YYYYDDD': RegExp(r'^(\d{4})(\d{3})$'),
       'DDDYYYY': RegExp(r'^(\d{3})(\d{4})$'),
-      'MONTH': RegExp(r'^\w+$'),
-      'DAY': RegExp(r'^\w+$'),
       'HHMM': RegExp(r'^(\d{2})(\d{2})$'),
       'HHMMSS': RegExp(r'^(\d{2})(\d{2})(\d{2})$'),
       'HH:MM': RegExp(r'^(\d{2}):(\d{2})$'),
       'HH:MM:SS': RegExp(r'^(\d{2}):(\d{2}):(\d{2})$'),
-      'YYYYMMDDTHHMMSSmmmZ': RegExp(r'^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})\.(\d{3})Z$'),
+      'YYYYMMDDTHHMMSSmmmZ': RegExp(r'^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2}).(\d{3})Z$'),
       'YYYYMMDDZ': RegExp(r'^(\d{4})(\d{2})(\d{2})Z$'),
       'MM/DD/YY HH:MM:SS': RegExp(r'^(\d{2})/(\d{2})/(\d{2}) (\d{2}):(\d{2}):(\d{2})$'),
       'YYMMDD HHMMSS': RegExp(r'^(\d{2})(\d{2})(\d{2}) (\d{2})(\d{2})(\d{2})$'),
@@ -56,130 +52,102 @@ class RetCoreDateTimeParse {
       'YYYY-MM': RegExp(r'^(\d{4})-(\d{2})$'),
       'YYYY': RegExp(r'^(\d{4})$'),
       '--MM-DD': RegExp(r'^--(\d{2})-(\d{2})$'),
-      '---DD': RegExp(r'^---(\d{2})$'),
+      '---DD': RegExp(r'^---(\d{2})$')
     };
 
+    String _convertMonth(String month) {
+      const months = {
+        'JAN': '01', 'FEB': '02', 'MAR': '03', 'APR': '04',
+        'MAY': '05', 'JUN': '06', 'JUL': '07', 'AUG': '08',
+        'SEP': '09', 'OCT': '10', 'NOV': '11', 'DEC': '12'
+      };
+      return months[month.toUpperCase()] ?? '01';
+    }
+
+    String _convertDayOfYear(int dayOfYear, int year) {
+      final date = DateTime(year).add(Duration(days: dayOfYear - 1));
+      return '${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+    }
+
     for (var format in dateFormats.keys) {
-      var match = dateFormats[format]!.firstMatch(value);
+      final match = dateFormats[format]?.firstMatch(value);
       if (match != null) {
         switch (format) {
           case 'YYMMDD':
-            return '20${match.group(1)}-${match.group(2)}-${match.group(3)}';
+            return '20${match[1]}-${match[2]}-${match[3]}';
           case 'MMDDYY':
-            return '20${match.group(3)}-${match.group(1)}-${match.group(2)}';
+            return '20${match[3]}-${match[1]}-${match[2]}';
           case 'YYYYMMDD':
-            return '${match.group(1)}-${match.group(2)}-${match.group(3)}';
+            return '${match[1]}-${match[2]}-${match[3]}';
           case 'DDMMYYYY':
-            return '${match.group(3)}-${match.group(2)}-${match.group(1)}';
+            return '${match[3]}-${match[2]}-${match[1]}';
           case 'MMDDYYYY':
-            return '${match.group(3)}-${match.group(1)}-${match.group(2)}';
+            return '${match[3]}-${match[1]}-${match[2]}';
           case 'DDMMYY':
-            return '20${match.group(3)}-${match.group(2)}-${match.group(1)}';
+            return '20${match[3]}-${match[2]}-${match[1]}';
           case 'YY/MM/DD':
-            return '20${match.group(1)}-${match.group(2)}-${match.group(3)}';
+            return '20${match[1]}-${match[2]}-${match[3]}';
           case 'DD/MM/YY':
-            return '20${match.group(3)}-${match.group(2)}-${match.group(1)}';
+            return '20${match[3]}-${match[2]}-${match[1]}';
           case 'MM/DD/YY':
-            return '20${match.group(3)}-${match.group(1)}-${match.group(2)}';
+            return '20${match[3]}-${match[1]}-${match[2]}';
           case 'YYYY/MM/DD':
-            return '${match.group(1)}-${match.group(2)}-${match.group(3)}';
+            return '${match[1]}-${match[2]}-${match[3]}';
           case 'DD/MM/YYYY':
-            return '${match.group(3)}-${match.group(2)}-${match.group(1)}';
+            return '${match[3]}-${match[2]}-${match[1]}';
           case 'MM/DD/YYYY':
-            return '${match.group(3)}-${match.group(1)}-${match.group(2)}';
+            return '${match[3]}-${match[1]}-${match[2]}';
           case 'YYMMMDD':
+            return '20${match[1]}-${_convertMonth(match[2]!)}-${match[3]}';
           case 'DDMMMYY':
+            return '20${match[3]}-${_convertMonth(match[2]!)}-${match[1]}';
           case 'MMMDDYY':
+            return '20${match[3]}-${_convertMonth(match[1]!)}-${match[2]}';
           case 'YYYYMMMDD':
+            return '${match[1]}-${_convertMonth(match[2]!)}-${match[3]}';
           case 'DDMMMYYYY':
+            return '${match[3]}-${_convertMonth(match[2]!)}-${match[1]}';
           case 'MMMDDYYYY':
-            var year = format.startsWith('YY') ? '20${match.group(1)}' : format.startsWith('YYYY') ? match.group(1) : '20${match.group(3)}';
-            var month = _convertMonth(match.group(2));
-            var day = format.endsWith('DD') ? match.group(3) : match.group(2);
-            return '$year-$month-$day';
+            return '${match[3]}-${_convertMonth(match[1]!)}-${match[2]}';
           case 'YYDDD':
-            return '20${match.group(1)}-${_convertDayOfYear(match.group(2))}';
+            return '20${match[1]}-${_convertDayOfYear(int.parse(match[2]!), int.parse('20${match[1]}!'))}';
           case 'DDDYY':
-            return '20${match.group(2)}-${_convertDayOfYear(match.group(1))}';
+            return '20${match[2]}-${_convertDayOfYear(int.parse(match[1]!), int.parse('20${match[2]}!'))}';
           case 'YYYYDDD':
-            return '${match.group(1)}-${_convertDayOfYear(match.group(2))}';
+            return '${match[1]}-${_convertDayOfYear(int.parse(match[2]!), int.parse(match[1]!))}';
           case 'DDDYYYY':
-            return '${match.group(2)}-${_convertDayOfYear(match.group(1))}';
+            return '${match[2]}-${_convertDayOfYear(int.parse(match[1]!), int.parse(match[2]!))}';
           case 'HHMM':
-            return '1970-01-01T${match.group(1)}:${match.group(2)}:00Z';
+            return '1970-01-01 ${match[1]}:${match[2]}:00';
           case 'HHMMSS':
-            return '1970-01-01T${match.group(1)}:${match.group(2)}:${match.group(3)}Z';
+            return '1970-01-01 ${match[1]}:${match[2]}:${match[3]}';
           case 'HH:MM':
-            return '1970-01-01T${match.group(1)}:${match.group(2)}:00Z';
+            return '1970-01-01 ${match[1]}:${match[2]}:00';
           case 'HH:MM:SS':
-            return '1970-01-01T${match.group(1)}:${match.group(2)}:${match.group(3)}Z';
+            return '1970-01-01 ${match[1]}:${match[2]}:${match[3]}';
           case 'YYYYMMDDTHHMMSSmmmZ':
+            return '${match[1]}-${match[2]}-${match[3]}T${match[4]}:${match[5]}:${match[6]}.${match[7]}Z';
           case 'YYYYMMDDZ':
+            return '${match[1]}-${match[2]}-${match[3]}';
+          case 'MM/DD/YY HH:MM:SS':
+            return '20${match[3]}-${match[1]}-${match[2]} ${match[4]}:${match[5]}:${match[6]}';
+          case 'YYMMDD HHMMSS':
+            return '20${match[1]}-${match[2]}-${match[3]} ${match[4]}:${match[5]}:${match[6]}';
           case 'YYYY-MMDDTHH:MM:SS':
+            return '${match[1]}-${match[2]}T${match[3]}:${match[4]}:${match[5]}';
           case 'YYYY-MM-DD':
+            return '${match[1]}-${match[2]}-${match[3]}';
           case 'YYYY-MM':
+            return '${match[1]}-${match[2]}-01';
           case 'YYYY':
+            return '${match[1]}-01-01';
           case '--MM-DD':
+            return '1970-${match[1]}-${match[2]}';
           case '---DD':
-            return value;
-          default:
-            return '0000-00-00T00:00:00.000Z'; // Default for unsupported formats
+            return '1970-01-${match[1]}';
         }
       }
     }
-
-    return '0000-00-00T00:00:00.000Z'; // Default for unmatched formats
-  }
-
-  String _convertMonth(String? month) {
-    if (month == null) return '01'; // Default to January if month is null
-    switch (month.toUpperCase()) {
-      case 'JAN':
-        return '01';
-      case 'FEB':
-        return '02';
-      case 'MAR':
-        return '03';
-      case 'APR':
-        return '04';
-      case 'MAY':
-        return '05';
-      case 'JUN':
-        return '06';
-      case 'JUL':
-        return '07';
-      case 'AUG':
-        return '08';
-      case 'SEP':
-        return '09';
-      case 'OCT':
-        return '10';
-      case 'NOV':
-        return '11';
-      case 'DEC':
-        return '12';
-      default:
-        return '01'; // Default to January if month is unrecognized
-    }
-  }
-
-  String _convertDayOfYear(String? dayOfYear) {
-    if (dayOfYear == null) return '01-01'; // Default to January 1st if dayOfYear is null
-
-    var day = int.tryParse(dayOfYear) ?? 1;
-    var month = 1;
-
-    while (day > 31) {
-      if (month == 2) {
-        day -= 28;
-      } else if ([4, 6, 9, 11].contains(month)) {
-        day -= 30;
-      } else {
-        day -= 31;
-      }
-      month += 1;
-    }
-
-    return '${month.toString().padLeft(2, '0')}-${day.toString().padLeft(2, '0')}';
+    return value;
   }
 }
