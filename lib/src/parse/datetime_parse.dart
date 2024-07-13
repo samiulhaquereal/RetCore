@@ -54,7 +54,7 @@ class RetCoreDateTimeParse {
       'MM/DD/YY HH:MM:SS': RegExp(r'^(\d{2})/(\d{2})/(\d{2}) (\d{2}):(\d{2}):(\d{2})$'),
       'YYMMDD HHMMSS': RegExp(r'^(\d{2})(\d{2})(\d{2}) (\d{2})(\d{2})(\d{2})$'),
       'YYYY-MMDDTHH:MM:SS': RegExp(r'^(\d{4})-(\d{2})(\d{2})T(\d{2}):(\d{2}):(\d{2})$'),
-      'YYYY-MM-DD': RegExp(r'^(\d{4})-(\d{2})-(\d{2})$'),
+      'YYYY-MM-DD': RegExp(r'^(\d{4})-(\d{1,2})-(\d{1,2})$'),  // Adjusted for single-digit month and day
       'YYYY-MM': RegExp(r'^(\d{4})-(\d{2})$'),
       'YYYY': RegExp(r'^(\d{4})$'),
       '--MM-DD': RegExp(r'^--(\d{2})-(\d{2})$'),
@@ -149,7 +149,11 @@ class RetCoreDateTimeParse {
           case 'YYYY-MMDDTHH:MM:SS':
             return DateFormat("yyyy-MMdd'T'HH:mm:ss").parse(input);
           case 'YYYY-MM-DD':
-            return DateFormat('yyyy-MM-dd').parse(input);
+          // Ensure leading zeros for single-digit months and days
+            var year = match[1]!;
+            var month = match[2]!.padLeft(2, '0');
+            var day = match[3]!.padLeft(2, '0');
+            return DateTime.parse('$year-$month-$day');
           case 'YYYY-MM':
             return DateFormat('yyyy-MM').parse(input);
           case 'YYYY':
