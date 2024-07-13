@@ -40,12 +40,6 @@ class RetCoreParse {
     return defaultValue;
   }
 
-  static DateTime parseDateTime({required dynamic value, required DateTime defaultValue}) {
-    if (value is DateTime) return value;
-    if (value is String) return DateTime.tryParse(value) ?? defaultValue;
-    return defaultValue;
-  }
-
   static List<T> parseList<T>({required dynamic value, required List<T> defaultValue}) {
     if (value is List<T>) return value;
     if (value is String) {

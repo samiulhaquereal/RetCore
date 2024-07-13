@@ -1,5 +1,5 @@
 import 'package:retcore/src/config/imports.dart';
-import 'package:retcore/src/features/retcore_responsive.dart';
+
 
 class RetCore{
 
@@ -48,7 +48,7 @@ class RetCore{
     return response;
   }
   static DateTime parseDateTime({required dynamic value, required DateTime defaultValue}){
-    DateTime response = RetCoreParse.parseDateTime(value: value, defaultValue: defaultValue);
+    DateTime response = RetCoreDateTimeParse.parseDateTime(value: value, defaultValue: defaultValue);
     return response;
   }
   static List<T> parseList<T>({required dynamic value, required List<T> defaultValue}){
