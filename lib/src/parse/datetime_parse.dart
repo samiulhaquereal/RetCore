@@ -38,28 +38,25 @@ class RetCoreDateTimeParse {
       'YYYY-MM': RegExp(r'^(\d{4})-(\d{2})$'),
       '--MM-DD': RegExp(r'^--(\d{2})-(\d{2})$'),
       '---DD': RegExp(r'^---(\d{2})$'),
-      //'YYMMMDD': RegExp(r'^(\d{2})(\w{3})(\d{2})$'),
-      //'DDMMMYY': RegExp(r'^(\d{2})(\w{3})(\d{2})$'),
-      //'MMMDDYY': RegExp(r'^(\w{3})(\d{2})(\d{2})$'),
-      //'YYYYMMMDD': RegExp(r'^(\d{4})(\w{3})(\d{2})$'),
-      //'DDMMMYYYY': RegExp(r'^(\d{2})(\w{3})(\d{4})$'),
-      //'MMMDDYYYY': RegExp(r'^(\w{3})(\d{2})(\d{4})$'),
-      //'YYYYDDD': RegExp(r'^(\d{4})(\d{3})$'),
-      //'DDDYYYY': RegExp(r'^(\d{3})(\d{4})$'),
-      //'YY/MMM/DD': RegExp(r'^(\d{2})/(\w{3})/(\d{2})$'),
-      //'DD/MMM/YY': RegExp(r'^(\d{2})/(\w{3})/(\d{2})$'),
-      //'MMM/DD/YY': RegExp(r'^(\w{3})/(\d{2})/(\d{2})$'),
-      //'YYYY/MMM/DD': RegExp(r'^(\d{4})/(\w{3})/(\d{2})$'),
-      //'DD/MMM/YYYY': RegExp(r'^(\d{2})/(\w{3})/(\d{4})$'),
-      //'MMM/DD/YYYY': RegExp(r'^(\w{3})/(\d{2})/(\d{4})$'),
-      //'MONTH': RegExp(r'^(January|February|March|April|May|June|July|August|September|October|November|December)$', caseSensitive: false),
-      //'DAY': RegExp(r'^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)$', caseSensitive: false),
-      //'HHMM': RegExp(r'^(\d{2})(\d{2})$'),
-      //'YYYYMMDDTHHMMSSmmmZ': RegExp(r'^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2}).(\d{3})Z$'),
-      //'YYYYMMDDZ': RegExp(r'^(\d{4})(\d{2})(\d{2})Z$'),
-      //'YYMMDD HHMMSS': RegExp(r'^(\d{2})(\d{2})(\d{2}) (\d{2})(\d{2})(\d{2})$'),
-      //'YYYY-MMDDTHH:MM:SS': RegExp(r'^(\d{4})-(\d{2})(\d{2})T(\d{2}):(\d{2}):(\d{2})$'),
-      //'YYYY': RegExp(r'^(\d{4})$'),
+      'YYMMMDD': RegExp(r'^(\d{2})(\w{3})(\d{2})$'),
+      'DDMMMYY': RegExp(r'^(\d{2})(\w{3})(\d{2})$'),
+      'MMMDDYY': RegExp(r'^(\w{3})(\d{2})(\d{2})$'),
+      'YYYYMMMDD': RegExp(r'^(\d{4})(\w{3})(\d{2})$'),
+      'DDMMMYYYY': RegExp(r'^(\d{2})(\w{3})(\d{4})$'),
+      'MMMDDYYYY': RegExp(r'^(\w{3})(\d{2})(\d{4})$'),
+      'YYYYDDD': RegExp(r'^(\d{4})(\d{3})$'),
+      'DDDYYYY': RegExp(r'^(\d{3})(\d{4})$'),
+      'YY/MMM/DD': RegExp(r'^(\d{2})/(\w{3})/(\d{2})$'),
+      'DD/MMM/YY': RegExp(r'^(\d{2})/(\w{3})/(\d{2})$'),
+      'MMM/DD/YY': RegExp(r'^(\w{3})/(\d{2})/(\d{2})$'),
+      'YYYY/MMM/DD': RegExp(r'^(\d{4})/(\w{3})/(\d{2})$'),
+      'DD/MMM/YYYY': RegExp(r'^(\d{2})/(\w{3})/(\d{4})$'),
+      'MMM/DD/YYYY': RegExp(r'^(\w{3})/(\d{2})/(\d{4})$'),
+      'HHMM': RegExp(r'^(\d{2})(\d{2})$'),
+      'YYYYMMDDTHHMMSSmmmZ': RegExp(r'^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2}).(\d{3})Z$'),
+      'YYYYMMDDZ': RegExp(r'^(\d{4})(\d{2})(\d{2})Z$'),
+      'YYMMDD HHMMSS': RegExp(r'^(\d{2})(\d{2})(\d{2}) (\d{2})(\d{2})(\d{2})$'),
+      'YYYY-MMDDTHH:MM:SS': RegExp(r'^(\d{4})-(\d{2})(\d{2})T(\d{2}):(\d{2}):(\d{2})$'),
     };
 
     for (var format in formatters.keys) {
@@ -79,18 +76,104 @@ class RetCoreDateTimeParse {
             return DateTime.parse('${match[3]}-${match[1]}-${match[2]}T00:00:00.000Z').toString();
           case 'DDMMYY':
             return DateTime.parse('20${match[3]}-${match[2]}-${match[1]}T00:00:00.000Z').toString();
-          /*case 'YYMMMDD':
-            return DateTime.parse('20${match[1]}-${_monthToNumber(match[2]!)}-${match[3]}');*/
-          /*case 'DDMMMYY':
-            return DateTime.parse('20${match[3]}-${_monthToNumber(match[2]!)}-${match[1]}');*/
-          /*case 'MMMDDYY':
-            return DateTime.parse('20${match[3]}-${_monthToNumber(match[1]!)}-${match[2]}');*/
-          /*case 'YYYYMMMDD':
-            return DateTime.parse('${match[1]}-${_monthToNumber(match[2]!)}-${match[3]}');*/
-          /*case 'DDMMMYYYY':
-            return DateTime.parse('${match[3]}-${_monthToNumber(match[2]!)}-${match[1]}');*/
-          /*case 'MMMDDYYYY':
-            return DateTime.parse('${match[3]}-${_monthToNumber(match[1]!)}-${match[2]}');*/
+          case 'YYMMMDD':
+            String yearYY = match.group(1)!;
+            String monthMMM = match.group(2)!;
+            String dayDD = match.group(3)!;
+            int year = int.parse('20$yearYY');
+            // Parse month from abbreviation
+            int month = monthMapping[monthMMM.toUpperCase()] ?? 1;
+            // Parse day as an integer
+            int day = int.parse(dayDD);
+            // Create DateTime object with parsed components
+            DateTime dateTime = DateTime(year, month, day);
+            String formattedDateTime = dateTime.toIso8601String();
+            formattedDateTime = formattedDateTime.substring(0, 10) + 'T00:00:00.000Z';
+            return formattedDateTime;
+          case 'DDMMMYY':
+            String dayDD = match.group(1)!;
+            String monthMMM = match.group(2)!;
+            String yearYY = match.group(3)!;
+            // Parse year as an integer (assumed to be in the 20YY format)
+            int year = int.parse('20$yearYY');
+            // Parse month from abbreviation
+            int month = monthMapping2[monthMMM.substring(0, 1).toUpperCase() + monthMMM.substring(1).toLowerCase()] ?? 1;
+            // Parse day as an integer
+            int day = int.parse(dayDD);
+            // Create DateTime object with parsed components
+            DateTime dateTime = DateTime(year, month, day);
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = dateTime.toIso8601String();
+            // Append the time component 'T00:00:00.000Z'
+            formattedDateTime = formattedDateTime.substring(0, 10) + 'T00:00:00.000Z';
+            return formattedDateTime;
+          case 'MMMDDYY':
+            String monthMMM = match.group(1)!;
+            String dayDD = match.group(2)!;
+            String yearYY = match.group(3)!;
+            // Parse year as an integer (assumed to be in the 20YY format)
+            int year = int.parse('20$yearYY');
+            // Parse month from abbreviation
+            int month = monthMapping2[monthMMM.substring(0, 1).toUpperCase() + monthMMM.substring(1).toLowerCase()] ?? 1;
+            // Parse day as an integer
+            int day = int.parse(dayDD);
+            // Create DateTime object with parsed components
+            DateTime dateTime = DateTime(year, month, day);
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = dateTime.toIso8601String();
+            // Append the time component 'T00:00:00.000Z'
+            formattedDateTime = formattedDateTime.substring(0, 10) + 'T00:00:00.000Z';
+            return formattedDateTime;
+          case 'YYYYMMMDD':
+            String yearYYYY = match.group(1)!;
+            String monthMMM = match.group(2)!;
+            String dayDD = match.group(3)!;
+            // Parse year as an integer
+            int year = int.parse(yearYYYY);
+            // Parse month from abbreviation
+            int month = monthMapping2[monthMMM.substring(0, 1).toUpperCase() + monthMMM.substring(1).toLowerCase()] ?? 1;
+            // Parse day as an integer
+            int day = int.parse(dayDD);
+            // Create DateTime object with parsed components
+            DateTime dateTime = DateTime(year, month, day);
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = dateTime.toIso8601String();
+            // Append the time component 'T00:00:00.000Z'
+            formattedDateTime = formattedDateTime.substring(0, 10) + 'T00:00:00.000Z';
+            return formattedDateTime;
+          case 'DDMMMYYYY':
+            String dayDD = match.group(1)!;
+            String monthMMM = match.group(2)!;
+            String yearYYYY = match.group(3)!;
+            // Parse day as an integer
+            int day = int.parse(dayDD);
+            // Parse month from abbreviation
+            int month = monthMapping2[monthMMM.substring(0, 1).toUpperCase() + monthMMM.substring(1).toLowerCase()] ?? 1;
+            // Parse year as an integer
+            int year = int.parse(yearYYYY);
+            // Create DateTime object with parsed components
+            DateTime dateTime = DateTime(year, month, day);
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = dateTime.toIso8601String();
+            // Append the time component 'T00:00:00.000Z'
+            formattedDateTime = formattedDateTime.substring(0, 10) + 'T00:00:00.000Z';
+            return formattedDateTime;
+          case 'MMMDDYYYY':
+            String monthMMM = match.group(1)!;
+            String dayDD = match.group(2)!;
+            String yearYYYY = match.group(3)!;
+            // Parse month from abbreviation
+            int month = monthMapping[monthMMM.substring(0, 1).toUpperCase() + monthMMM.substring(1).toLowerCase()] ?? 1;
+            // Parse day and year as integers
+            int day = int.parse(dayDD);
+            int year = int.parse(yearYYYY);
+            // Create DateTime object with parsed components
+            DateTime dateTime = DateTime(year, month, day);
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = dateTime.toIso8601String();
+            // Append the time component 'T00:00:00.000Z'
+            formattedDateTime = formattedDateTime.substring(0, 10) + 'T00:00:00.000Z';
+            return formattedDateTime;
           case 'YYDDD':
             //return DateTime(int.parse('20${match[1]}')).add(Duration(days: int.parse(match[2]!) - 1));
           // Assuming match[1] contains the last two digits of the year and match[2] contains the day of the year
@@ -110,10 +193,34 @@ class RetCoreDateTimeParse {
             DateTime dateTime = DateTime(year).add(Duration(days: dayOfYear - 1));
             String formattedDate = '${dateTime.year.toString().padLeft(4, '0')}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')}T00:00:00.000Z';
             return formattedDate;
-          /*case 'YYYYDDD':
-            return DateTime(int.parse(match[1]!)).add(Duration(days: int.parse(match[2]!) - 1));*/
-          /*case 'DDDYYYY':
-            return DateTime(int.parse(match[2]!)).add(Duration(days: int.parse(match[1]!) - 1));*/
+          case 'YYYYDDD':
+          // Extract components from the match
+            String yearYYYY = match.group(1)!;
+            String dayOfYearDDD = match.group(2)!;
+            // Parse year and dayOfYear as integers
+            int year = int.parse(yearYYYY);
+            int dayOfYear = int.parse(dayOfYearDDD);
+            // Create DateTime object for the given year and day of year
+            DateTime dateTime = DateTime(year, 1, 1).add(Duration(days: dayOfYear - 1));
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = dateTime.toIso8601String();
+            // Append the time component 'T00:00:00.000Z'
+            formattedDateTime = formattedDateTime.substring(0, 10) + 'T00:00:00.000Z';
+            return formattedDateTime;
+          case 'DDDYYYY':
+          // Extract components from the match
+            String dayOfYearDDD = match.group(1)!;
+            String yearYYYY = match.group(2)!;
+            // Parse year and dayOfYear as integers
+            int year = int.parse(yearYYYY);
+            int dayOfYear = int.parse(dayOfYearDDD);
+            // Create DateTime object for the given year and day of year
+            DateTime dateTime = DateTime(year, 1, 1).add(Duration(days: dayOfYear - 1));
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = dateTime.toIso8601String();
+            // Append the time component 'T00:00:00.000Z'
+            formattedDateTime = formattedDateTime.substring(0, 10) + 'T00:00:00.000Z';
+            return formattedDateTime;
           case 'YY/MM/DD':
             return DateTime.parse('20${match[1]}-${match[2]}-${match[3]}T00:00:00.000Z').toString();
           case 'DD/MM/YY':
@@ -126,18 +233,106 @@ class RetCoreDateTimeParse {
             return DateTime.parse('${match[3]}-${match[2]}-${match[1]}T00:00:00.000Z').toString();
           case 'MM/DD/YYYY':
             return DateTime.parse('${match[3]}-${match[1]}-${match[2]}T00:00:00.000Z').toString();
-          /*case 'YY/MMM/DD':
-            return DateTime.parse('20${match[1]}-${_monthToNumber(match[2]!)}-${match[3]}');*/
-          /*case 'DD/MMM/YY':
-            return DateTime.parse('20${match[3]}-${_monthToNumber(match[2]!)}-${match[1]}');*/
-          /*case 'MMM/DD/YY':
-            return DateTime.parse('20${match[3]}-${_monthToNumber(match[1]!)}-${match[2]}');*/
-          /*case 'YYYY/MMM/DD':
-            return DateTime.parse('${match[1]}-${_monthToNumber(match[2]!)}-${match[3]}');*/
-          /*case 'DD/MMM/YYYY':
-            return DateTime.parse('${match[3]}-${_monthToNumber(match[2]!)}-${match[1]}');*/
-          /*case 'MMM/DD/YYYY':
-            return DateTime.parse('${match[3]}-${_monthToNumber(match[1]!)}-${match[2]}');*/
+          case 'YY/MMM/DD':
+            String yearYY = match.group(1)!;
+            String monthMMM = match.group(2)!;
+            String dayDD = match.group(3)!;
+            // Convert month abbreviation to numeric month
+            int month = _getMonthFromAbbreviation(monthMMM);
+            // Parse year, month, and day as integers
+            int year = 2000 + int.parse(yearYY); // Assuming year range from 2000-2099
+            int day = int.parse(dayDD);
+            // Create DateTime object for the given year, month, and day
+            DateTime dateTime = DateTime(year, month, day);
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = dateTime.toIso8601String();
+            // Append the time component 'T00:00:00.000Z'
+            formattedDateTime = formattedDateTime.substring(0, 10) + 'T00:00:00.000Z';
+            return formattedDateTime;
+          case 'DD/MMM/YY':
+          // Extract components from the match
+            String dayDD = match.group(1)!;
+            String monthMMM = match.group(2)!;
+            String yearYY = match.group(3)!;
+            // Convert month abbreviation to numeric month
+            int month = _getMonthFromAbbreviation(monthMMM);
+            // Parse year, month, and day as integers
+            int year = 2000 + int.parse(yearYY); // Assuming year range from 2000-2099
+            int day = int.parse(dayDD);
+            // Create DateTime object for the given year, month, and day
+            DateTime dateTime = DateTime(year, month, day);
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = dateTime.toIso8601String();
+            // Append the time component 'T00:00:00.000Z'
+            formattedDateTime = formattedDateTime.substring(0, 10) + 'T00:00:00.000Z';
+            return formattedDateTime;
+          case 'MMM/DD/YY':
+            String monthMMM = match.group(1)!;
+            String dayDD = match.group(2)!;
+            String yearYY = match.group(3)!;
+            // Convert month abbreviation to numeric month
+            int month = _getMonthFromAbbreviation(monthMMM);
+            // Parse year, month, and day as integers
+            int year = 2000 + int.parse(yearYY); // Assuming year range from 2000-2099
+            int day = int.parse(dayDD);
+            // Create DateTime object for the given year, month, and day
+            DateTime dateTime = DateTime(year, month, day);
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = dateTime.toIso8601String();
+            // Append the time component 'T00:00:00.000Z'
+            formattedDateTime = formattedDateTime.substring(0, 10) + 'T00:00:00.000Z';
+            return formattedDateTime;
+          case 'YYYY/MMM/DD':
+          // Extract components from the match
+            String yearYYYY = match.group(1)!;
+            String monthMMM = match.group(2)!;
+            String dayDD = match.group(3)!;
+            // Convert month abbreviation to numeric month
+            int month = _getMonthFromAbbreviation(monthMMM);
+            // Parse year, month, and day as integers
+            int year = int.parse(yearYYYY);
+            int day = int.parse(dayDD);
+            // Create DateTime object for the given year, month, and day
+            DateTime dateTime = DateTime(year, month, day);
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = dateTime.toIso8601String();
+            // Append the time component 'T00:00:00.000Z'
+            formattedDateTime = formattedDateTime.substring(0, 10) + 'T00:00:00.000Z';
+            return formattedDateTime;
+          case 'DD/MMM/YYYY':
+          // Extract components from the match
+            String dayDD = match.group(1)!;
+            String monthMMM = match.group(2)!;
+            String yearYYYY = match.group(3)!;
+            // Convert month abbreviation to numeric month
+            int month = _getMonthFromAbbreviation(monthMMM);
+            // Parse year, month, and day as integers
+            int year = int.parse(yearYYYY);
+            int day = int.parse(dayDD);
+            // Create DateTime object for the given year, month, and day
+            DateTime dateTime = DateTime(year, month, day);
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = dateTime.toIso8601String();
+            // Append the time component 'T00:00:00.000Z'
+            formattedDateTime = formattedDateTime.substring(0, 10) + 'T00:00:00.000Z';
+            return formattedDateTime;
+          case 'MMM/DD/YYYY':
+          // Extract components from the match
+            String monthMMM = match.group(1)!;
+            String dayDD = match.group(2)!;
+            String yearYYYY = match.group(3)!;
+            // Convert month abbreviation to numeric month
+            int month = _getMonthFromAbbreviation(monthMMM);
+            // Parse year, month, and day as integers
+            int year = int.parse(yearYYYY);
+            int day = int.parse(dayDD);
+            // Create DateTime object for the given year, month, and day
+            DateTime dateTime = DateTime(year, month, day);
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = dateTime.toIso8601String();
+            // Append the time component 'T00:00:00.000Z'
+            formattedDateTime = formattedDateTime.substring(0, 10) + 'T00:00:00.000Z';
+            return formattedDateTime;
           case 'YY/DDD':
             int yearYYDDD = int.parse('20${match[1]}');
             int dayOfYearYYDDD = int.parse(match[2]!);
@@ -161,8 +356,17 @@ class RetCoreDateTimeParse {
             int dayOfYearDDDYYYY = int.parse(match[1]!);
             DateTime dateTimeDDDYYYY = DateTime(yearDDDYYYY).add(Duration(days: dayOfYearDDDYYYY - 1));
             return '${dateTimeDDDYYYY.year.toString().padLeft(4, '0')}-${dateTimeDDDYYYY.month.toString().padLeft(2, '0')}-${dateTimeDDDYYYY.day.toString().padLeft(2, '0')}T00:00:00.000Z';
-          /*case 'HHMM':
-            return DateFormat('HHmm').parse(input);*/
+          case 'HHMM':
+          // Parse hours and minutes from input
+            String hours = input.substring(0, 2);
+            String minutes = input.substring(2, 4);
+            // Get current date to create DateTime object
+            DateTime now = DateTime.now();
+            // Create DateTime object with current date, parsed hours, and minutes
+            DateTime dateTime = DateTime(now.year, now.month, now.day, int.parse(hours), int.parse(minutes));
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTime);
+            return formattedDateTime;
           case 'HHMMSS':
             DateTime dateTimeHHMMSS = DateFormat('HHmmss').parse(input);
             return DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTimeHHMMSS.toUtc()).toString();
@@ -172,17 +376,99 @@ class RetCoreDateTimeParse {
           case 'HH:MM:SS':
             DateTime dateTimeHHMMSS = DateFormat('HH:mm:ss').parse(input);
             return DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTimeHHMMSS.toUtc()).toString();
-          /*case 'YYYYMMDDTHHMMSSmmmZ':
-            return DateFormat("yyyyMMdd'T'HHmmss.SSS'Z'").parse(input);*/
-          /*case 'YYYYMMDDZ':
-            return DateFormat('yyyyMMddZ').parse(input);*/
+          case 'YYYYMMDDTHHMMSSmmmZ':
+          // Parse year, month, day, hour, minute, second, millisecond, and timezone offset from input
+            String year = input.substring(0, 4);
+            String month = input.substring(4, 6);
+            String day = input.substring(6, 8);
+            String hour = input.substring(9, 11);
+            String minute = input.substring(11, 13);
+            String second = input.substring(13, 15);
+            String millisecond = input.substring(15, 18);
+            String timezoneOffset = input.substring(18); // Z or timezone offset
+            // Create DateTime object
+            DateTime dateTime = DateTime.utc(
+              int.parse(year),
+              int.parse(month),
+              int.parse(day),
+              int.parse(hour),
+              int.parse(minute),
+              int.parse(second),
+              int.parse(millisecond),
+            );
+            // Handle timezone offset
+            if (timezoneOffset == 'Z') {
+              // UTC time, already handled by DateTime.utc()
+            } else if (timezoneOffset.startsWith('+') || timezoneOffset.startsWith('-')) {
+              // Parse offset like '+HH:mm' or '-HH:mm' and adjust dateTime
+              String sign = timezoneOffset.substring(0, 1);
+              String hoursStr = timezoneOffset.substring(1, 3);
+              String minutesStr = timezoneOffset.substring(3);
+              int hours = int.parse(hoursStr);
+              int minutes = int.parse(minutesStr);
+              // Adjust dateTime based on the offset
+              dateTime = dateTime.add(Duration(
+                hours: (sign == '+' ? -hours : hours),
+                minutes: (sign == '+' ? -minutes : minutes),
+              ));
+            } else {
+              throw FormatException('Invalid timezone offset: $timezoneOffset');
+            }
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTime);
+            return formattedDateTime;
+          case 'YYYYMMDDZ':
+          // Parse year, month, and day from input
+            String year = input.substring(0, 4);
+            String month = input.substring(4, 6);
+            String day = input.substring(6, 8);
+            // Create DateTime object
+            DateTime dateTime = DateTime(int.parse(year), int.parse(month), int.parse(day));
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTime);
+            return formattedDateTime;
           case 'MM/DD/YY HH:MM:SS':
             DateTime dateTimeMMDDYY_HHMMSS = DateFormat('MM/dd/yy HH:mm:ss').parse(input);
             return DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTimeMMDDYY_HHMMSS.toUtc()).toString();
-          /*case 'YYMMDD HHMMSS':
-            return DateFormat('yyMMdd HHmmss').parse(input);*/
-          /*case 'YYYY-MMDDTHH:MM:SS':
-            return DateFormat("yyyy-MMdd'T'HH:mm:ss").parse(input);*/
+          case 'YYMMDD HHMMSS':
+          // Extract components from the match
+            String year = '20${match[1]}';
+            String month = match[2]!;
+            String day = match[3]!;
+            String hour = match[4]!;
+            String minute = match[5]!;
+            String second = match[6]!;
+            // Create DateTime object
+            DateTime dateTime = DateTime(
+              int.parse(year),
+              int.parse(month),
+              int.parse(day),
+              int.parse(hour),
+              int.parse(minute),
+              int.parse(second),
+            );
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTime);
+            return formattedDateTime;
+          case 'YYYY-MMDDTHH:MM:SS':
+            String year = match[1]!;
+            String month = match[2]!;
+            String day = match[3]!;
+            String hour = match[4]!;
+            String minute = match[5]!;
+            String second = match[6]!;
+            // Create DateTime object
+            DateTime dateTime = DateTime(
+              int.parse(year),
+              int.parse(month),
+              int.parse(day),
+              int.parse(hour),
+              int.parse(minute),
+              int.parse(second),
+            );
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTime);
+            return formattedDateTime;
           case 'YYYY-MM-DD':
           // Ensure leading zeros for single-digit months and days
             var year = match[1]!;
@@ -211,8 +497,18 @@ class RetCoreDateTimeParse {
     return null;
   }
 
-  /*int _monthToNumber(String month) {
-    switch (month.toLowerCase()) {
+  Map<String, int> monthMapping = {
+    'JAN': 1, 'FEB': 2, 'MAR': 3, 'APR': 4,
+    'MAY': 5, 'JUN': 6, 'JUL': 7, 'AUG': 8,
+    'SEP': 9, 'OCT': 10, 'NOV': 11, 'DEC': 12
+  };
+  Map<String, int> monthMapping2 = {
+    'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4,
+    'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8,
+    'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12
+  };
+  int _getMonthFromAbbreviation(String abbreviation) {
+    switch (abbreviation.toLowerCase()) {
       case 'jan':
         return 1;
       case 'feb':
@@ -238,7 +534,7 @@ class RetCoreDateTimeParse {
       case 'dec':
         return 12;
       default:
-        throw FormatException('Invalid month abbreviation.');
+        throw FormatException('Invalid month abbreviation: $abbreviation');
     }
-  }*/
+}
 }
