@@ -4,7 +4,7 @@ class RetCoreDateTimeParse {
   static RetCoreDateTimeParse? _instance;
   RetCoreDateTimeParse._internal();
 
-  factory RetCoreDateTimeParse(){
+  factory RetCoreDateTimeParse() {
     _instance ??= RetCoreDateTimeParse._internal();
     return _instance!;
   }
@@ -130,72 +130,71 @@ class RetCoreDateTimeParse {
             return DateTime(int.parse(match[1]!)).add(Duration(days: int.parse(match[2]!) - 1));
           case 'DDD/YYYY':
             return DateTime(int.parse(match[2]!)).add(Duration(days: int.parse(match[1]!) - 1));
-          case 'MONTH':
-            return DateFormat('MMMM').parse(match[1]!);
-          case 'DAY':
-            return DateFormat('EEEE').parse(match[1]!);
           case 'HHMM':
-            return DateTime.parse('1970-01-01T${match[1]}:${match[2]}:00');
+            return DateFormat('HHmm').parse(input);
           case 'HHMMSS':
-            return DateTime.parse('1970-01-01T${match[1]}:${match[2]}:${match[3]}');
+            return DateFormat('HHmmss').parse(input);
           case 'HH:MM':
-            return DateTime.parse('1970-01-01T${match[1]}:${match[2]}:00');
+            return DateFormat('HH:mm').parse(input);
           case 'HH:MM:SS':
-            return DateTime.parse('1970-01-01T${match[1]}:${match[2]}:${match[3]}');
+            return DateFormat('HH:mm:ss').parse(input);
           case 'YYYYMMDDTHHMMSSmmmZ':
-            return DateTime.parse('${match[1]}-${match[2]}-${match[3]}T${match[4]}:${match[5]}:${match[6]}.${match[7]}Z');
+            return DateFormat("yyyyMMdd'T'HHmmss.SSS'Z'").parse(input);
           case 'YYYYMMDDZ':
-            return DateTime.parse('${match[1]}-${match[2]}-${match[3]}Z');
+            return DateFormat('yyyyMMddZ').parse(input);
           case 'MM/DD/YY HH:MM:SS':
-            return DateTime.parse('20${match[3]}-${match[1]}-${match[2]}T${match[4]}:${match[5]}:${match[6]}');
+            return DateFormat('MM/dd/yy HH:mm:ss').parse(input);
           case 'YYMMDD HHMMSS':
-            return DateTime.parse('20${match[1]}-${match[2]}-${match[3]}T${match[4]}:${match[5]}:${match[6]}');
+            return DateFormat('yyMMdd HHmmss').parse(input);
           case 'YYYY-MMDDTHH:MM:SS':
-            return DateTime.parse('${match[1]}-${match[2]}T${match[3]}:${match[4]}:${match[5]}');
+            return DateFormat("yyyy-MMdd'T'HH:mm:ss").parse(input);
           case 'YYYY-MM-DD':
-            return DateTime.parse('${match[1]}-${match[2]}-${match[3]}');
+            return DateFormat('yyyy-MM-dd').parse(input);
           case 'YYYY-MM':
-            return DateTime.parse('${match[1]}-${match[2]}-01');
+            return DateFormat('yyyy-MM').parse(input);
           case 'YYYY':
-            return DateTime.parse('${match[1]}-01-01');
+            return DateFormat('yyyy').parse(input);
           case '--MM-DD':
-            return DateTime.parse('1970-${match[1]}-${match[2]}');
+            return DateFormat('--MM-dd').parse(input);
           case '---DD':
-            return DateTime.parse('1970-01-${match[1]}');
+            return DateFormat('---dd').parse(input);
+          default:
+            throw FormatException('Date format not recognized.');
         }
       }
     }
-    throw FormatException("Invalid date format");
+
+    throw FormatException('Date format not recognized.');
   }
 
-  String _monthToNumber(String month) {
-    switch (month.toUpperCase()) {
-      case 'JAN':
-        return '01';
-      case 'FEB':
-        return '02';
-      case 'MAR':
-        return '03';
-      case 'APR':
-        return '04';
-      case 'MAY':
-        return '05';
-      case 'JUN':
-        return '06';
-      case 'JUL':
-        return '07';
-      case 'AUG':
-        return '08';
-      case 'SEP':
-        return '09';
-      case 'OCT':
-        return '10';
-      case 'NOV':
-        return '11';
-      case 'DEC':
-        return '12';
+  int _monthToNumber(String month) {
+    switch (month.toLowerCase()) {
+      case 'jan':
+        return 1;
+      case 'feb':
+        return 2;
+      case 'mar':
+        return 3;
+      case 'apr':
+        return 4;
+      case 'may':
+        return 5;
+      case 'jun':
+        return 6;
+      case 'jul':
+        return 7;
+      case 'aug':
+        return 8;
+      case 'sep':
+        return 9;
+      case 'oct':
+        return 10;
+      case 'nov':
+        return 11;
+      case 'dec':
+        return 12;
       default:
-        throw FormatException("Invalid month abbreviation");
+        throw FormatException('Invalid month abbreviation.');
     }
   }
 }
