@@ -67,7 +67,21 @@ class RetCoreDateTimeParse {
           case 'YYMMDD':
             return DateTime.parse('20${match[1]}-${match[2]}-${match[3]}T00:00:00.000Z').toString();
           case 'MMDDYY':
-            return DateTime.parse('20${match[3]}-${match[1]}-${match[2]}T00:00:00.000Z').toString();
+          // Extract components from the match
+            String month = match[1]!;
+            String day = match[2]!;
+            String year = match[3]!;
+            // Adjust the year to a four-digit format (assuming it's always 20YY)
+            String fullYear = '20$year';
+            // Create DateTime object
+            DateTime dateTime = DateTime(
+              int.parse(fullYear),
+              int.parse(month),
+              int.parse(day),
+            );
+            // Format DateTime in ISO 8601 format with milliseconds and UTC timezone
+            String formattedDateTime = DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(dateTime);
+            return formattedDateTime;
           case 'YYYYMMDD':
             return DateTime.parse('${match[1]}-${match[2]}-${match[3]}T00:00:00.000Z').toString();
           case 'DDMMYYYY':
