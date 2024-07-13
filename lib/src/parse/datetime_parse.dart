@@ -167,7 +167,6 @@ class RetCoreDateTimeParse {
         }
       }
     }
-
     throw FormatException('Date format not recognized.');
   }
 
