@@ -134,7 +134,7 @@ class RetCoreDayMonthName{
     String formattedTime = DateFormat("h:mm:ss").format(time.toLocal());
     String inBanglaTime = formattedTime.split('').map((digit) => banglaDigits[digit] ?? digit).join('');
     String period = getPeriod(time);
-    if(isSecond == true){
+    if (!isSecond!) {
       inBanglaTime = inBanglaTime.substring(0, inBanglaTime.length - 3);
     }
     return {'period': period , 'time': '$inBanglaTime মি.'};
