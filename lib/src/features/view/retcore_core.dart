@@ -30,9 +30,8 @@ class RetCore{
     return size;
   }
   static String now(){
-    DateTime now = DateTime.now();
-    String formattedDateTime = DateFormat('yyyy-MM-ddTHH:mm:ss.SSSZ').format(now);
-    return formattedDateTime;
+    String isoFormattedDateTime = RetCoreDateTimeParse.CurrentTime();
+    return isoFormattedDateTime;
   }
   static Widget space(double size){
     return RetcoreSpace(space: size);
