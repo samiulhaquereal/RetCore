@@ -278,8 +278,8 @@ class RetCore{
     String response = RetCoreDayMonthName().getBanglaDigit(value);
     return response;
   }
-  static Map<String , dynamic> getTimeBangla({required String time}){
-    Map<String , dynamic> response = RetCoreDayMonthName().getBanglaTime(isoDateString: time);
+  static Map<String , dynamic> getTimeBangla({required String time,bool? isSecond}){
+    Map<String , dynamic> response = RetCoreDayMonthName().getBanglaTime(isoDateString: time,isSecond: isSecond);
     return response;
   }
 
