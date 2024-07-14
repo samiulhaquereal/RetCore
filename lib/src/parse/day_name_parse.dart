@@ -130,7 +130,8 @@ class RetCoreDayMonthName{
 
   Map<String , dynamic> getBanglaTime({required String isoDateString,bool? isSecond}) {
     DateTime time = DateTime.parse(isoDateString);
-    String formattedTime = DateFormat("h:mm:ss a").format(time.toLocal());
+    // Format the DateTime in 12-hour format without AM/PM
+    String formattedTime = DateFormat("h:mm:ss").format(time.toLocal());
     String inBanglaTime = formattedTime.split('').map((digit) => banglaDigits[digit] ?? digit).join('');
     String period = getPeriod(time);
     if(isSecond == true){
