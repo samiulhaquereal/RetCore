@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:retcore/src/config/imports.dart';
 
 class RetCoreDayMonthName{
@@ -127,18 +128,15 @@ class RetCoreDayMonthName{
     return banglaMonths[monthInEnglish] ?? monthInEnglish;
   }
 
-  Map<String , dynamic> getBanglaTime({required String isoDateString}) {
+  Map<String , dynamic> getBanglaTime({required String isoDateString,bool? isSecond}) {
     DateTime time = DateTime.parse(isoDateString);
-    int hour = time.hour;
-    //String formattedTime = DateFormat.Hms().format(time);
-    String hourFormatted = (hour % 12 == 0) ? '12' : (hour % 12).toString().padLeft(2, '0');
-    String inBanglaLanHour = hourFormatted.split('').map((digit) => banglaDigits[digit] ?? digit).join('');
-    String minutes = time.minute.toString().padLeft(2, '0');
-    String inBanglaLanMin = minutes.split('').map((digit) => banglaDigits[digit] ?? digit).join('');
-    //String inBanglaTime = formattedTime.split('').map((digit) => banglaDigits[digit] ?? digit).join('');
+    String formattedTime = DateFormat("h:mm:ss a").format(time.toLocal());
+    String inBanglaTime = formattedTime.split('').map((digit) => banglaDigits[digit] ?? digit).join('');
     String period = getPeriod(time);
-    //return {'period': period , 'time': '$inBanglaTime মি.'};
-    return {'period': period , 'time': '$inBanglaLanHour:$inBanglaLanMin মি.'};
+    if(isSecond == true){
+      inBanglaTime = inBanglaTime.substring(0, inBanglaTime.length - 3);
+    }
+    return {'period': period , 'time': '$inBanglaTime মি.'};
   }
 
   String getPeriod(DateTime dateTime) {
