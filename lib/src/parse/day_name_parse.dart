@@ -128,7 +128,7 @@ class RetCoreDayMonthName{
     return banglaMonths[monthInEnglish] ?? monthInEnglish;
   }
 
-  Map<String , dynamic> getBanglaTime({required String isoDateString,bool? isSecond}) {
+  Map<String , dynamic> getBanglaTime({required String isoDateString,bool? isSecond = false}) {
     DateTime time = DateTime.parse(isoDateString);
     // Format the DateTime in 12-hour format without AM/PM
     String formattedTime = DateFormat("h:mm:ss").format(time.toLocal());
