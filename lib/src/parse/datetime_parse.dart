@@ -30,7 +30,7 @@ class RetCoreDateTimeParse {
     String timeZone = '$sign${offsetHours.toString().padLeft(2, '0')}:${offsetMinutes.toString().padLeft(2, '0')}';
 
     // Combine all components into the final formatted string
-    String formattedDateTime = '$year-$month-{$day}T$hour:$minute:$second.$millisecond$timeZone';
+    String formattedDateTime = '$year-$month-${day}T$hour:$minute:$second.$millisecond$timeZone';
 
     return formattedDateTime;
   }
