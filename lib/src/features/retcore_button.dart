@@ -80,7 +80,7 @@ class RetCoreButton extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            buttonStyle == RetCoreButtonStyle.vertical ? Row(
+            buttonStyle == RetCoreButtonStyle.horizontal ? Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -93,9 +93,9 @@ class RetCoreButton extends StatelessWidget {
                 suffixIconWidget ?? (suffixIcon != null ? Icon(suffixIcon, color: iconColor, size: iconSize) : const SizedBox()),
               ],
             ) : const SizedBox(),
-            buttonStyle == RetCoreButtonStyle.horizontal ? icon == null ? const SizedBox() : iconWidget ?? Icon(icon, size: iconSize, color: iconColor): const SizedBox(),
-            SizedBox(height: buttonStyle == RetCoreButtonStyle.horizontal && title != null && icon != null ? iconSpace : tIconSpaceSize),
-            buttonStyle == RetCoreButtonStyle.horizontal ? title == null ? const SizedBox() : Text(title!,style: TextStyle(color: fontColor, fontSize: fontSize, fontWeight: fontWeight)) : const SizedBox(),
+            buttonStyle == RetCoreButtonStyle.vertical ? icon == null ? const SizedBox() : iconWidget ?? Icon(icon, size: iconSize, color: iconColor): const SizedBox(),
+            SizedBox(height: buttonStyle == RetCoreButtonStyle.vertical && title != null && icon != null ? iconSpace : tIconSpaceSize),
+            buttonStyle == RetCoreButtonStyle.vertical ? title == null ? const SizedBox() : Text(title!,style: TextStyle(color: fontColor, fontSize: fontSize, fontWeight: fontWeight)) : const SizedBox(),
           ],
         ),
       ),

@@ -71,6 +71,7 @@ const double tNeumorphismRadius = 50;
 const double tNeumorphismBlurRadius = 15;
 const double tNeumorphismHeight = 200;
 const double tNeumorphismWidth = 200;
+const double tNeumorphismBorderWidth = 1;
 const double tNeumorphismtopLeftspreadRadius = 1;
 const double tNeumorphismbottomRightspreadRadius = 1;
 const Offset tNeumorphismBottomRightOffset = Offset(4,4);

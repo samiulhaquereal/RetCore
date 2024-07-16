@@ -15,6 +15,8 @@ class RetCoreNeumorphism extends StatelessWidget {
     this.bottomRightspreadRadius = tNeumorphismbottomRightspreadRadius,
     this.topLeftoffset = tNeumorphismTopLeftOffset,
     this.topLeftspreadRadius = tNeumorphismtopLeftspreadRadius,
+    this.borderColor = tTransparent,
+    this.borderWidth = tNeumorphismBorderWidth,
   });
 
   final double? height;
@@ -23,9 +25,11 @@ class RetCoreNeumorphism extends StatelessWidget {
   final double? bottomRightspreadRadius;
   final double? topLeftspreadRadius;
   final double? blurRadius;
+  final double? borderWidth;
   final Color? color;
   final Color? topLeftshadowcolor;
   final Color? bottomRightshadowcolor;
+  final Color? borderColor;
   final Widget child;
   final Offset bottomRightoffset;
   final Offset topLeftoffset;
@@ -38,6 +42,7 @@ class RetCoreNeumorphism extends StatelessWidget {
       decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(radius!),
+          border: Border.all(color: borderColor!,width: borderWidth!),
           boxShadow: [
             BoxShadow(
               color: bottomRightshadowcolor!,
