@@ -207,26 +207,6 @@ class RetCoreTextField extends StatelessWidget {
               ),
               validator: isRequired == true ? validator : null,
               onChanged: isPasswordField == true ? (password){
-                /*final numeric = RegExp(r'[0-9]');
-                final lowcase = RegExp(r'[a-z]');
-                final uppercase = RegExp(r'[A-Z]');
-                _isPasswordEightCharacters.value = false;
-                _hasPasswordOneNumber.value = false;
-                _hasUpperCase.value = false;
-                _hasLowerCase.value = false;
-
-                if (password.length >= 8) {
-                  _isPasswordEightCharacters.value = true;
-                }
-                if (numeric.hasMatch(password)) {
-                  _hasPasswordOneNumber.value = true;
-                }
-                if (uppercase.hasMatch(password)) {
-                  _hasUpperCase.value = true;
-                }
-                if (lowcase.hasMatch(password)) {
-                  _hasLowerCase.value = true;
-                }*/
                 _isPasswordEightCharacters.value = password.length >= 8;
                 _hasPasswordOneNumber.value = RegExp(r'[0-9]').hasMatch(password);
                 _hasUpperCase.value = RegExp(r'[A-Z]').hasMatch(password);
@@ -240,7 +220,7 @@ class RetCoreTextField extends StatelessWidget {
         ),
         isPasswordField == true ? Column(
          children: [
-           RetCore.space(30),
+           RetCore.space(20),
            ValueListenableBuilder(
              valueListenable: _isPasswordEightCharacters,
              builder: (BuildContext context, value, Widget? child) {
