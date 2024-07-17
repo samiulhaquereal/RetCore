@@ -7,12 +7,12 @@ class ValidationCheckList extends StatelessWidget {
     required this.isValid,
     this.width = tValidationCheckListIconWidth,
     this.height = tValidationCheckListIconHeight,
-    this.radius = tValidationCheckListRadius,
+    this.radius,
     this.iconSize = tValidationCheckListIconSize,
     this.validColor = tGreen,
     this.invalidColor = tRed,
-    this.validBorderColor = tTransparent,
-    this.invalidBorderColor = tTransparent,
+    this.validBorderColor,
+    this.invalidBorderColor,
     this.validIcon = Icons.check,
     this.invalidIcon = Icons.close,
     this.iconColor = tWhite,
@@ -48,8 +48,8 @@ class ValidationCheckList extends StatelessWidget {
           height: height,
           decoration: BoxDecoration(
             color: isValid ? validColor : invalidColor,
-            border: Border.all(color: isValid ? validBorderColor! : invalidBorderColor!),
-            borderRadius: BorderRadius.circular(radius!),
+            border: Border.all(color: isValid ? validBorderColor ?? tTransparent : invalidBorderColor ?? tTransparent),
+            borderRadius: BorderRadius.circular(radius ?? tValidationCheckListRadius),
           ),
           child: Center(
             child: Icon(

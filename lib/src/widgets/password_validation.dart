@@ -50,7 +50,7 @@ class PasswordValidation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Wrap(
       children: [
         RetCore.space(20),
         ValueListenableBuilder(
