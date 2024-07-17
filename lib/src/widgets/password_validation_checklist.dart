@@ -5,20 +5,20 @@ class ValidationCheckList extends StatelessWidget {
     super.key,
     required this.text,
     required this.isValid,
-    this.width = tValidationCheckListIconWidth,
-    this.height = tValidationCheckListIconHeight,
+    this.width,
+    this.height ,
     this.radius,
-    this.iconSize = tValidationCheckListIconSize,
-    this.validColor = tGreen,
-    this.invalidColor = tRed,
+    this.iconSize,
+    this.validColor,
+    this.invalidColor,
     this.validBorderColor,
     this.invalidBorderColor,
-    this.validIcon = Icons.check,
-    this.invalidIcon = Icons.close,
-    this.iconColor = tWhite,
-    this.textColor = tBlack,
-    this.textSize = tValidationCheckListTextSize,
-    this.textFontWeight = FontWeight.w500,
+    this.validIcon,
+    this.invalidIcon,
+    this.iconColor,
+    this.textColor,
+    this.textSize,
+    this.textFontWeight,
   });
 
   final bool isValid;
@@ -44,23 +44,23 @@ class ValidationCheckList extends StatelessWidget {
       children: [
         AnimatedContainer(
           duration: const Duration(milliseconds: 500),
-          width: width,
-          height: height,
+          width: width ?? tValidationCheckListIconWidth,
+          height: height ?? tValidationCheckListIconHeight,
           decoration: BoxDecoration(
-            color: isValid ? validColor : invalidColor,
+            color: isValid ? validColor ?? tGreen : invalidColor ?? tRed,
             border: Border.all(color: isValid ? validBorderColor ?? tTransparent : invalidBorderColor ?? tTransparent),
             borderRadius: BorderRadius.circular(radius ?? tValidationCheckListRadius),
           ),
           child: Center(
             child: Icon(
-              isValid ? validIcon : invalidIcon,
-              color: iconColor,
-              size: iconSize,
+              isValid ? validIcon ?? Icons.check : invalidIcon ?? Icons.close,
+              color: iconColor ?? tWhite,
+              size: iconSize ?? tValidationCheckListIconSize,
             ),
           ),
         ),
         RetCore.space(10),
-        Text(text,style: TextStyle(color: textColor,fontSize: textSize,fontWeight:textFontWeight)),
+        Text(text,style: TextStyle(color: textColor ?? tBlack,fontSize: textSize ?? tValidationCheckListTextSize,fontWeight:textFontWeight ?? FontWeight.w500)),
       ],
     );
   }

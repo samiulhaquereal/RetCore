@@ -52,7 +52,7 @@ class PasswordValidation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Wrap(
       children: [
-        RetCore.space(20),
+        const SizedBox(height: 20),
         ValueListenableBuilder(
           valueListenable: _isPasswordEightCharacters,
           builder: (BuildContext context, value, Widget? child) {
