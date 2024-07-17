@@ -115,7 +115,6 @@ class RetCoreTextField extends StatelessWidget {
   final Color? passwordCheckListTextColor;
   final IconData? passwordCheckListValidIcon;
   final IconData? passwordCheckListInvalidIcon;
-
   final ValueNotifier<bool> _obscureText = ValueNotifier<bool>(true);
   final ValueNotifier<bool> _isPasswordEightCharacters = ValueNotifier<bool>(false);
   final ValueNotifier<bool> _hasPasswordOneNumber = ValueNotifier<bool>(false);
@@ -123,7 +122,6 @@ class RetCoreTextField extends StatelessWidget {
   final ValueNotifier<bool> _hasLowerCase = ValueNotifier<bool>(false);
   final ValueNotifier<bool> _hasSpecialCharacter = ValueNotifier<bool>(false);
   final ValueNotifier<bool> _passwordInputStart = ValueNotifier<bool>(false);
-
 
   @override
   Widget build(BuildContext context) {
@@ -239,12 +237,7 @@ class RetCoreTextField extends StatelessWidget {
                 bool isValid = _isPasswordEightCharacters.value && _hasPasswordOneNumber.value &&
                     _hasUpperCase.value && _hasLowerCase.value && _hasSpecialCharacter.value;
                 if (onChangePassword != null) {
-                  print('password2');
                   onChangePassword!(password,isValid);
-                  print('password3');
-                }else{
-                  onChangePassword?.call(password,isValid);
-                  print('password null');
                 } // onChanged?.call(password);
               }: onChanged,
               onTapOutside: (event) => FocusScope.of(context).unfocus(),
