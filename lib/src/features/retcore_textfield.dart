@@ -1,5 +1,5 @@
 import 'package:retcore/src/config/imports.dart';
-
+typedef PasswordChangeCallback = void Function(String password, bool isValid);
 class RetCoreTextField extends StatelessWidget {
   RetCoreTextField({
     super.key,
@@ -238,12 +238,12 @@ class RetCoreTextField extends StatelessWidget {
                 bool isValid = _isPasswordEightCharacters.value && _hasPasswordOneNumber.value &&
                     _hasUpperCase.value && _hasLowerCase.value && _hasSpecialCharacter.value;
                 if (onChangePassword != null) {
-                  print('password2');
-                  onChangePassword!(password,isValid);
-                  print('password3');
-                }else{
-                  print('password null');
-                } // onChanged?.call(password);
+                  print('Invoking onChangePassword');
+                  onChangePassword!(password, isValid);
+                  print('onChangePassword invoked');
+                } else {
+                  print('onChangePassword is null');
+                }// onChanged?.call(password);
               }: onChanged,
               onTapOutside: (event) => FocusScope.of(context).unfocus(),
               focusNode: fieldFocusNode,
