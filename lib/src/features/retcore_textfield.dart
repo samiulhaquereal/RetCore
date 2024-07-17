@@ -229,7 +229,6 @@ class RetCoreTextField extends StatelessWidget {
               ),
               validator: isRequired == true ? validator : null,
               onChanged: isPasswordField == true ? (password){
-                print(password);
                 _passwordInputStart.value = password.isNotEmpty;
                 _isPasswordEightCharacters.value = password.length >= 8;
                 _hasPasswordOneNumber.value = RegExp(r'[0-9]').hasMatch(password);
@@ -242,6 +241,8 @@ class RetCoreTextField extends StatelessWidget {
                   print('password2');
                   onChangePassword!(password,isValid);
                   print('password3');
+                }else{
+                  print('password null');
                 } // onChanged?.call(password);
               }: onChanged,
               onTapOutside: (event) => FocusScope.of(context).unfocus(),
