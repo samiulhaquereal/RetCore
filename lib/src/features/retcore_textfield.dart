@@ -59,8 +59,6 @@ class RetCoreTextField extends StatelessWidget {
     controller.addListener(() {
       if (onChanged != null) {
         onChanged!(controller.text);
-      }else{
-        onChangePassword!(controller.text,isValid);
       }
     });
   }
@@ -97,12 +95,13 @@ class RetCoreTextField extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
+  final void Function(String? ,bool?)? onChangePassword;
+  //final PasswordChangeCallback? onChangePassword;
   final DateTime? inititalDate;
   final DateTime? startingDate;
   final DateTime? endingDate;
   final FocusNode? fieldFocusNode;
   final List<TextInputFormatter>? inputFormatters;
-  final PasswordChangeCallback? onChangePassword;
   final double? passwordCheckListTextSize;
   final FontWeight? passwordCheckListTextFontWeight;
   final double? passwordCheckListIconWidth;
@@ -125,7 +124,6 @@ class RetCoreTextField extends StatelessWidget {
   final ValueNotifier<bool> _hasLowerCase = ValueNotifier<bool>(false);
   final ValueNotifier<bool> _hasSpecialCharacter = ValueNotifier<bool>(false);
   final ValueNotifier<bool> _passwordInputStart = ValueNotifier<bool>(false);
-  bool isValid = false;
 
 
   @override
@@ -239,7 +237,7 @@ class RetCoreTextField extends StatelessWidget {
                 _hasUpperCase.value = RegExp(r'[A-Z]').hasMatch(password);
                 _hasLowerCase.value = RegExp(r'[a-z]').hasMatch(password);
                 _hasSpecialCharacter.value = RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(password);
-                /*bool isValid*/isValid = _isPasswordEightCharacters.value && _hasPasswordOneNumber.value &&
+                bool isValid = _isPasswordEightCharacters.value && _hasPasswordOneNumber.value &&
                     _hasUpperCase.value && _hasLowerCase.value && _hasSpecialCharacter.value;
                 if (onChangePassword != null) {
                   print('password2');
