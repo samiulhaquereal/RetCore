@@ -1,5 +1,5 @@
 import 'package:retcore/src/config/imports.dart';
-typedef PasswordChangeCallback = void Function(String password, bool isValid);
+
 class RetCoreTextField extends StatelessWidget {
   RetCoreTextField({
     super.key,
@@ -59,6 +59,8 @@ class RetCoreTextField extends StatelessWidget {
     controller.addListener(() {
       if (onChanged != null) {
         onChanged!(controller.text);
+      }else{
+        onChangePassword!(controller.text,isValid);
       }
     });
   }
@@ -235,15 +237,15 @@ class RetCoreTextField extends StatelessWidget {
                 _hasUpperCase.value = RegExp(r'[A-Z]').hasMatch(password);
                 _hasLowerCase.value = RegExp(r'[a-z]').hasMatch(password);
                 _hasSpecialCharacter.value = RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(password);
-                bool isValid = _isPasswordEightCharacters.value && _hasPasswordOneNumber.value &&
+                isValid = _isPasswordEightCharacters.value && _hasPasswordOneNumber.value &&
                     _hasUpperCase.value && _hasLowerCase.value && _hasSpecialCharacter.value;
                 if (onChangePassword != null) {
-                  print('Invoking onChangePassword');
-                  onChangePassword!(password, isValid);
-                  print('onChangePassword invoked');
-                } else {
-                  print('onChangePassword is null');
-                }// onChanged?.call(password);
+                  print('password2');
+                  onChangePassword!(password,isValid);
+                  print('password3');
+                }else{
+                  print('password null');
+                } // onChanged?.call(password);
               }: onChanged,
               onTapOutside: (event) => FocusScope.of(context).unfocus(),
               focusNode: fieldFocusNode,
