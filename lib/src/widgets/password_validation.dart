@@ -50,129 +50,132 @@ class PasswordValidation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      children: [
-        const SizedBox(height: 20),
-        ValueListenableBuilder(
-          valueListenable: _isPasswordEightCharacters,
-          builder: (BuildContext context, value, Widget? child) {
-            return ValidationCheckList(
-              text: 'At least 8 Characters',
-              isValid: _isPasswordEightCharacters.value,
-              textSize: passwordCheckListTextSize,
-              textFontWeight: passwordCheckListTextFontWeight,
-              width: passwordCheckListIconWidth,
-              height: passwordCheckListIconHeight,
-              radius: passwordCheckListRadius,
-              iconSize: passwordCheckListIconSize,
-              validColor: passwordCheckListValidColor,
-              invalidColor: passwordCheckListInvalidColor,
-              validBorderColor: passwordCheckListValidBorderColor,
-              invalidBorderColor: passwordCheckListInvalidBorderColor,
-              iconColor: passwordCheckListIconColor,
-              textColor: passwordCheckListTextColor,
-              validIcon: passwordCheckListValidIcon,
-              invalidIcon: passwordCheckListInvalidIcon,
-            );
-          },
-        ),
-        RetCore.space(10),
-        ValueListenableBuilder(
-          valueListenable: _hasUpperCase,
-          builder: (BuildContext context, value, Widget? child) {
-            return ValidationCheckList(
-              text: 'Upper case letters (A-Z)',
-              isValid: _hasUpperCase.value,
-              textSize: passwordCheckListTextSize,
-              textFontWeight: passwordCheckListTextFontWeight,
-              width: passwordCheckListIconWidth,
-              height: passwordCheckListIconHeight,
-              radius: passwordCheckListRadius,
-              iconSize: passwordCheckListIconSize,
-              validColor: passwordCheckListValidColor,
-              invalidColor: passwordCheckListInvalidColor,
-              validBorderColor: passwordCheckListValidBorderColor,
-              invalidBorderColor: passwordCheckListInvalidBorderColor,
-              iconColor: passwordCheckListIconColor,
-              textColor: passwordCheckListTextColor,
-              validIcon: passwordCheckListValidIcon,
-              invalidIcon: passwordCheckListInvalidIcon,
-            );
-          },
-        ),
-        RetCore.space(10),
-        ValueListenableBuilder(
-          valueListenable: _hasLowerCase,
-          builder: (BuildContext context, value, Widget? child) {
-            return ValidationCheckList(
-              text: 'Lower case letters (a-z)',
-              isValid: _hasLowerCase.value,
-              textSize: passwordCheckListTextSize,
-              textFontWeight: passwordCheckListTextFontWeight,
-              width: passwordCheckListIconWidth,
-              height: passwordCheckListIconHeight,
-              radius: passwordCheckListRadius,
-              iconSize: passwordCheckListIconSize,
-              validColor: passwordCheckListValidColor,
-              invalidColor: passwordCheckListInvalidColor,
-              validBorderColor: passwordCheckListValidBorderColor,
-              invalidBorderColor: passwordCheckListInvalidBorderColor,
-              iconColor: passwordCheckListIconColor,
-              textColor: passwordCheckListTextColor,
-              validIcon: passwordCheckListValidIcon,
-              invalidIcon: passwordCheckListInvalidIcon,
-            );
-          },
-        ),
-        RetCore.space(10),
-        ValueListenableBuilder(
-          valueListenable: _hasPasswordOneNumber,
-          builder: (BuildContext context, value, Widget? child) {
-            return ValidationCheckList(
-              text: 'At least one numbers (0-9)',
-              isValid: _hasPasswordOneNumber.value,
-              textSize: passwordCheckListTextSize,
-              textFontWeight: passwordCheckListTextFontWeight,
-              width: passwordCheckListIconWidth,
-              height: passwordCheckListIconHeight,
-              radius: passwordCheckListRadius,
-              iconSize: passwordCheckListIconSize,
-              validColor: passwordCheckListValidColor,
-              invalidColor: passwordCheckListInvalidColor,
-              validBorderColor: passwordCheckListValidBorderColor,
-              invalidBorderColor: passwordCheckListInvalidBorderColor,
-              iconColor: passwordCheckListIconColor,
-              textColor: passwordCheckListTextColor,
-              validIcon: passwordCheckListValidIcon,
-              invalidIcon: passwordCheckListInvalidIcon,
-            );
-          },
-        ),
-        RetCore.space(10),
-        ValueListenableBuilder(
-          valueListenable: _hasSpecialCharacter,
-          builder: (BuildContext context, value, Widget? child) {
-            return ValidationCheckList(
-              text: 'Special characters (ex. !@#\$%^&*)',
-              isValid: _hasSpecialCharacter.value,
-              textSize: passwordCheckListTextSize,
-              textFontWeight: passwordCheckListTextFontWeight,
-              width: passwordCheckListIconWidth,
-              height: passwordCheckListIconHeight,
-              radius: passwordCheckListRadius,
-              iconSize: passwordCheckListIconSize,
-              validColor: passwordCheckListValidColor,
-              invalidColor: passwordCheckListInvalidColor,
-              validBorderColor: passwordCheckListValidBorderColor,
-              invalidBorderColor: passwordCheckListInvalidBorderColor,
-              iconColor: passwordCheckListIconColor,
-              textColor: passwordCheckListTextColor,
-              validIcon: passwordCheckListValidIcon,
-              invalidIcon: passwordCheckListInvalidIcon,
-            );
-          },
-        ),
-      ],
+    return SizedBox(
+      width: RetCore.width(),
+      child: Column(
+        children: [
+          RetCore.space(10),
+          ValueListenableBuilder(
+            valueListenable: _isPasswordEightCharacters,
+            builder: (BuildContext context, value, Widget? child) {
+              return ValidationCheckList(
+                text: 'At least 8 Characters',
+                isValid: _isPasswordEightCharacters.value,
+                textSize: passwordCheckListTextSize,
+                textFontWeight: passwordCheckListTextFontWeight,
+                width: passwordCheckListIconWidth,
+                height: passwordCheckListIconHeight,
+                radius: passwordCheckListRadius,
+                iconSize: passwordCheckListIconSize,
+                validColor: passwordCheckListValidColor,
+                invalidColor: passwordCheckListInvalidColor,
+                validBorderColor: passwordCheckListValidBorderColor,
+                invalidBorderColor: passwordCheckListInvalidBorderColor,
+                iconColor: passwordCheckListIconColor,
+                textColor: passwordCheckListTextColor,
+                validIcon: passwordCheckListValidIcon,
+                invalidIcon: passwordCheckListInvalidIcon,
+              );
+            },
+          ),
+          RetCore.space(10),
+          ValueListenableBuilder(
+            valueListenable: _hasUpperCase,
+            builder: (BuildContext context, value, Widget? child) {
+              return ValidationCheckList(
+                text: 'Upper case letters (A-Z)',
+                isValid: _hasUpperCase.value,
+                textSize: passwordCheckListTextSize,
+                textFontWeight: passwordCheckListTextFontWeight,
+                width: passwordCheckListIconWidth,
+                height: passwordCheckListIconHeight,
+                radius: passwordCheckListRadius,
+                iconSize: passwordCheckListIconSize,
+                validColor: passwordCheckListValidColor,
+                invalidColor: passwordCheckListInvalidColor,
+                validBorderColor: passwordCheckListValidBorderColor,
+                invalidBorderColor: passwordCheckListInvalidBorderColor,
+                iconColor: passwordCheckListIconColor,
+                textColor: passwordCheckListTextColor,
+                validIcon: passwordCheckListValidIcon,
+                invalidIcon: passwordCheckListInvalidIcon,
+              );
+            },
+          ),
+          RetCore.space(10),
+          ValueListenableBuilder(
+            valueListenable: _hasLowerCase,
+            builder: (BuildContext context, value, Widget? child) {
+              return ValidationCheckList(
+                text: 'Lower case letters (a-z)',
+                isValid: _hasLowerCase.value,
+                textSize: passwordCheckListTextSize,
+                textFontWeight: passwordCheckListTextFontWeight,
+                width: passwordCheckListIconWidth,
+                height: passwordCheckListIconHeight,
+                radius: passwordCheckListRadius,
+                iconSize: passwordCheckListIconSize,
+                validColor: passwordCheckListValidColor,
+                invalidColor: passwordCheckListInvalidColor,
+                validBorderColor: passwordCheckListValidBorderColor,
+                invalidBorderColor: passwordCheckListInvalidBorderColor,
+                iconColor: passwordCheckListIconColor,
+                textColor: passwordCheckListTextColor,
+                validIcon: passwordCheckListValidIcon,
+                invalidIcon: passwordCheckListInvalidIcon,
+              );
+            },
+          ),
+          RetCore.space(10),
+          ValueListenableBuilder(
+            valueListenable: _hasPasswordOneNumber,
+            builder: (BuildContext context, value, Widget? child) {
+              return ValidationCheckList(
+                text: 'At least one numbers (0-9)',
+                isValid: _hasPasswordOneNumber.value,
+                textSize: passwordCheckListTextSize,
+                textFontWeight: passwordCheckListTextFontWeight,
+                width: passwordCheckListIconWidth,
+                height: passwordCheckListIconHeight,
+                radius: passwordCheckListRadius,
+                iconSize: passwordCheckListIconSize,
+                validColor: passwordCheckListValidColor,
+                invalidColor: passwordCheckListInvalidColor,
+                validBorderColor: passwordCheckListValidBorderColor,
+                invalidBorderColor: passwordCheckListInvalidBorderColor,
+                iconColor: passwordCheckListIconColor,
+                textColor: passwordCheckListTextColor,
+                validIcon: passwordCheckListValidIcon,
+                invalidIcon: passwordCheckListInvalidIcon,
+              );
+            },
+          ),
+          RetCore.space(10),
+          ValueListenableBuilder(
+            valueListenable: _hasSpecialCharacter,
+            builder: (BuildContext context, value, Widget? child) {
+              return ValidationCheckList(
+                text: 'Special characters (ex. !@#\$%^&*)',
+                isValid: _hasSpecialCharacter.value,
+                textSize: passwordCheckListTextSize,
+                textFontWeight: passwordCheckListTextFontWeight,
+                width: passwordCheckListIconWidth,
+                height: passwordCheckListIconHeight,
+                radius: passwordCheckListRadius,
+                iconSize: passwordCheckListIconSize,
+                validColor: passwordCheckListValidColor,
+                invalidColor: passwordCheckListInvalidColor,
+                validBorderColor: passwordCheckListValidBorderColor,
+                invalidBorderColor: passwordCheckListInvalidBorderColor,
+                iconColor: passwordCheckListIconColor,
+                textColor: passwordCheckListTextColor,
+                validIcon: passwordCheckListValidIcon,
+                invalidIcon: passwordCheckListInvalidIcon,
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }
