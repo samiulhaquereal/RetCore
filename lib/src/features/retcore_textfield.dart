@@ -95,7 +95,6 @@ class RetCoreTextField extends StatelessWidget {
   final Widget? prefixIconWidget;
   final RetCoreKeyboardType? keyboardType;
   final TextEditingController controller;
-  final ValueNotifier<bool> _obscureText = ValueNotifier<bool>(true);
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
   final DateTime? inititalDate;
@@ -119,15 +118,18 @@ class RetCoreTextField extends StatelessWidget {
   final IconData? passwordCheckListValidIcon;
   final IconData? passwordCheckListInvalidIcon;
 
+  final ValueNotifier<bool> _obscureText = ValueNotifier<bool>(true);
+  final ValueNotifier<bool> _isPasswordEightCharacters = ValueNotifier<bool>(false);
+  final ValueNotifier<bool> _hasPasswordOneNumber = ValueNotifier<bool>(false);
+  final ValueNotifier<bool> _hasUpperCase = ValueNotifier<bool>(false);
+  final ValueNotifier<bool> _hasLowerCase = ValueNotifier<bool>(false);
+  final ValueNotifier<bool> _hasSpecialCharacter = ValueNotifier<bool>(false);
+  final ValueNotifier<bool> _passwordInputStart = ValueNotifier<bool>(false);
+  bool isValid = false;
+
 
   @override
   Widget build(BuildContext context) {
-    final ValueNotifier<bool> _isPasswordEightCharacters = ValueNotifier<bool>(false);
-    final ValueNotifier<bool> _hasPasswordOneNumber = ValueNotifier<bool>(false);
-    final ValueNotifier<bool> _hasUpperCase = ValueNotifier<bool>(false);
-    final ValueNotifier<bool> _hasLowerCase = ValueNotifier<bool>(false);
-    final ValueNotifier<bool> _hasSpecialCharacter = ValueNotifier<bool>(false);
-    final ValueNotifier<bool> _passwordInputStart = ValueNotifier<bool>(false);
     return Column(
       children: [
         ValueListenableBuilder(
@@ -237,7 +239,7 @@ class RetCoreTextField extends StatelessWidget {
                 _hasUpperCase.value = RegExp(r'[A-Z]').hasMatch(password);
                 _hasLowerCase.value = RegExp(r'[a-z]').hasMatch(password);
                 _hasSpecialCharacter.value = RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(password);
-                isValid = _isPasswordEightCharacters.value && _hasPasswordOneNumber.value &&
+                /*bool isValid*/isValid = _isPasswordEightCharacters.value && _hasPasswordOneNumber.value &&
                     _hasUpperCase.value && _hasLowerCase.value && _hasSpecialCharacter.value;
                 if (onChangePassword != null) {
                   print('password2');
