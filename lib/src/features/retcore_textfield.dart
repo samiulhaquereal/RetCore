@@ -95,8 +95,7 @@ class RetCoreTextField extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
-  final void Function(String? ,bool?)? onChangePassword;
-  //final PasswordChangeCallback? onChangePassword;
+  final PasswordChangeCallback? onChangePassword;
   final DateTime? inititalDate;
   final DateTime? startingDate;
   final DateTime? endingDate;
@@ -244,6 +243,7 @@ class RetCoreTextField extends StatelessWidget {
                   onChangePassword!(password,isValid);
                   print('password3');
                 }else{
+                  onChangePassword?.call(password,isValid);
                   print('password null');
                 } // onChanged?.call(password);
               }: onChanged,
