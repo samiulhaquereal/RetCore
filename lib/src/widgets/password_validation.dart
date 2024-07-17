@@ -54,7 +54,7 @@ class PasswordValidation extends StatelessWidget {
       width: RetCore.width(),
       child: Column(
         children: [
-          RetCore.space(10),
+          RetCore.space(25),
           ValueListenableBuilder(
             valueListenable: _isPasswordEightCharacters,
             builder: (BuildContext context, value, Widget? child) {
