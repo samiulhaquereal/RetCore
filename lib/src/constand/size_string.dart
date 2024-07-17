@@ -92,3 +92,5 @@ const double tValidationCheckListIconHeight = 20;
 const double tValidationCheckListRadius = 50;
 const double tValidationCheckListIconSize = 15;
 const double tValidationCheckListTextSize = 14;
+const double tLinearProgressBarSpace = 10;
+const double tLinearProgressBarPercentage = 100;
