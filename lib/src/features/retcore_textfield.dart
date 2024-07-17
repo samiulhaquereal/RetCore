@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:retcore/src/config/imports.dart';
 
 class RetCoreTextField extends StatelessWidget {
@@ -30,8 +28,7 @@ class RetCoreTextField extends StatelessWidget {
     this.label,
     this.hintFontColor = tGrey,
     this.hintFontSize = tHintFontSize,
-    this.isLiveErrorTrack = false,
-    this.isError = false,
+    this.isLiveError = false,
     this.isReadOnly = false,
     this.inititalDate,
     this.startingDate,
@@ -43,6 +40,21 @@ class RetCoreTextField extends StatelessWidget {
     this.suffixIconWidget,
     this.prefixIconWidget,
     this.fieldFocusNode,
+    this.onChangePassword,
+    this.passwordCheckListTextSize,
+    this.passwordCheckListTextFontWeight,
+    this.passwordCheckListIconWidth,
+    this.passwordCheckListIconHeight,
+    this.passwordCheckListRadius,
+    this.passwordCheckListIconSize,
+    this.passwordCheckListValidColor,
+    this.passwordCheckListInvalidColor,
+    this.passwordCheckListValidBorderColor,
+    this.passwordCheckListInvalidBorderColor,
+    this.passwordCheckListIconColor,
+    this.passwordCheckListTextColor,
+    this.passwordCheckListValidIcon,
+    this.passwordCheckListInvalidIcon,
   }) {
     controller.addListener(() {
       if (onChanged != null) {
@@ -74,8 +86,7 @@ class RetCoreTextField extends StatelessWidget {
   final bool? isRequired;
   final bool? isEnabled;
   final bool? isCompact;
-  final bool? isError;
-  final bool? isLiveErrorTrack;
+  final bool? isLiveError;
   final bool? isDatePicker;
   final bool? isReadOnly;
   final Widget? suffixIconWidget;
@@ -90,6 +101,21 @@ class RetCoreTextField extends StatelessWidget {
   final DateTime? endingDate;
   final FocusNode? fieldFocusNode;
   final List<TextInputFormatter>? inputFormatters;
+  final PasswordChangeCallback? onChangePassword;
+  final double? passwordCheckListTextSize;
+  final FontWeight? passwordCheckListTextFontWeight;
+  final double? passwordCheckListIconWidth;
+  final double? passwordCheckListIconHeight;
+  final double? passwordCheckListRadius;
+  final double? passwordCheckListIconSize;
+  final Color? passwordCheckListValidColor;
+  final Color? passwordCheckListInvalidColor;
+  final Color? passwordCheckListValidBorderColor;
+  final Color? passwordCheckListInvalidBorderColor;
+  final Color? passwordCheckListIconColor;
+  final Color? passwordCheckListTextColor;
+  final IconData? passwordCheckListValidIcon;
+  final IconData? passwordCheckListInvalidIcon;
 
 
   @override
@@ -99,7 +125,7 @@ class RetCoreTextField extends StatelessWidget {
     final ValueNotifier<bool> _hasUpperCase = ValueNotifier<bool>(false);
     final ValueNotifier<bool> _hasLowerCase = ValueNotifier<bool>(false);
     final ValueNotifier<bool> _hasSpecialCharacter = ValueNotifier<bool>(false);
-
+    final ValueNotifier<bool> _passwordInputStart = ValueNotifier<bool>(false);
     return Column(
       children: [
         ValueListenableBuilder(
@@ -118,11 +144,7 @@ class RetCoreTextField extends StatelessWidget {
               maxLines: maxLine ?? tMaxLine,
               decoration: InputDecoration(
                 isDense: isCompact,
-                errorText: isLiveErrorTrack == true
-                    ? isError == true
-                        ? liveErrorMessage
-                        : null
-                    : null,
+                errorText: isLiveError == true ? liveErrorMessage : null,
                 suffixIcon: isDatePicker == true
                     ? IconButton(
                         onPressed: () async {
@@ -207,101 +229,48 @@ class RetCoreTextField extends StatelessWidget {
               ),
               validator: isRequired == true ? validator : null,
               onChanged: isPasswordField == true ? (password){
+                _passwordInputStart.value = password.isNotEmpty;
                 _isPasswordEightCharacters.value = password.length >= 8;
                 _hasPasswordOneNumber.value = RegExp(r'[0-9]').hasMatch(password);
                 _hasUpperCase.value = RegExp(r'[A-Z]').hasMatch(password);
                 _hasLowerCase.value = RegExp(r'[a-z]').hasMatch(password);
                 _hasSpecialCharacter.value = RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(password);
+                bool isValid = _isPasswordEightCharacters.value && _hasPasswordOneNumber.value &&
+                    _hasUpperCase.value && _hasLowerCase.value && _hasSpecialCharacter.value;
+                if (onChangePassword != null) {
+                  onChangePassword!(password,isValid);
+                } // onChanged?.call(password);
               }: onChanged,
               onTapOutside: (event) => FocusScope.of(context).unfocus(),
               focusNode: fieldFocusNode,
             );
           },
         ),
-        isPasswordField == true ? Column(
-         children: [
-           RetCore.space(20),
-           ValueListenableBuilder(
-             valueListenable: _isPasswordEightCharacters,
-             builder: (BuildContext context, value, Widget? child) {
-               return validation_checkList(
-                 text: 'Contains at least 8 characters',
-                 isValid: _isPasswordEightCharacters.value,
-               );
-             },
-           ),
-           RetCore.space(10),
-           ValueListenableBuilder(
-             valueListenable: _hasPasswordOneNumber,
-             builder: (BuildContext context, value, Widget? child) {
-               return validation_checkList(
-                 text: 'Contains at least 1 number',
-                 isValid: _hasPasswordOneNumber.value,
-               );
-             },
-           ),
-           RetCore.space(10),
-           ValueListenableBuilder(
-             valueListenable: _hasUpperCase,
-             builder: (BuildContext context, value, Widget? child) {
-               return validation_checkList(
-                 text: 'Contains at least 1 uppercase letter',
-                 isValid: _hasUpperCase.value,
-               );
-             },
-           ),
-           RetCore.space(10),
-           ValueListenableBuilder(
-             valueListenable: _hasLowerCase,
-             builder: (BuildContext context, value, Widget? child) {
-               return validation_checkList(
-                 text: 'Contains at least 1 lowercase letter',
-                 isValid: _hasLowerCase.value,
-               );
-             },
-           ),
-         ],
-       ) : const SizedBox()
-      ],
-    );
-  }
-}
-
-class validation_checkList extends StatelessWidget {
-  const validation_checkList({
-    super.key,
-    required this.text,
-    required this.isValid,
-  });
-
-  final bool isValid;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 500),
-          width: 20,
-          height: 20,
-          decoration: BoxDecoration(
-            color: isValid ? Colors.green : Colors.red,
-            border: isValid
-                ? Border.all(color: Colors.transparent)
-                : Border.all(color: Colors.red),
-            borderRadius: BorderRadius.circular(50),
-          ),
-          child: Center(
-            child: Icon(
-              isValid ? Icons.check : Icons.close,
-              color: Colors.white,
-              size: 15,
-            ),
-          ),
+        ValueListenableBuilder(
+          valueListenable: _passwordInputStart,
+          builder: (BuildContext context, value, Widget? child) {
+            return _passwordInputStart.value == true ? PasswordValidation(
+                isPasswordEightCharacters: _isPasswordEightCharacters,
+                passwordCheckListTextSize: passwordCheckListTextSize,
+                passwordCheckListTextFontWeight: passwordCheckListTextFontWeight,
+                passwordCheckListIconWidth: passwordCheckListIconWidth,
+                passwordCheckListIconHeight: passwordCheckListIconHeight,
+                passwordCheckListRadius: passwordCheckListRadius,
+                passwordCheckListIconSize: passwordCheckListIconSize,
+                passwordCheckListValidColor: passwordCheckListValidColor,
+                passwordCheckListInvalidColor: passwordCheckListInvalidColor,
+                passwordCheckListValidBorderColor: passwordCheckListValidBorderColor,
+                passwordCheckListInvalidBorderColor: passwordCheckListInvalidBorderColor,
+                passwordCheckListIconColor: passwordCheckListIconColor,
+                passwordCheckListTextColor: passwordCheckListTextColor,
+                passwordCheckListValidIcon: passwordCheckListValidIcon,
+                passwordCheckListInvalidIcon: passwordCheckListInvalidIcon,
+                hasUpperCase: _hasUpperCase,
+                hasLowerCase: _hasLowerCase,
+                hasPasswordOneNumber: _hasPasswordOneNumber,
+                hasSpecialCharacter: _hasSpecialCharacter) : const SizedBox();
+          },
         ),
-        RetCore.space(10),
-        Text(text),
       ],
     );
   }

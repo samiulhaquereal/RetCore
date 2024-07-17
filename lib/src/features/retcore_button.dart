@@ -79,6 +79,7 @@ class RetCoreButton extends StatelessWidget {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             buttonStyle == RetCoreButtonStyle.horizontal ? Row(
               crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,0 +1,1 @@
+typedef PasswordChangeCallback = void Function(String password, bool isValid);
