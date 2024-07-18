@@ -254,6 +254,14 @@ class RetCore{
     String day = RetCoreDayMonthName().getBanglaDayName(isoDateString);
     return day;
   }
+  static String getDayBangla({required String isoDateString}){
+    String day = RetCoreDayMonthName().getBanglaDay(isoDateString);
+    return day;
+  }
+  static String getDayEnglish({required String isoDateString}){
+    String day = RetCoreDayMonthName().getEnglishDay(isoDateString);
+    return day;
+  }
   static String getMonthNameBangla({required String isoDateString}){
     String month = RetCoreDayMonthName().getBanglaFullMonthName(isoDateString);
     return month;
@@ -280,6 +288,14 @@ class RetCore{
   }
   static Map<String , dynamic> getTimeBangla({required String time,bool? isSecond}){
     Map<String , dynamic> response = RetCoreDayMonthName().getBanglaTime(isoDateString: time,isSecond: isSecond);
+    return response;
+  }
+  static Map<String , dynamic> getDateBangla({required String isoDateString}){
+    Map<String , dynamic> response = RetCoreDayMonthName().getBanglaDate(isoDateString: isoDateString);
+    return response;
+  }
+  static Map<String , dynamic> getDateEnglish({required String isoDateString}){
+    Map<String , dynamic> response = RetCoreDayMonthName().getEnglishDate(isoDateString: isoDateString);
     return response;
   }
 

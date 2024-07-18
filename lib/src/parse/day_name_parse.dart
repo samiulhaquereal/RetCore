@@ -95,10 +95,23 @@ class RetCoreDayMonthName{
     String dayInEnglish = getDayName(date: date);
     return banglaDays[dayInEnglish] ?? dayInEnglish;
   }
-
   String getBanglaDigit(dynamic digit) {
     String banglaDigit = RetCore.parseString(value: digit, defaultValue: '0');
     return banglaDigit.split('').map((digit) => banglaDigits[digit] ?? digit).join('');
+  }
+  String getBanglaDay(String isoDateString) {
+    DateTime parsedDate = DateTime.parse(isoDateString);
+    // Extract only the day part
+    DateFormat dayFormat = DateFormat('dd');
+    String day = dayFormat.format(parsedDate);
+    return day.split('').map((digit) => banglaDigits[digit] ?? digit).join('');
+  }
+  String getEnglishDay(String isoDateString) {
+    DateTime parsedDate = DateTime.parse(isoDateString);
+    // Extract only the day part
+    DateFormat dayFormat = DateFormat('dd');
+    String day = dayFormat.format(parsedDate);
+    return day;
   }
 
   String getBanglaMonthNumber(String isoDateString) {
@@ -126,6 +139,28 @@ class RetCoreDayMonthName{
     DateTime time = DateTime.parse(isoDateString);
     String monthInEnglish = getMonthName(date: time);
     return banglaMonths[monthInEnglish] ?? monthInEnglish;
+  }
+
+  Map<String , dynamic> getBanglaDate({required String isoDateString}) {
+    String day = RetCore.getDayBangla(isoDateString: isoDateString);
+    String month = RetCore.getMonthNameBangla(isoDateString: isoDateString);
+    String year = RetCore.getYearBangla(isoDateString: isoDateString);
+    return {
+      'day': day ,
+      'month': month,
+      'year': year,
+    };
+  }
+  Map<String , dynamic> getEnglishDate({required String isoDateString}) {
+    DateTime parsedDate = DateTime.parse(isoDateString);
+    String day = RetCore.getDayEnglish(isoDateString: isoDateString);
+    String month = RetCore.getMonthNameEnglish(date: parsedDate);
+    String year = RetCore.getYearEnglish(isoDateString: isoDateString);
+    return {
+      'day': day ,
+      'month': month,
+      'year': year,
+    };
   }
 
   Map<String , dynamic> getBanglaTime({required String isoDateString,bool? isSecond}) {
