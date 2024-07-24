@@ -55,6 +55,10 @@ class RetCoreTextField extends StatelessWidget {
     this.passwordCheckListTextColor,
     this.passwordCheckListValidIcon,
     this.passwordCheckListInvalidIcon,
+    this.isShowCounterText,
+    this.textAlign,
+    this.onEditingComplete,
+    this.onFieldSubmitted,
   }) {
     controller.addListener(() {
       if (onChanged != null) {
@@ -86,6 +90,7 @@ class RetCoreTextField extends StatelessWidget {
   final bool? isRequired;
   final bool? isEnabled;
   final bool? isCompact;
+  final bool? isShowCounterText;
   final bool? isLiveError;
   final bool? isDatePicker;
   final bool? isReadOnly;
@@ -94,7 +99,9 @@ class RetCoreTextField extends StatelessWidget {
   final RetCoreKeyboardType? keyboardType;
   final TextEditingController controller;
   final String? Function(String?)? validator;
-  final void Function(String)? onChanged;
+  final void Function(String?)? onChanged;
+  final void Function(String?)? onFieldSubmitted;
+  final void Function()? onEditingComplete;
   final PasswordChangeCallback? onChangePassword;
   final DateTime? inititalDate;
   final DateTime? startingDate;
@@ -114,6 +121,7 @@ class RetCoreTextField extends StatelessWidget {
   final Color? passwordCheckListIconColor;
   final Color? passwordCheckListTextColor;
   final IconData? passwordCheckListValidIcon;
+  final TextAlign? textAlign;
   final IconData? passwordCheckListInvalidIcon;
   final ValueNotifier<bool> _obscureText = ValueNotifier<bool>(true);
   final ValueNotifier<bool> _isPasswordEightCharacters = ValueNotifier<bool>(false);
@@ -133,6 +141,7 @@ class RetCoreTextField extends StatelessWidget {
             return TextFormField(
               textInputAction: TextInputAction.next,
               inputFormatters: inputFormatters,
+              textAlign: textAlign ?? TextAlign.left,
               style: TextStyle(fontSize: inputFontSize, color: inputFontColor),
               controller: controller,
               obscureText: isPasswordField == true ? _obscureText.value : false,
@@ -209,6 +218,7 @@ class RetCoreTextField extends StatelessWidget {
                     : const UnderlineInputBorder(
                         borderSide: BorderSide(color: tRed)),
                 hintText: hint,
+                counterText: isShowCounterText == true ? null : '',
                 hintStyle: TextStyle(fontSize: hintFontSize, color: hintFontColor),
                 label: label == null
                     ? null
@@ -242,6 +252,8 @@ class RetCoreTextField extends StatelessWidget {
               }: onChanged,
               onTapOutside: (event) => FocusScope.of(context).unfocus(),
               focusNode: fieldFocusNode,
+              onEditingComplete: onEditingComplete,
+              onFieldSubmitted: onFieldSubmitted,
             );
           },
         ),

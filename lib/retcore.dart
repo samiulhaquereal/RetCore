@@ -1,6 +1,7 @@
 library retcore;
 
 export 'src/features/retcore_textfield.dart';
+export '/src/features/retcore_otpfield.dart';
 export 'src/features/retcore_button.dart';
 export 'src/features/retcore_animation.dart';
 export 'src/features/retcore_activitychecker.dart';
