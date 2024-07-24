@@ -53,7 +53,7 @@ class RetCoreOTPField extends StatelessWidget {
             keyboardType: RetCoreKeyboardType.number,
             textAlign: TextAlign.center,
             maxLength: 1,
-            onChanged: (value) => _onChanged(context, index, value ?? ''),
+            onChanged: (value) => _onChanged(context, index, value),
             onFieldSubmitted: (_) {
               if (index + 1 < length) {
                 _focusNodes[index + 1].requestFocus();
