@@ -12,7 +12,6 @@ class RetCoreBottomSheet {
   static void bottomSheet({
     required Widget child,
     double? boxRadius,
-    double? padding,
     Color? backgroundColor,
   }) async {
     BuildContext? context = FindContext.getContext();
@@ -26,10 +25,6 @@ class RetCoreBottomSheet {
               topRight: Radius.circular(boxRadius!),
             ),
             color: backgroundColor,
-          ),
-          padding: EdgeInsets.symmetric(
-            vertical: padding ?? tBottomDialogPadding,
-            horizontal: padding ?? tBottomDialogPadding,
           ),
           child: child,
         );

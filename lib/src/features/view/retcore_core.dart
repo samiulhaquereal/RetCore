@@ -363,14 +363,12 @@ class RetCore{
   static void bottomsheet({
     required Widget child,
     double? boxRadius = tBottomDialogRadius,
-    Color? backgroundColor = tGrey,
-    double? padding = tBottomDialogPadding,
+    Color? backgroundColor
 }){
     RetCoreBottomSheet.bottomSheet(
       child: child,
         boxRadius:boxRadius,
-      padding: padding,
-      backgroundColor: backgroundColor
+      backgroundColor: backgroundColor ?? tTransparent
     );
   }
 
