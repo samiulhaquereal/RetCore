@@ -64,8 +64,8 @@ class RetCore{
     Color value = RetCoreParseColor.RetCoreColor(colorCode: colorCode);
     return value;
   }
-  static TextInputFormatter parseInputType({required RetCoreInputType? type}){
-    TextInputFormatter value = RetCoreInputTypeParse.InputType(type: type);
+  static TextInputFormatter parseInputType({required RetCoreInputType? type,int? wordLimit}){
+    TextInputFormatter value = RetCoreInputTypeParse.InputType(type: type,wordLimit: wordLimit);
     return value;
   }
   static TextInputType parseKeyboardType({required RetCoreKeyboardType? type}){
