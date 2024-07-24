@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:retcore/retcore.dart';
+
+
+import 'package:retcore/src/config/imports.dart';
 
 class RetCoreOTPField extends StatelessWidget {
   final int length;
@@ -8,7 +9,7 @@ class RetCoreOTPField extends StatelessWidget {
   final List<FocusNode> _focusNodes = [];
   final List<String> _inputValues;
 
-  RetCoreOTPField({required this.length, required this.onCompleted})
+  RetCoreOTPField({super.key, required this.length, required this.onCompleted})
       : _inputValues = List.generate(length, (_) => '') {
     for (int i = 0; i < length; i++) {
       _controllers.add(TextEditingController());
@@ -52,7 +53,7 @@ class RetCoreOTPField extends StatelessWidget {
             keyboardType: RetCoreKeyboardType.number,
             textAlign: TextAlign.center,
             maxLength: 1,
-            onChanged: (value) => _onChanged(context, index, value!),
+            onChanged: (value) => _onChanged(context, index, value ?? ''),
             onFieldSubmitted: (_) {
               if (index + 1 < length) {
                 _focusNodes[index + 1].requestFocus();
