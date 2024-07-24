@@ -1,5 +1,3 @@
-
-
 import 'package:retcore/src/config/imports.dart';
 
 class RetCoreOTPField extends StatelessWidget {
@@ -9,7 +7,7 @@ class RetCoreOTPField extends StatelessWidget {
   final List<FocusNode> _focusNodes = [];
   final List<String> _inputValues;
 
-  RetCoreOTPField({super.key, required this.length, required this.onCompleted})
+  RetCoreOTPField({required this.length, required this.onCompleted})
       : _inputValues = List.generate(length, (_) => '') {
     for (int i = 0; i < length; i++) {
       _controllers.add(TextEditingController());
@@ -47,19 +45,22 @@ class RetCoreOTPField extends StatelessWidget {
       children: List.generate(length, (index) {
         return SizedBox(
           width: 40,
-          child: RetCoreTextField(
-            fieldFocusNode: _focusNodes[index],
+          child: TextField(
+            focusNode: _focusNodes[index],
             controller: _controllers[index],
-            keyboardType: RetCoreKeyboardType.number,
+            keyboardType: TextInputType.number,
             textAlign: TextAlign.center,
             maxLength: 1,
             onChanged: (value) => _onChanged(context, index, value),
-            onFieldSubmitted: (_) {
+            onSubmitted: (_) {
               if (index + 1 < length) {
                 _focusNodes[index + 1].requestFocus();
               }
             },
-            isBorder: true,
+            decoration: const InputDecoration(
+              counterText: '',
+              border: OutlineInputBorder(),
+            ),
             onEditingComplete: () {
               if (_controllers[index].text.isEmpty) {
                 _onBackspace(index);

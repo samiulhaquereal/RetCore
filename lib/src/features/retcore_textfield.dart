@@ -99,7 +99,7 @@ class RetCoreTextField extends StatelessWidget {
   final RetCoreKeyboardType? keyboardType;
   final TextEditingController controller;
   final String? Function(String?)? validator;
-  final void Function(String)? onChanged;
+  final void Function(String?)? onChanged;
   final void Function(String?)? onFieldSubmitted;
   final void Function()? onEditingComplete;
   final PasswordChangeCallback? onChangePassword;
