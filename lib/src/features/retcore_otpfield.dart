@@ -47,7 +47,7 @@ class RetCoreOTPField extends StatelessWidget {
     }
   }
 
-  void setOTP(String otp) {
+  void setOTP({required String otp}) {
     if (otp.length == length) {
       for (int i = 0; i < length; i++) {
         _controllers[i].text = otp[i];
