@@ -1,5 +1,5 @@
 import 'package:retcore/src/config/imports.dart';
-
+import 'dart:developer' as dev;
 
 class RetCoreOTPField extends StatelessWidget {
   final int length;
@@ -44,6 +44,18 @@ class RetCoreOTPField extends StatelessWidget {
       if (_inputValues.every((element) => element.isNotEmpty)) {
         onCompleted(_inputValues.join());
       }
+    }
+  }
+
+  void setOTP(String otp) {
+    if (otp.length == length) {
+      for (int i = 0; i < length; i++) {
+        _controllers[i].text = otp[i];
+        _inputValues[i] = otp[i];
+      }
+      onCompleted(otp);
+    } else {
+      dev.log('OTP field length & code length are not the same');
     }
   }
 
