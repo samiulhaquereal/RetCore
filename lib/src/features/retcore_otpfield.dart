@@ -8,7 +8,7 @@ class RetCoreOTPField extends StatelessWidget {
   final double? borderRadius;
   final Color? borderColor;
   final Color? focusedColor;
-  final Color? inputFontColor;
+  final Color? fontColor;
   final double? width;
   final double? inputFontSize;
   final String? hint;
@@ -22,7 +22,7 @@ class RetCoreOTPField extends StatelessWidget {
     this.width = tOTPWidthSize,
     this.inputFontSize = tOTPFontSize,
     this.borderRadius = tBorderRadiusSize,
-    this.inputFontColor = tBlack,
+    this.fontColor = tBlack,
     this.borderColor = tGrey,
     this.focusedColor = tFocusedColor,
   }) : _inputValues = List.generate(length, (_) => ''),
@@ -70,7 +70,7 @@ class RetCoreOTPField extends StatelessWidget {
             maxLength: 1,
             inputFontSize: inputFontSize,
             hint: hint,
-            inputFontColor: inputFontColor,
+            inputFontColor: fontColor,
             isBorder: isBorder,
             borderColor: borderColor,
             focusedColor: focusedColor,
