@@ -1,7 +1,7 @@
 import 'package:retcore/src/config/imports.dart';
 
 class RetCoreChipInputField extends StatefulWidget {
-  RetCoreChipInputField({
+  const RetCoreChipInputField({
     super.key,
     required this.chipsList,
     required this.fieldStyle,
@@ -123,7 +123,7 @@ class _ChipInputFieldState extends State<RetCoreChipInputField> {
             : const UnderlineInputBorder(borderSide: BorderSide(color: tRed)),
       ),
       child: SingleChildScrollView(
-        physics: widget.fieldStyle == RetCoreChipInputFieldStyle.vertical ? NeverScrollableScrollPhysics() : null,
+        physics: widget.fieldStyle == RetCoreChipInputFieldStyle.vertical ? const NeverScrollableScrollPhysics() : null,
         scrollDirection: widget.fieldStyle == RetCoreChipInputFieldStyle.horizontal ? Axis.horizontal : Axis.vertical,
         child: widget.fieldStyle == RetCoreChipInputFieldStyle.vertical ? Column(
           crossAxisAlignment: CrossAxisAlignment.start,
