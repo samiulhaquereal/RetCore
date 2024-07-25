@@ -55,7 +55,7 @@ class RetCoreOTPField extends StatelessWidget {
       }
       onCompleted(otp);
     } else {
-      dev.log('OTP field length & code length are not the same');
+      dev.log(tOTPWarnning);
     }
   }
 

@@ -24,3 +24,5 @@ const String tPlatform7 = 'Unknown';
 
 const String tFadeAnimationLog = 'Auto Reversed Animation activate';
 const String tSnackBarContextNotFoundHint = 'Make sure the MaterialApp uses RetCoreNavigatorKey';
+
+const String tOTPWarnning = 'OTP field length & code length are not the same';
