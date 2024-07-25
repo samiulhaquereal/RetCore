@@ -94,3 +94,5 @@ const double tValidationCheckListIconSize = 15;
 const double tValidationCheckListTextSize = 14;
 const double tLinearProgressBarSpace = 10;
 const double tLinearProgressBarPercentage = 100;
+const double tOTPWidthSize = 40;
+const double tOTPFontSize = 16;
