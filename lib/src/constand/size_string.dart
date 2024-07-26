@@ -96,3 +96,6 @@ const double tLinearProgressBarSpace = 10;
 const double tLinearProgressBarPercentage = 100;
 const double tOTPWidthSize = 40;
 const double tOTPFontSize = 16;
+const double tDropDownChipSize = 50;
+const double tDropDownHeightSize = 50;
+const double tDropDownContentPaddingSize = 8;

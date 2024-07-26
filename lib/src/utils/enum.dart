@@ -25,7 +25,8 @@ enum RetCoreDialogBoxStyle {
 enum RetCoreDropdownFieldStyle{
   normal,
   advanced,
-  searchable
+  searchable,
+  multiple
 }
 enum RetCoreBottomDialogBoxButtonStyle{
   text,withBackground

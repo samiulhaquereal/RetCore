@@ -68,13 +68,13 @@ class DropdownStyle2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Autocomplete<String>(
       optionsViewOpenDirection: OptionsViewOpenDirection.down,
-      optionsBuilder: (textEditingValue) {
+      optionsBuilder: (item) {
         return itemList
-            .where((String country) => country
-            .toLowerCase().contains(textEditingValue.text.toLowerCase())).toList();
+            .where((String value) => value
+            .toLowerCase().contains(item.text.toLowerCase())).toList();
 
       },
-      displayStringForOption: (String country) => country,
+      displayStringForOption: (String value) => value,
       fieldViewBuilder: (context, TextEditingController fieldTextEditingController, fieldFocusNode, onFieldSubmitted) {
         return RetCoreTextField(
           controller: fieldTextEditingController,
@@ -105,8 +105,8 @@ class DropdownStyle2 extends StatelessWidget {
           keyboardType: keyboardType,
         );
       },
-      onSelected: (String selection) {
-        selectedItem.value = selection;
+      onSelected: (String value) {
+        selectedItem.value = value;
       },
     );
   }

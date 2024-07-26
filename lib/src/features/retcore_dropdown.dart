@@ -1,4 +1,5 @@
 import 'package:retcore/src/config/imports.dart';
+import 'package:retcore/src/widgets/dropdown_style3.dart';
 
 class RetCoreDropdownField extends StatelessWidget {
   const RetCoreDropdownField({
@@ -43,6 +44,16 @@ class RetCoreDropdownField extends StatelessWidget {
     this.inputFontSize = tInputFontSize,
     this.inputFontColor = tBlack,
     this.keyboardType = RetCoreKeyboardType.text,
+    this.selectedItemList,
+    this.onDeleted,
+    this.chipSize,
+    this.chipBorderColor,
+    this.chipDeleteIconColor,
+    this.chipTitleFontColor,
+    this.chipBorderRadius,
+    this.chipTitleFontSize,
+    this.height,
+    this.contentPadding,
   });
 
   final String? hint;
@@ -86,6 +97,17 @@ class RetCoreDropdownField extends StatelessWidget {
   final FocusNode fieldFocusNode;
   final RetCoreKeyboardType? keyboardType;
 
+  final ValueNotifier<List<String>>? selectedItemList;
+  final void Function(String)? onDeleted;
+  final double? chipSize;
+  final Color? chipBorderColor;
+  final Color? chipDeleteIconColor;
+  final Color? chipTitleFontColor;
+  final double? chipBorderRadius;
+  final double? chipTitleFontSize;
+  final double? height;
+  final double? contentPadding;
+
   @override
   Widget build(BuildContext context) {
     return retCoreDropdownFieldStyle == RetCoreDropdownFieldStyle.searchable ? DropdownStyle2(
@@ -118,7 +140,38 @@ class RetCoreDropdownField extends StatelessWidget {
     inputFontSize: inputFontSize,
     inputFontColor: inputFontColor,
     keyboardType:keyboardType,
-    ) : ValueListenableBuilder(
+    ) :
+    retCoreDropdownFieldStyle == RetCoreDropdownFieldStyle.multiple ? DropdownStyle3(
+        list: itemList,
+        chipsNotifier: selectedItemList!,
+        label:label,
+        onDeleted: onDeleted,
+        onChanged: onChanged,
+       isEnable: isEnabled,
+       isRequired: isRequired,
+       backgroundColor: backgroundColor ?? tWhite,
+       suffixIconWidget: suffixIconWidget,
+       suffixIcon: suffixIcon,
+       iconColor: iconColor,
+       iconSize: iconSize,
+       labelSize: labelSize ?? tLabelSize,
+       chipSize: chipSize ?? tDropDownChipSize,
+       labelColor : labelColor ?? tBlack,
+       isBorder: isBorder ?? true,
+       borderRadius: borderRadius ?? tBorderRadiusSize,
+       borderColor: borderColor ?? tGrey,
+       focusedColor: focusedColor ?? tFocusedColor,
+       hint: hint ?? tHintDropDown,
+       chipBorderColor: chipBorderColor ?? tBlack,
+       chipDeleteIconColor: chipDeleteIconColor ?? tRed,
+       chipTitleFontColor: chipTitleFontColor ?? tBlack,
+       chipBorderRadius: chipBorderRadius ?? tChipBorderRadius,
+       chipTitleFontSize: chipTitleFontSize ?? tChipTitleFontSize,
+       height: height ?? tDropDownHeightSize,
+       hintFontSize: hintFontSize ?? tHintFontSize,
+       contentPadding: contentPadding ?? tDropDownContentPaddingSize,
+    ):
+    ValueListenableBuilder(
       valueListenable: selectedItem,
       builder: (context, selectedValue, child){
         return DropdownButtonFormField(
@@ -130,8 +183,7 @@ class RetCoreDropdownField extends StatelessWidget {
             value: item,
             alignment: itemAlignment,
             child: retCoreDropdownFieldStyle == RetCoreDropdownFieldStyle.normal ? Text(item,style: TextStyle(fontSize: itemFontSize,color: itemFontColor)) :
-            retCoreDropdownFieldStyle == RetCoreDropdownFieldStyle.advanced ?
-            DropdownStyle1(
+            retCoreDropdownFieldStyle == RetCoreDropdownFieldStyle.advanced ? DropdownStyle1(
                 prefixItemIconWidget: prefixItemIconWidget,
                 prefixItemIcon: prefixItemIcon,
                 dropIconColor: dropIconColor,

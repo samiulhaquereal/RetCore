@@ -29,7 +29,7 @@ class RetCoreDialogBox{
     Color? buttonTextColor,
     double? dialogBoxContantTopHeightSize,
     double? dialogBoxContantBottomHeightSize,
-    double? dialogBoxTitleHeightSize,
+    double? dialogBoxTitleTopHeightSize,
     double? titleFontSize,
     double? dialogBoxContentPadding,
     double? contentFontSize,
@@ -96,9 +96,9 @@ class RetCoreDialogBox{
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(height: dialogBoxContantTopHeightSize),
+                              SizedBox(height: dialogBoxTitleTopHeightSize),
                               Text(title,style: TextStyle(fontSize:titleFontSize , color: titleFontColor,fontWeight: titleFontWeight)),
-                              SizedBox(height:dialogBoxTitleHeightSize),
+                              SizedBox(height:dialogBoxContantTopHeightSize),
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: dialogBoxContentPadding!),
                                 child: Text(content,style: TextStyle(fontSize:contentFontSize , color: contentFontColor)),
@@ -163,7 +163,7 @@ class RetCoreDialogBox{
                           Text(
                             mode == RetCoreDialogBoxMode.success ? _dialogTitle[0] : mode == RetCoreDialogBoxMode.error ? _dialogTitle[1] : mode == RetCoreDialogBoxMode.alert ? _dialogTitle[2] : mode == RetCoreDialogBoxMode.info ? _dialogTitle[3] : ''
                             ,style: TextStyle(fontSize:titleFontSize , color: titleFontColor,fontWeight: titleFontWeight),),
-                          SizedBox(height:dialogBoxTitleHeightSize),
+                          SizedBox(height:dialogBoxTitleTopHeightSize),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: dialogBoxContentPadding!),
                             child: Text(content,style: TextStyle(fontSize:contentFontSize , color: contentFontColor)),
