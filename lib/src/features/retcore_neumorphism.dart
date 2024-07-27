@@ -4,8 +4,8 @@ class RetCoreNeumorphism extends StatelessWidget {
   const RetCoreNeumorphism({
     super.key,
     required this.child,
-    this.height = tNeumorphismHeight,
-    this.width = tNeumorphismWidth,
+    this.height /*= tNeumorphismHeight*/,
+    this.width /*= tNeumorphismWidth*/,
     this.color = tNeumorphismBackgroundColor,
     this.radius = tNeumorphismRadius,
     this.blurRadius = tNeumorphismBlurRadius,
