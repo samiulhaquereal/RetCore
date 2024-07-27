@@ -130,9 +130,33 @@ class ImagePlaceHolder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
+    bool isUrl = imagePath.startsWith('http://') || imagePath.startsWith('https://');
+    return isUrl
+        ? Image.network(
       imagePath,
       fit: BoxFit.cover,
+      errorBuilder: (context, error, stackTrace) {
+        return const Center(child: Row(
+          children: [
+            Icon(Icons.info_outline),
+            SizedBox(width: 5,),
+            Text('Failed to load image'),
+          ],
+        ));
+      },
+    )
+        : Image.asset(
+      imagePath,
+      fit: BoxFit.cover,
+      errorBuilder: (context, error, stackTrace) {
+        return const Center(child: Row(
+          children: [
+            Icon(Icons.info_outline),
+            SizedBox(width: 5,),
+            Text('Failed to load image'),
+          ],
+        ));
+      },
     );
   }
 }
