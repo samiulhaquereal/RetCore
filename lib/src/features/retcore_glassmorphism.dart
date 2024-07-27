@@ -10,6 +10,8 @@ class RetCoreGlassmorphism extends StatelessWidget {
   final double? borderWidth;
   final Color? borderColor;
   final Color? background;
+  final double? height;
+  final double? width;
 
   const RetCoreGlassmorphism({
     super.key,
@@ -20,6 +22,8 @@ class RetCoreGlassmorphism extends StatelessWidget {
     this.borderWidth = tGlassmorphismBorderWidth,
     this.background = tWhite,
     this.borderColor = tWhite,
+    this.height,
+    this.width,
   });
 
   @override
@@ -29,6 +33,8 @@ class RetCoreGlassmorphism extends StatelessWidget {
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: blur!,sigmaY: blur!),
         child: Container(
+          height: height,
+          width: width,
           decoration: BoxDecoration(
             color: background!.withOpacity(opacity!),
             borderRadius: BorderRadius.all(Radius.circular(borderRadius!)),
