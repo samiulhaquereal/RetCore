@@ -28,6 +28,7 @@ class RetCoreTextField extends StatelessWidget {
     this.label,
     this.hintFontColor = tGrey,
     this.hintFontSize = tHintFontSize,
+    this.cursorColor = tBlack,
     this.isLiveError = false,
     this.isReadOnly = false,
     this.inititalDate,
@@ -119,6 +120,7 @@ class RetCoreTextField extends StatelessWidget {
   final Color? passwordCheckListValidBorderColor;
   final Color? passwordCheckListInvalidBorderColor;
   final Color? passwordCheckListIconColor;
+  final Color? cursorColor;
   final Color? passwordCheckListTextColor;
   final IconData? passwordCheckListValidIcon;
   final TextAlign? textAlign;
@@ -149,6 +151,7 @@ class RetCoreTextField extends StatelessWidget {
               enabled: isEnabled,
               readOnly: isReadOnly!,
               maxLength: maxLength,
+              cursorColor: cursorColor,
               maxLines: maxLine ?? tMaxLine,
               decoration: InputDecoration(
                 isDense: isCompact,
