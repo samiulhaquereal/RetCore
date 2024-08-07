@@ -42,3 +42,7 @@ export 'package:retcore/src/parse/datetime_parse.dart';
 export 'package:retcore/src/widgets/password_validation_checklist.dart';
 export 'package:retcore/src/utils/type_function.dart';
 export 'package:retcore/src/widgets/password_validation.dart';
+export 'package:path_provider/path_provider.dart';
+export 'package:permission_handler/permission_handler.dart';
+export 'package:device_info_plus/device_info_plus.dart';
+export 'package:retcore/src/features/retcore_file_download.dart';
