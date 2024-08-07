@@ -46,3 +46,7 @@ export 'package:path_provider/path_provider.dart';
 export 'package:permission_handler/permission_handler.dart';
 export 'package:device_info_plus/device_info_plus.dart';
 export 'package:retcore/src/features/retcore_file_download.dart';
+export 'dart:convert';
+export 'dart:isolate';
+export 'package:retcore/src/network/retcore_api_isolate.dart';
+export 'package:retcore/src/utils/api_client_log.dart';
