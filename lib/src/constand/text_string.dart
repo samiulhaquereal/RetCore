@@ -20,7 +20,8 @@ const String tPlatform3 = 'iOS';
 const String tPlatform4 = 'Windows';
 const String tPlatform5 = 'Linux';
 const String tPlatform6 = 'macOS';
-const String tPlatform7 = 'Unknown';
+const String tPlatform7 = 'Fuchsia';
+const String tPlatform8 = 'Unknown';
 
 const String tFadeAnimationLog = 'Auto Reversed Animation activate';
 const String tSnackBarContextNotFoundHint = 'Make sure the MaterialApp uses RetCoreNavigatorKey';

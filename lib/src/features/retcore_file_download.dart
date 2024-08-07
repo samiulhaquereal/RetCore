@@ -1,5 +1,4 @@
 import 'package:retcore/src/config/imports.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:html' as html; // For web support
 import 'package:http/http.dart' as http;
 import 'dart:typed_data' as type;

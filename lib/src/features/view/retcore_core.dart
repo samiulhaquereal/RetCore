@@ -234,6 +234,10 @@ class RetCore{
     String value = RetCoreOS.getOS();
     return value;
   }
+  static Future<Map<String, dynamic>> getDeviceInfo()async{
+    Map<String, dynamic> value = await RetCoreOS.getDeviceInfo();
+    return value;
+  }
   static Future<bool> getRootDeviceStatus() async{
     bool value = await RetCoreRootDeviceChecker().getDetails();
     return value;
