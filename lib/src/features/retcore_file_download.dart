@@ -135,8 +135,8 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:retcore/src/widgets/mobile_file_saver.dart' if (dart.library.io) 'package:retcore/src/widgets/web_file_saver.dart';
-import 'package:retcore/src/widgets/web_file_saver.dart'; // Conditional imports
+import 'package:retcore/src/widgets/mobile_file_saver.dart';
+import 'package:retcore/src/widgets/web_file_saver.dart';
 
 abstract class FileSaver {
   Future<void> saveFile({
@@ -191,7 +191,7 @@ class FileDownload implements FileSaver {
 
     if (kIsWeb) {
       // Web-specific implementation
-      await saveFileWeb(fileResponse, baseFileName, extension);
+      await WebFileSaver().saveFile(fileResponse: fileResponse, baseFileName: baseFileName, extension: extension);
     } else {
       // Mobile-specific implementation
       await saveFileMobile(fileResponse, baseFileName, extension, appName);

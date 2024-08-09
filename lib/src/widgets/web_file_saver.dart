@@ -1,11 +1,20 @@
-import 'dart:html' as html;
+import 'dart:js' as js;
 import 'dart:typed_data' as type;
+import 'dart:convert'; // For base64 encoding
 
-Future<void> saveFileWeb(type.Uint8List fileResponse, String baseFileName, String extension) async {
-  final blob = html.Blob([fileResponse]);
-  final blobUrl = html.Url.createObjectUrlFromBlob(blob);
-  final anchor = html.AnchorElement(href: blobUrl)
-    ..setAttribute('download', '$baseFileName.$extension')
-    ..click();
-  html.Url.revokeObjectUrl(blobUrl);
+class WebFileSaver {
+  Future<void> saveFile({
+    required type.Uint8List fileResponse,
+    required String baseFileName,
+    required String extension,
+  }) async {
+    final base64String = base64Encode(fileResponse); // Convert Uint8List to base64
+    final filename = '$baseFileName.$extension';
+
+    // Call the JavaScript function
+    js.context.callMethod('downloadFile', [
+      base64String,
+      filename,
+    ]);
+  }
 }
