@@ -20,23 +20,23 @@ void apiIsolate(SendPort sendPort) async {
       final headers = _buildHeaders(cookies: cookies);
       http.Response response;
       switch (method) {
-        case 'GET':
+        case tGET:
           response = await http.get(uri, headers: headers);
           break;
-        case 'POST':
+        case tPOST:
           response = await http.post(uri, headers: headers, body: json.encode(body));
           break;
-        case 'PUT':
+        case tPUT:
           response = await http.put(uri, headers: headers, body: json.encode(body));
           break;
-        case 'PATCH':
+        case tPATCH:
           response = await http.patch(uri, headers: headers, body: json.encode(body));
           break;
-        case 'DELETE':
+        case tDELETE:
           response = await http.delete(uri, headers: headers);
           break;
         default:
-          throw Exception('Unsupported HTTP method');
+          throw Exception(tHttpError);
       }
       ApiClientLog().printRequest(response);
       final cookieResponse = _cookieSet(response: response);
@@ -72,7 +72,7 @@ dynamic _handleResponse(http.Response response) {
       final decodedResponse = jsonDecode(response.body);
       return decodedResponse;
     } catch (e) {
-      return 'Failed to parse error response: ${response.body}';
+      return '$tErrorResponse ${response.body}';
     }
   } else if (response.statusCode >= 200) {
     final decodedResponse = json.decode(response.body);
@@ -81,9 +81,9 @@ dynamic _handleResponse(http.Response response) {
     } else if (decodedResponse is List<dynamic>) {
       return decodedResponse;
     } else {
-      return 'Unsupported response type: ${decodedResponse.runtimeType}';
+      return '$tResponseError ${decodedResponse.runtimeType}';
     }
   } else {
-    return 'Failed to make request with status code: ${response.statusCode}';
+    return '$tErrorCode ${response.statusCode}';
   }
 }

@@ -27,23 +27,23 @@ class RetCoreApiClient{
   }
 
   Future<dynamic> get({required String endpoint, Map<String, dynamic>? params,String? cookies}) async {
-    return _sendRequest('GET', endpoint,cookies, params: params);
+    return _sendRequest(tGET, endpoint,cookies, params: params);
   }
 
   Future<dynamic> post({required String endpoint, dynamic body,String? cookies}) async {
-    return _sendRequest('POST', endpoint,cookies, body: body);
+    return _sendRequest(tPOST, endpoint,cookies, body: body);
   }
 
   Future<dynamic> put({required String endpoint, dynamic body,String? cookies}) async {
-    return _sendRequest('PUT', endpoint,cookies, body: body);
+    return _sendRequest(tPUT, endpoint,cookies, body: body);
   }
 
   Future<dynamic> patch({required String endpoint, dynamic body,String? cookies}) async {
-    return _sendRequest('PATCH', endpoint,cookies, body: body);
+    return _sendRequest(tPATCH, endpoint,cookies, body: body);
   }
 
   Future<dynamic> delete({required String endpoint,String? cookies}) async {
-    return _sendRequest('DELETE', endpoint,cookies);
+    return _sendRequest(tDELETE, endpoint,cookies);
   }
 
   Future<dynamic> _sendRequest(String method, String endpoint, String? setCookies, {Map<String, dynamic>? params, dynamic body}) async {
@@ -52,23 +52,23 @@ class RetCoreApiClient{
       http.Response response;
       final uri = Uri.parse('$baseUrl$endpoint').replace(queryParameters: params);
       switch (method) {
-        case 'GET':
+        case tGET:
           response = await http.get(uri, headers: headers);
           break;
-        case 'POST':
+        case tPOST:
           response = await http.post(uri, headers: headers, body: json.encode(body));
           break;
-        case 'PUT':
+        case tPUT:
           response = await http.put(uri, headers: headers, body: json.encode(body));
           break;
-        case 'PATCH':
+        case tPATCH:
           response = await http.patch(uri, headers: headers, body: json.encode(body));
           break;
-        case 'DELETE':
+        case tDELETE:
           response = await http.delete(uri, headers: headers);
           break;
         default:
-          throw Exception('Unsupported HTTP method');
+          throw Exception(tHttpError);
       }
       ApiClientLog().printRequest(response);
       String cookieResponse = _cookieSet(response:response);
@@ -89,7 +89,7 @@ class RetCoreApiClient{
         final decodedResponse = jsonDecode(response.body);
         return decodedResponse;
       } catch (e) {
-        dev.log('Failed to parse error response: ${response.body}');
+        dev.log('$tErrorResponse ${response.body}');
       }
     }else if (response.statusCode >= 200) {
       final decodedResponse = json.decode(response.body);
@@ -98,10 +98,10 @@ class RetCoreApiClient{
       } else if (decodedResponse is List<dynamic>) {
         return decodedResponse;
       } else {
-        dev.log('Unsupported response type: ${decodedResponse.runtimeType}');
+        dev.log('$tResponseError ${decodedResponse.runtimeType}');
       }
     } else {
-      dev.log('Failed to make request with status code: ${response.statusCode}');
+      dev.log('$tErrorCode ${response.statusCode}');
     }
   }
 

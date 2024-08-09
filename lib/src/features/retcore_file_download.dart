@@ -41,17 +41,17 @@ class FileDownload implements FileSaver {
         if (httpResponse.statusCode == 200) {
           fileResponse = httpResponse.bodyBytes;
         } else {
-          dev.log("Failed to download file from URL. Status code: ${httpResponse.statusCode}");
+          dev.log("$tFailedDownload ${httpResponse.statusCode}");
           return;
         }
       } catch (e) {
-        dev.log("Error fetching file from URL: $e");
+        dev.log("$tErrorDownload $e");
         return;
       }
     } else {
       // Use provided response
       if (response == null) {
-        throw ArgumentError("Either 'response' or 'url' must be provided.");
+        throw ArgumentError(tExceptionDownload);
       }
       fileResponse = response;
     }

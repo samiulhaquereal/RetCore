@@ -15,7 +15,7 @@ export '/src/features/retcore_neumorphism.dart';
 export '/src/features/retcore_chip_inputfield.dart';
 export '/src/features/retcore_progressbar.dart';
 export '/src/network/retcore_isolate_api_client.dart';
-export '/src/features/retcore_api_client.dart';
+export 'src/network/retcore_api_client.dart';
 
 export '/src/features/view/retcore_core.dart';
 

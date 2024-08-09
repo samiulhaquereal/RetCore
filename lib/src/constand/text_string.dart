@@ -27,3 +27,19 @@ const String tFadeAnimationLog = 'Auto Reversed Animation activate';
 const String tSnackBarContextNotFoundHint = 'Make sure the MaterialApp uses RetCoreNavigatorKey';
 
 const String tOTPWarnning = 'OTP field length & code length are not the same';
+
+const String tFailedDownload = 'Failed to download file from URL. Status code:';
+const String tErrorDownload = 'Error fetching file from URL:';
+const String tExceptionDownload = "Either 'response' or 'url' must be provided.";
+
+const String tGET = 'GET';
+const String tPOST = 'POST';
+const String tPUT = 'PUT';
+const String tPATCH = 'PATCH';
+const String tDELETE = 'DELETE';
+
+const String tHttpError = 'Unsupported HTTP method';
+const String tResponseError = 'Unsupported response type:';
+const String tErrorCode = 'Failed to make request with status code:';
+const String tErrorResponse = 'Failed to parse error response:';
+const String tResponseFormat = 'Unexpected response format';

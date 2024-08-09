@@ -21,23 +21,23 @@ class RetCoreIsolateApiClient {
   }
 
   Future<dynamic> get({required String endpoint, Map<String, dynamic>? params, String? cookies}) async {
-    return _sendRequest('GET', endpoint, params: params, cookies: cookies);
+    return _sendRequest(tGET, endpoint, params: params, cookies: cookies);
   }
 
   Future<dynamic> post({required String endpoint, dynamic body, String? cookies}) async {
-    return _sendRequest('POST', endpoint, body: body, cookies: cookies);
+    return _sendRequest(tPOST, endpoint, body: body, cookies: cookies);
   }
 
   Future<dynamic> put({required String endpoint, dynamic body, String? cookies}) async {
-    return _sendRequest('PUT', endpoint, body: body, cookies: cookies);
+    return _sendRequest(tPUT, endpoint, body: body, cookies: cookies);
   }
 
   Future<dynamic> patch({required String endpoint, dynamic body, String? cookies}) async {
-    return _sendRequest('PATCH', endpoint, body: body, cookies: cookies);
+    return _sendRequest(tPATCH, endpoint, body: body, cookies: cookies);
   }
 
   Future<dynamic> delete({required String endpoint, String? cookies}) async {
-    return _sendRequest('DELETE', endpoint, cookies: cookies);
+    return _sendRequest(tDELETE, endpoint, cookies: cookies);
   }
 
   Future<dynamic> _sendRequest(
@@ -72,7 +72,7 @@ class RetCoreIsolateApiClient {
         }
         return response;
       } else {
-        throw Exception('Unexpected response format');
+        throw Exception(tResponseFormat);
       }
     } catch (e) {
       dev.log('Error occurred while making $method request: $e');
