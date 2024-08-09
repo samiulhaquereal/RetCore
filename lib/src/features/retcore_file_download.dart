@@ -126,17 +126,11 @@ class FileDownload implements FileSaver {
 }
 */
 import 'dart:typed_data' as type;
-import 'dart:io' as io;
 import 'dart:developer' as dev;
-
 import 'package:http/http.dart' as http;
-import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:device_info_plus/device_info_plus.dart';
-
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:retcore/src/widgets/mobile_file_saver.dart';
-import 'package:retcore/src/widgets/web_file_saver.dart';
+import 'package:retcore/src/config/imports.dart';
+//import 'package:retcore/src/widgets/web_file_saver.dart';
 
 abstract class FileSaver {
   Future<void> saveFile({
@@ -191,7 +185,7 @@ class FileDownload implements FileSaver {
 
     if (kIsWeb) {
       // Web-specific implementation
-      await WebFileSaver().saveFile(fileResponse: fileResponse, baseFileName: baseFileName, extension: extension);
+      //await saveFileWeb(fileResponse, baseFileName, extension);
     } else {
       // Mobile-specific implementation
       await saveFileMobile(fileResponse, baseFileName, extension, appName);
