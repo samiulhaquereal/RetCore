@@ -11,7 +11,7 @@ abstract class FileSaver {
     String? url,
     required String baseFileName,
     required String extension,
-    required String appName,
+    required String folderName,
   });
 }
 
@@ -30,7 +30,7 @@ class FileDownload implements FileSaver {
     String? url,
     required String baseFileName,
     required String extension,
-    required String appName,
+    required String folderName,
   }) async {
     type.Uint8List fileResponse;
 
@@ -61,7 +61,7 @@ class FileDownload implements FileSaver {
       //await saveFileWeb(fileResponse, baseFileName, extension);
     } else {
       // Mobile-specific implementation
-      await saveFileMobile(fileResponse, baseFileName, extension, appName);
+      await saveFileMobile(fileResponse, baseFileName, extension, folderName);
     }
   }
 }

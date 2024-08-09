@@ -439,7 +439,7 @@ class RetCore{
         response: response,
         baseFileName: baseFileName,
         extension: extension,
-        appName: appName,
+        folderName: appName,
         url:url
     );
   }
