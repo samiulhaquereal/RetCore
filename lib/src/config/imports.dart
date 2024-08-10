@@ -51,3 +51,4 @@ export 'dart:isolate';
 export 'package:retcore/src/network/retcore_api_isolate.dart';
 export 'package:retcore/src/utils/api_client_log.dart';
 export 'package:retcore/src/widgets/mobile_file_saver.dart';
+export 'package:retcore/src/network/retcore_api_client_handler.dart';
