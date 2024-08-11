@@ -10,8 +10,8 @@ class ApiClientLog{
     return _instance!;
   }
 
-  void printRequest(http.Response response,String url) {
-    retcoreLogger.info(url,title: 'RESPONSE',tag:'${response.statusCode}');
+  void printRequest(http.Response response,String url,String method) {
+    retcoreLogger.info(url,tag: 'RESPONSE',method: method,status: '${response.statusCode}');
     //log('Request  ${response.request}');
     //log('Status code: ${response.statusCode}');
     //log('Headers: ${response.headers}');

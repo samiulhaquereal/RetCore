@@ -172,7 +172,7 @@ class RetCoreApiClient {
           throw Exception('Unsupported HTTP method: $method');
       }
 
-      ApiClientLog().printRequest(response,uri.toString());
+      ApiClientLog().printRequest(response,uri.toString(),method);
       String cookieResponse = ApiClientHandler().cookieSet(response:response);
       var handleResponse = ApiClientHandler().handleResponse(response: response,sendPort: sendPort);
       Map<String , dynamic> data = {
