@@ -11,7 +11,7 @@ class ApiClientLog{
   }
 
   void printRequest(http.Response response,String url,String method) {
-    retcoreLogger.info(url,tag: 'RESPONSE',method: method,status: '${response.statusCode}');
+    retcoreLogger.info(url, tag: 'RESPONSE', method: 'Real', status: '${response.statusCode}');
     //log('Request  ${response.request}');
     //log('Status code: ${response.statusCode}');
     //log('Headers: ${response.headers}');
