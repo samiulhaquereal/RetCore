@@ -18,6 +18,9 @@ dependencies:
   permission_handler: ^11.3.1
   shared_preferences: ^2.2.3
   device_info_plus: ^10.1.1
+  retcorelogger:
+    git:
+      url: https://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@github.com/samiulhaquereal/RetCoreLogger.git
 
 dev_dependencies:
   flutter_test:
