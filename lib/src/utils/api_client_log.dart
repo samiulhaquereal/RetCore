@@ -1,6 +1,6 @@
-import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:retcore/src/config/imports.dart';
+
 class ApiClientLog{
 
   static ApiClientLog? _instance;
