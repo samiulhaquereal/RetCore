@@ -11,10 +11,8 @@ class ApiClientLog{
   }
 
   void printRequest(http.Response response,String url,String method) {
-    retcoreLogger.info(url, tag: 'RESPONSE', method: 'Real', status: '${response.statusCode}');
-    //log('Request  ${response.request}');
-    //log('Status code: ${response.statusCode}');
-    //log('Headers: ${response.headers}');
-    //log('Body: ${response.body}');
+    retcoreLogger.info(url, level: 'REQUEST', method: method, status: '${response.request}');
+    retcoreLogger.info('${response.headers}', level: 'HEADERS', method: method, status: '');
+    retcoreLogger.info(response.body,title: url, level: 'RESPONSE', method: method, status: '${response.statusCode}');
   }
 }
