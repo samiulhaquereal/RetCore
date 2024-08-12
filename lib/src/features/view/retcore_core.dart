@@ -443,5 +443,9 @@ class RetCore{
         url:url
     );
   }
+  static T removeNullValues<T>(T collection){
+    T response = NullChecker().removeNullValues(collection);
+    return response;
+  }
 
 }
