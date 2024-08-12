@@ -445,6 +445,7 @@ class RetCore{
     );
     return path;
   }
+
   static T removeNullValues<T>(T collection){
     T response = NullChecker().removeNullValues(collection);
     return response;
