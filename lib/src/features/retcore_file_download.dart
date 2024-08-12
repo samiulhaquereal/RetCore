@@ -1,5 +1,4 @@
 import 'dart:typed_data' as type;
-import 'dart:developer' as dev;
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:retcore/src/config/imports.dart';
@@ -38,14 +37,15 @@ class FileDownload implements FileSaver {
     if (url != null && url.isNotEmpty) {
       try {
         final httpResponse = await http.get(Uri.parse(url));
+        retcoreLogger.info(url, level: 'RESPONSE', method: 'GET', status: '${httpResponse.statusCode}');
         if (httpResponse.statusCode == 200) {
           fileResponse = httpResponse.bodyBytes;
         } else {
-          dev.log("Failed to download file: ${httpResponse.statusCode}");
+          retcoreLogger.error('Failed to download file: ${httpResponse.statusCode}');
           return null;
         }
       } catch (e) {
-        dev.log("Error downloading file: $e");
+        retcoreLogger.error('Error downloading file: $e');
         return null;
       }
     } else {
