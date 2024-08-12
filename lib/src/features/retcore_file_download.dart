@@ -3,10 +3,10 @@ import 'dart:developer' as dev;
 import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:retcore/src/config/imports.dart';
-//import 'package:retcore/src/widgets/web_file_saver.dart';
+// import 'package:retcore/src/widgets/web_file_saver.dart';
 
 abstract class FileSaver {
-  Future<void> saveFile({
+  Future<String?> saveFile({
     type.Uint8List? response,
     String? url,
     required String baseFileName,
@@ -25,7 +25,7 @@ class FileDownload implements FileSaver {
   }
 
   @override
-  Future<void> saveFile({
+  Future<String?> saveFile({
     type.Uint8List? response,
     String? url,
     required String baseFileName,
@@ -41,27 +41,29 @@ class FileDownload implements FileSaver {
         if (httpResponse.statusCode == 200) {
           fileResponse = httpResponse.bodyBytes;
         } else {
-          dev.log("$tFailedDownload ${httpResponse.statusCode}");
-          return;
+          dev.log("Failed to download file: ${httpResponse.statusCode}");
+          return null;
         }
       } catch (e) {
-        dev.log("$tErrorDownload $e");
-        return;
+        dev.log("Error downloading file: $e");
+        return null;
       }
     } else {
       // Use provided response
       if (response == null) {
-        throw ArgumentError(tExceptionDownload);
+        throw ArgumentError("No data provided for the file download.");
       }
       fileResponse = response;
     }
 
     if (kIsWeb) {
       // Web-specific implementation
-      //await saveFileWeb(fileResponse, baseFileName, extension);
+      // return await saveFileWeb(fileResponse, baseFileName, extension);
+      return null; // Implement this method as needed for web
     } else {
       // Mobile-specific implementation
-      await saveFileMobile(fileResponse, baseFileName, extension, folderName);
+      String path = await saveFileMobile(fileResponse, baseFileName, extension, folderName) ?? '';
+      return path;
     }
   }
 }

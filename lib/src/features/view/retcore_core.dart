@@ -428,20 +428,22 @@ class RetCore{
     return response;
   }
 
-  static void fileDownload({
+  static Future<String?> fileDownload({
     type.Uint8List? response,
     String? url,
     required String baseFileName,
     required String extension,
-    required String appName})async{
+    required String appName
+  })async{
     final fileSaver = FileDownload();
-    await fileSaver.saveFile(
+    String? path = await fileSaver.saveFile(
         response: response,
         baseFileName: baseFileName,
         extension: extension,
         folderName: appName,
         url:url
     );
+    return path;
   }
   static T removeNullValues<T>(T collection){
     T response = NullChecker().removeNullValues(collection);
