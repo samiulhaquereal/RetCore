@@ -22,6 +22,28 @@ import 'package:retcore/retcore.dart';
 
 ```
 
+
+
+### Features
+
+* RetCoreButton
+* RetCoreActivityDetector
+* RetCoreCarousel
+* RetCoreChipInputField 
+* RetCoreCircularProgressBar
+* RetCoreDropdownField
+* RetCoreFadeAnimation
+* RetCoreFlipAnimation
+* RetCoreGlassmorphism
+* RetCoreLinearProgressBar
+* RetCoreNeumorphism
+* RetCoreOTPFieid
+* RetCoreParallaxCarousel
+* RetCoreTextField 
+* RetCoreApiClient
+
+##### Some important functions
+
 ### RetCoreTextfield
 
 #### Key Features
