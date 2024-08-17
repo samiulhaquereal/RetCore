@@ -51,4 +51,12 @@ class RetCoreParse {
     }
     return defaultValue;
   }
+
+  static String formatNumber({required double number, required int decimalPlaces}) {
+    if (number == number.toInt()) {
+      return number.toInt().toString(); // Remove decimal part if it's .0
+    } else {
+      return number.toStringAsFixed(decimalPlaces); // Show specified decimal places
+    }
+  }
 }

@@ -35,6 +35,10 @@ class RetCore{
   static Widget space(double size){
     return RetcoreSpace(space: size);
   }
+  static String formatNumber({required double number, int decimalPlaces = 1}){
+    String value = RetCoreParse.formatNumber(number: number,decimalPlaces: decimalPlaces);
+    return value;
+  }
   static int parseInt({required dynamic number, required int defaultValue}){
     int value = RetCoreParse.parseInt(number: number, defaultValue: defaultValue);
     return value;
