@@ -22,6 +22,128 @@ import 'package:retcore/retcore.dart';
 
 ```
 
+
+
+### Features
+
+* RetCoreButton
+* RetCoreActivityDetector
+* RetCoreCarousel
+* RetCoreChipInputField 
+* RetCoreCircularProgressBar
+* RetCoreDropdownField
+* RetCoreFadeAnimation
+* RetCoreFlipAnimation
+* RetCoreGlassmorphism
+* RetCoreLinearProgressBar
+* RetCoreNeumorphism
+* RetCoreOTPFieid
+* RetCoreParallaxCarousel
+* RetCoreTextField 
+* RetCoreApiClient
+
+#### Some important functions
+
+* <p>space</p>
+
+* <p>getDeviceInfo</p>
+
+* <p>width</p>
+
+* <p>height</p>
+
+* <p>bottomDialogBox</p>
+
+* <p>convertIntoBanglaDigit</p>
+
+* <p>dialogBox</p>
+
+* <p>fileDownload</p>
+
+* <p>getDateBangla </p>
+
+* <p>getDateEnglish</p>
+
+* <p>getDayBangla</p>
+
+* <p>getDayEnglish</p>
+
+* <p>getDayNameBangla</p>
+
+* <p>getDayNameEnglish</p>
+
+* <p>getMonthNameBangla </p>
+
+* <p>getMonthNameEnglish </p>
+
+* <p>getMonthNumberBangla</p>
+
+* <p>getMonthNumberEngIish</p>
+
+* <p>getTimeBangla </p>
+
+* <p>getYearBangla </p>
+
+* <p>getYearEnglish</p>
+
+* <p>getOS </p>
+
+* <p>getRootDeviceStatus </p>
+
+* <p>infinity </p>
+
+* <p>isDesktop </p>
+
+* <p>isMobile </p>
+
+* <p>isTablet</p>
+
+* <p>now</p>
+
+* <p>parseBool </p>
+
+* <p>parseColor </p>
+
+* <p>parseDateTime</p>
+
+* <p>parseInt</p>
+
+* <p>parseDouble </p>
+
+* <p>parseInputType</p>
+
+* <p>parseKeyboardType</p>
+
+* <p>parseList </p>
+
+* <p>parseString</p>
+
+* <p>removeNullValues </p>
+
+* <p>snackbar </p>
+
+* <p>back( Widget Page )</p>
+
+* <p>to(Widget page)</p>
+
+* <p>bottomsheet </p>
+
+* <p>debounce </p>
+
+* <p>getData</p>
+
+* <p>setData</p>
+
+* <p>removeData </p>
+
+* <p>showSnackbar</p>
+
+* <p>startAutoSession </p>
+
+* <p>startTouchDetection</p>
+
+* <p>stopTouchDetectionAndAutoSession</p>
+
 ### RetCoreTextfield
 
 #### Key Features
