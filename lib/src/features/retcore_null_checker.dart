@@ -27,4 +27,13 @@ class NullChecker {
       throw ArgumentError('Unsupported collection type');
     }
   }
+
+  T assignIfEmptyOrNull<T>(T? variable, T defaultValue) {
+    if (variable == null || (variable is String && variable.isEmpty) || (variable is List && variable.isEmpty)) {
+      return defaultValue;
+    }
+    return variable;
+  }
+
+
 }

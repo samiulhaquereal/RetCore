@@ -143,6 +143,10 @@ import 'package:retcore/retcore.dart';
 * <p>startTouchDetection</p>
 
 * <p>stopTouchDetectionAndAutoSession</p>
+  
+* <p>formatNumber</p>
+  
+* <p>emptyFieldCheck</p>
 
 ### RetCoreTextfield
 

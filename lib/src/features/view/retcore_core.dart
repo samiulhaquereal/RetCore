@@ -455,4 +455,9 @@ class RetCore{
     return response;
   }
 
+  static T emptyFieldCheck<T>(T? variable, T defaultValue){
+    T response = NullChecker().assignIfEmptyOrNull(variable,defaultValue);
+    return response;
+  }
+
 }
