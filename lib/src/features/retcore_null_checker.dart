@@ -14,15 +14,18 @@ class NullChecker {
   /// - For [Set], removes any null elements.
   T removeNullValues<T>(T collection) {
     if (collection is List) {
-      return (collection.where((element) => element != null).toList() as T);
+      return collection.where((element) => element != null && element != '').toList() as T;
     } else if (collection is Map) {
-      // Create a new map excluding entries with null values
-      var cleanedMap = Map.fromEntries(
-          collection.entries.where((entry) => entry.value != null)
-      );
+      // Correctly filter out null and empty string values from a Map
+      Map<String, dynamic> cleanedMap = {};
+      collection.forEach((key, value) {
+        if (value != null && value != '') {
+          cleanedMap[key] = value;
+        }
+      });
       return cleanedMap as T;
     } else if (collection is Set) {
-      return (collection.where((element) => element != null).toSet() as T);
+      return collection.where((element) => element != null && element != '').toSet() as T;
     } else {
       throw ArgumentError('Unsupported collection type');
     }
