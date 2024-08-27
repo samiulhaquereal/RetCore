@@ -10,7 +10,7 @@
 ```
    retcore:
         git:
-         
+          url: https://github.com/samiulhaquereal/RetCore.git
 
 ```
 ### Import
