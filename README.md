@@ -40,7 +40,9 @@ import 'package:retcore/retcore.dart';
 * RetCoreTextField 
 * RetCoreApiClient
 
-#### Some important functions
+### Some important functions
+
+<p> To use these features, use 'RetCore.' .For example: RetCore.space(10);</p>
 
 * <p>space</p>
 
