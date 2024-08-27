@@ -8,11 +8,9 @@
 ### Installing:
 
 ```
-dependencies:
    retcore:
         git:
-          url: https://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@github.com/samiulhaquereal/RetCore.git
-  
+          url: https://github.com/samiulhaquereal/RetCore.git
 
 ```
 ### Import
