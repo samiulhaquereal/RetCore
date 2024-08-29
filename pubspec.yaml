@@ -20,7 +20,7 @@ dependencies:
   device_info_plus: ^10.1.1
   retcorelogger:
     git:
-      url: https://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@github.com/samiulhaquereal/RetCoreLogger.git
+      url: https://github.com/samiulhaquereal/RetCoreLogger.git
 
 dev_dependencies:
   flutter_test:

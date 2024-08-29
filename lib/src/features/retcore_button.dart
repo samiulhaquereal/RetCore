@@ -14,8 +14,6 @@ class RetCoreButton extends StatelessWidget {
         this.title,
         this.icon,
         this.iconWidget,
-        this.isPrefixIcon,
-        this.isSuffixIcon,
         this.radius = tButtonRadiusSize,
         this.padding = tButtonPaddingSize,
         this.iconSize = tButtonIconSize,
@@ -45,8 +43,6 @@ class RetCoreButton extends StatelessWidget {
   final Color? borderColor;
   final String? title;
   final FontWeight? fontWeight;
-  final bool? isPrefixIcon;
-  final bool? isSuffixIcon;
   final bool? isBorder;
   final IconData? icon;
   final double? padding;
