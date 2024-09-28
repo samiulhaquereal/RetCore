@@ -56,7 +56,18 @@ class RetCoreParse {
     if (number == number.toInt()) {
       return number.toInt().toString(); // Remove decimal part if it's .0
     } else {
-      return number.toStringAsFixed(decimalPlaces); // Show specified decimal places
+      // Convert to string but check if it rounds
+      String str = number.toString();
+
+      // Split the string at the decimal point
+      List<String> parts = str.split('.');
+
+      // If it has a decimal part, return it as is unless it's longer than decimalPlaces
+      if (parts.length > 1 && parts[1].length > decimalPlaces) {
+        return number.toStringAsFixed(decimalPlaces); // If more than decimalPlaces, format to limit decimal places
+      }
+      return str; // Otherwise, return as it is
     }
   }
+
 }
