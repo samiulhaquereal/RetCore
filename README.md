@@ -1,171 +1,115 @@
-
-
-# 
-
 # RetCore
-<p>RetCore is a Flutter package that provides essential components designed to simplify coding for beginners. With user-friendly utilities and tools, RetCore helps new developers write cleaner, more efficient code with ease. Perfect for those just starting their coding journey, RetCore provides the building blocks needed to develop robust applications.</p>
 
-### Installing:
+**RetCore** is a Flutter package that provides essential components designed to simplify coding for beginners. With user-friendly utilities and tools, RetCore helps new developers write cleaner, more efficient code with ease. Perfect for those just starting their coding journey, RetCore provides the building blocks needed to develop robust applications.
 
+---
+
+## 🚀 Installation
+
+Add this to your `pubspec.yaml`:
+
+```yaml
+retcore:
+  git:
+    url: https://github.com/samiulhaquereal/RetCore.git
 ```
-   retcore:
-        git:
-          url: https://github.com/samiulhaquereal/RetCore.git
 
-```
-### Import
+---
 
-```
+## 📦 Import
+
+```dart
 import 'package:retcore/retcore.dart';
-
 ```
 
+---
 
+## ✨ Features
 
-### Features
+### Widgets
+- `RetCoreButton`
+- `RetCoreActivityDetector`
+- `RetCoreCarousel`
+- `RetCoreChipInputField`
+- `RetCoreCircularProgressBar`
+- `RetCoreDropdownField`
+- `RetCoreFadeAnimation`
+- `RetCoreFlipAnimation`
+- `RetCoreGlassmorphism`
+- `RetCoreLinearProgressBar`
+- `RetCoreNeumorphism`
+- `RetCoreOTPField`
+- `RetCoreParallaxCarousel`
+- `RetCoreTextField`
+- `RetCoreApiClient`
 
-* RetCoreButton
-* RetCoreActivityDetector
-* RetCoreCarousel
-* RetCoreChipInputField 
-* RetCoreCircularProgressBar
-* RetCoreDropdownField
-* RetCoreFadeAnimation
-* RetCoreFlipAnimation
-* RetCoreGlassmorphism
-* RetCoreLinearProgressBar
-* RetCoreNeumorphism
-* RetCoreOTPFieid
-* RetCoreParallaxCarousel
-* RetCoreTextField 
-* RetCoreApiClient
+### Utilities
 
-### Some important functions
+Use with `RetCore.` prefix, for example: `RetCore.space(10);`
 
-<p> To use these features, use 'RetCore.' .For example: RetCore.space(10);</p>
+#### 📐 Layout & Device
+- `space(double value)`
+- `width()`, `height()`
+- `getDeviceInfo()`
+- `getOS()`
+- `isMobile()`, `isTablet()`, `isDesktop()`
 
-* <p>space</p>
+#### 📅 Date & Time
+- `getDateBangla()`, `getDateEnglish()`
+- `getDayBangla()`, `getDayEnglish()`
+- `getDayNameBangla()`, `getDayNameEnglish()`
+- `getMonthNameBangla()`, `getMonthNameEnglish()`
+- `getMonthNumberBangla()`, `getMonthNumberEnglish()`
+- `getTimeBangla()`, `getYearBangla()`, `getYearEnglish()`
 
-* <p>getDeviceInfo</p>
+#### 🧠 Converters & Tools
+- `convertIntoBanglaDigit(String number)`
+- `parseBool()`, `parseInt()`, `parseDouble()`
+- `parseColor()`, `parseDateTime()`, `parseString()`
+- `parseList()`, `parseInputType()`, `parseKeyboardType()`
+- `removeNullValues(Map)`
+- `formatNumber(num)`
+- `emptyFieldCheck(List<TextEditingController>)`
 
-* <p>width</p>
+#### 📦 Data Storage
+- `getData(String key)`
+- `setData(String key, dynamic value)`
+- `removeData(String key)`
 
-* <p>height</p>
+#### 🧾 Navigation & UI
+- `to(Widget page)`, `back(Widget page)`
+- `dialogBox()`, `bottomDialogBox()`, `bottomsheet()`
+- `snackbar()`, `showSnackbar()`
 
-* <p>bottomDialogBox</p>
+#### ⚡ System
+- `fileDownload(String url)`
+- `debounce(String key, Function)`
+- `getRootDeviceStatus()`
 
-* <p>convertIntoBanglaDigit</p>
+#### 🔐 Auto Session & Touch
+- `startAutoSession()`
+- `startTouchDetection()`
+- `stopTouchDetectionAndAutoSession()`
 
-* <p>dialogBox</p>
+---
 
-* <p>fileDownload</p>
+## 🧾 RetCoreTextField
 
-* <p>getDateBangla </p>
+### 🔑 Key Features
+- Easily design custom text fields.
+- One toggle to enable date picker.
+- One toggle to enable password input.
+- Built-in validation support.
 
-* <p>getDateEnglish</p>
+### 💡 Examples
 
-* <p>getDayBangla</p>
+#### Basic TextField
 
-* <p>getDayEnglish</p>
-
-* <p>getDayNameBangla</p>
-
-* <p>getDayNameEnglish</p>
-
-* <p>getMonthNameBangla </p>
-
-* <p>getMonthNameEnglish </p>
-
-* <p>getMonthNumberBangla</p>
-
-* <p>getMonthNumberEngIish</p>
-
-* <p>getTimeBangla </p>
-
-* <p>getYearBangla </p>
-
-* <p>getYearEnglish</p>
-
-* <p>getOS </p>
-
-* <p>getRootDeviceStatus </p>
-
-* <p>infinity </p>
-
-* <p>isDesktop </p>
-
-* <p>isMobile </p>
-
-* <p>isTablet</p>
-
-* <p>now</p>
-
-* <p>parseBool </p>
-
-* <p>parseColor </p>
-
-* <p>parseDateTime</p>
-
-* <p>parseInt</p>
-
-* <p>parseDouble </p>
-
-* <p>parseInputType</p>
-
-* <p>parseKeyboardType</p>
-
-* <p>parseList </p>
-
-* <p>parseString</p>
-
-* <p>removeNullValues </p>
-
-* <p>snackbar </p>
-
-* <p>back( Widget Page )</p>
-
-* <p>to(Widget page)</p>
-
-* <p>bottomsheet </p>
-
-* <p>debounce </p>
-
-* <p>getData</p>
-
-* <p>setData</p>
-
-* <p>removeData </p>
-
-* <p>showSnackbar</p>
-
-* <p>startAutoSession </p>
-
-* <p>startTouchDetection</p>
-
-* <p>stopTouchDetectionAndAutoSession</p>
-  
-* <p>formatNumber</p>
-  
-* <p>emptyFieldCheck</p>
-
-### RetCoreTextfield
-
-#### Key Features
-
-
-* Easily design any kind of TextField
-* Easily choose DatePicker from one text field by changing one parameter.
-* By changing one parameter TextField can be convert into password field with obscureText.
-* Easily check validation.
-
-#### How to use
-<p>All kind of design use in one textField.</p>
-
-```
+```dart
 RetCoreTextField(
   controller: TextEditingController(),
   isBorder: true,
-  label: 'Name Field',
+  label: 'Name',
   labelColor: Colors.grey,
   labelSize: 18,
   inputFontSize: 22,
@@ -173,42 +117,47 @@ RetCoreTextField(
   icon: CupertinoIcons.person,
   focusedColor: Colors.red,
 )
-
 ```
-<p>DatePicker field</p>
 
-```
+#### Date Picker Field
+
+```dart
 RetCoreTextField(
   controller: TextEditingController(),
   isBorder: true,
   isDatePicker: true,
 )
-
 ```
-<p>Password field</p>
 
-```
+#### Password Field
+
+```dart
 RetCoreTextField(
   controller: TextEditingController(),
   isBorder: true,
   label: 'Password',
   isPasswordField: true,
 )
-
 ```
-<p>Validate the TextField</p>
 
-```
+#### Validation
+
+```dart
 RetCoreTextField(
   controller: TextEditingController(),
   isBorder: true,
   label: 'Password',
   isPasswordField: true,
   isRequired: true,
-  validator: (){},
+  validator: () {
+    // Custom validation logic
+  },
 )
-
 ```
 
-### Changelog
-<p>CHANGELOG</p>
+---
+
+## 📜 Changelog
+CHANGELOG
+
+---
