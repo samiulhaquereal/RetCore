@@ -12,14 +12,14 @@ class RetCoreResponsive{
   static bool isMobile() {
     BuildContext? context = FindContext.getContext();
     var width = MediaQuery.of(context!).size.width;
-    var orientation = MediaQuery.of(context!).orientation;
+    var orientation = MediaQuery.of(context).orientation;
     return orientation == Orientation.portrait && width <= 700;
   }
 
   static bool isTablet() {
     BuildContext? context = FindContext.getContext();
     var width = MediaQuery.of(context!).size.width;
-    var orientation = MediaQuery.of(context!).orientation;
+    var orientation = MediaQuery.of(context).orientation;
     return orientation == Orientation.portrait && width > 700 && width < 1024;
   }
 

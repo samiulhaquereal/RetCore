@@ -50,7 +50,7 @@ class RetCoreBottomDialogBox {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(boxRadius!),
-              topRight: Radius.circular(boxRadius!),
+              topRight: Radius.circular(boxRadius),
             ),
             color: backgroundColor,
           ),

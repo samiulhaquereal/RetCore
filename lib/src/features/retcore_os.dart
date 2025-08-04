@@ -28,8 +28,6 @@ class RetCoreOS{
           return tPlatform6;
         case TargetPlatform.fuchsia:
           return tPlatform7;
-        default:
-          return tPlatform8;
       }
     }
   }

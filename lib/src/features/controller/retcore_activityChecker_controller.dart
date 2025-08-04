@@ -55,7 +55,7 @@ class RetCoreActivityDetectorController {
     try {
       startAutoSession(time: time,process: process);
       if (process != null) {
-        process!(); // Call the callback if it's set
+        process(); // Call the callback if it's set
       }
     } catch (e) {
       dev.log(e.toString());
@@ -69,7 +69,7 @@ class RetCoreActivityDetectorController {
         _timer2?.cancel();
       }
       if (afterTimeout != null) {
-        afterTimeout!(); // Call the callback if it's set
+        afterTimeout(); // Call the callback if it's set
       }
     } catch (e) {
       dev.log(e.toString());

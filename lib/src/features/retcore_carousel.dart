@@ -2,7 +2,7 @@ import 'package:retcore/src/config/imports.dart';
 
 class RetCoreCarousel extends StatefulWidget {
 
-  RetCoreCarousel ({
+  const RetCoreCarousel ({
     super.key,
     required this.imagePaths,
     this.padding = tCarouselPadding,
@@ -13,13 +13,13 @@ class RetCoreCarousel extends StatefulWidget {
     this.curve = Curves.easeInOut,
   });
 
-  List<String> imagePaths;
-  double? padding ;
-  double? radius;
-  int? durationSeconds ;
-  Color? activeColor ;
-  Color? inactiveColor;
-  Curve? curve;
+  final List<String> imagePaths;
+  final double? padding ;
+  final double? radius;
+  final int? durationSeconds ;
+  final Color? activeColor ;
+  final Color? inactiveColor;
+  final Curve? curve;
 
   @override
   State<RetCoreCarousel> createState() => _RetCoreCarouselState();

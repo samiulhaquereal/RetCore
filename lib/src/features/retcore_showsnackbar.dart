@@ -12,7 +12,6 @@ class RetCoreShowSnackBar {
   }
 
   static final Queue<_SnackBarRequest> _queue = Queue<_SnackBarRequest>();
-  static OverlayEntry? _currentOverlayEntry;
   static bool _isShowingSnackBar = false;
 
   static void show({
@@ -63,7 +62,6 @@ class RetCoreShowSnackBar {
       rightIconSpace: rightIconSpace,
       snackBarPosition: snackBarPosition,
     ));
-
     _showNextSnackBar();
   }
 
@@ -111,8 +109,6 @@ class RetCoreShowSnackBar {
           },
         ),
       );
-
-      _currentOverlayEntry = overlayEntry;
       overlayState.insert(overlayEntry);
     }
   }
