@@ -9,9 +9,8 @@
 Add this to your `pubspec.yaml`:
 
 ```yaml
-retcore:
-  git:
-    url: https://github.com/samiulhaquereal/RetCore.git
+dependencies:
+  retcore: ^0.0.2
 ```
 
 ---

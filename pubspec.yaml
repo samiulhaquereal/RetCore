@@ -1,7 +1,8 @@
 name: retcore
-description: "RetCore is a Flutter package that provides essential components designed to simplify coding for beginners. With user-friendly utilities and tools, RetCore helps new developers write cleaner, more efficient code with ease. Perfect for those just starting their coding journey, RetCore provides the building blocks needed to develop robust applications effortlessly."
-version: 0.0.1
+description: "RetCore is a Flutter package that provides essential components designed to simplify coding for beginners."
+version: 0.0.2
 homepage: https://github.com/samiulhaquereal/RetCore.git
+repository: https://github.com/samiulhaquereal/RetCore.git
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
@@ -10,17 +11,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^2.0.10+1
-  http: ^1.2.2
-  intl: ^0.19.0
-  lottie: ^3.1.2
-  path_provider: ^2.1.4
-  permission_handler: ^11.3.1
-  shared_preferences: ^2.5.2
-  device_info_plus: ^10.1.1
-  retcorelogger:
-    git:
-      url: https://github.com/samiulhaquereal/RetCoreLogger.git
+  flutter_svg: ^2.2.0
+  http: ^1.4.0
+  intl: ^0.20.2
+  lottie: ^3.3.1
+  path_provider: ^2.1.5
+  permission_handler: ^12.0.1
+  shared_preferences: ^2.5.3
+  device_info_plus: ^11.5.0
+  retcorelogger: ^0.0.1
 
 dev_dependencies:
   flutter_test:
